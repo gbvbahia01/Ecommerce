@@ -1,0 +1,143 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package br.com.gbvbahia.ecommerce.model.entity.products;
+
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import br.com.gbvbahia.ecommerce.model.cotract.Model;
+
+/**
+ *
+ * @author Guilherme
+ */
+@Entity
+@Table(name = "category", uniqueConstraints = {
+    @UniqueConstraint(columnNames = {"name"})}, schema = "products")
+public class Category implements Model<Long>, Comparable<Category> {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID")
+    private Long id;
+
+    @Column(name = "name", length = 40, nullable = false, unique = true)
+    @Size(max = 40, min = 3)
+    @NotNull
+    private String name;
+
+    @Column(name = "description", length = 250, nullable = false)
+    @Size(max = 250, min = 10)
+    @NotNull
+    private String description;
+    
+    @Column(name = "order_show", nullable = false)
+    @Min(1)
+    @NotNull
+    private Integer order = 1;
+
+    @OneToMany(mappedBy = "category", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private Set<SubCategory> subCategorys;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Set<SubCategory> getSubCategorys() {
+        if (subCategorys == null) {
+            subCategorys = new HashSet<>();
+        }
+        return subCategorys;
+    }
+
+    public void setSubCategorys(Set<SubCategory> subCategorys) {
+        this.subCategorys = subCategorys;
+    }
+
+    public Integer getOrder() {
+        return order;
+    }
+
+    public void setOrder(Integer order) {
+        this.order = order;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 89 * hash + Objects.hashCode(this.name);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Category other = (Category) obj;
+        if (!Objects.equals(this.name, other.name)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Category{" + "id=" + id + ", name=" + name + ", description=" + description + ", order=" + order + '}';
+    }
+
+    @Override
+    public int compareTo(Category cat) {
+       if(cat == null) {
+           return 1;
+       }
+       if(this.name == null) {
+           return -1;
+       }
+       return this.name.compareToIgnoreCase(cat.getName());
+    }
+}

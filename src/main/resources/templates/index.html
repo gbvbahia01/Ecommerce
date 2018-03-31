@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Recipe Home</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css"
+          crossorigin="anonymous"
+          th:href="@{//webjars/bootstrap/css/bootstrap.min.css}">
+
+    <script src="/webjars/jquery/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/js/bootstrap.min.js"
+            crossorigin="anonymous" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</head>
+<body>
+    <h1 id="hello"></h1>
+    <script type="application/javascript">
+        window.onload = function() {
+            if (window.jQuery) {
+                // jQuery is loaded
+                $("#hello").html("Hello Ecommerce With jQuery Yeah!");
+            } else {
+                // jQuery is not loaded
+                $("#hello").html("Hello Ecommerce jQuery Doesn't Work");
+            }
+        }
+    </script>
+</body>
+</html>
