@@ -16,3 +16,7 @@ spring:
         temp:
           use_jdbc_metadata_defaults: false
 
+logging:
+  level:
+    org.springframework: warn
+    br.com.gbvbahia.ecommerce: DEBUG
