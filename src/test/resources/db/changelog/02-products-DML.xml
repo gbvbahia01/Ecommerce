@@ -1,0 +1,20 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="product-v1-dml" author="gbvbahia">
+        <insert tableName="product" schemaName="products">
+            <column name="name" value="Product 1" />
+            <column name="branch" value="gbvbahia" />
+            <column name="description" value="first product to test" />
+            <column name="price" value="100.00" />
+            <column name="height" value="2.0" />
+            <column name="width" value="2.5" />
+            <column name="depth" value="1.0" />
+            <column name="weight" value="1.0" />
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

@@ -54,7 +54,7 @@ public class Order implements Model<Long> {
     @NotNull
     private Customer customer;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "orders", fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "order", fetch = FetchType.EAGER)
     @NotNull
     @Size(min = 1)
     private Set<Item> items;

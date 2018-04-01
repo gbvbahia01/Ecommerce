@@ -1,0 +1,33 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+        <changeSet id="product-v1-ddl" author="gbvbahia">
+
+            <sql>
+                CREATE SCHEMA IF NOT EXISTS products;
+                CREATE SCHEMA IF NOT EXISTS orders;
+                CREATE SCHEMA IF NOT EXISTS customers;
+            </sql>
+
+            <createTable tableName="product" schemaName="products" catalogName="ecommerce" tablespace="ecommerce">
+                <column name="ID" autoIncrement="true" type="bigint" />
+                <column name="name" type="varchar(30)" />
+                <column name="name_clean" type="varchar(32)" />
+                <column name="branch" type="varchar(25)" />
+                <column name="description" type="varchar(250)" />
+                <column name="description_clean" type="varchar(252)" />
+                <column name="price" type="real" />
+                <column name="sub_category" type="bigint" />
+                <!-- Measures -->
+                <column name="height" type="real" />
+                <column name="width" type="real" />
+                <column name="depth" type="real" />
+                <column name="weight" type="real" />
+            </createTable>
+
+        </changeSet>
+
+</databaseChangeLog>

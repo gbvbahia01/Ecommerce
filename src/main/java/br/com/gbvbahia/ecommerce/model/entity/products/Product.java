@@ -61,7 +61,7 @@ public class Product implements Model<Long> {
     private String branch;
 
     @NotNull
-    @Column(name = "description", length = 250, nullable = false)
+        @Column(name = "description", length = 250, nullable = false)
     @Size(max = 250, min = 10)
     private String description;
 

@@ -1,0 +1,21 @@
+spring:
+  datasource:
+    platform: h2
+    url: jdbc:h2:mem:ecommerce;MODE=PostgreSQL;DB_CLOSE_ON_EXIT=FALSE;DB_CLOSE_DELAY=-1;INIT=CREATE SCHEMA IF NOT EXISTS products;
+    username: sa
+    password:
+  h2:
+    console:
+      enabled: true
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+  liquibase:
+    change-log: classpath:db/liquibase-changelog.xml
+
+logging:
+  level:
+    org.springframework: warn
+    br.com.gbvbahia.ecommerce: DEBUG
+
