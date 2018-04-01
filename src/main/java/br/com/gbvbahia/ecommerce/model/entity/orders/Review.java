@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.gbvbahia.ecommerce.model.entity.order;
+package br.com.gbvbahia.ecommerce.model.entity.orders;
 
 import java.util.Calendar;
 import java.util.Objects;

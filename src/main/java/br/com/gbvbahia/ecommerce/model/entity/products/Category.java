@@ -127,7 +127,7 @@ public class Category implements Model<Long>, Comparable<Category> {
 
     @Override
     public String toString() {
-        return "Category{" + "id=" + id + ", name=" + name + ", description=" + description + ", order=" + order + '}';
+        return "Category{" + "id=" + id + ", name=" + name + ", description=" + description + ", orders=" + order + '}';
     }
 
     @Override

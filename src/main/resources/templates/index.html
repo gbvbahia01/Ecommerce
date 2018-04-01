@@ -1,32 +1,37 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
+    <head>
 
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+        <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
 
-    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+        <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
 
-    <script crossorigin="anonymous" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+        <script crossorigin="anonymous" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 
-    <title>Ecommerce Home</title>
-</head>
-<body>
-    <div class="alert alert-primary" role="alert">
-        <h1 id="hello"></h1>
-    </div>
-    <script type="application/javascript">
-        window.onload = function() {
-            if (window.jQuery) {
-                // jQuery is loaded
-                $("#hello").html("Hello Ecommerce jQuery is working!!!");
-            } else {
-                // jQuery is not loaded
-                document.getElementById("hello").innerHTML = "Hello Ecommerce jQuery Doesn't Work";
+        <title>Ecommerce Home</title>
+    </head>
+    <body>
+        <section class="loading-overlay">
+            <div class="Loading-Page">
+                <h1 class="loader">Loading...</h1>
+            </div>
+        </section>
+        <div class="alert alert-primary" role="alert">
+            <h1 id="hello"></h1>
+        </div>
+        <script type="application/javascript">
+            window.onload = function () {
+                if (window.jQuery) {
+                    // jQuery is loaded
+                    $("#hello").html("Hello Ecommerce jQuery is working!!!");
+                } else {
+                    // jQuery is not loaded
+                    document.getElementById("hello").innerHTML = "Hello Ecommerce jQuery Doesn't Work";
+                }
             }
-        }
-    </script>
-</body>
+        </script>
+    </body>
 </html>

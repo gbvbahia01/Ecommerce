@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.gbvbahia.ecommerce.model.entity.order;
+package br.com.gbvbahia.ecommerce.model.entity.orders;
 
 import java.util.Calendar;
 import java.util.Objects;
@@ -141,7 +141,7 @@ public class Item implements Model<Long> {
 
     @Override
     public String toString() {
-        return "Item{" + "id=" + id + ", amount=" + amount + ", unitPrice=" + unitPrice + ", dateMade=" + dateMade + ", product=" + product + ", order=" + order + '}';
+        return "Item{" + "id=" + id + ", amount=" + amount + ", unitPrice=" + unitPrice + ", dateMade=" + dateMade + ", product=" + product + ", orders=" + order + '}';
     }
 
 }

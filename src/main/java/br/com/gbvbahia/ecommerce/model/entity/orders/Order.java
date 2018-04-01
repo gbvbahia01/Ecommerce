@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.gbvbahia.ecommerce.model.entity.order;
+package br.com.gbvbahia.ecommerce.model.entity.orders;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -54,7 +54,7 @@ public class Order implements Model<Long> {
     @NotNull
     private Customer customer;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "order", fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "orders", fetch = FetchType.EAGER)
     @NotNull
     @Size(min = 1)
     private Set<Item> items;

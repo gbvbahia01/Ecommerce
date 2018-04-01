@@ -16,7 +16,7 @@ public enum Specifications {
 
     private final String key;
 
-    private Specifications(String key) {
+    Specifications(String key) {
         this.key = key;
     }
 
