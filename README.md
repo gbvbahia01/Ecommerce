@@ -1,3 +1,7 @@
+###Circle CI
+
+[![CircleCI](https://circleci.com/gh/gbvbahia01/Ecommerce/tree/master.svg?style=svg)](https://circleci.com/gh/gbvbahia01/Ecommerce/tree/master)
+
 ### Setup Tomcat JNDI
 At server.xml file
 
