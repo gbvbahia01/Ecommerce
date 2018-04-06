@@ -54,7 +54,7 @@ After setup those information execute this command at the same directory that is
  ```
  mvn liquibase:update -Pdatabase,liquibase-ddl
  ```
- * For developer and testing execute DDL and DML commands.
+ * For developing and testing execute DDL and DML commands.
  ```
  mvn liquibase:update -Pdatabase,liquibase-all
  ```
