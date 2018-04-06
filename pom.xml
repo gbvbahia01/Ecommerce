@@ -127,7 +127,7 @@
 
     <profiles>
         <profile>
-            <id>dev</id>
+            <id>database</id>
             <properties>
                 <liquibase.url>jdbc:postgresql://xxx.xxx.xxx.xxx:5432/database</liquibase.url>
                 <liquibase.driver>org.postgresql.Driver</liquibase.driver>
@@ -138,7 +138,7 @@
             </properties>
         </profile>
         <profile>
-            <!-- mvn liquibase:update -Pdev,liquibase-ddl-->
+            <!-- mvn liquibase:update -Pdatabase,liquibase-ddl-->
             <id>liquibase-ddl</id>
             <build>
                 <plugins>
@@ -173,7 +173,7 @@
             </dependencies>
         </profile>
         <profile>
-            <!-- mvn liquibase:update -Pdev,liquibase-all -->
+            <!-- mvn liquibase:update -Pdatabase,liquibase-all -->
             <id>liquibase-all</id>
             <build>
                 <plugins>

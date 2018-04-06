@@ -29,3 +29,33 @@ At server.xml file
 ```
 Copy postgresql-42.2.2.jar file into TOMCAT_HOME/lib folder
 
+### Setup Liquibase
+
+You can use liquibase to create some data in a database to use for developing, tests or production.
+In pom.xml you define your database in dev profile.
+Change the url, username and password.
+
+```xml
+<profile>
+    <id>database</id>
+    <properties>
+        <liquibase.url>jdbc:postgresql://xxx.xxx.xxx.xxx:5432/database</liquibase.url>
+        <liquibase.driver>org.postgresql.Driver</liquibase.driver>
+        <liquibase.username>xxxxxx</liquibase.username>
+        <liquibase.password>xxxxxx</liquibase.password>
+        <liquibase.schema>public</liquibase.schema>
+        <liquibase.logging>warning</liquibase.logging>
+    </properties>
+</profile>
+```        
+After setup those information execute this command at the same directory that is you project, where you have the pom.file:
+
+* For production I recommend to execute DDL commands.
+ ```
+ mvn liquibase:update -Pdatabase,liquibase-ddl
+ ```
+ * For developer and testing execute DDL and DML commands.
+ ```
+ mvn liquibase:update -Pdatabase,liquibase-all
+ ```
+ 
