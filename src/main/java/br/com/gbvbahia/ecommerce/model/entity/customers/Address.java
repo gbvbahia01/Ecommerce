@@ -7,14 +7,7 @@ package br.com.gbvbahia.ecommerce.model.entity.customers;
 
 import java.util.Objects;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -30,8 +23,9 @@ import br.com.gbvbahia.ecommerce.model.cotract.Model;
 public class Address implements Model<Long> {
 
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_address")
+    @SequenceGenerator(sequenceName = "seq_address", name = "seq_address")
+    @Column(name = "id")
     private Long id;
 
     @NotNull

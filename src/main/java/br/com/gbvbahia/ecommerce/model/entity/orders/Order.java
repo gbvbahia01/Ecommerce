@@ -11,19 +11,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -40,17 +28,18 @@ import br.com.gbvbahia.ecommerce.model.enums.OrderStatus;
 public class Order implements Model<Long> {
 
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_order_status")
+    @SequenceGenerator(sequenceName = "seq_order_status", name = "seq_order_status")
+    @Column(name = "id")
     private Long id;
 
     @Enumerated(EnumType.STRING)
     @NotNull
-    @Column(name = "status", nullable = false, length = 20)
+    @Column(name = "status", nullable = false, length = 50)
     private OrderStatus orderStatus = OrderStatus.Made;
 
     @ManyToOne
-    @JoinColumn(name = "customer_id", referencedColumnName = "ID")
+    @JoinColumn(name = "customer_id", referencedColumnName = "id")
     @NotNull
     private Customer customer;
 

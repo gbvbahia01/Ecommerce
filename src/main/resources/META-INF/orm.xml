@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_1_0.xsd"
+                 version="1.0">
+
+    <named-query name="Category.byName">
+        <query>
+            Select distinct c From Category c Where c.name = :name
+        </query>
+    </named-query>
+    
+    <named-query name="Category.contByName">
+        <query>
+            Select count(c) From Category c Where c.name like :name
+        </query>
+    </named-query>
+    
+    <named-query name="Category.listOrderBy">
+        <query>
+            Select distinct c From Category c Order By c.order, c.name
+        </query>
+    </named-query>
+    
+    <named-query name="Promotion.byActive">
+        <query>
+            Select distinct p From Promotion p Where p.active = :active Order by id DESC
+        </query>
+    </named-query>
+    
+    <named-query name="ProductImage.byPromotionActiveAndKeyPicture">
+        <query><![CDATA[
+            Select distinct p1 From ProductImage p1 
+            Join p1.product.productPromotions p2
+            Where p2.active = :activeN1
+            And p2.promotion.active = :activeN2 
+            And p2.promotion.tag = :tag
+            And p1.keyPicture = :keyPicture
+            Order by p1.id DESC
+             ]]>
+        </query>
+    </named-query>
+    
+    <named-query name="ProductImage.countByPromotionActiveAndKeyPicture">
+        <query><![CDATA[
+            Select count(p1) From ProductImage p1 
+            Join p1.product.productPromotions p2
+            Where p2.active = :activeN1
+            And p2.promotion.active = :activeN2 
+            And p2.promotion.tag = :tag
+            And p1.keyPicture = :keyPicture
+             ]]>
+        </query>
+    </named-query>
+    
+    <named-query name="ProductImage.withCampaign">
+        <query><![CDATA[
+                Select distinct pi1
+                From ProductImage pi1,
+                CampaignProduct cp1,
+                ProductPromotion pp1
+                Where pi1.product.id = cp1.product.id
+                And pi1.product.id = pp1.product.id
+                And cp1.campaign.active = :activeN2
+                And cp1.active = :activeN1
+                And pp1.promotion.tag = :tag
+                And pi1.keyPicture = :keyPicture
+                Order by pi1.id desc
+            ]]>
+        </query>
+    </named-query>
+    
+    <named-query name="ProductImage.countWithCampaign">
+        <query><![CDATA[
+                Select count(distinct pi1)
+                From ProductImage pi1,
+                CampaignProduct cp1,
+                ProductPromotion pp1
+                Where pi1.product.id = cp1.product.id
+                And pi1.product.id = pp1.product.id
+                And cp1.campaign.active = :activeN2
+                And cp1.active = :activeN1
+                And pp1.promotion.tag = :tag
+                And pi1.keyPicture = :keyPicture
+            ]]>
+        </query>
+    </named-query>
+    
+    <named-query name="Promotion.contByActive">
+        <query>
+            Select count(p) From Promotion p Where p.active = :active
+        </query>
+    </named-query>
+
+    <named-query name="Promotion.searchByTag">
+        <query>
+            Select distinct p From Promotion p Where p.tag = :tag
+        </query>
+    </named-query>
+    
+    <named-query name="Shopcar.searchBySerialUniqueId">
+        <query>
+            Select distinct s From Shopcar s Where s.serialUniqueId = :serial
+        </query>
+    </named-query>
+    
+    <named-query name="Shopcar.searchByCustomer">
+        <query>
+            Select distinct s From Shopcar s Where s.customer = :customer
+        </query>
+    </named-query>
+    
+    <named-query name="ProductImage.searchByIdProductKeysDisck">
+        <query><![CDATA[
+            Select distinct p1 From ProductImage p1 
+            Where p1.keyPicture IN :keysPicture
+            And p1.product.id = :id
+            Order by p1.id DESC
+            ]]>
+        </query>
+    </named-query>
+    
+    <named-query name="Product.listByIdSubCategory">
+        <query><![CDATA[
+            Select distinct p1 From Product p1
+            Where p1.subCategory.id = :id
+            Order by p1.id DESC
+            ]]>
+        </query>
+    </named-query>
+    
+    <named-query name="Product.listByIdCategory">
+        <query><![CDATA[
+            Select distinct p1 From Product p1
+            Where p1.subCategory.category.id = :id
+            Order by p1.id DESC
+            ]]>
+        </query>
+    </named-query>
+    
+    <named-query name="Product.searchClean">
+        <query><![CDATA[
+            Select distinct p1 From Product p1
+            Where p1.nameClean Like :nameClean
+            Or p1.descriptionClean Like :descriptionClean
+            Order by p1.id DESC
+            ]]>
+        </query>
+    </named-query>
+    
+    <named-query name="ProductStock.listByProductId">
+        <query><![CDATA[
+            Select distinct p1
+            From ProductStock p1
+            Join p1.specification sp
+            Where p1.product.id = :productId
+            and p1.stockSmount >= :minStockSmount
+            Order by p1.id DESC
+            ]]>
+        </query>
+    </named-query>
+</entity-mappings>

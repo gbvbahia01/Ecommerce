@@ -7,17 +7,7 @@ package br.com.gbvbahia.ecommerce.model.entity.products;
 
 import java.util.Objects;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -34,8 +24,9 @@ import br.com.gbvbahia.ecommerce.model.enums.Generous;
 public class SubCategory implements Model<Long>, Comparable<SubCategory> {
 
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_sub_category")
+    @SequenceGenerator(sequenceName = "seq_sub_category", name = "seq_sub_category")
+    @Column(name = "id")
     private Long id;
 
     @Column(name = "name", length = 40, nullable = false, unique = false)

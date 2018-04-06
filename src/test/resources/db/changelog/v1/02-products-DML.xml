@@ -1,0 +1,564 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="campaign-v1-dml" author="gbvbahia">
+        <insert tableName="campaign" schemaName="products">
+            <column name="id" valueSequenceNext="products.seq_campaign" />
+            <column name="active" valueBoolean="true" />
+            <column name="dt_start" valueDate="2017-01-01" />
+            <column name="dt_end" valueDate="2017-12-31" />
+            <column name="description" value="One year campaign" />
+            <column name="discount" valueNumeric="15.0" />
+            <column name="name" value="One Year Crazy" />
+        </insert>
+
+        <insert tableName="campaign" schemaName="products">
+            <column name="id" valueSequenceNext="products.seq_campaign" />
+            <column name="active" valueBoolean="true" />
+            <column name="dt_start" valueDate="2018-01-01" />
+            <column name="dt_end" valueDate="2018-06-30" />
+            <column name="description" value="Six Month campaign" />
+            <column name="discount" valueNumeric="25.0" />
+            <column name="name" value="Six Month Crazy" />
+        </insert>
+
+        <insert tableName="campaign" schemaName="products">
+            <column name="id" valueSequenceNext="products.seq_campaign" />
+            <column name="active" valueBoolean="true" />
+            <column name="dt_start" valueDate="2018-07-01" />
+            <column name="dt_end" valueDate="2018-09-30" />
+            <column name="description" value="Three Month campaign" />
+            <column name="discount" valueNumeric="30.0" />
+            <column name="name" value="Three Month Crazy" />
+        </insert>
+
+        <insert tableName="campaign" schemaName="products">
+            <column name="id" valueSequenceNext="products.seq_campaign" />
+            <column name="active" valueBoolean="true" />
+            <column name="dt_start" valueDate="2018-10-01" />
+            <column name="dt_end" valueDate="2018-12-31" />
+            <column name="description" value="Two Month campaign" />
+            <column name="discount" valueNumeric="50.0" />
+            <column name="name" value="Two Month Crazy" />
+        </insert>
+    </changeSet>
+
+    <changeSet id="category-v1-dml" author="gbvbahia">
+        <insert tableName="category" schemaName="products">
+            <column name="id" valueSequenceNext="products.seq_category" />
+            <column name="description" value="Eletrônicos, Áudio e Vídeo" />
+            <column name="name" value="Eletrônicos" />
+            <column name="order_show" valueNumeric="1" />
+        </insert>
+
+        <insert tableName="category" schemaName="products">
+            <column name="id" valueSequenceNext="products.seq_category" />
+            <column name="description" value="Joias e Relógios" />
+            <column name="name" value="Joias e Relógios" />
+            <column name="order_show" valueNumeric="2" />
+        </insert>
+
+        <insert tableName="category" schemaName="products">
+            <column name="id" valueSequenceNext="products.seq_category" />
+            <column name="description" value="Celulares e Telefones" />
+            <column name="name" value="Celulares" />
+            <column name="order_show" valueNumeric="3" />
+        </insert>
+
+        <insert tableName="category" schemaName="products">
+            <column name="id" valueSequenceNext="products.seq_category" />
+            <column name="description" value="Saúde e Beleza" />
+            <column name="name" value="Saúde e Beleza" />
+            <column name="order_show" valueNumeric="4" />
+        </insert>
+
+        <insert tableName="category" schemaName="products">
+            <column name="id" valueSequenceNext="products.seq_category" />
+            <column name="description" value="Informática" />
+            <column name="name" value="Informática" />
+            <column name="order_show" valueNumeric="5" />
+        </insert>
+
+        <insert tableName="category" schemaName="products">
+            <column name="id" valueSequenceNext="products.seq_category" />
+            <column name="description" value="Casa e Decoração" />
+            <column name="name" value="Casa e Decoração" />
+            <column name="order_show" valueNumeric="6" />
+        </insert>
+
+        <insert tableName="category" schemaName="products">
+            <column name="id" valueSequenceNext="products.seq_category" />
+            <column name="description" value="Calçados, Roupas e Bolsas" />
+            <column name="name" value="Calçados, Roupas e Bolsas" />
+            <column name="order_show" valueNumeric="7" />
+        </insert>
+    </changeSet>
+
+    <changeSet id="sub_category-v1-dml" author="gbvbahia">
+        <insert tableName="sub_category" schemaName="products">
+            <column name="id" valueSequenceNext="products.seq_sub_category" />
+            <column name="description" value="Televisores" />
+            <column name="generous" value="NotApply" />
+            <column name="name" value="TVs" />
+            <column name="category_id" valueComputed="(SELECT id FROM products.category WHERE name = 'Eletrônicos')" />
+        </insert>
+
+        <insert tableName="sub_category" schemaName="products">
+            <column name="id" valueSequenceNext="products.seq_sub_category" />
+            <column name="description" value="Som para o carro" />
+            <column name="generous" value="NotApply" />
+            <column name="name" value="Som automotivo" />
+            <column name="category_id" valueComputed="(SELECT id FROM products.category WHERE name = 'Eletrônicos')" />
+        </insert>
+
+        <insert tableName="sub_category" schemaName="products">
+            <column name="id" valueSequenceNext="products.seq_sub_category" />
+            <column name="description" value="Camêras diversas" />
+            <column name="generous" value="NotApply" />
+            <column name="name" value="Camera digital" />
+            <column name="category_id" valueComputed="(SELECT id FROM products.category WHERE name = 'Eletrônicos')" />
+        </insert>
+
+        <insert tableName="sub_category" schemaName="products">
+            <column name="id" valueSequenceNext="products.seq_sub_category" />
+            <column name="description" value="Diversos SmartPhones" />
+            <column name="generous" value="NotApply" />
+            <column name="name" value="SmartPhone" />
+            <column name="category_id" valueComputed="(SELECT id FROM products.category WHERE name = 'Celulares')" />
+        </insert>
+
+        <insert tableName="sub_category" schemaName="products">
+            <column name="id" valueSequenceNext="products.seq_sub_category" />
+            <column name="description" value="Telefones de mesa" />
+            <column name="generous" value="NotApply" />
+            <column name="name" value="Telefones" />
+            <column name="category_id" valueComputed="(SELECT id FROM products.category WHERE name = 'Celulares')" />
+        </insert>
+
+        <insert tableName="sub_category" schemaName="products">
+            <column name="id" valueSequenceNext="products.seq_sub_category" />
+            <column name="description" value="Diversos Relógios Feminino" />
+            <column name="generous" value="Female" />
+            <column name="name" value="Relógios Femininos" />
+            <column name="category_id" valueComputed="(SELECT id FROM products.category WHERE name = 'Joias e Relógios')" />
+        </insert>
+
+        <insert tableName="sub_category" schemaName="products">
+            <column name="id" valueSequenceNext="products.seq_sub_category" />
+            <column name="description" value="Diversos Relógios Masculino" />
+            <column name="generous" value="Male" />
+            <column name="name" value="Relógios Masculinos" />
+            <column name="category_id" valueComputed="(SELECT id FROM products.category WHERE name = 'Joias e Relógios')" />
+        </insert>
+
+        <insert tableName="sub_category" schemaName="products">
+            <column name="id" valueSequenceNext="products.seq_sub_category" />
+            <column name="description" value="Diversos Relógios Unisex" />
+            <column name="generous" value="Unisex" />
+            <column name="name" value="Relógios Unisex" />
+            <column name="category_id" valueComputed="(SELECT id FROM products.category WHERE name = 'Joias e Relógios')" />
+        </insert>
+
+        <insert tableName="sub_category" schemaName="products">
+            <column name="id" valueSequenceNext="products.seq_sub_category" />
+            <column name="description" value="Diversos Shampoo Unisex" />
+            <column name="generous" value="Unisex" />
+            <column name="name" value="Shampoo Unisex" />
+            <column name="category_id" valueComputed="(SELECT id FROM products.category WHERE name = 'Saúde e Beleza')" />
+        </insert>
+
+        <insert tableName="sub_category" schemaName="products">
+            <column name="id" valueSequenceNext="products.seq_sub_category" />
+            <column name="description" value="Diversos Shampoo Feminino" />
+            <column name="generous" value="Female" />
+            <column name="name" value="Shampoo Feminino" />
+            <column name="category_id" valueComputed="(SELECT id FROM products.category WHERE name = 'Saúde e Beleza')" />
+        </insert>
+
+        <insert tableName="sub_category" schemaName="products">
+            <column name="id" valueSequenceNext="products.seq_sub_category" />
+            <column name="description" value="Diversos Shampoo Masculino" />
+            <column name="generous" value="Male" />
+            <column name="name" value="Shampoo Masculino" />
+            <column name="category_id" valueComputed="(SELECT id FROM products.category WHERE name = 'Saúde e Beleza')" />
+        </insert>
+
+        <insert tableName="sub_category" schemaName="products">
+            <column name="id" valueSequenceNext="products.seq_sub_category" />
+            <column name="description" value="Elétricos para cabelo" />
+            <column name="generous" value="NotApply" />
+            <column name="name" value="Eletro Cabelo" />
+            <column name="category_id" valueComputed="(SELECT id FROM products.category WHERE name = 'Saúde e Beleza')" />
+        </insert>
+
+        <insert tableName="sub_category" schemaName="products">
+            <column name="id" valueSequenceNext="products.seq_sub_category" />
+            <column name="description" value="Diversos Notebooks" />
+            <column name="generous" value="NotApply" />
+            <column name="name" value="Notebook" />
+            <column name="category_id" valueComputed="(SELECT id FROM products.category WHERE name = 'Informática')" />
+        </insert>
+
+        <insert tableName="sub_category" schemaName="products">
+            <column name="id" valueSequenceNext="products.seq_sub_category" />
+            <column name="description" value="Diversos Ultrabook" />
+            <column name="generous" value="NotApply" />
+            <column name="name" value="Ultrabook" />
+            <column name="category_id" valueComputed="(SELECT id FROM products.category WHERE name = 'Informática')" />
+        </insert>
+
+        <insert tableName="sub_category" schemaName="products">
+            <column name="id" valueSequenceNext="products.seq_sub_category" />
+            <column name="description" value="Diversos Cabos" />
+            <column name="generous" value="NotApply" />
+            <column name="name" value="Cabos" />
+            <column name="category_id" valueComputed="(SELECT id FROM products.category WHERE name = 'Informática')" />
+        </insert>
+
+        <insert tableName="sub_category" schemaName="products">
+            <column name="id" valueSequenceNext="products.seq_sub_category" />
+            <column name="description" value="Diversos Adesivos" />
+            <column name="generous" value="Male" />
+            <column name="name" value="Adesivos Garotos" />
+            <column name="category_id" valueComputed="(SELECT id FROM products.category WHERE name = 'Casa e Decoração')" />
+        </insert>
+
+        <insert tableName="sub_category" schemaName="products">
+            <column name="id" valueSequenceNext="products.seq_sub_category" />
+            <column name="description" value="Diversos Adesivos" />
+            <column name="generous" value="Female" />
+            <column name="name" value="Adesivos Meninas" />
+            <column name="category_id" valueComputed="(SELECT id FROM products.category WHERE name = 'Casa e Decoração')" />
+        </insert>
+
+        <insert tableName="sub_category" schemaName="products">
+            <column name="id" valueSequenceNext="products.seq_sub_category" />
+            <column name="description" value="Diversos Sapatos" />
+            <column name="generous" value="Female" />
+            <column name="name" value="Calçados Femininos" />
+            <column name="category_id" valueComputed="(SELECT id FROM products.category WHERE name = 'Calçados, Roupas e Bolsas')" />
+        </insert>
+
+        <insert tableName="sub_category" schemaName="products">
+            <column name="id" valueSequenceNext="products.seq_sub_category" />
+            <column name="description" value="Diversos Sapatos" />
+            <column name="generous" value="Male" />
+            <column name="name" value="Calçados Masculinos" />
+            <column name="category_id" valueComputed="(SELECT id FROM products.category WHERE name = 'Calçados, Roupas e Bolsas')" />
+        </insert>
+
+        <insert tableName="sub_category" schemaName="products">
+            <column name="id" valueSequenceNext="products.seq_sub_category" />
+            <column name="description" value="Diversos Vestios" />
+            <column name="generous" value="Female" />
+            <column name="name" value="Vestios Feminino" />
+            <column name="category_id" valueComputed="(SELECT id FROM products.category WHERE name = 'Calçados, Roupas e Bolsas')" />
+        </insert>
+    </changeSet>
+
+    <changeSet id="product-v1-dml" author="gbvbahia">
+        <insert tableName="product" schemaName="products">
+            <column name="id" valueSequenceNext="products.seq_product" />
+            <column name="branch" value="Apple" />
+            <column name="description" value="Apple iPhone 6S 16GB 4G LTE Space Gray 4.7in Camera iSight 12MP" />
+            <column name="description_clean" value="apple iphone 6a 16gb 4g ltE space gray 4.7in camera isight 12mp" />
+            <column name="depth" valueNumeric="1.0" />
+            <column name="height" valueNumeric="1.0" />
+            <column name="weight" valueNumeric="1.0" />
+            <column name="width" valueNumeric="1.0" />
+            <column name="name" value="iPhone 6S 16GB Cinza" />
+            <column name="name_clean" value="iphone 6s 16gb cinza" />
+            <column name="price" valueNumeric="2500.0"/>
+            <column name="sub_category_id" valueComputed="(SELECT id FROM products.sub_category WHERE name = 'SmartPhone')" />
+        </insert>
+
+        <insert tableName="product" schemaName="products">
+            <column name="id" valueSequenceNext="products.seq_product" />
+            <column name="branch" value="Apple" />
+            <column name="description" value="iPhone 6s Apple 32GB Dourado MN112BR/A" />
+            <column name="description_clean" value="iphone 6s apple 32gb dourado mn112br/a" />
+            <column name="depth" valueNumeric="1.0" />
+            <column name="height" valueNumeric="1.0" />
+            <column name="weight" valueNumeric="1.0" />
+            <column name="width" valueNumeric="1.0" />
+            <column name="name" value="iPhone 6S 32GB Dourado" />
+            <column name="name_clean" value="iphone 6s 32gb dourado" />
+            <column name="price" valueNumeric="2800.0"/>
+            <column name="sub_category_id" valueComputed="(SELECT id FROM products.sub_category WHERE name = 'SmartPhone')" />
+        </insert>
+
+        <insert tableName="product" schemaName="products">
+            <column name="id" valueSequenceNext="products.seq_product" />
+            <column name="branch" value="Apple" />
+            <column name="description" value="iPhone 6s Apple 32GB Ouro Rosa MN122BR/A" />
+            <column name="description_clean" value="iphone 6s apple 32gb ouro rosa" />
+            <column name="depth" valueNumeric="1.0" />
+            <column name="height" valueNumeric="1.0" />
+            <column name="weight" valueNumeric="1.0" />
+            <column name="width" valueNumeric="1.0" />
+            <column name="name" value="iPhone 6S 32GB Ouro Rosa" />
+            <column name="name_clean" value="iphone 6s 32gb ouro rosa" />
+            <column name="price" valueNumeric="2800.0"/>
+            <column name="sub_category_id" valueComputed="(SELECT id FROM products.sub_category WHERE name = 'SmartPhone')" />
+        </insert>
+
+        <insert tableName="product" schemaName="products">
+            <column name="id" valueSequenceNext="products.seq_product" />
+            <column name="branch" value="Apple" />
+            <column name="description" value="iPhone 7 Apple 128GB Preto Brilhante MN962BZ/A" />
+            <column name="description_clean" value="iphone 7 apple 128gb" />
+            <column name="depth" valueNumeric="1.0" />
+            <column name="height" valueNumeric="1.0" />
+            <column name="weight" valueNumeric="1.0" />
+            <column name="width" valueNumeric="1.0" />
+            <column name="name" value="iPhone 7 128GB Preto" />
+            <column name="name_clean" value="iphone 7 128gb preto" />
+            <column name="price" valueNumeric="3800.0"/>
+            <column name="sub_category_id" valueComputed="(SELECT id FROM products.sub_category WHERE name = 'SmartPhone')" />
+        </insert>
+
+        <insert tableName="product" schemaName="products">
+            <column name="id" valueSequenceNext="products.seq_product" />
+            <column name="branch" value="Samsung" />
+            <column name="description" value="Smartphone Samsung Galaxy J7 Duos J700M/DS Dourado Dual Chip Android 5.1 4G Wi-fi Processador Octa-Core 1.5 Ghz Câmera 13MP" />
+            <column name="description_clean" value="smartphone samsung galaxy j7" />
+            <column name="depth" valueNumeric="1.0" />
+            <column name="height" valueNumeric="1.0" />
+            <column name="weight" valueNumeric="1.0" />
+            <column name="width" valueNumeric="1.0" />
+            <column name="name" value="Galaxy J7 Duos Dourado" />
+            <column name="name_clean" value="galaxy j7 duos dourado" />
+            <column name="price" valueNumeric="1000.0"/>
+            <column name="sub_category_id" valueComputed="(SELECT id FROM products.sub_category WHERE name = 'SmartPhone')" />
+        </insert>
+
+        <insert tableName="product" schemaName="products">
+            <column name="id" valueSequenceNext="products.seq_product" />
+            <column name="branch" value="Samsung" />
+            <column name="description" value="Smartphone Samsung Galaxy J7 Prime SM-G610M Dourado Dual Chip Android 6.0 4G com Leitor Biométrico" />
+            <column name="description_clean" value="smartphone samsung galaxy j7" />
+            <column name="depth" valueNumeric="1.0" />
+            <column name="height" valueNumeric="1.0" />
+            <column name="weight" valueNumeric="1.0" />
+            <column name="width" valueNumeric="1.0" />
+            <column name="name" value="Galaxy J7 Prime Dourado" />
+            <column name="name_clean" value="galaxy j7 prime dourado" />
+            <column name="price" valueNumeric="1200.0"/>
+            <column name="sub_category_id" valueComputed="(SELECT id FROM products.sub_category WHERE name = 'SmartPhone')" />
+        </insert>
+
+        <insert tableName="product" schemaName="products">
+            <column name="id" valueSequenceNext="products.seq_product" />
+            <column name="branch" value="Samsung" />
+            <column name="description" value="Smartphone Samsung Galaxy J1 SM-J120H/DS Dourado Dual Chip Android 5.1 Lollipop 3G Wi-fi Processador Quad Core 1.2 Ghz" />
+            <column name="description_clean" value="smartphone samsung galaxy j1" />
+            <column name="depth" valueNumeric="1.0" />
+            <column name="height" valueNumeric="1.0" />
+            <column name="weight" valueNumeric="1.0" />
+            <column name="width" valueNumeric="1.0" />
+            <column name="name" value="Galaxy J1 Dourado" />
+            <column name="name_clean" value="galaxy j1 dourado" />
+            <column name="price" valueNumeric="1600.0"/>
+            <column name="sub_category_id" valueComputed="(SELECT id FROM products.sub_category WHERE name = 'SmartPhone')" />
+        </insert>
+
+        <insert tableName="product" schemaName="products">
+            <column name="id" valueSequenceNext="products.seq_product" />
+            <column name="branch" value="Motorola" />
+            <column name="description" value="Smartphone Motorola Moto G4 Play DTV XT1603 Preto Dual Chip Android Marshmallow 4G Memória 16GB" />
+            <column name="description_clean" value="smartphone motorola moto g4" />
+            <column name="depth" valueNumeric="1.0" />
+            <column name="height" valueNumeric="1.0" />
+            <column name="weight" valueNumeric="1.0" />
+            <column name="width" valueNumeric="1.0" />
+            <column name="name" value="Moto G4 Preto" />
+            <column name="name_clean" value="moto g4 preto" />
+            <column name="price" valueNumeric="1300.0"/>
+            <column name="sub_category_id" valueComputed="(SELECT id FROM products.sub_category WHERE name = 'SmartPhone')" />
+        </insert>
+
+        <insert tableName="product" schemaName="products">
+            <column name="id" valueSequenceNext="products.seq_product" />
+            <column name="branch" value="Samsung" />
+            <column name="description" value="Samsung, Smart TV LED 32' Samsung 32J4300 com Conversor Digital 2 HDMI 1 USB Wi-Fi Integrado" />
+            <column name="description_clean" value="samsung, smart tv led 32" />
+            <column name="depth" valueNumeric="1.5" />
+            <column name="height" valueNumeric="1.5" />
+            <column name="weight" valueNumeric="1.5" />
+            <column name="width" valueNumeric="1.5" />
+            <column name="name" value="Smart TV LED 32' Samsung" />
+            <column name="name_clean" value="smart tv led 32' samsung" />
+            <column name="price" valueNumeric="2100.0"/>
+            <column name="sub_category_id" valueComputed="(SELECT id FROM products.sub_category WHERE name = 'TVs')" />
+        </insert>
+
+        <insert tableName="product" schemaName="products">
+            <column name="id" valueSequenceNext="products.seq_product" />
+            <column name="branch" value="Samsung" />
+            <column name="description" value="Smart TV LED 40” Samsung 40K5300 Full HD com Conversor Digital 2 HDMI 1 USB Wi-Fi Integrado" />
+            <column name="description_clean" value="smart tv led 40 samsung" />
+            <column name="depth" valueNumeric="1.6" />
+            <column name="height" valueNumeric="1.6" />
+            <column name="weight" valueNumeric="1.6" />
+            <column name="width" valueNumeric="1.6" />
+            <column name="name" value="Smart TV LED 40” Samsung" />
+            <column name="name_clean" value="smart tv led 40 samsung" />
+            <column name="price" valueNumeric="3100.0"/>
+            <column name="sub_category_id" valueComputed="(SELECT id FROM products.sub_category WHERE name = 'TVs')" />
+        </insert>
+
+        <insert tableName="product" schemaName="products">
+            <column name="id" valueSequenceNext="products.seq_product" />
+            <column name="branch" value="Samsung" />
+            <column name="description" value="Smart TV LED Curva 49' Samsung 49K6500 Full HD com Conversor Digital 3 HDMI 2 USB Wi-Fi Integrado" />
+            <column name="description_clean" value="smart tv led curva 49" />
+            <column name="depth" valueNumeric="1.7" />
+            <column name="height" valueNumeric="1.7" />
+            <column name="weight" valueNumeric="1.7" />
+            <column name="width" valueNumeric="1.7" />
+            <column name="name" value="Smart TV LED Curva 49' Samsung" />
+            <column name="name_clean" value="smart tv led curva 49 samsung" />
+            <column name="price" valueNumeric="3800.0"/>
+            <column name="sub_category_id" valueComputed="(SELECT id FROM products.sub_category WHERE name = 'TVs')" />
+        </insert>
+
+        <insert tableName="product" schemaName="products">
+            <column name="id" valueSequenceNext="products.seq_product" />
+            <column name="branch" value="LG" />
+            <column name="description" value="Smart TV LED 43' LG 43LH5700 Full HD Conversor Digital 2 HDMI 1 USB Painel IPS Wi-Fi integrado" />
+            <column name="description_clean" value="smart tv led 43" />
+            <column name="depth" valueNumeric="1.7" />
+            <column name="height" valueNumeric="1.7" />
+            <column name="weight" valueNumeric="1.7" />
+            <column name="width" valueNumeric="1.7" />
+            <column name="name" value="Smart TV LED 43' LG" />
+            <column name="name_clean" value="smart tv led 43 lg" />
+            <column name="price" valueNumeric="3250.0"/>
+            <column name="sub_category_id" valueComputed="(SELECT id FROM products.sub_category WHERE name = 'TVs')" />
+        </insert>
+
+        <insert tableName="product" schemaName="products">
+            <column name="id" valueSequenceNext="products.seq_product" />
+            <column name="branch" value="LG" />
+            <column name="description" value="Smart TV LED 55' LG 55LH6000 Full HD Conversor Digital 3 HDMI 2 USB Painel IPS Wi-Fi integrado webOS 3.0" />
+            <column name="description_clean" value="smart tv led 55 lg" />
+            <column name="depth" valueNumeric="2.0" />
+            <column name="height" valueNumeric="2.0" />
+            <column name="weight" valueNumeric="2.0" />
+            <column name="width" valueNumeric="2.0" />
+            <column name="name" value="Smart TV LED 55' LG" />
+            <column name="name_clean" value="smart tv led 55 lg" />
+            <column name="price" valueNumeric="4200.0"/>
+            <column name="sub_category_id" valueComputed="(SELECT id FROM products.sub_category WHERE name = 'TVs')" />
+        </insert>
+
+        <insert tableName="product" schemaName="products">
+            <column name="id" valueSequenceNext="products.seq_product" />
+            <column name="branch" value="Technos" />
+            <column name="description" value="Relógio Masculino OS2ABD/4P Technos" />
+            <column name="description_clean" value="relogio masculino technos" />
+            <column name="depth" valueNumeric="1.0" />
+            <column name="height" valueNumeric="1.0" />
+            <column name="weight" valueNumeric="1.0" />
+            <column name="width" valueNumeric="1.0" />
+            <column name="name" value="Relógio Masculino Technos" />
+            <column name="name_clean" value="relogio masculino technos" />
+            <column name="price" valueNumeric="132.0"/>
+            <column name="sub_category_id" valueComputed="(SELECT id FROM products.sub_category WHERE name = 'Relógios Masculinos')" />
+        </insert>
+
+        <insert tableName="product" schemaName="products">
+            <column name="id" valueSequenceNext="products.seq_product" />
+            <column name="branch" value="Lince" />
+            <column name="description" value="Relógio Feminino LRG4277L C2KX Lince" />
+            <column name="description_clean" value="relogio feminino lince" />
+            <column name="depth" valueNumeric="1.0" />
+            <column name="height" valueNumeric="1.0" />
+            <column name="weight" valueNumeric="1.0" />
+            <column name="width" valueNumeric="1.0" />
+            <column name="name" value="Relógio Feminino Lince" />
+            <column name="name_clean" value="relogio feminino lince" />
+            <column name="price" valueNumeric="120.0"/>
+            <column name="sub_category_id" valueComputed="(SELECT id FROM products.sub_category WHERE name = 'Relógios Femininos')" />
+        </insert>
+
+        <insert tableName="product" schemaName="products">
+            <column name="id" valueSequenceNext="products.seq_product" />
+            <column name="branch" value="Technos" />
+            <column name="description" value="Relógio Masculino Performance T20562/8P Technos" />
+            <column name="description_clean" value="relogio masculino technos" />
+            <column name="depth" valueNumeric="1.0" />
+            <column name="height" valueNumeric="1.0" />
+            <column name="weight" valueNumeric="1.0" />
+            <column name="width" valueNumeric="1.0" />
+            <column name="name" value="Relógio Performance Technos" />
+            <column name="name_clean" value="relogio performance technos" />
+            <column name="price" valueNumeric="118.0"/>
+            <column name="sub_category_id" valueComputed="(SELECT id FROM products.sub_category WHERE name = 'Relógios Masculinos')" />
+        </insert>
+
+        <insert tableName="product" schemaName="products">
+            <column name="id" valueSequenceNext="products.seq_product" />
+            <column name="branch" value="Atrio" />
+            <column name="description" value="Relógio Feminino Iridium Rosa ES097 - Atrio" />
+            <column name="description_clean" value="relogio feminino iridium rosa atrio" />
+            <column name="depth" valueNumeric="1.0" />
+            <column name="height" valueNumeric="1.0" />
+            <column name="weight" valueNumeric="1.0" />
+            <column name="width" valueNumeric="1.0" />
+            <column name="name" value="Relógio Iridium Rosa" />
+            <column name="name_clean" value="relogio iridium rosa" />
+            <column name="price" valueNumeric="112.0"/>
+            <column name="sub_category_id" valueComputed="(SELECT id FROM products.sub_category WHERE name = 'Relógios Femininos')" />
+        </insert>
+
+        <insert tableName="product" schemaName="products">
+            <column name="id" valueSequenceNext="products.seq_product" />
+            <column name="branch" value="Philips" />
+            <column name="description" value="Depilador Philips Lumea com Luz Pulsada SC2003/00" />
+            <column name="description_clean" value="depilador philips lumea com luz pulsada" />
+            <column name="depth" valueNumeric="1.0" />
+            <column name="height" valueNumeric="1.0" />
+            <column name="weight" valueNumeric="1.0" />
+            <column name="width" valueNumeric="1.0" />
+            <column name="name" value="Depilador Philips Lumea" />
+            <column name="name_clean" value="depilador philips lumea" />
+            <column name="price" valueNumeric="89.0"/>
+            <column name="sub_category_id" valueComputed="(SELECT id FROM products.sub_category WHERE name = 'Eletro Cabelo')" />
+        </insert>
+
+        <insert tableName="product" schemaName="products">
+            <column name="id" valueSequenceNext="products.seq_product" />
+            <column name="branch" value="Philips" />
+            <column name="description" value="Depilador Elétrico Philips Satinelle HP6421/31 Branco e Roxo" />
+            <column name="description_clean" value="depilador eletrico philips satinelle" />
+            <column name="depth" valueNumeric="1.0" />
+            <column name="height" valueNumeric="1.0" />
+            <column name="weight" valueNumeric="1.0" />
+            <column name="width" valueNumeric="1.0" />
+            <column name="name" value="Depilador Elétrico Philips" />
+            <column name="name_clean" value="depilador eletrico philips" />
+            <column name="price" valueNumeric="89.0"/>
+            <column name="sub_category_id" valueComputed="(SELECT id FROM products.sub_category WHERE name = 'Eletro Cabelo')" />
+        </insert>
+
+        <insert tableName="product" schemaName="products">
+            <column name="id" valueSequenceNext="products.seq_product" />
+            <column name="branch" value="Generic" />
+            <column name="description" value="Escova Mágica Alisadora 230ºC com Lcd- Digital - Bivolt - Rosa" />
+            <column name="description_clean" value="escova magica alisadora" />
+            <column name="depth" valueNumeric="1.0" />
+            <column name="height" valueNumeric="1.0" />
+            <column name="weight" valueNumeric="1.0" />
+            <column name="width" valueNumeric="1.0" />
+            <column name="name" value="Escova Mágica Alisadora" />
+            <column name="name_clean" value="escova magica alisadora" />
+            <column name="price" valueNumeric="49.0"/>
+            <column name="sub_category_id" valueComputed="(SELECT id FROM products.sub_category WHERE name = 'Eletro Cabelo')" />
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

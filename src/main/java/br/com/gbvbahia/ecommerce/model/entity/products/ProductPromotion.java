@@ -31,12 +31,12 @@ public class ProductPromotion implements Model<ProductPromotionPK> {
 
     @NotNull
     @ManyToOne
-    @JoinColumn(name = "product_id", referencedColumnName = "ID", updatable = false, insertable = false)
+    @JoinColumn(name = "product_id", referencedColumnName = "id", updatable = false, insertable = false)
     private Product product;
 
     @NotNull
     @ManyToOne
-    @JoinColumn(name = "promotion_id", referencedColumnName = "ID", updatable = false, insertable = false)
+    @JoinColumn(name = "promotion_id", referencedColumnName = "id", updatable = false, insertable = false)
     private Promotion promotion;
 
     @Column(name = "active", nullable = false)

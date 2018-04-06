@@ -25,20 +25,21 @@ import br.com.gbvbahia.ecommerce.model.embeddable.ScheduleStockProductPK;
  * @author Guilherme
  */
 @Entity
-@Table(name = "schedule_stock_product", schema = "products", uniqueConstraints = @UniqueConstraint(columnNames = {"scheduleStock_id", "product_id"}))
+@Table(name = "schedule_stock_product", schema = "products",
+        uniqueConstraints = @UniqueConstraint(columnNames = {"scheduleStock_id", "product_id"}))
 public class ScheduleStockProduct implements Model<ScheduleStockProductPK> {
 
     @EmbeddedId
     private ScheduleStockProductPK id = new ScheduleStockProductPK();
 
     @ManyToOne
-    @JoinColumn(name = "product_id", referencedColumnName = "ID", updatable = false, insertable = false)
+    @JoinColumn(name = "product_id", referencedColumnName = "id", updatable = false, insertable = false)
     @NotNull
     private Product product;
 
     @ManyToOne
     @NotNull
-    @JoinColumn(name = "scheduleStock_id", referencedColumnName = "ID", updatable = false, insertable = false)
+    @JoinColumn(name = "scheduleStock_id", referencedColumnName = "id", updatable = false, insertable = false)
     private ScheduleStock scheduleStock;
 
     @NotNull

@@ -30,12 +30,12 @@ public class CampaignProduct implements Model<CampaignProductPK> {
 
     @NotNull
     @ManyToOne
-    @JoinColumn(name = "campaign_id", referencedColumnName = "ID", updatable = false, insertable = false)
+    @JoinColumn(name = "campaign_id", referencedColumnName = "id", updatable = false, insertable = false)
     private Campaign campaign;
 
     @NotNull
     @ManyToOne
-    @JoinColumn(name = "product_id", referencedColumnName = "ID", updatable = false, insertable = false)
+    @JoinColumn(name = "product_id", referencedColumnName = "id", updatable = false, insertable = false)
     private Product product;
 
     @Column(name = "active", nullable = false)

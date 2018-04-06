@@ -10,20 +10,7 @@ import java.util.NoSuchElementException;
 import java.util.Objects;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.PrePersist;
-import javax.persistence.PreUpdate;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -41,8 +28,9 @@ import br.com.gbvbahia.ecommerce.model.embeddable.Measures;
 public class Product implements Model<Long> {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_product")
+    @SequenceGenerator(sequenceName = "seq_product", name = "seq_product")
+    @Column(name = "id")
     private Long id;
 
     @NotNull
@@ -83,7 +71,7 @@ public class Product implements Model<Long> {
     private Float price;
 
     @ManyToOne
-    @JoinColumn(name = "sub_category", referencedColumnName = "ID", nullable = false)
+    @JoinColumn(name = "sub_category_id", referencedColumnName = "id", nullable = false)
     @NotNull
     private SubCategory subCategory;
 

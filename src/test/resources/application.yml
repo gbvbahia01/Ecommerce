@@ -1,7 +1,7 @@
 spring:
   datasource:
     platform: h2
-    url: jdbc:h2:mem:ecommerce;MODE=PostgreSQL;DB_CLOSE_ON_EXIT=FALSE;DB_CLOSE_DELAY=-1;INIT=CREATE SCHEMA IF NOT EXISTS products;
+    url: jdbc:h2:mem:ecommerce;MODE=PostgreSQL;DB_CLOSE_ON_EXIT=FALSE;DB_CLOSE_DELAY=-1;
     username: sa
     password:
   h2:
@@ -12,7 +12,7 @@ spring:
     hibernate:
       ddl-auto: none
   liquibase:
-    change-log: classpath:db/liquibase-changelog.xml
+    change-log: classpath:db/changelog/liquibase-changelog.xml
 
 logging:
   level:

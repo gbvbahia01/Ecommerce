@@ -7,14 +7,7 @@ package br.com.gbvbahia.ecommerce.model.entity.orders;
 
 import java.util.Objects;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 import br.com.gbvbahia.ecommerce.model.cotract.Model;
@@ -29,8 +22,9 @@ import br.com.gbvbahia.ecommerce.model.entity.products.ProductStock;
 public class ShopcarProduct implements Model<Long>, Comparable<ShopcarProduct> {
 
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_shc_prod_stk")
+    @SequenceGenerator(sequenceName = "seq_shc_prod_stk", name = "seq_shc_prod_stk")
+    @Column(name = "id")
     private Long id;
 
     @NotNull

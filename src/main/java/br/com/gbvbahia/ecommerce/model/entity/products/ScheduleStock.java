@@ -10,16 +10,7 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -34,8 +25,9 @@ import br.com.gbvbahia.ecommerce.model.cotract.Model;
 public class ScheduleStock implements Model<Long> {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_schedule_stock")
+    @SequenceGenerator(sequenceName = "seq_schedule_stock", name = "seq_schedule_stock")
+    @Column(name = "id")
     private Long id;
 
     @NotNull
@@ -52,8 +44,8 @@ public class ScheduleStock implements Model<Long> {
     @Column(name = "dt_delivered", nullable = true)
     private Calendar delivered;
 
-    @Column(name = "received_all", nullable = false)
-    private boolean receivedAll = false;
+    @Column(name = "received_all", nullable = true)
+    private Boolean receivedAll;
 
     @OneToMany(mappedBy = "scheduleStock", cascade = CascadeType.ALL)
     private Set<ScheduleStockProduct> scheduleStockProduct;
@@ -74,11 +66,11 @@ public class ScheduleStock implements Model<Long> {
         this.delivered = delivered;
     }
 
-    public boolean isReceivedAll() {
+    public Boolean isReceivedAll() {
         return receivedAll;
     }
 
-    public void setReceivedAll(boolean received) {
+    public void setReceivedAll(Boolean received) {
         this.receivedAll = received;
     }
 

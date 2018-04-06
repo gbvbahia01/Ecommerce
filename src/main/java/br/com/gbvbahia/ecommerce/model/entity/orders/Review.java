@@ -8,16 +8,7 @@ package br.com.gbvbahia.ecommerce.model.entity.orders;
 import java.util.Calendar;
 import java.util.Objects;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -36,17 +27,18 @@ import br.com.gbvbahia.ecommerce.model.entity.products.Product;
 public class Review implements Model<Long> {
 
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_review")
+    @SequenceGenerator(sequenceName = "seq_review", name = "seq_review")
+    @Column(name = "id")
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "customer_id", referencedColumnName = "ID", nullable = false)
+    @JoinColumn(name = "customer_id", referencedColumnName = "id", nullable = false)
     @NotNull
     private Customer customer;
 
     @ManyToOne
-    @JoinColumn(name = "product_id", referencedColumnName = "ID", nullable = false)
+    @JoinColumn(name = "product_id", referencedColumnName = "id", nullable = false)
     @NotNull
     private Product product;
 

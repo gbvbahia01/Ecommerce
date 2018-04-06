@@ -1,0 +1,291 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="orders-v1-ddl" author="gbvbahia">
+
+        <sql>
+            CREATE SCHEMA IF NOT EXISTS orders;
+        </sql>
+
+        <createSequence sequenceName="seq_order_status"
+                        schemaName="orders"
+                        incrementBy="1"
+                        startValue="1"/>
+
+        <createTable tableName="order_status" schemaName="orders">
+            <column name="id" type="bigint"/>
+            <column name="status" type="varchar(50)"/>
+            <column name="customer_id" type="bigint"/>
+        </createTable>
+
+        <addNotNullConstraint columnName="id"
+                              columnDataType="bigint"
+                              tableName="order_status"
+                              schemaName="orders"/>
+
+        <addPrimaryKey columnNames="id"
+                       constraintName="pk_order_status"
+                       tableName="order_status"
+                       schemaName="orders" />
+
+        <addForeignKeyConstraint baseColumnNames="customer_id"
+                                 baseTableName="order_status"
+                                 baseTableSchemaName="orders"
+                                 constraintName="fk_order_sta_customer"
+                                 onDelete="NO ACTION"
+                                 onUpdate="NO ACTION"
+                                 referencedColumnNames="id"
+                                 referencedTableName="customer"
+                                 referencedTableSchemaName="customers"/>
+
+        <addNotNullConstraint columnName="status"
+                              columnDataType="varchar(50)"
+                              tableName="order_status"
+                              schemaName="orders" />
+
+        <addNotNullConstraint columnName="customer_id"
+                              columnDataType="bigint"
+                              tableName="order_status"
+                              schemaName="orders" />
+
+
+        <createSequence sequenceName="seq_item"
+                        schemaName="orders"
+                        incrementBy="1"
+                        startValue="1"/>
+
+        <createTable tableName="item" schemaName="orders">
+            <column name="id" type="bigint"/>
+            <column name="amount" type="integer"/>
+            <column name="dt_made" type="date"/>
+            <column name="unit_price" type="real"/>
+            <column name="order_id" type="bigint"/>
+            <column name="product_id" type="bigint"/>
+        </createTable>
+
+        <addNotNullConstraint columnName="id"
+                              columnDataType="bigint"
+                              tableName="item"
+                              schemaName="orders"/>
+
+        <addPrimaryKey columnNames="id"
+                       constraintName="pk_item"
+                       tableName="item"
+                       schemaName="orders" />
+
+        <addForeignKeyConstraint baseColumnNames="order_id"
+                                 baseTableName="item"
+                                 baseTableSchemaName="orders"
+                                 constraintName="fk_item_order_status"
+                                 onDelete="CASCADE"
+                                 onUpdate="CASCADE"
+                                 referencedColumnNames="id"
+                                 referencedTableName="order_status"
+                                 referencedTableSchemaName="orders"/>
+
+        <addForeignKeyConstraint baseColumnNames="product_id"
+                                 baseTableName="item"
+                                 baseTableSchemaName="orders"
+                                 constraintName="fk_item_product_id"
+                                 onDelete="NO ACTION"
+                                 onUpdate="NO ACTION"
+                                 referencedColumnNames="id"
+                                 referencedTableName="product"
+                                 referencedTableSchemaName="products"/>
+
+        <addNotNullConstraint columnName="amount"
+                              columnDataType="integer"
+                              tableName="item"
+                              schemaName="orders" />
+
+        <addNotNullConstraint columnName="dt_made"
+                              columnDataType="date"
+                              tableName="item"
+                              schemaName="orders" />
+
+        <addNotNullConstraint columnName="unit_price"
+                              columnDataType="real"
+                              tableName="item"
+                              schemaName="orders" />
+
+        <addNotNullConstraint columnName="order_id"
+                              columnDataType="bigint"
+                              tableName="item"
+                              schemaName="orders" />
+
+        <addNotNullConstraint columnName="product_id"
+                              columnDataType="bigint"
+                              tableName="item"
+                              schemaName="orders" />
+
+
+        <createSequence sequenceName="seq_shopcar"
+                        schemaName="orders"
+                        incrementBy="1"
+                        startValue="1"/>
+
+        <createTable tableName="shopcar" schemaName="orders">
+            <column name="id" type="bigint"/>
+            <column name="customer_id" type="bigint"/>
+            <column name="serial_uk" type="varchar(256)"/>
+        </createTable>
+
+        <addNotNullConstraint columnName="id"
+                              columnDataType="bigint"
+                              tableName="shopcar"
+                              schemaName="orders"/>
+
+        <addPrimaryKey columnNames="id"
+                       constraintName="pk_shopcar"
+                       tableName="shopcar"
+                       schemaName="orders" />
+
+        <addForeignKeyConstraint baseColumnNames="customer_id"
+                                 baseTableName="shopcar"
+                                 baseTableSchemaName="orders"
+                                 constraintName="fk_shopcar_customer"
+                                 onDelete="CASCADE"
+                                 onUpdate="CASCADE"
+                                 referencedColumnNames="id"
+                                 referencedTableName="customer"
+                                 referencedTableSchemaName="customers"/>
+
+        <addUniqueConstraint columnNames="serial_uk"
+                             constraintName="unq_shopcar_serial_uk"
+                             tableName="shopcar"
+                             schemaName="orders" />
+
+        <addNotNullConstraint columnName="serial_uk"
+                              columnDataType="varchar(256)"
+                              tableName="shopcar"
+                              schemaName="orders" />
+
+
+        <createSequence sequenceName="seq_shc_prod_stk"
+                        schemaName="orders"
+                        incrementBy="1"
+                        startValue="1"/>
+
+        <createTable tableName="shopcar_product_stock" schemaName="orders">
+            <column name="id" type="bigint"/>
+            <column name="product_stock_id" type="bigint"/>
+            <column name="shopcar_id" type="bigint"/>
+            <column name="amount" type="integer"/>
+        </createTable>
+
+        <addNotNullConstraint columnName="id"
+                              columnDataType="bigint"
+                              tableName="shopcar_product_stock"
+                              schemaName="orders"/>
+
+        <addPrimaryKey columnNames="id"
+                       constraintName="pk_shc_prod_stk"
+                       tableName="shopcar_product_stock"
+                       schemaName="orders" />
+
+        <addForeignKeyConstraint baseColumnNames="product_stock_id"
+                                 baseTableName="shopcar_product_stock"
+                                 baseTableSchemaName="orders"
+                                 constraintName="fk_shc_prod_stk_pro_stk"
+                                 onDelete="CASCADE"
+                                 onUpdate="CASCADE"
+                                 referencedColumnNames="id"
+                                 referencedTableName="product_stock"
+                                 referencedTableSchemaName="products"/>
+
+        <addForeignKeyConstraint baseColumnNames="shopcar_id"
+                                 baseTableName="shopcar_product_stock"
+                                 baseTableSchemaName="orders"
+                                 constraintName="fk_shc_prod_stk_shopcar"
+                                 onDelete="CASCADE"
+                                 onUpdate="CASCADE"
+                                 referencedColumnNames="id"
+                                 referencedTableName="shopcar"
+                                 referencedTableSchemaName="orders"/>
+
+        <addNotNullConstraint columnName="product_stock_id"
+                              columnDataType="bigint"
+                              tableName="shopcar_product_stock"
+                              schemaName="orders" />
+
+        <addNotNullConstraint columnName="shopcar_id"
+                              columnDataType="bigint"
+                              tableName="shopcar_product_stock"
+                              schemaName="orders" />
+
+        <addNotNullConstraint columnName="amount"
+                              columnDataType="integer"
+                              tableName="shopcar_product_stock"
+                              schemaName="orders" />
+
+
+        <createSequence sequenceName="seq_review"
+                        schemaName="orders"
+                        incrementBy="1"
+                        startValue="1"/>
+
+        <createTable tableName="review" schemaName="orders">
+            <column name="id" type="bigint"/>
+            <column name="customer_id" type="bigint"/>
+            <column name="product_id" type="bigint"/>
+            <column name="stars" type="integer"/>
+            <column name="text" type="varchar(500)"/>
+            <column name="date_time" type="date"/>
+            <column name="moderate" type="boolean"/>
+        </createTable>
+
+        <addNotNullConstraint columnName="id"
+                              columnDataType="bigint"
+                              tableName="review"
+                              schemaName="orders"/>
+
+        <addPrimaryKey columnNames="id"
+                       constraintName="pk_review"
+                       tableName="review"
+                       schemaName="orders" />
+
+        <addForeignKeyConstraint baseColumnNames="customer_id"
+                                 baseTableName="review"
+                                 baseTableSchemaName="orders"
+                                 constraintName="fk_review_customer"
+                                 onDelete="SET NULL"
+                                 onUpdate="NO ACTION"
+                                 referencedColumnNames="id"
+                                 referencedTableName="customer"
+                                 referencedTableSchemaName="customers"/>
+
+        <addForeignKeyConstraint baseColumnNames="product_id"
+                                 baseTableName="review"
+                                 baseTableSchemaName="orders"
+                                 constraintName="fk_review_product"
+                                 onDelete="SET NULL"
+                                 onUpdate="NO ACTION"
+                                 referencedColumnNames="id"
+                                 referencedTableName="product"
+                                 referencedTableSchemaName="products"/>
+
+        <addNotNullConstraint columnName="stars"
+                              columnDataType="integer"
+                              tableName="review"
+                              schemaName="orders" />
+
+        <addNotNullConstraint columnName="text"
+                              columnDataType="varchar(500)"
+                              tableName="review"
+                              schemaName="orders" />
+
+        <addNotNullConstraint columnName="date_time"
+                              columnDataType="date"
+                              tableName="review"
+                              schemaName="orders" />
+
+        <addNotNullConstraint columnName="moderate"
+                              columnDataType="boolean"
+                              tableName="review"
+                              schemaName="orders" />
+    </changeSet>
+
+</databaseChangeLog>

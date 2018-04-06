@@ -1,0 +1,644 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+        <changeSet id="products-v1-ddl" author="gbvbahia">
+
+            <sql>
+                CREATE SCHEMA IF NOT EXISTS products;
+            </sql>
+
+            <createSequence sequenceName="seq_campaign"
+                            schemaName="products"
+                            incrementBy="1"
+                            startValue="1"/>
+
+            <createTable tableName="campaign" schemaName="products">
+                <column name="id" type="bigint" />
+                <column name="active" type="boolean" defaultValue="false" />
+                <column name="dt_end" type="date" />
+                <column name="dt_start" type="date" />
+                <column name="description" type="varchar(250)" />
+                <column name="discount" type="real" />
+                <column name="name" type="varchar(20)" />
+            </createTable>
+
+            <addNotNullConstraint columnName="id"
+                                  columnDataType="bigint"
+                                  tableName="campaign"
+                                  schemaName="products"/>
+
+            <addPrimaryKey columnNames="id"
+                           constraintName="pk_campaign"
+                           tableName="campaign"
+                           schemaName="products" />
+
+            <addNotNullConstraint columnName="active"
+                                  columnDataType="boolean"
+                                  tableName="campaign"
+                                  schemaName="products"/>
+
+            <addNotNullConstraint columnName="dt_start"
+                                  columnDataType="date"
+                                  tableName="campaign"
+                                  schemaName="products"/>
+
+            <addNotNullConstraint columnName="discount"
+                                  columnDataType="real"
+                                  tableName="campaign"
+                                  schemaName="products"/>
+
+            <addNotNullConstraint columnName="name"
+                                  columnDataType="varchar(20)"
+                                  tableName="campaign"
+                                  schemaName="products"/>
+
+
+            <createSequence sequenceName="seq_category"
+                            schemaName="products"
+                            incrementBy="1"
+                            startValue="1"/>
+
+            <createTable tableName="category" schemaName="products">
+                <column name="id" type="bigint" />
+                <column name="description" type="varchar(250)" />
+                <column name="name" type="varchar(40)" />
+                <column name="order_show" type="integer" />
+            </createTable>
+
+            <addNotNullConstraint columnName="id"
+                                  columnDataType="bigint"
+                                  tableName="category"
+                                  schemaName="products"/>
+
+            <addPrimaryKey columnNames="id"
+                           constraintName="pk_category"
+                           tableName="category"
+                           schemaName="products" />
+
+            <addUniqueConstraint columnNames="name"
+                                 constraintName="unq_category_name"
+                                 tableName="category"
+                                 schemaName="products" />
+
+            <addNotNullConstraint columnName="description"
+                                  columnDataType="varchar(250)"
+                                  tableName="category"
+                                  schemaName="products"/>
+
+            <addNotNullConstraint columnName="name"
+                                  columnDataType="varchar(40)"
+                                  tableName="category"
+                                  schemaName="products"/>
+
+            <addNotNullConstraint columnName="order_show"
+                                  columnDataType="integer"
+                                  tableName="category"
+                                  schemaName="products"/>
+
+
+
+            <createSequence sequenceName="seq_sub_category"
+                            schemaName="products"
+                            incrementBy="1"
+                            startValue="1"/>
+
+            <createTable tableName="sub_category" schemaName="products">
+                <column name="id" type="bigint" />
+                <column name="description" type="varchar(250)" />
+                <column name="generous" type="varchar(15)" />
+                <column name="name" type="varchar(40)" />
+                <column name="category_id" type="bigint" />
+            </createTable>
+
+            <addNotNullConstraint columnName="id"
+                                  columnDataType="bigint"
+                                  tableName="sub_category"
+                                  schemaName="products"/>
+
+            <addPrimaryKey columnNames="id"
+                           constraintName="pk_sub_category"
+                           tableName="sub_category"
+                           schemaName="products" />
+
+            <addForeignKeyConstraint baseColumnNames="category_id"
+                                     baseTableName="sub_category"
+                                     baseTableSchemaName="products"
+                                     constraintName="fk_sub_category_category"
+                                     onDelete="CASCADE"
+                                     onUpdate="RESTRICT"
+                                     referencedColumnNames="id"
+                                     referencedTableName="category"
+                                     referencedTableSchemaName="products"/>
+
+            <addUniqueConstraint columnNames="name, category_id"
+                                 constraintName="unq_sub_cat_name_category_id"
+                                 tableName="sub_category"
+                                 schemaName="products" />
+
+            <addNotNullConstraint columnName="description"
+                                  columnDataType="varchar(250)"
+                                  tableName="sub_category"
+                                  schemaName="products"/>
+
+            <addNotNullConstraint columnName="name"
+                                  columnDataType="varchar(40)"
+                                  tableName="sub_category"
+                                  schemaName="products"/>
+
+            <addNotNullConstraint columnName="category_id"
+                                  columnDataType="bigint"
+                                  tableName="sub_category"
+                                  schemaName="products"/>
+
+
+
+            <createSequence sequenceName="seq_product"
+                            schemaName="products"
+                            incrementBy="1"
+                            startValue="1"/>
+
+            <createTable tableName="product" schemaName="products">
+                <column name="id" type="bigint" />
+                <column name="name" type="varchar(30)" />
+                <column name="name_clean" type="varchar(32)" remarks="Name without accents or uppercase characters" />
+                <column name="branch" type="varchar(25)" />
+                <column name="description" type="varchar(250)" />
+                <column name="description_clean" type="varchar(252)" remarks="Description without accents or uppercase characters"/>
+                <column name="price" type="real" />
+                <column name="sub_category_id" type="bigint" />
+                <!-- Measures -->
+                <column name="height" type="real" />
+                <column name="width" type="real" />
+                <column name="depth" type="real" />
+                <column name="weight" type="real" />
+            </createTable>
+
+            <addNotNullConstraint columnName="id"
+                                  columnDataType="bigint"
+                                  tableName="product"
+                                  schemaName="products" />
+
+            <addPrimaryKey columnNames="id"
+                           constraintName="pk_product"
+                           tableName="product"
+                           schemaName="products" />
+
+            <addForeignKeyConstraint baseColumnNames="sub_category_id"
+                                     baseTableName="product"
+                                     baseTableSchemaName="products"
+                                     constraintName="fk_product_sub_category"
+                                     onDelete="NO ACTION"
+                                     onUpdate="NO ACTION"
+                                     referencedColumnNames="id"
+                                     referencedTableName="sub_category"
+                                     referencedTableSchemaName="products"/>
+
+            <addNotNullConstraint columnName="branch"
+                                  columnDataType="varchar(25)"
+                                  tableName="product"
+                                  schemaName="products" />
+
+            <addNotNullConstraint columnName="name"
+                                  columnDataType="varchar(30)"
+                                  tableName="product"
+                                  schemaName="products" />
+
+            <addNotNullConstraint columnName="name_clean"
+                                  columnDataType="varchar(32)"
+                                  tableName="product"
+                                  schemaName="products" />
+
+            <addNotNullConstraint columnName="description"
+                                  columnDataType="varchar(250)"
+                                  tableName="product"
+                                  schemaName="products" />
+
+            <addNotNullConstraint columnName="description_clean"
+                                  columnDataType="varchar(252)"
+                                  tableName="product"
+                                  schemaName="products" />
+
+            <addNotNullConstraint columnName="price"
+                                  columnDataType="real"
+                                  tableName="product"
+                                  schemaName="products" />
+
+            <addNotNullConstraint columnName="sub_category_id"
+                                  columnDataType="bigint"
+                                  tableName="product"
+                                  schemaName="products" />
+
+
+            <createTable tableName="campaign_product" schemaName="products">
+                <column name="campaign_id" type="bigint" />
+                <column name="product_id" type="bigint" />
+                <column name="active" type="boolean" defaultValue="false" />
+            </createTable>
+
+            <addNotNullConstraint columnName="campaign_id"
+                                  columnDataType="bigint"
+                                  tableName="campaign_product"
+                                  schemaName="products" />
+
+            <addNotNullConstraint columnName="product_id"
+                                  columnDataType="bigint"
+                                  tableName="campaign_product"
+                                  schemaName="products" />
+
+            <addPrimaryKey columnNames="campaign_id, product_id"
+                           constraintName="pk_campaign_product"
+                           tableName="campaign_product"
+                           schemaName="products" />
+
+            <addForeignKeyConstraint baseColumnNames="campaign_id"
+                                     baseTableName="campaign_product"
+                                     baseTableSchemaName="products"
+                                     constraintName="fk_cam_pro_campaign"
+                                     onDelete="NO ACTION"
+                                     onUpdate="NO ACTION"
+                                     referencedColumnNames="id"
+                                     referencedTableName="campaign"
+                                     referencedTableSchemaName="products"/>
+
+            <addForeignKeyConstraint baseColumnNames="product_id"
+                                     baseTableName="campaign_product"
+                                     baseTableSchemaName="products"
+                                     constraintName="fk_cam_pro_product"
+                                     onDelete="NO ACTION"
+                                     onUpdate="NO ACTION"
+                                     referencedColumnNames="id"
+                                     referencedTableName="product"
+                                     referencedTableSchemaName="products"/>
+
+            <addNotNullConstraint columnName="active"
+                                  columnDataType="boolean"
+                                  tableName="campaign_product"
+                                  schemaName="products" />
+
+
+            <createSequence sequenceName="seq_product_image"
+                            schemaName="products"
+                            incrementBy="1"
+                            startValue="1"/>
+
+            <createTable tableName="product_image" schemaName="products">
+                <column name="id" type="bigint" />
+                <column name="name_disk" type="varchar(255)" />
+                <column name="key_disk" type="varchar(30)" />
+                <column name="product_id" type="bigint" />
+            </createTable>
+
+            <addNotNullConstraint columnName="id"
+                                  columnDataType="bigint"
+                                  tableName="product_image"
+                                  schemaName="products" />
+
+            <addPrimaryKey columnNames="id"
+                           constraintName="pk_product_image"
+                           tableName="product_image"
+                           schemaName="products" />
+
+            <addForeignKeyConstraint baseColumnNames="product_id"
+                                     baseTableName="product_image"
+                                     baseTableSchemaName="products"
+                                     constraintName="fk_pro_img_product"
+                                     onDelete="NO ACTION"
+                                     onUpdate="NO ACTION"
+                                     referencedColumnNames="id"
+                                     referencedTableName="product"
+                                     referencedTableSchemaName="products"/>
+
+            <addUniqueConstraint columnNames="name_disk"
+                                 constraintName="unq_pro_img_name_disk"
+                                 tableName="product_image"
+                                 schemaName="products" />
+
+            <addNotNullConstraint columnName="name_disk"
+                                  columnDataType="varchar(255)"
+                                  tableName="product_image"
+                                  schemaName="products" />
+
+            <addNotNullConstraint columnName="product_id"
+                                  columnDataType="bigint"
+                                  tableName="product_image"
+                                  schemaName="products" />
+
+
+            <createTable tableName="product_image_dif_size" schemaName="products"
+                         remarks="Images that are equal but different sizes">
+                <column name="img_id" type="bigint" />
+                <column name="img_id_other_size" type="bigint" />
+            </createTable>
+
+            <addNotNullConstraint columnName="img_id"
+                                  columnDataType="bigint"
+                                  tableName="product_image_dif_size"
+                                  schemaName="products" />
+
+            <addNotNullConstraint columnName="img_id_other_size"
+                                  columnDataType="bigint"
+                                  tableName="product_image_dif_size"
+                                  schemaName="products" />
+
+            <addPrimaryKey columnNames="img_id, img_id_other_size"
+                           constraintName="pk_product_image_dif_size"
+                           tableName="product_image_dif_size"
+                           schemaName="products" />
+
+            <addForeignKeyConstraint baseColumnNames="img_id"
+                                     baseTableName="product_image_dif_size"
+                                     baseTableSchemaName="products"
+                                     constraintName="fk_pro_img_dif_size"
+                                     onDelete="CASCADE"
+                                     onUpdate="CASCADE"
+                                     referencedColumnNames="id"
+                                     referencedTableName="product_image"
+                                     referencedTableSchemaName="products"/>
+
+            <addForeignKeyConstraint baseColumnNames="img_id_other_size"
+                                     baseTableName="product_image_dif_size"
+                                     baseTableSchemaName="products"
+                                     constraintName="fk_pro_img_other_dif_size"
+                                     onDelete="CASCADE"
+                                     onUpdate="CASCADE"
+                                     referencedColumnNames="id"
+                                     referencedTableName="product_image"
+                                     referencedTableSchemaName="products"/>
+
+
+            <createSequence sequenceName="seq_promotion"
+                            schemaName="products"
+                            incrementBy="1"
+                            startValue="1"/>
+
+            <createTable tableName="promotion" schemaName="products">
+                <column name="id" type="bigint" />
+                <column name="detail" type="varchar(150)" />
+                <column name="tag" type="varchar(30)" />
+                <column name="active" type="boolean" />
+            </createTable>
+
+            <addNotNullConstraint columnName="id"
+                                  columnDataType="bigint"
+                                  tableName="promotion"
+                                  schemaName="products" />
+
+            <addPrimaryKey columnNames="id"
+                           constraintName="pk_promotion"
+                           tableName="promotion"
+                           schemaName="products" />
+
+            <addUniqueConstraint columnNames="tag"
+                                 constraintName="unq_promotion_tag"
+                                 tableName="promotion"
+                                 schemaName="products" />
+
+            <addNotNullConstraint columnName="tag"
+                                  columnDataType="varchar(30)"
+                                  tableName="promotion"
+                                  schemaName="products" />
+
+            <addNotNullConstraint columnName="active"
+                                  columnDataType="boolean"
+                                  tableName="promotion"
+                                  schemaName="products" />
+
+
+            <createTable tableName="product_promotion" schemaName="products">
+                <column name="product_id" type="bigint" />
+                <column name="promotion_id" type="bigint" />
+                <column name="active" type="boolean" />
+            </createTable>
+
+            <addNotNullConstraint columnName="product_id"
+                                  columnDataType="bigint"
+                                  tableName="product_promotion"
+                                  schemaName="products" />
+
+            <addNotNullConstraint columnName="promotion_id"
+                                  columnDataType="bigint"
+                                  tableName="product_promotion"
+                                  schemaName="products" />
+
+            <addPrimaryKey columnNames="product_id, promotion_id"
+                           constraintName="pk_product_promotion"
+                           tableName="product_promotion"
+                           schemaName="products" />
+
+            <addForeignKeyConstraint baseColumnNames="product_id"
+                                     baseTableName="product_promotion"
+                                     baseTableSchemaName="products"
+                                     constraintName="fk_pro_prm_product"
+                                     onDelete="CASCADE"
+                                     onUpdate="CASCADE"
+                                     referencedColumnNames="id"
+                                     referencedTableName="product"
+                                     referencedTableSchemaName="products"/>
+
+            <addForeignKeyConstraint baseColumnNames="promotion_id"
+                                     baseTableName="product_promotion"
+                                     baseTableSchemaName="products"
+                                     constraintName="fk_pro_prm_promotion"
+                                     onDelete="CASCADE"
+                                     onUpdate="CASCADE"
+                                     referencedColumnNames="id"
+                                     referencedTableName="promotion"
+                                     referencedTableSchemaName="products"/>
+
+
+            <createTable tableName="promotion_parameters" schemaName="products">
+                <column name="promotion_id" type="bigint" />
+                <column name="value" type="varchar(150)" />
+                <column name="param" type="varchar(150)" />
+            </createTable>
+
+            <addNotNullConstraint columnName="param"
+                                  columnDataType="varchar(150)"
+                                  tableName="promotion_parameters"
+                                  schemaName="products" />
+
+            <addNotNullConstraint columnName="promotion_id"
+                                  columnDataType="bigint"
+                                  tableName="promotion_parameters"
+                                  schemaName="products" />
+
+            <addPrimaryKey columnNames="promotion_id, param"
+                           constraintName="pk_promotion_parameters"
+                           tableName="promotion_parameters"
+                           schemaName="products" />
+
+            <addForeignKeyConstraint baseColumnNames="promotion_id"
+                                     baseTableName="promotion_parameters"
+                                     baseTableSchemaName="products"
+                                     constraintName="fk_prm_par_promotion"
+                                     onDelete="CASCADE"
+                                     onUpdate="CASCADE"
+                                     referencedColumnNames  ="id"
+                                     referencedTableName="promotion"
+                                     referencedTableSchemaName="products"/>
+
+            <createSequence sequenceName="seq_product_stock"
+                            schemaName="products"
+                            incrementBy="1"
+                            startValue="1"/>
+
+            <createTable tableName="product_stock" schemaName="products">
+                <column name="id" type="bigint" />
+                <column name="amount" type="integer" />
+                <column name="product_id" type="bigint" />
+            </createTable>
+
+            <addNotNullConstraint columnName="id"
+                                  columnDataType="bigint"
+                                  tableName="product_stock"
+                                  schemaName="products" />
+
+            <addPrimaryKey columnNames="id"
+                           constraintName="pk_product_stock"
+                           tableName="product_stock"
+                           schemaName="products" />
+
+            <addForeignKeyConstraint baseColumnNames="product_id"
+                                     baseTableName="product_stock"
+                                     baseTableSchemaName="products"
+                                     constraintName="fk_pro_product_stock"
+                                     onDelete="CASCADE"
+                                     onUpdate="CASCADE"
+                                     referencedColumnNames="id"
+                                     referencedTableName="product"
+                                     referencedTableSchemaName="products"/>
+
+            <addNotNullConstraint columnName="amount"
+                                  columnDataType="integer"
+                                  tableName="product_stock"
+                                  schemaName="products" />
+
+            <addNotNullConstraint columnName="product_id"
+                                  columnDataType="bigint"
+                                  tableName="product_stock"
+                                  schemaName="products" />
+
+
+            <createTable tableName="stock_specification" schemaName="products">
+                <column name="product_stock_id" type="bigint" />
+                <column name="specification" type="varchar(150)" />
+                <column name="value" type="varchar(150)" />
+            </createTable>
+
+            <addNotNullConstraint columnName="product_stock_id"
+                                  columnDataType="bigint"
+                                  tableName="stock_specification"
+                                  schemaName="products" />
+
+            <addNotNullConstraint columnName="specification"
+                                  columnDataType="varchar(150)"
+                                  tableName="stock_specification"
+                                  schemaName="products" />
+
+            <addPrimaryKey columnNames="product_stock_id, specification"
+                           constraintName="pk_stock_specification"
+                           tableName="stock_specification"
+                           schemaName="products" />
+
+            <addForeignKeyConstraint baseColumnNames="product_stock_id"
+                                     baseTableName="stock_specification"
+                                     baseTableSchemaName="products"
+                                     constraintName="fk_sto_spe_product_stock"
+                                     onDelete="CASCADE"
+                                     onUpdate="CASCADE"
+                                     referencedColumnNames="id"
+                                     referencedTableName="product_stock"
+                                     referencedTableSchemaName="products"/>
+
+
+            <createSequence sequenceName="seq_schedule_stock"
+                            schemaName="products"
+                            incrementBy="1"
+                            startValue="1"/>
+
+            <createTable tableName="schedule_stock" schemaName="products">
+                <column name="id" type="bigint" />
+                <column name="description" type="varchar(250)" />
+                <column name="dt_solicited" type="date" />
+                <column name="dt_delivered" type="date" />
+                <column name="received_all" type="boolean" />
+            </createTable>
+
+            <addNotNullConstraint columnName="id"
+                                  columnDataType="bigint"
+                                  tableName="schedule_stock"
+                                  schemaName="products" />
+
+            <addPrimaryKey columnNames="id"
+                           constraintName="pk_schedule_stock"
+                           tableName="schedule_stock"
+                           schemaName="products" />
+
+            <addNotNullConstraint columnName="description"
+                                  columnDataType="varchar(250)"
+                                  tableName="schedule_stock"
+                                  schemaName="products" />
+
+            <addNotNullConstraint columnName="dt_solicited"
+                                  columnDataType="date"
+                                  tableName="schedule_stock"
+                                  schemaName="products" />
+
+
+            <createTable tableName="schedule_stock_product" schemaName="products">
+                <column name="product_id" type="bigint" />
+                <column name="scheduleStock_id" type="bigint" />
+                <column name="amount" type="integer" />
+                <column name="received" type="boolean" />
+            </createTable>
+
+            <addNotNullConstraint columnName="product_id"
+                                  columnDataType="bigint"
+                                  tableName="schedule_stock_product"
+                                  schemaName="products" />
+
+            <addNotNullConstraint columnName="scheduleStock_id"
+                                  columnDataType="bigint"
+                                  tableName="schedule_stock_product"
+                                  schemaName="products" />
+
+            <addPrimaryKey columnNames="product_id, scheduleStock_id"
+                           constraintName="pk_schedule_stock_product"
+                           tableName="schedule_stock_product"
+                           schemaName="products" />
+
+            <addForeignKeyConstraint baseColumnNames="product_id"
+                                     baseTableName="schedule_stock_product"
+                                     baseTableSchemaName="products"
+                                     constraintName="fk_sch_stk_pro_product"
+                                     onDelete="NO ACTION"
+                                     onUpdate="NO ACTION"
+                                     referencedColumnNames="id"
+                                     referencedTableName="product_stock"
+                                     referencedTableSchemaName="products"/>
+
+            <addForeignKeyConstraint baseColumnNames="scheduleStock_id"
+                                     baseTableName="schedule_stock_product"
+                                     baseTableSchemaName="products"
+                                     constraintName="fk_sch_stk_pro_sch_stk"
+                                     onDelete="NO ACTION"
+                                     onUpdate="NO ACTION"
+                                     referencedColumnNames="id"
+                                     referencedTableName="schedule_stock"
+                                     referencedTableSchemaName="products"/>
+
+            <addNotNullConstraint columnName="amount"
+                                  columnDataType="integer"
+                                  tableName="schedule_stock_product"
+                                  schemaName="products" />
+
+            <addNotNullConstraint columnName="received"
+                                  columnDataType="boolean"
+                                  tableName="schedule_stock_product"
+                                  schemaName="products" />
+        </changeSet>
+
+</databaseChangeLog>

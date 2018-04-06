@@ -9,18 +9,7 @@ import java.util.LinkedHashSet;
 import java.util.Objects;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -35,13 +24,14 @@ import br.com.gbvbahia.ecommerce.model.cotract.Model;
 public class ProductImage implements Model<Long> {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_product_image")
+    @SequenceGenerator(sequenceName = "seq_product_image", name = "seq_product_image")
+    @Column(name = "id")
     private Long id;
 
     @NotNull
     @ManyToOne
-    @JoinColumn(name = "product_id", referencedColumnName = "ID", nullable = false)
+    @JoinColumn(name = "product_id", referencedColumnName = "id", nullable = false)
     private Product product;
 
     /**
@@ -64,9 +54,9 @@ public class ProductImage implements Model<Long> {
     @JoinTable(name = "product_image_dif_size", schema = "products",
             joinColumns = {
                 @JoinColumn(name = "img_id",
-                        referencedColumnName = "ID", nullable = false)},
+                        referencedColumnName = "id", nullable = false)},
             inverseJoinColumns = @JoinColumn(name = "img_id_other_size",
-                    referencedColumnName = "ID", nullable = false))
+                    referencedColumnName = "id", nullable = false))
     private Set<ProductImage> otherSize;
 
     @Override

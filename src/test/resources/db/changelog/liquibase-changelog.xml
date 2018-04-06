@@ -1,0 +1,16 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <include file="v1/01-products-DDL.xml" relativeToChangelogFile="true"/>
+    <include file="v1/02-products-DML.xml" relativeToChangelogFile="true"/>
+
+    <include file="v1/03-customers-DDL.xml" relativeToChangelogFile="true"/>
+    <!--include file="v1/04-customers-DML.xml" relativeToChangelogFile="true"/-->
+
+    <include file="v1/05-orders-DDL.xml" relativeToChangelogFile="true"/>
+    <!--include file="v1/06-orders-DML.xml" relativeToChangelogFile="true"/-->
+
+</databaseChangeLog>

@@ -8,15 +8,7 @@ package br.com.gbvbahia.ecommerce.model.entity.customers;
 import java.util.Objects;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -33,8 +25,9 @@ import br.com.gbvbahia.ecommerce.model.embeddable.Contact;
 public class Customer implements Model<Long> {
 
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_customer")
+    @SequenceGenerator(sequenceName = "seq_customer", name = "seq_customer")
+    @Column(name = "id")
     private Long id;
 
     @NotNull
@@ -51,9 +44,9 @@ public class Customer implements Model<Long> {
     @Embedded
     private Contact contact;
 
-    @Column(name = "passwrod", length = 30)
+    @Column(name = "password", length = 30)
     @Size(max = 30, min = 3)
-    private String passwrod;
+    private String password;
 
     @NotNull
     @CPF
@@ -96,12 +89,12 @@ public class Customer implements Model<Long> {
         this.contact = contact;
     }
 
-    public String getPasswrod() {
-        return passwrod;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPasswrod(String passwrod) {
-        this.passwrod = passwrod;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public Set<Address> getAddresses() {
@@ -147,7 +140,7 @@ public class Customer implements Model<Long> {
 
     @Override
     public String toString() {
-        return "Customer{" + "id=" + id + ", name=" + name + ", surname=" + surname + ", contact=" + contact + ", passwrod=" + passwrod + ", cpf=" + cpf + ", addresses=" + addresses + '}';
+        return "Customer{" + "id=" + id + ", name=" + name + ", surname=" + surname + ", contact=" + contact + ", password=" + password + ", cpf=" + cpf + ", addresses=" + addresses + '}';
     }
 
 }

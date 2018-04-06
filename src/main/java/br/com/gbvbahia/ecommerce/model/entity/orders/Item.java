@@ -8,16 +8,7 @@ package br.com.gbvbahia.ecommerce.model.entity.orders;
 import java.util.Calendar;
 import java.util.Objects;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -34,8 +25,9 @@ import br.com.gbvbahia.ecommerce.model.entity.products.Product;
 public class Item implements Model<Long> {
 
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_item")
+    @SequenceGenerator(sequenceName = "seq_item", name = "seq_item")
+    @Column(name = "id")
     private Long id;
 
     @Min(1)
@@ -54,13 +46,13 @@ public class Item implements Model<Long> {
     private Calendar dateMade;
 
     @ManyToOne
-    @JoinColumn(name = "product_id", referencedColumnName = "ID", nullable = false)
+    @JoinColumn(name = "product_id", referencedColumnName = "id", nullable = false)
     @NotNull
     private Product product;
 
     @NotNull
     @ManyToOne
-    @JoinColumn(name = "order_id", referencedColumnName = "ID", nullable = false)
+    @JoinColumn(name = "order_id", referencedColumnName = "id", nullable = false)
     private Order order;
 
     public Long getId() {

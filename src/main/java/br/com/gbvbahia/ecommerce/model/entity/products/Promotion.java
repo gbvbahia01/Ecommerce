@@ -11,17 +11,7 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 
-import javax.persistence.CollectionTable;
-import javax.persistence.Column;
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.MapKeyColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -39,8 +29,9 @@ import br.com.gbvbahia.ecommerce.model.cotract.Model;
 public class Promotion implements Model<Long> {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_promotion")
+    @SequenceGenerator(sequenceName = "seq_promotion", name = "seq_promotion")
+    @Column(name = "id")
     private Long id;
 
     @Column(name = "detail", length = 150)
@@ -63,7 +54,7 @@ public class Promotion implements Model<Long> {
     @Column(name = "value", length = 150)
     @CollectionTable(schema = "products",
             name = "promotion_parameters",
-            joinColumns = @JoinColumn(name = "id_promotion"))
+            joinColumns = @JoinColumn(name = "promotion_id"))
     private Map<String, String> parameters;
 
     @Override

@@ -9,18 +9,7 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.TreeMap;
 
-import javax.persistence.CollectionTable;
-import javax.persistence.Column;
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.MapKeyColumn;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
@@ -36,8 +25,9 @@ import br.com.gbvbahia.ecommerce.model.enums.Specifications;
 public class ProductStock implements Model<Long> {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_product_stock")
+    @SequenceGenerator(sequenceName = "seq_product_stock", name = "seq_product_stock")
+    @Column(name = "id")
     private Long id;
 
     @NotNull
@@ -47,7 +37,7 @@ public class ProductStock implements Model<Long> {
 
     @NotNull
     @OneToOne
-    @JoinColumn(name = "product_id", referencedColumnName = "ID")
+    @JoinColumn(name = "product_id", referencedColumnName = "id")
     private Product product;
 
     @ElementCollection(fetch = FetchType.EAGER)
@@ -55,7 +45,7 @@ public class ProductStock implements Model<Long> {
     @Column(name = "value", length = 150)
     @CollectionTable(schema = "products",
             name = "stock_specification",
-            joinColumns = @JoinColumn(name = "id_product_stock"))
+            joinColumns = @JoinColumn(name = "product_stock_id"))
     private Map<String, String> specification;
 
     @Override
