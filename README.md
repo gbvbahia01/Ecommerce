@@ -1,3 +1,5 @@
+## You are looking for a complete project this one is not for you. I just started it a few days ago. And it will take some time to have a very solid project.
+
 ### Circle CI Build [![CircleCI](https://circleci.com/gh/gbvbahia01/Ecommerce/tree/master.svg?style=svg)](https://circleci.com/gh/gbvbahia01/Ecommerce/tree/master)
 
 ### Setup Tomcat JNDI
