@@ -2,6 +2,10 @@
 
 ### Circle CI Build [![CircleCI](https://circleci.com/gh/gbvbahia01/Ecommerce/tree/master.svg?style=svg)](https://circleci.com/gh/gbvbahia01/Ecommerce/tree/master)
 
+### CodeCov [![codecov](https://codecov.io/gh/gbvbahia01/Ecommerce/branch/master/graph/badge.svg)](https://codecov.io/gh/gbvbahia01/Ecommerce)
+
+
+
 ### Setup Tomcat JNDI
 At server.xml file
 
