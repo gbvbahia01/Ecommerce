@@ -330,7 +330,7 @@
             <column name="weight" valueNumeric="1.0" />
             <column name="width" valueNumeric="1.0" />
             <column name="name" value="Galaxy J7 Duos Dourado" />
-            <column name="name_clean" value="galaxy j7 duos dourado" />
+            <column name="name_clean" value="galaxy j7 dourado duos" />
             <column name="price" valueNumeric="1000.0"/>
             <column name="sub_category_id" valueComputed="(SELECT id FROM products.sub_category WHERE name = 'SmartPhone')" />
         </insert>
@@ -345,7 +345,7 @@
             <column name="weight" valueNumeric="1.0" />
             <column name="width" valueNumeric="1.0" />
             <column name="name" value="Galaxy J7 Prime Dourado" />
-            <column name="name_clean" value="galaxy j7 prime dourado" />
+            <column name="name_clean" value="dourado galaxy j7 prime" />
             <column name="price" valueNumeric="1200.0"/>
             <column name="sub_category_id" valueComputed="(SELECT id FROM products.sub_category WHERE name = 'SmartPhone')" />
         </insert>
