@@ -106,7 +106,7 @@
                 <version>2.20</version>
                 <configuration>
                     <includes>
-                        <include>**/*IT.java</include>
+                        <include>**/*TestIT.java</include>
                     </includes>
                     <additionalClasspathElements>
                         <additionalClasspathElement>${basedir}/target/classes</additionalClasspathElement>

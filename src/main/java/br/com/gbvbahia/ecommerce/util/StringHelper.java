@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.gbvbahia.ecommerce.model;
+package br.com.gbvbahia.ecommerce.util;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -31,6 +31,6 @@ public class StringHelper {
      * @return
      */
     public static String cleanToSearchAppend(String search, String append) {
-        return append + StringUtils.lowerCase(StringUtils.stripAccents(StringUtils.trim(search))) + append;
+        return append + cleanToSearch(search) + append;
     }
 }
