@@ -39,11 +39,11 @@ public class Campaign implements Model<Long> {
     private Float discount;
 
     @NotNull
-    @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.DATE)
     @Column(name = "dt_start", nullable = false)
     private Calendar dateStart;
 
-    @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.DATE)
     @Column(name = "dt_end", nullable = true)
     private Calendar dateEnd;
 
@@ -57,7 +57,7 @@ public class Campaign implements Model<Long> {
     private String description;
     
     @Column(name = "active", nullable = false)
-    private boolean active = false;
+        private boolean active = false;
     
     /**
      * Discounts

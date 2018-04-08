@@ -76,11 +76,6 @@ public class Product implements Model<Long> {
     private SubCategory subCategory;
 
     /**
-     * Marketing
-     */
-    @OneToMany(mappedBy = "product")
-    private Set<ProductPromotion> productPromotions;
-    /**
      * Discounts
      */
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
@@ -92,6 +87,10 @@ public class Product implements Model<Long> {
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<ProductImage> productImages;
 
+    /**
+     * Use to get the right price of product.
+     * @return the price with campaign discount if has or regular product price.
+     */
     public float getCampaignPrice() {
         Float priceDesc = price;
         Float discount = getDiscountPercent();
@@ -232,17 +231,6 @@ public class Product implements Model<Long> {
 
     public void setSubCategory(SubCategory subCategory) {
         this.subCategory = subCategory;
-    }
-
-    public Set<ProductPromotion> getProductPromotions() {
-        if (productPromotions == null) {
-            productPromotions = new HashSet<>();
-        }
-        return productPromotions;
-    }
-
-    public void setProductPromotions(Set<ProductPromotion> productPromotions) {
-        this.productPromotions = productPromotions;
     }
 
     public Set<CampaignProduct> getCampaigns() {

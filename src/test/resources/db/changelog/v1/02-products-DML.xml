@@ -383,13 +383,13 @@
         <insert tableName="product" schemaName="products">
             <column name="id" valueSequenceNext="products.seq_product" />
             <column name="branch" value="Samsung" />
-            <column name="description" value="Samsung, Smart TV LED 32' Samsung 32J4300 com Conversor Digital 2 HDMI 1 USB Wi-Fi Integrado" />
+            <column name="description" value="Samsung, Smart TV LED 32 Samsung 32J4300 com Conversor Digital 2 HDMI 1 USB Wi-Fi Integrado" />
             <column name="description_clean" value="samsung, smart tv led 32" />
             <column name="depth" valueNumeric="1.5" />
             <column name="height" valueNumeric="1.5" />
             <column name="weight" valueNumeric="1.5" />
             <column name="width" valueNumeric="1.5" />
-            <column name="name" value="Smart TV LED 32' Samsung" />
+            <column name="name" value="Smart TV LED 32 Samsung" />
             <column name="name_clean" value="smart tv led 32' samsung" />
             <column name="price" valueNumeric="2100.0"/>
             <column name="sub_category_id" valueComputed="(SELECT id FROM products.sub_category WHERE name = 'TVs')" />
@@ -398,13 +398,13 @@
         <insert tableName="product" schemaName="products">
             <column name="id" valueSequenceNext="products.seq_product" />
             <column name="branch" value="Samsung" />
-            <column name="description" value="Smart TV LED 40” Samsung 40K5300 Full HD com Conversor Digital 2 HDMI 1 USB Wi-Fi Integrado" />
+            <column name="description" value="Smart TV LED 40 Samsung 40K5300 Full HD com Conversor Digital 2 HDMI 1 USB Wi-Fi Integrado" />
             <column name="description_clean" value="smart tv led 40 samsung" />
             <column name="depth" valueNumeric="1.6" />
             <column name="height" valueNumeric="1.6" />
             <column name="weight" valueNumeric="1.6" />
             <column name="width" valueNumeric="1.6" />
-            <column name="name" value="Smart TV LED 40” Samsung" />
+            <column name="name" value="Smart TV LED 40 Samsung" />
             <column name="name_clean" value="smart tv led 40 samsung" />
             <column name="price" valueNumeric="3100.0"/>
             <column name="sub_category_id" valueComputed="(SELECT id FROM products.sub_category WHERE name = 'TVs')" />
@@ -413,13 +413,13 @@
         <insert tableName="product" schemaName="products">
             <column name="id" valueSequenceNext="products.seq_product" />
             <column name="branch" value="Samsung" />
-            <column name="description" value="Smart TV LED Curva 49' Samsung 49K6500 Full HD com Conversor Digital 3 HDMI 2 USB Wi-Fi Integrado" />
+            <column name="description" value="Smart TV LED Curva 49 Samsung 49K6500 Full HD com Conversor Digital 3 HDMI 2 USB Wi-Fi Integrado" />
             <column name="description_clean" value="smart tv led curva 49" />
             <column name="depth" valueNumeric="1.7" />
             <column name="height" valueNumeric="1.7" />
             <column name="weight" valueNumeric="1.7" />
             <column name="width" valueNumeric="1.7" />
-            <column name="name" value="Smart TV LED Curva 49' Samsung" />
+            <column name="name" value="Smart TV LED Curva 49 Samsung" />
             <column name="name_clean" value="smart tv led curva 49 samsung" />
             <column name="price" valueNumeric="3800.0"/>
             <column name="sub_category_id" valueComputed="(SELECT id FROM products.sub_category WHERE name = 'TVs')" />
@@ -428,13 +428,13 @@
         <insert tableName="product" schemaName="products">
             <column name="id" valueSequenceNext="products.seq_product" />
             <column name="branch" value="LG" />
-            <column name="description" value="Smart TV LED 43' LG 43LH5700 Full HD Conversor Digital 2 HDMI 1 USB Painel IPS Wi-Fi integrado" />
+            <column name="description" value="Smart TV LED 43 LG 43LH5700 Full HD Conversor Digital 2 HDMI 1 USB Painel IPS Wi-Fi integrado" />
             <column name="description_clean" value="smart tv led 43" />
             <column name="depth" valueNumeric="1.7" />
             <column name="height" valueNumeric="1.7" />
             <column name="weight" valueNumeric="1.7" />
             <column name="width" valueNumeric="1.7" />
-            <column name="name" value="Smart TV LED 43' LG" />
+            <column name="name" value="Smart TV LED 43 LG" />
             <column name="name_clean" value="smart tv led 43 lg" />
             <column name="price" valueNumeric="3250.0"/>
             <column name="sub_category_id" valueComputed="(SELECT id FROM products.sub_category WHERE name = 'TVs')" />
@@ -443,13 +443,13 @@
         <insert tableName="product" schemaName="products">
             <column name="id" valueSequenceNext="products.seq_product" />
             <column name="branch" value="LG" />
-            <column name="description" value="Smart TV LED 55' LG 55LH6000 Full HD Conversor Digital 3 HDMI 2 USB Painel IPS Wi-Fi integrado webOS 3.0" />
+            <column name="description" value="Smart TV LED 55 LG 55LH6000 Full HD Conversor Digital 3 HDMI 2 USB Painel IPS Wi-Fi integrado webOS 3.0" />
             <column name="description_clean" value="smart tv led 55 lg" />
             <column name="depth" valueNumeric="2.0" />
             <column name="height" valueNumeric="2.0" />
             <column name="weight" valueNumeric="2.0" />
             <column name="width" valueNumeric="2.0" />
-            <column name="name" value="Smart TV LED 55' LG" />
+            <column name="name" value="Smart TV LED 55 LG" />
             <column name="name_clean" value="smart tv led 55 lg" />
             <column name="price" valueNumeric="4200.0"/>
             <column name="sub_category_id" valueComputed="(SELECT id FROM products.sub_category WHERE name = 'TVs')" />
@@ -558,6 +558,206 @@
             <column name="name_clean" value="escova magica alisadora" />
             <column name="price" valueNumeric="49.0"/>
             <column name="sub_category_id" valueComputed="(SELECT id FROM products.sub_category WHERE name = 'Eletro Cabelo')" />
+        </insert>
+    </changeSet>
+
+
+    <changeSet id="product_image-v1-dml" author="gbvbahia">
+        <insert tableName="product_image" schemaName="products">
+            <column name="id" valueSequenceNext="products.seq_product_image" />
+            <column name="name_disk" value="img_promid_23_small_banner_def_420_535.jpg" />
+            <column name="key_disk" value="SIZE_420_535" />
+            <column name="product_id" valueComputed="(SELECT id FROM products.product WHERE name = 'iPhone 6S 16GB Cinza')" />
+        </insert>
+
+        <insert tableName="product_image" schemaName="products">
+            <column name="id" valueSequenceNext="products.seq_product_image" />
+            <column name="name_disk" value="img_promid_27_small_banner_def_420_535.png" />
+            <column name="key_disk" value="SIZE_420_535" />
+            <column name="product_id" valueComputed="(SELECT id FROM products.product WHERE name = 'Galaxy J7 Duos Dourado')" />
+        </insert>
+
+        <insert tableName="product_image" schemaName="products">
+            <column name="id" valueSequenceNext="products.seq_product_image" />
+            <column name="name_disk" value="img_promid_29_small_banner_def_420_535.png" />
+            <column name="key_disk" value="SIZE_420_535" />
+            <column name="product_id" valueComputed="(SELECT id FROM products.product WHERE name = 'Moto G4 Preto')" />
+        </insert>
+
+        <insert tableName="product_image" schemaName="products">
+            <column name="id" valueSequenceNext="products.seq_product_image" />
+            <column name="name_disk" value="img_promid_1_small_banner_def_420_535.jpg" />
+            <column name="key_disk" value="SIZE_420_535" />
+            <column name="product_id" valueComputed="(SELECT id FROM products.product WHERE name = 'Smart TV LED 32 Samsung')" />
+        </insert>
+
+        <insert tableName="product_image" schemaName="products">
+            <column name="id" valueSequenceNext="products.seq_product_image" />
+            <column name="name_disk" value="img_promid_1_small_banner_def_420_535.jpg" />
+            <column name="key_disk" value="SIZE_420_535" />
+            <column name="product_id" valueComputed="(SELECT id FROM products.product WHERE name = 'Smart TV LED 40 Samsung')" />
+        </insert>
+
+        <insert tableName="product_image" schemaName="products">
+            <column name="id" valueSequenceNext="products.seq_product_image" />
+            <column name="name_disk" value="img_promid_35_small_banner_def_420_535.jpg" />
+            <column name="key_disk" value="SIZE_420_535" />
+            <column name="product_id" valueComputed="(SELECT id FROM products.product WHERE name = 'Relógio Masculino Technos')" />
+        </insert>
+
+        <insert tableName="product_image" schemaName="products">
+            <column name="id" valueSequenceNext="products.seq_product_image" />
+            <column name="name_disk" value="def_420_535.png" />
+            <column name="key_disk" value="SIZE_420_535" />
+            <column name="product_id" valueComputed="(SELECT id FROM products.product WHERE name = 'Relógio Feminino Lince')" />
+        </insert>
+
+        <insert tableName="product_image" schemaName="products">
+            <column name="id" valueSequenceNext="products.seq_product_image" />
+            <column name="name_disk" value="def_420_535.png" />
+            <column name="key_disk" value="SIZE_420_535" />
+            <column name="product_id" valueComputed="(SELECT id FROM products.product WHERE name = 'Relógio Performance Technos')" />
+        </insert>
+
+        <insert tableName="product_image" schemaName="products">
+            <column name="id" valueSequenceNext="products.seq_product_image" />
+            <column name="name_disk" value="def_420_535.png" />
+            <column name="key_disk" value="SIZE_420_535" />
+            <column name="product_id" valueComputed="(SELECT id FROM products.product WHERE name = 'Relógio Iridium Rosa')" />
+        </insert>
+
+        <insert tableName="product_image" schemaName="products">
+            <column name="id" valueSequenceNext="products.seq_product_image" />
+            <column name="name_disk" value="def_420_535.png" />
+            <column name="key_disk" value="SIZE_420_535" />
+            <column name="product_id" valueComputed="(SELECT id FROM products.product WHERE name = 'Depilador Philips Lumea')" />
+        </insert>
+
+        <insert tableName="product_image" schemaName="products">
+            <column name="id" valueSequenceNext="products.seq_product_image" />
+            <column name="name_disk" value="img_promid_39_small_banner_def_420_535.jpg" />
+            <column name="key_disk" value="SIZE_420_535" />
+            <column name="product_id" valueComputed="(SELECT id FROM products.product WHERE name = 'Depilador Elétrico Philips')" />
+        </insert>
+
+        <insert tableName="product_image" schemaName="products">
+            <column name="id" valueSequenceNext="products.seq_product_image" />
+            <column name="name_disk" value="img_promid_41_small_banner_def_420_535.jpg" />
+            <column name="key_disk" value="SIZE_420_535" />
+            <column name="product_id" valueComputed="(SELECT id FROM products.product WHERE name = 'Escova Mágica Alisadora')" />
+        </insert>
+
+        <insert tableName="product_image" schemaName="products">
+            <column name="id" valueSequenceNext="products.seq_product_image" />
+            <column name="name_disk" value="def_420_535.png" />
+            <column name="key_disk" value="SIZE_420_535" />
+            <column name="product_id" valueComputed="(SELECT id FROM products.product WHERE name = 'Smart TV LED 55 LG')" />
+        </insert>
+
+        <insert tableName="product_image" schemaName="products">
+            <column name="id" valueSequenceNext="products.seq_product_image" />
+            <column name="name_disk" value="def_420_535.png" />
+            <column name="key_disk" value="SIZE_420_535" />
+            <column name="product_id" valueComputed="(SELECT id FROM products.product WHERE name = 'Smart TV LED 43 LG')" />
+        </insert>
+
+        <insert tableName="product_image" schemaName="products">
+            <column name="id" valueSequenceNext="products.seq_product_image" />
+            <column name="name_disk" value="def_420_535.png" />
+            <column name="key_disk" value="SIZE_420_535" />
+            <column name="product_id" valueComputed="(SELECT id FROM products.product WHERE name = 'Smart TV LED Curva 49 Samsung')" />
+        </insert>
+    </changeSet>
+
+    <changeSet id="campaign_product-v1-dml" author="gbvbahia">
+        <insert tableName="campaign_product" schemaName="products">
+            <column name="campaign_id" valueComputed="(SELECT id FROM products.campaign WHERE name = 'One Year Crazy')" />
+            <column name="product_id" valueComputed="(SELECT id FROM products.product WHERE name = 'iPhone 6S 16GB Cinza')" />
+            <column name="active" valueBoolean="true" />
+        </insert>
+
+        <insert tableName="campaign_product" schemaName="products">
+            <column name="campaign_id" valueComputed="(SELECT id FROM products.campaign WHERE name = 'One Year Crazy')" />
+            <column name="product_id" valueComputed="(SELECT id FROM products.product WHERE name = 'Moto G4 Preto')" />
+            <column name="active" valueBoolean="true" />
+        </insert>
+
+        <insert tableName="campaign_product" schemaName="products">
+            <column name="campaign_id" valueComputed="(SELECT id FROM products.campaign WHERE name = 'One Year Crazy')" />
+            <column name="product_id" valueComputed="(SELECT id FROM products.product WHERE name = 'Galaxy J7 Duos Dourado')" />
+            <column name="active" valueBoolean="false" />
+        </insert>
+
+        <insert tableName="campaign_product" schemaName="products">
+            <column name="campaign_id" valueComputed="(SELECT id FROM products.campaign WHERE name = 'Six Month Crazy')" />
+            <column name="product_id" valueComputed="(SELECT id FROM products.product WHERE name = 'Smart TV LED 32 Samsung')" />
+            <column name="active" valueBoolean="true" />
+        </insert>
+
+        <insert tableName="campaign_product" schemaName="products">
+            <column name="campaign_id" valueComputed="(SELECT id FROM products.campaign WHERE name = 'Six Month Crazy')" />
+            <column name="product_id" valueComputed="(SELECT id FROM products.product WHERE name = 'Smart TV LED 40 Samsung')" />
+            <column name="active" valueBoolean="false" />
+        </insert>
+
+        <insert tableName="campaign_product" schemaName="products">
+            <column name="campaign_id" valueComputed="(SELECT id FROM products.campaign WHERE name = 'Three Month Crazy')" />
+            <column name="product_id" valueComputed="(SELECT id FROM products.product WHERE name = 'Relógio Feminino Lince')" />
+            <column name="active" valueBoolean="true" />
+        </insert>
+
+        <insert tableName="campaign_product" schemaName="products">
+            <column name="campaign_id" valueComputed="(SELECT id FROM products.campaign WHERE name = 'Three Month Crazy')" />
+            <column name="product_id" valueComputed="(SELECT id FROM products.product WHERE name = 'Relógio Masculino Technos')" />
+            <column name="active" valueBoolean="true" />
+        </insert>
+
+        <insert tableName="campaign_product" schemaName="products">
+            <column name="campaign_id" valueComputed="(SELECT id FROM products.campaign WHERE name = 'Three Month Crazy')" />
+            <column name="product_id" valueComputed="(SELECT id FROM products.product WHERE name = 'Relógio Performance Technos')" />
+            <column name="active" valueBoolean="true" />
+        </insert>
+
+        <insert tableName="campaign_product" schemaName="products">
+            <column name="campaign_id" valueComputed="(SELECT id FROM products.campaign WHERE name = 'Three Month Crazy')" />
+            <column name="product_id" valueComputed="(SELECT id FROM products.product WHERE name = 'Relógio Iridium Rosa')" />
+            <column name="active" valueBoolean="false" />
+        </insert>
+
+        <insert tableName="campaign_product" schemaName="products">
+            <column name="campaign_id" valueComputed="(SELECT id FROM products.campaign WHERE name = 'Two Month Crazy')" />
+            <column name="product_id" valueComputed="(SELECT id FROM products.product WHERE name = 'Depilador Philips Lumea')" />
+            <column name="active" valueBoolean="true" />
+        </insert>
+
+        <insert tableName="campaign_product" schemaName="products">
+            <column name="campaign_id" valueComputed="(SELECT id FROM products.campaign WHERE name = 'Two Month Crazy')" />
+            <column name="product_id" valueComputed="(SELECT id FROM products.product WHERE name = 'Depilador Elétrico Philips')" />
+            <column name="active" valueBoolean="true" />
+        </insert>
+
+        <insert tableName="campaign_product" schemaName="products">
+            <column name="campaign_id" valueComputed="(SELECT id FROM products.campaign WHERE name = 'Two Month Crazy')" />
+            <column name="product_id" valueComputed="(SELECT id FROM products.product WHERE name = 'Escova Mágica Alisadora')" />
+            <column name="active" valueBoolean="true" />
+        </insert>
+
+        <insert tableName="campaign_product" schemaName="products">
+            <column name="campaign_id" valueComputed="(SELECT id FROM products.campaign WHERE name = 'Two Month Crazy')" />
+            <column name="product_id" valueComputed="(SELECT id FROM products.product WHERE name = 'Smart TV LED 55 LG')" />
+            <column name="active" valueBoolean="true" />
+        </insert>
+
+        <insert tableName="campaign_product" schemaName="products">
+            <column name="campaign_id" valueComputed="(SELECT id FROM products.campaign WHERE name = 'Two Month Crazy')" />
+            <column name="product_id" valueComputed="(SELECT id FROM products.product WHERE name = 'Smart TV LED 43 LG')" />
+            <column name="active" valueBoolean="true" />
+        </insert>
+
+        <insert tableName="campaign_product" schemaName="products">
+            <column name="campaign_id" valueComputed="(SELECT id FROM products.campaign WHERE name = 'Two Month Crazy')" />
+            <column name="product_id" valueComputed="(SELECT id FROM products.product WHERE name = 'Smart TV LED Curva 49 Samsung')" />
+            <column name="active" valueBoolean="true" />
         </insert>
     </changeSet>
 

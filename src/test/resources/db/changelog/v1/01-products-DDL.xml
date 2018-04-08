@@ -311,13 +311,13 @@
                                      referencedTableName="product"
                                      referencedTableSchemaName="products"/>
 
-            <addUniqueConstraint columnNames="name_disk"
-                                 constraintName="unq_pro_img_name_disk"
-                                 tableName="product_image"
-                                 schemaName="products" />
-
             <addNotNullConstraint columnName="name_disk"
                                   columnDataType="varchar(255)"
+                                  tableName="product_image"
+                                  schemaName="products" />
+
+            <addNotNullConstraint columnName="key_disk"
+                                  columnDataType="varchar(30)"
                                   tableName="product_image"
                                   schemaName="products" />
 
@@ -368,117 +368,6 @@
                                      referencedTableName="product_image"
                                      referencedTableSchemaName="products"/>
 
-
-            <createSequence sequenceName="seq_promotion"
-                            schemaName="products"
-                            incrementBy="1"
-                            startValue="1"/>
-
-            <createTable tableName="promotion" schemaName="products">
-                <column name="id" type="bigint" />
-                <column name="detail" type="varchar(150)" />
-                <column name="tag" type="varchar(30)" />
-                <column name="active" type="boolean" />
-            </createTable>
-
-            <addNotNullConstraint columnName="id"
-                                  columnDataType="bigint"
-                                  tableName="promotion"
-                                  schemaName="products" />
-
-            <addPrimaryKey columnNames="id"
-                           constraintName="pk_promotion"
-                           tableName="promotion"
-                           schemaName="products" />
-
-            <addUniqueConstraint columnNames="tag"
-                                 constraintName="unq_promotion_tag"
-                                 tableName="promotion"
-                                 schemaName="products" />
-
-            <addNotNullConstraint columnName="tag"
-                                  columnDataType="varchar(30)"
-                                  tableName="promotion"
-                                  schemaName="products" />
-
-            <addNotNullConstraint columnName="active"
-                                  columnDataType="boolean"
-                                  tableName="promotion"
-                                  schemaName="products" />
-
-
-            <createTable tableName="product_promotion" schemaName="products">
-                <column name="product_id" type="bigint" />
-                <column name="promotion_id" type="bigint" />
-                <column name="active" type="boolean" />
-            </createTable>
-
-            <addNotNullConstraint columnName="product_id"
-                                  columnDataType="bigint"
-                                  tableName="product_promotion"
-                                  schemaName="products" />
-
-            <addNotNullConstraint columnName="promotion_id"
-                                  columnDataType="bigint"
-                                  tableName="product_promotion"
-                                  schemaName="products" />
-
-            <addPrimaryKey columnNames="product_id, promotion_id"
-                           constraintName="pk_product_promotion"
-                           tableName="product_promotion"
-                           schemaName="products" />
-
-            <addForeignKeyConstraint baseColumnNames="product_id"
-                                     baseTableName="product_promotion"
-                                     baseTableSchemaName="products"
-                                     constraintName="fk_pro_prm_product"
-                                     onDelete="CASCADE"
-                                     onUpdate="CASCADE"
-                                     referencedColumnNames="id"
-                                     referencedTableName="product"
-                                     referencedTableSchemaName="products"/>
-
-            <addForeignKeyConstraint baseColumnNames="promotion_id"
-                                     baseTableName="product_promotion"
-                                     baseTableSchemaName="products"
-                                     constraintName="fk_pro_prm_promotion"
-                                     onDelete="CASCADE"
-                                     onUpdate="CASCADE"
-                                     referencedColumnNames="id"
-                                     referencedTableName="promotion"
-                                     referencedTableSchemaName="products"/>
-
-
-            <createTable tableName="promotion_parameters" schemaName="products">
-                <column name="promotion_id" type="bigint" />
-                <column name="value" type="varchar(150)" />
-                <column name="param" type="varchar(150)" />
-            </createTable>
-
-            <addNotNullConstraint columnName="param"
-                                  columnDataType="varchar(150)"
-                                  tableName="promotion_parameters"
-                                  schemaName="products" />
-
-            <addNotNullConstraint columnName="promotion_id"
-                                  columnDataType="bigint"
-                                  tableName="promotion_parameters"
-                                  schemaName="products" />
-
-            <addPrimaryKey columnNames="promotion_id, param"
-                           constraintName="pk_promotion_parameters"
-                           tableName="promotion_parameters"
-                           schemaName="products" />
-
-            <addForeignKeyConstraint baseColumnNames="promotion_id"
-                                     baseTableName="promotion_parameters"
-                                     baseTableSchemaName="products"
-                                     constraintName="fk_prm_par_promotion"
-                                     onDelete="CASCADE"
-                                     onUpdate="CASCADE"
-                                     referencedColumnNames  ="id"
-                                     referencedTableName="promotion"
-                                     referencedTableSchemaName="products"/>
 
             <createSequence sequenceName="seq_product_stock"
                             schemaName="products"
@@ -590,7 +479,7 @@
 
             <createTable tableName="schedule_stock_product" schemaName="products">
                 <column name="product_id" type="bigint" />
-                <column name="scheduleStock_id" type="bigint" />
+                <column name="schedule_stock_id" type="bigint" />
                 <column name="amount" type="integer" />
                 <column name="received" type="boolean" />
             </createTable>
@@ -600,12 +489,12 @@
                                   tableName="schedule_stock_product"
                                   schemaName="products" />
 
-            <addNotNullConstraint columnName="scheduleStock_id"
+            <addNotNullConstraint columnName="schedule_stock_id"
                                   columnDataType="bigint"
                                   tableName="schedule_stock_product"
                                   schemaName="products" />
 
-            <addPrimaryKey columnNames="product_id, scheduleStock_id"
+            <addPrimaryKey columnNames="product_id, schedule_stock_id"
                            constraintName="pk_schedule_stock_product"
                            tableName="schedule_stock_product"
                            schemaName="products" />
@@ -620,7 +509,7 @@
                                      referencedTableName="product_stock"
                                      referencedTableSchemaName="products"/>
 
-            <addForeignKeyConstraint baseColumnNames="scheduleStock_id"
+            <addForeignKeyConstraint baseColumnNames="schedule_stock_id"
                                      baseTableName="schedule_stock_product"
                                      baseTableSchemaName="products"
                                      constraintName="fk_sch_stk_pro_sch_stk"

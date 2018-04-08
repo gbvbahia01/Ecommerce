@@ -22,48 +22,14 @@
         </query>
     </named-query>
     
-    <named-query name="Promotion.byActive">
-        <query>
-            Select distinct p From Promotion p Where p.active = :active Order by id DESC
-        </query>
-    </named-query>
-    
-    <named-query name="ProductImage.byPromotionActiveAndKeyPicture">
-        <query><![CDATA[
-            Select distinct p1 From ProductImage p1 
-            Join p1.product.productPromotions p2
-            Where p2.active = :activeN1
-            And p2.promotion.active = :activeN2 
-            And p2.promotion.tag = :tag
-            And p1.keyPicture = :keyPicture
-            Order by p1.id DESC
-             ]]>
-        </query>
-    </named-query>
-    
-    <named-query name="ProductImage.countByPromotionActiveAndKeyPicture">
-        <query><![CDATA[
-            Select count(p1) From ProductImage p1 
-            Join p1.product.productPromotions p2
-            Where p2.active = :activeN1
-            And p2.promotion.active = :activeN2 
-            And p2.promotion.tag = :tag
-            And p1.keyPicture = :keyPicture
-             ]]>
-        </query>
-    </named-query>
-    
     <named-query name="ProductImage.withCampaign">
         <query><![CDATA[
                 Select distinct pi1
                 From ProductImage pi1,
-                CampaignProduct cp1,
-                ProductPromotion pp1
+                CampaignProduct cp1
                 Where pi1.product.id = cp1.product.id
-                And pi1.product.id = pp1.product.id
-                And cp1.campaign.active = :activeN2
-                And cp1.active = :activeN1
-                And pp1.promotion.tag = :tag
+                And cp1.campaign.active = :actCam
+                And cp1.active = :actCamProd
                 And pi1.keyPicture = :keyPicture
                 Order by pi1.id desc
             ]]>
@@ -74,27 +40,12 @@
         <query><![CDATA[
                 Select count(distinct pi1)
                 From ProductImage pi1,
-                CampaignProduct cp1,
-                ProductPromotion pp1
+                CampaignProduct cp1
                 Where pi1.product.id = cp1.product.id
-                And pi1.product.id = pp1.product.id
                 And cp1.campaign.active = :activeN2
                 And cp1.active = :activeN1
-                And pp1.promotion.tag = :tag
                 And pi1.keyPicture = :keyPicture
             ]]>
-        </query>
-    </named-query>
-    
-    <named-query name="Promotion.contByActive">
-        <query>
-            Select count(p) From Promotion p Where p.active = :active
-        </query>
-    </named-query>
-
-    <named-query name="Promotion.searchByTag">
-        <query>
-            Select distinct p From Promotion p Where p.tag = :tag
         </query>
     </named-query>
     

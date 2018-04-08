@@ -133,7 +133,7 @@ public class Item implements Model<Long> {
 
     @Override
     public String toString() {
-        return "Item{" + "id=" + id + ", amount=" + amount + ", unitPrice=" + unitPrice + ", dateMade=" + dateMade + ", product=" + product + ", orders=" + order + '}';
+        return "ItemScreen{" + "id=" + id + ", amount=" + amount + ", unitPrice=" + unitPrice + ", dateMade=" + dateMade + ", product=" + product + ", orders=" + order + '}';
     }
 
 }

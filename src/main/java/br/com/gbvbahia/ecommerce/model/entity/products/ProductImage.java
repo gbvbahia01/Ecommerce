@@ -14,6 +14,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import br.com.gbvbahia.ecommerce.model.cotract.Model;
+import br.com.gbvbahia.ecommerce.model.enums.KeyPicture;
 
 /**
  *
@@ -45,9 +46,11 @@ public class ProductImage implements Model<Long> {
     /**
      * A key for identify the picture
      */
-    @Column(name = "key_disk", length = 30, nullable = true, unique = false)
+    @Column(name = "key_disk", length = 30, nullable = false, unique = false)
     @Size(max = 30)
-    private String keyPicture;
+    @Enumerated(EnumType.STRING)
+    @NotNull
+    private KeyPicture keyPicture;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE,
         CascadeType.REFRESH, CascadeType.DETACH})
@@ -84,11 +87,11 @@ public class ProductImage implements Model<Long> {
         this.namePicture = namePicture;
     }
 
-    public String getKeyPicture() {
+    public KeyPicture getKeyPicture() {
         return keyPicture;
     }
 
-    public void setKeyPicture(String keyPicture) {
+    public void setKeyPicture(KeyPicture keyPicture) {
         this.keyPicture = keyPicture;
     }
 

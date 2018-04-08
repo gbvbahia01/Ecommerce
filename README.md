@@ -65,3 +65,14 @@ After setup those information execute this command at the same directory that is
  mvn liquibase:update -Pdatabase,liquibase-all
  ```
  
+ #### Clean a database **`(Attention: those commands will erase all data and a rollback is NOT possible)`**
+ If you need to clean a database and run liquibase from scratch use those sql commands:
+ 
+  ```sql
+ truncate table databasechangelog;
+ truncate table databasechangeloglock;
+ drop schema  orders cascade;
+ drop schema customers cascade;
+ drop schema products cascade;
+  ``` 
+  

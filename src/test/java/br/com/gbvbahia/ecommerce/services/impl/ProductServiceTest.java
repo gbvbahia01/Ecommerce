@@ -1,5 +1,6 @@
 package br.com.gbvbahia.ecommerce.services.impl;
 
+import br.com.gbvbahia.ecommerce.repositories.products.ProductImageRepository;
 import br.com.gbvbahia.ecommerce.repositories.products.ProductRepository;
 import br.com.gbvbahia.ecommerce.services.ProductService;
 import org.junit.Assert;
@@ -16,12 +17,14 @@ public class ProductServiceTest {
 
     @Mock
     private ProductRepository productRepository;
+    @Mock
+    private ProductImageRepository productImageRepository;
 
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
 
-        productService = new ProductServiceImpl(productRepository);
+        productService = new ProductServiceImpl(productRepository, productImageRepository);
     }
 
     @Test
@@ -34,7 +37,7 @@ public class ProductServiceTest {
 
         productService.search(parameterSearch);
 
-        Mockito.verify(productRepository, Mockito.times(1)).searchClean(arg1Captor.capture(),
+            Mockito.verify(productRepository, Mockito.times(1)).searchClean(arg1Captor.capture(),
                                                                                                 arg2Captor.capture());
 
         Assert.assertEquals(expectedParameter, arg1Captor.getValue());

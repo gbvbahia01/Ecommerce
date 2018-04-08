@@ -53,7 +53,7 @@ public class Review implements Model<Long> {
     private String reviewText;
 
     @NotNull
-    @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.DATE)
     @Column(name = "date_time", nullable = false, updatable = false)
     private Calendar dateTime;
     

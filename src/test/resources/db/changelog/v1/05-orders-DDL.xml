@@ -57,10 +57,10 @@
                         incrementBy="1"
                         startValue="1"/>
 
-        <createTable tableName="item" schemaName="orders">
+        <createTable tableName="itemScreen" schemaName="orders">
             <column name="id" type="bigint"/>
             <column name="amount" type="integer"/>
-            <column name="dt_made" type="date"/>
+            <column name="dt_made" type="timestamp"/>
             <column name="unit_price" type="real"/>
             <column name="order_id" type="bigint"/>
             <column name="product_id" type="bigint"/>
@@ -68,16 +68,16 @@
 
         <addNotNullConstraint columnName="id"
                               columnDataType="bigint"
-                              tableName="item"
+                              tableName="itemScreen"
                               schemaName="orders"/>
 
         <addPrimaryKey columnNames="id"
                        constraintName="pk_item"
-                       tableName="item"
+                       tableName="itemScreen"
                        schemaName="orders" />
 
         <addForeignKeyConstraint baseColumnNames="order_id"
-                                 baseTableName="item"
+                                 baseTableName="itemScreen"
                                  baseTableSchemaName="orders"
                                  constraintName="fk_item_order_status"
                                  onDelete="CASCADE"
@@ -87,7 +87,7 @@
                                  referencedTableSchemaName="orders"/>
 
         <addForeignKeyConstraint baseColumnNames="product_id"
-                                 baseTableName="item"
+                                 baseTableName="itemScreen"
                                  baseTableSchemaName="orders"
                                  constraintName="fk_item_product_id"
                                  onDelete="NO ACTION"
@@ -98,27 +98,27 @@
 
         <addNotNullConstraint columnName="amount"
                               columnDataType="integer"
-                              tableName="item"
+                              tableName="itemScreen"
                               schemaName="orders" />
 
         <addNotNullConstraint columnName="dt_made"
                               columnDataType="date"
-                              tableName="item"
+                              tableName="itemScreen"
                               schemaName="orders" />
 
         <addNotNullConstraint columnName="unit_price"
                               columnDataType="real"
-                              tableName="item"
+                              tableName="itemScreen"
                               schemaName="orders" />
 
         <addNotNullConstraint columnName="order_id"
                               columnDataType="bigint"
-                              tableName="item"
+                              tableName="itemScreen"
                               schemaName="orders" />
 
         <addNotNullConstraint columnName="product_id"
                               columnDataType="bigint"
-                              tableName="item"
+                              tableName="itemScreen"
                               schemaName="orders" />
 
 
