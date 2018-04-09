@@ -34,43 +34,28 @@
             }
         </script>
 
-        <div class="container-fluid" style="margin-top: 20px">
-            <div class="row">
-                <div class="col-md-7 col-md-offset-3">
-                    <div class="panel panel-primary">
-
-                        <div class="panel-heading">
-                            <h1 class="panel-title">My Items!</h1>
+        <div class="table-responsive" th:if="${not #lists.isEmpty(items)}">
+            <div class="container">
+                <div class="row">
+                    <div class="card mb-4 box-shadow" th:each="itemScreen : ${items}">
+                        <div class="card-header">
+                            <h4 class="my-0 font-weight-normal" th:text="${itemScreen.name}"> </h4>
                         </div>
-                        <div class="panel-body">
-                            <div class="table-responsive" th:if="${not #lists.isEmpty(items)}">
-                                <table class="table table-hover ">
-                                    <thead class="thead-inverse">
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>ImgName</th>
-                                        <th>ImgWidth</th>
-                                        <th>ImgHeight</th>
-                                        <th>Name</th>
-                                        <th>Description</th>
-                                        <th>Price</th>
-                                    </tr>
-                                    </thead>
-                                    <tr th:each="itemScreen : ${items}">
-                                        <td th:text="${itemScreen.id}" ></td>
-                                        <td th:text="${itemScreen.imgName}" ></td>
-                                        <td th:text="${itemScreen.imgWidth}" ></td>
-                                        <td th:text="${itemScreen.imgHeight}" ></td>
-                                        <td th:text="${itemScreen.name}" ></td>
-                                        <td th:text="${itemScreen.description}" ></td>
-                                        <td th:text="${itemScreen.price}" ></td>
-                                    </tr>
-                                </table>
-                            </div>
+                        <div class="card-body">
+                            <h1 class="card-title pricing-card-title" th:text="${itemScreen.price}"> </h1>
+                            <ul class="list-unstyled mt-3 mb-4">
+                                <li th:text="${itemScreen.id}" > </li>
+                                <li th:text="${itemScreen.description}"> </li>
+                                <li th:text="${itemScreen.imgName}" ></li>
+                                <li th:text="${itemScreen.imgWidth}" ></li>
+                                <li th:text="${itemScreen.imgHeight}" ></li>
+                            </ul>
+                            <button type="button" class="btn btn-lg btn-block btn-outline-primary">Sign up for free</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
     </body>
 </html>
