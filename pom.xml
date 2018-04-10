@@ -122,18 +122,6 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>cobertura-maven-plugin</artifactId>
-                <version>2.7</version>
-                <configuration>
-                    <formats>
-                        <format>html</format>
-                        <format>xml</format>
-                    </formats>
-                    <check />
-                </configuration>
-            </plugin>
         </plugins>
     </build>
 
@@ -141,10 +129,10 @@
         <profile>
             <id>database</id>
             <properties>
-                <liquibase.url>jdbc:postgresql://xxx.xxx.xxx.xxx:5432/database</liquibase.url>
+                <liquibase.url>jdbc:postgresql://192.168.25.131:5432/ecommerce</liquibase.url>
                 <liquibase.driver>org.postgresql.Driver</liquibase.driver>
-                <liquibase.username>xxxxxx</liquibase.username>
-                <liquibase.password>xxxxxx</liquibase.password>
+                <liquibase.username>pi</liquibase.username>
+                <liquibase.password>bvb123</liquibase.password>
                 <liquibase.schema>public</liquibase.schema>
                 <liquibase.logging>warning</liquibase.logging>
             </properties>
