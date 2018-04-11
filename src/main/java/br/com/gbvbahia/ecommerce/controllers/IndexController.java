@@ -7,7 +7,7 @@ import br.com.gbvbahia.ecommerce.model.enums.KeyPicture;
 import br.com.gbvbahia.ecommerce.services.ProductImageService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
 
@@ -22,7 +22,7 @@ public class IndexController extends  ControllerCommon {
     }
 
 
-    @RequestMapping({"", "/", "/ecommerce"})
+    @GetMapping({"", "/"})
     public String getIndexPage(Model model) {
         logger.debug("Getting Index page");
 
@@ -36,4 +36,10 @@ public class IndexController extends  ControllerCommon {
         return "index";
     }
 
+    @GetMapping({"/myphoto"})
+    public String getMyphoto() {
+        logger.debug("Getting myphoto page");
+
+        return "myphoto";
+    }
 }

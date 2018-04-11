@@ -1,15 +1,19 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+      lang="en">
     <head>
 
         <meta charset="UTF-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge" />
 
-        <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+        <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
 
         <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
 
-        <script crossorigin="anonymous" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 
         <title>Ecommerce Home</title>
     </head>
@@ -34,8 +38,8 @@
             }
         </script>
 
-        <div class="table-responsive" th:if="${not #lists.isEmpty(items)}">
             <div class="container">
+                <div class="jumbotron" th:if="${not #lists.isEmpty(items)}">
                 <div class="row">
                     <div class="card mb-4 box-shadow" th:each="itemScreen : ${items}">
                         <div class="card-header">
