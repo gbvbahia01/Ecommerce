@@ -35,11 +35,4 @@ public class IndexController extends  ControllerCommon {
 
         return "index";
     }
-
-    @GetMapping({"/myphoto"})
-    public String getMyphoto() {
-        logger.debug("Getting myphoto page");
-
-        return "myphoto";
-    }
 }

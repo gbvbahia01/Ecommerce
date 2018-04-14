@@ -1,11 +1,11 @@
 package br.com.gbvbahia.ecommerce.services;
 
 import br.com.gbvbahia.ecommerce.model.entity.products.Product;
-import org.springframework.stereotype.Service;
+import br.com.gbvbahia.ecommerce.services.impl.ServiceContract;
 
 import java.util.List;
 
-public interface ProductService {
+public interface ProductService extends ServiceContract<Product, Long>{
 
     /**
      *

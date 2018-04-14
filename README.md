@@ -2,6 +2,13 @@
 
 ### Circle CI Build [![CircleCI](https://circleci.com/gh/gbvbahia01/Ecommerce/tree/master.svg?style=svg)](https://circleci.com/gh/gbvbahia01/Ecommerce/tree/master)
 
+### Environment Variables
+
+Name | Description
+------------ | -------------
+**img_ecommerce_folder** | A path folder where all products images will be kept. When developer copy default images example at src/main/resources/static/img in this folder.
+
+
 
 ### Setup Tomcat JNDI
 At server.xml file

@@ -8,12 +8,14 @@
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta http-equiv="x-ua-compatible" content="ie=edge" />
-
         <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
 
-        <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
-
-        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+        <!--[if lt IE 9]>
+         <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js">
+         </script>
+         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js">
+         </script>
+         <![endif]-->
 
         <title>Ecommerce Home</title>
     </head>
@@ -28,31 +30,31 @@
         </div>
         <script type="application/javascript">
             window.onload = function () {
-                if (window.jQuery) {
-                    // jQuery is loaded
-                    $("#hello").html("Hello Ecommerce jQuery is working!!!");
-                } else {
-                    // jQuery is not loaded
-                    document.getElementById("hello").innerHTML = "Hello Ecommerce jQuery Doesn't Work";
-                }
+            if (window.jQuery) {
+            // jQuery is loaded
+            $("#hello").html("Hello Ecommerce jQuery is working!!!");
+            } else {
+            // jQuery is not loaded
+            document.getElementById("hello").innerHTML = "Hello Ecommerce jQuery Doesn't Work";
+            }
             }
         </script>
 
-            <div class="container">
-                <div class="jumbotron" th:if="${not #lists.isEmpty(items)}">
+        <div class="container">
+            <div class="jumbotron" th:if="${not #lists.isEmpty(items)}">
                 <div class="row">
                     <div class="card mb-4 box-shadow" th:each="itemScreen : ${items}">
                         <div class="card-header">
                             <h4 class="my-0 font-weight-normal" th:text="${itemScreen.name}"> </h4>
+                            <img src="../../static/img/def_420_535.png"
+                                 width="420" height="535" class="img-fluid"
+                                 th:src="@{'/product/' + ${itemScreen.id} + '/productimg/' + ${itemScreen.keyPicture}}"
+                                 th:width="${itemScreen.imgWidth}" th:height="${itemScreen.imgHeight}" />
                         </div>
                         <div class="card-body">
                             <h1 class="card-title pricing-card-title" th:text="${itemScreen.price}"> </h1>
                             <ul class="list-unstyled mt-3 mb-4">
-                                <li th:text="${itemScreen.id}" > </li>
                                 <li th:text="${itemScreen.description}"> </li>
-                                <li th:text="${itemScreen.imgName}" ></li>
-                                <li th:text="${itemScreen.imgWidth}" ></li>
-                                <li th:text="${itemScreen.imgHeight}" ></li>
                             </ul>
                             <button type="button" class="btn btn-lg btn-block btn-outline-primary">Sign up for free</button>
                         </div>
@@ -61,5 +63,7 @@
             </div>
         </div>
 
+        <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
     </body>
 </html>

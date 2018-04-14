@@ -8,9 +8,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 @Service
-public class ProductImageServiceImpl extends ServiceCommon implements ProductImageService {
+public class ProductImageServiceImpl extends ServiceCommon<ProductImage, Long, JpaRepository<ProductImage, Long>> implements ProductImageService {
 
     private final ProductImageRepository productImageRepository;
 
@@ -19,8 +20,14 @@ public class ProductImageServiceImpl extends ServiceCommon implements ProductIma
     }
 
     @Override
+    protected JpaRepository<ProductImage, Long> getRepository() {
+        return productImageRepository;
+    }
+
+    @Override
     @Transactional(readOnly = true)
     public List<ProductImage> listActivesByKeyPicture(KeyPicture key) {
         return productImageRepository.listByPromotionTag(true, true, key);
     }
+
 }

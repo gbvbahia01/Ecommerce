@@ -1,17 +1,23 @@
 package br.com.gbvbahia.ecommerce.services.impl;
 
+import org.apache.commons.lang3.NotImplementedException;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.springframework.data.repository.CrudRepository;
 
 public class ServiceCommonTest {
-
 
     private ServiceCommon serviceCommon;
 
     @Before
     public void setUp() {
-        serviceCommon = new ServiceCommon() { };
+        serviceCommon = new ServiceCommon() {
+            @Override
+            protected CrudRepository getRepository() {
+                throw new NotImplementedException("Unit test environment");
+            }
+        };
     }
 
     @Test

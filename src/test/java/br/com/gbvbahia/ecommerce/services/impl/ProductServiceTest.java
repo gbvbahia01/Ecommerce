@@ -17,14 +17,12 @@ public class ProductServiceTest {
 
     @Mock
     private ProductRepository productRepository;
-    @Mock
-    private ProductImageRepository productImageRepository;
-
+    
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
 
-        productService = new ProductServiceImpl(productRepository, productImageRepository);
+        productService = new ProductServiceImpl(productRepository);
     }
 
     @Test

@@ -1,5 +1,6 @@
 package br.com.gbvbahia.ecommerce.controllers.helpers;
 
+import br.com.gbvbahia.ecommerce.model.enums.KeyPicture;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -9,14 +10,20 @@ public class ItemScreen<ID extends Serializable> implements Serializable {
     private String imgName;
     private String imgWidth;
     private String imgHeight;
+    private String keyPicture;
     private String name;
     private String description;
     private final Class clazz;
     private float price;
 
 
-    public ItemScreen(Class clazz) {
+    public ItemScreen(Class clazz, KeyPicture keyPicture) {
         this.clazz = clazz;
+        if(keyPicture != null) {
+            this.keyPicture = keyPicture.name();
+            this.imgHeight = keyPicture.getHeight();
+            this.imgWidth = keyPicture.getWidth();
+        }
     }
 
     @Override
@@ -84,15 +91,12 @@ public class ItemScreen<ID extends Serializable> implements Serializable {
         return imgWidth;
     }
 
-    public void setImgWidth(String imgWidth) {
-        this.imgWidth = imgWidth;
-    }
-
     public String getImgHeight() {
         return imgHeight;
     }
-
-    public void setImgHeight(String imgHeight) {
-        this.imgHeight = imgHeight;
+    
+    public String getKeyPicture() {
+        return keyPicture;
     }
+    
 }

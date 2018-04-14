@@ -12,7 +12,7 @@ public final class ItemFactory {
 
     public static ItemScreen buildItem(ProductImage productImage) {
 
-        ItemScreen<Long> itemScreen = new ItemScreen(productImage.getClass());
+        ItemScreen<Long> itemScreen = new ItemScreen(productImage.getClass(), productImage.getKeyPicture());
 
         itemScreen.setId(productImage.getId());
 
@@ -20,9 +20,6 @@ public final class ItemFactory {
                 ? productImage.getKeyPicture().getDefaultImg()
                 : productImage.getNamePicture();
         itemScreen.setImgName(imgName);
-
-        itemScreen.setImgWidth(productImage.getKeyPicture().getWidth());
-        itemScreen.setImgHeight(productImage.getKeyPicture().getHeight());
 
         itemScreen.setPrice(productImage.getProduct().getCampaignPrice());
         itemScreen.setDescription(productImage.getProduct().getDescription());

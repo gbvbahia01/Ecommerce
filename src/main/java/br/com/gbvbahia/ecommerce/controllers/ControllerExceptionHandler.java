@@ -9,16 +9,16 @@ import org.springframework.web.servlet.ModelAndView;
 @ControllerAdvice
 public class ControllerExceptionHandler extends ControllerCommon {
 
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler(Exception.class)
-    public ModelAndView handleBadRequest(Exception exception){
+    public ModelAndView handleInternalServerError(Exception exception){
 
         logger.error("Exception");
         logger.error(exception.getMessage());
 
         ModelAndView modelAndView = new ModelAndView();
 
-        modelAndView.setViewName("400error");
+        modelAndView.setViewName("INTERNAL_SERVER_ERROR".toLowerCase());
         modelAndView.addObject("exception", exception);
 
         return modelAndView;
