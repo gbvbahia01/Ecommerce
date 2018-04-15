@@ -1,5 +1,12 @@
 package br.com.gbvbahia.ecommerce.model.enums;
 
+/**
+ * Project: Ecommerce
+ *
+ * @author Guilherme
+ * @version 1.0
+ * @since 15/04/18
+ */
 public enum KeyPicture {
 
     SIZE_420_535("def_420_535.png", "420", "535");

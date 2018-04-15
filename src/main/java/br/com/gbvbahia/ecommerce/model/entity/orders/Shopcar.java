@@ -18,8 +18,11 @@ import br.com.gbvbahia.ecommerce.model.entity.customers.Customer;
 import br.com.gbvbahia.ecommerce.model.entity.products.ProductStock;
 
 /**
+ * Project: Ecommerce
  *
  * @author Guilherme
+ * @version 1.0
+ * @since 15/04/18
  */
 @Entity
 @Table(name = "shopcar", schema = "orders")

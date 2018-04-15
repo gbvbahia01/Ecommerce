@@ -5,6 +5,13 @@ import br.com.gbvbahia.ecommerce.model.entity.products.ProductImage;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Project: Ecommerce
+ *
+ * @author Guilherme
+ * @version 1.0
+ * @since 15/04/18
+ */
 public final class ItemFactory {
 
     private ItemFactory() {

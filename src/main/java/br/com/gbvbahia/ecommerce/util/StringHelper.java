@@ -8,8 +8,11 @@ package br.com.gbvbahia.ecommerce.util;
 import org.apache.commons.lang3.StringUtils;
 
 /**
+ * Project: Ecommerce
  *
  * @author Guilherme
+ * @version 1.0
+ * @since 15/04/18
  */
 public class StringHelper {
 

@@ -5,6 +5,13 @@ import br.com.gbvbahia.ecommerce.services.impl.ServiceContract;
 
 import java.util.List;
 
+/**
+ * Project: Ecommerce
+ *
+ * @author Guilherme
+ * @version 1.0
+ * @since 15/04/18
+ */
 public interface ProductService extends ServiceContract<Product, Long>{
 
     /**

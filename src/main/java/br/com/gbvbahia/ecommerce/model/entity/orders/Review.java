@@ -19,8 +19,11 @@ import br.com.gbvbahia.ecommerce.model.entity.customers.Customer;
 import br.com.gbvbahia.ecommerce.model.entity.products.Product;
 
 /**
+ * Project: Ecommerce
  *
  * @author Guilherme
+ * @version 1.0
+ * @since 15/04/18
  */
 @Entity
 @Table(name = "review", schema = "orders")

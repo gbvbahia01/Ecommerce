@@ -4,6 +4,13 @@ import br.com.gbvbahia.ecommerce.model.enums.KeyPicture;
 import java.io.Serializable;
 import java.util.Objects;
 
+/**
+ * Project: Ecommerce
+ *
+ * @author Guilherme
+ * @version 1.0
+ * @since 15/04/18
+ */
 public class ItemScreen<ID extends Serializable> implements Serializable {
 
     private ID id;

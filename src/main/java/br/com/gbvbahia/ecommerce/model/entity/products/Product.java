@@ -20,8 +20,11 @@ import br.com.gbvbahia.ecommerce.model.embeddable.Measures;
 import br.com.gbvbahia.ecommerce.util.StringHelper;
 
 /**
+ * Project: Ecommerce
  *
  * @author Guilherme
+ * @version 1.0
+ * @since 15/04/18
  */
 @Entity
 @Table(name = "product", schema = "products")

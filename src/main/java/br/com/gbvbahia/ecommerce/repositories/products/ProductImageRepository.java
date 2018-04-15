@@ -8,6 +8,13 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
+/**
+ * Project: Ecommerce
+ *
+ * @author Guilherme
+ * @version 1.0
+ * @since 15/04/18
+ */
 public interface ProductImageRepository extends JpaRepository<ProductImage, Long> {
 
     /**

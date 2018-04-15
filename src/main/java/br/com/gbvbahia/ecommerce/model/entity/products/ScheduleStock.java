@@ -17,8 +17,11 @@ import javax.validation.constraints.Size;
 import br.com.gbvbahia.ecommerce.model.cotract.Model;
 
 /**
+ * Project: Ecommerce
  *
  * @author Guilherme
+ * @version 1.0
+ * @since 15/04/18
  */
 @Entity
 @Table(name = "schedule_stock", schema = "products")

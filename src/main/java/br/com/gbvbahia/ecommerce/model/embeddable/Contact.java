@@ -14,8 +14,11 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 /**
+ * Project: Ecommerce
  *
  * @author Guilherme
+ * @version 1.0
+ * @since 15/04/18
  */
 @Embeddable
 public class Contact implements Serializable {

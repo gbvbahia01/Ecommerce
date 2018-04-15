@@ -15,8 +15,11 @@ import br.com.gbvbahia.ecommerce.model.cotract.Model;
 import br.com.gbvbahia.ecommerce.model.enums.Generous;
 
 /**
+ * Project: Ecommerce
  *
  * @author Guilherme
+ * @version 1.0
+ * @since 15/04/18
  */
 @Entity
 @Table(name = "sub_category", schema = "products", uniqueConstraints = {

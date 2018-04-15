@@ -15,8 +15,11 @@ import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 
 /**
+ * Project: Ecommerce
  *
  * @author Guilherme
+ * @version 1.0
+ * @since 15/04/18
  */
 @Component
 public class ImageIoHandlerComponent {
@@ -42,12 +45,12 @@ public class ImageIoHandlerComponent {
             File imgDisk;
             imgDisk = new File(imgFolder, productImage.getNamePicture());
             if (!imgDisk.exists()) {
-                logger.warn("A inexistent file was requested: [" + productImage.getNamePicture() + "]");
+                logger.warn("A nonexistent file was requested: [" + productImage.getNamePicture() + "]");
                 imgDisk = new File(imgFolder, productImage.getKeyPicture().getDefaultImg());
             }
             return imgDisk;
         } catch (IllegalArgumentException | NullPointerException e) {
-            logger.error("A error occours trying to get a IMG from disk", e);
+            logger.error("A error occurs trying to get a IMG from disk", e);
 
             return new File(imgFolder, KeyPicture.SIZE_420_535.getDefaultImg());
         }

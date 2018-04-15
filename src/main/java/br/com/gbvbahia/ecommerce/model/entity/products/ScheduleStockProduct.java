@@ -21,8 +21,11 @@ import br.com.gbvbahia.ecommerce.model.cotract.Model;
 import br.com.gbvbahia.ecommerce.model.embeddable.ScheduleStockProductPK;
 
 /**
+ * Project: Ecommerce
  *
  * @author Guilherme
+ * @version 1.0
+ * @since 15/04/18
  */
 @Entity
 @Table(name = "schedule_stock_product", schema = "products",

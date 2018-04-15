@@ -9,8 +9,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Project: Ecommerce
  *
  * @author Guilherme
+ * @version 1.0
+ * @since 15/04/18
  */
 public enum OrderStatus {
     Made(100, false), Paid(200, false), Receipt(300, false), Sending(400, false),

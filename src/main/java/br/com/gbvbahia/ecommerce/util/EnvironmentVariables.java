@@ -6,8 +6,11 @@
 package br.com.gbvbahia.ecommerce.util;
 
 /**
+ * Project: Ecommerce
  *
  * @author Guilherme
+ * @version 1.0
+ * @since 15/04/18
  */
 public final class EnvironmentVariables {
     
