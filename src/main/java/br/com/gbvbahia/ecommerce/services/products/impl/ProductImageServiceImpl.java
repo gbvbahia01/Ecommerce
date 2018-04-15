@@ -1,9 +1,10 @@
-package br.com.gbvbahia.ecommerce.services.impl;
+package br.com.gbvbahia.ecommerce.services.products.impl;
 
 import br.com.gbvbahia.ecommerce.model.entity.products.ProductImage;
 import br.com.gbvbahia.ecommerce.model.enums.KeyPicture;
 import br.com.gbvbahia.ecommerce.repositories.products.ProductImageRepository;
-import br.com.gbvbahia.ecommerce.services.ProductImageService;
+import br.com.gbvbahia.ecommerce.services.products.ProductImageService;
+import br.com.gbvbahia.ecommerce.services.ServiceCommon;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

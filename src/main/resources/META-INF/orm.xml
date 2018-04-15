@@ -5,23 +5,26 @@
                  version="1.0">
 
     <named-query name="Category.byName">
-        <query>
+        <query><![CDATA[
             Select distinct c From Category c Where c.name = :name
+            ]]>
         </query>
     </named-query>
     
     <named-query name="Category.contByName">
-        <query>
+        <query><![CDATA[
             Select count(c) From Category c Where c.name like :name
+            ]]>
         </query>
     </named-query>
     
     <named-query name="Category.listOrderBy">
-        <query>
+        <query><![CDATA[
             Select distinct c From Category c Order By c.order, c.name
+            ]]>
         </query>
     </named-query>
-    
+
     <named-query name="ProductImage.withCampaign">
         <query><![CDATA[
                 Select distinct pi1
@@ -48,19 +51,7 @@
             ]]>
         </query>
     </named-query>
-    
-    <named-query name="Shopcar.searchBySerialUniqueId">
-        <query>
-            Select distinct s From Shopcar s Where s.serialUniqueId = :serial
-        </query>
-    </named-query>
-    
-    <named-query name="Shopcar.searchByCustomer">
-        <query>
-            Select distinct s From Shopcar s Where s.customer = :customer
-        </query>
-    </named-query>
-    
+
     <named-query name="ProductImage.searchByIdProductKeysDisck">
         <query><![CDATA[
             Select distinct p1 From ProductImage p1 

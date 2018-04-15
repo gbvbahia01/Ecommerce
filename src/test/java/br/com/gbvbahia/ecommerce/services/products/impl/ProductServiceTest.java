@@ -1,8 +1,7 @@
-package br.com.gbvbahia.ecommerce.services.impl;
+package br.com.gbvbahia.ecommerce.services.products.impl;
 
-import br.com.gbvbahia.ecommerce.repositories.products.ProductImageRepository;
 import br.com.gbvbahia.ecommerce.repositories.products.ProductRepository;
-import br.com.gbvbahia.ecommerce.services.ProductService;
+import br.com.gbvbahia.ecommerce.services.products.ProductService;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

@@ -1,8 +1,9 @@
-package br.com.gbvbahia.ecommerce.services.impl;
+package br.com.gbvbahia.ecommerce.services.products.impl;
 
 import br.com.gbvbahia.ecommerce.model.entity.products.Product;
 import br.com.gbvbahia.ecommerce.repositories.products.ProductRepository;
-import br.com.gbvbahia.ecommerce.services.ProductService;
+import br.com.gbvbahia.ecommerce.services.products.ProductService;
+import br.com.gbvbahia.ecommerce.services.ServiceCommon;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

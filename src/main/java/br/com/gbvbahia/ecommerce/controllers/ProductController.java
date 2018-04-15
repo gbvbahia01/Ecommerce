@@ -7,10 +7,9 @@ package br.com.gbvbahia.ecommerce.controllers;
 
 import br.com.gbvbahia.ecommerce.component.ImageIoHandlerComponent;
 import br.com.gbvbahia.ecommerce.model.entity.products.ProductImage;
-import br.com.gbvbahia.ecommerce.model.enums.KeyPicture;
-import br.com.gbvbahia.ecommerce.services.ProductImageService;
-import br.com.gbvbahia.ecommerce.services.ProductService;
-import br.com.gbvbahia.ecommerce.util.EnvironmentVariables;
+import br.com.gbvbahia.ecommerce.services.products.ProductImageService;
+import br.com.gbvbahia.ecommerce.services.products.ProductService;
+
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
@@ -49,8 +48,10 @@ public class ProductController extends ControllerCommon {
 
     @GetMapping("product/{prodImgId}/productimg/{keyPicture}")
     public void renderImageFromDiskResource(@PathVariable String prodImgId,
-                                  @PathVariable String keyPicture,
-                                  HttpServletResponse response) throws IOException {
+                                            @PathVariable String keyPicture,
+                                            HttpServletResponse response) throws IOException {
+
+        logger.debug("Img for prodImg:{} for key:{} requested.", prodImgId, keyPicture);
 
         Optional<ProductImage> prodImgOpt = productImageService.findBydId(Long.valueOf(prodImgId));
         

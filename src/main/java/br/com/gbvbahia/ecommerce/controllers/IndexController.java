@@ -4,7 +4,7 @@ import br.com.gbvbahia.ecommerce.controllers.helpers.ItemScreen;
 import br.com.gbvbahia.ecommerce.controllers.helpers.ItemFactory;
 import br.com.gbvbahia.ecommerce.model.entity.products.ProductImage;
 import br.com.gbvbahia.ecommerce.model.enums.KeyPicture;
-import br.com.gbvbahia.ecommerce.services.ProductImageService;
+import br.com.gbvbahia.ecommerce.services.products.ProductImageService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

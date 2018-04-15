@@ -3,7 +3,7 @@ package br.com.gbvbahia.ecommerce.controllers;
 import br.com.gbvbahia.ecommerce.TestFactory;
 import br.com.gbvbahia.ecommerce.controllers.helpers.ItemScreen;
 import br.com.gbvbahia.ecommerce.model.enums.KeyPicture;
-import br.com.gbvbahia.ecommerce.services.ProductImageService;
+import br.com.gbvbahia.ecommerce.services.products.ProductImageService;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

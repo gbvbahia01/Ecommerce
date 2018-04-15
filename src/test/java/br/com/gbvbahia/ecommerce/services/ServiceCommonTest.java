@@ -1,5 +1,6 @@
-package br.com.gbvbahia.ecommerce.services.impl;
+package br.com.gbvbahia.ecommerce.services;
 
+import br.com.gbvbahia.ecommerce.services.ServiceCommon;
 import org.apache.commons.lang3.NotImplementedException;
 import org.junit.Assert;
 import org.junit.Before;
