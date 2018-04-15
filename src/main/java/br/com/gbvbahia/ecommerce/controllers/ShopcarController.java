@@ -3,8 +3,8 @@ package br.com.gbvbahia.ecommerce.controllers;
 import br.com.gbvbahia.ecommerce.component.CookieHandlerComponent;
 import br.com.gbvbahia.ecommerce.services.orders.ShopcarService;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -29,11 +29,14 @@ public class ShopcarController  extends ControllerCommon {
         this.cookieHandlerComponent = cookieHandlerComponent;
     }
 
-    @PostMapping("shopcar/prodImg/{prodImgId}")
-    public void addProductStockToCart(@PathVariable String prodImgId,
-                                      HttpServletRequest request,
-                                      HttpServletResponse response) {
+    @PostMapping("/shopcar/prodImg")
+    public String addProductStockToCart(@RequestParam(name = "prodImgId") Long prodImgId,
+                                        @RequestParam(name = "redirect") String redirect,
+                                        HttpServletRequest request,
+                                        HttpServletResponse response) {
 
         logger.debug("Shopcar for prodImg:{} requested.", prodImgId);
+
+        return "redirect:" + redirect;
     }
 }

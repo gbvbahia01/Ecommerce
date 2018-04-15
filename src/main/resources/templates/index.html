@@ -56,7 +56,11 @@
                             <ul class="list-unstyled mt-3 mb-4">
                                 <li th:text="${itemScreen.description}"> </li>
                             </ul>
-                            <button type="button" class="btn btn-lg btn-block btn-outline-primary">Sign up for free</button>
+                            <form th:action="@{/shopcar/prodImg}" method="post" >
+                                <input type="hidden" name="prodImgId" th:value="${itemScreen.id}"/>
+                                <input type="hidden" name="redirect" value="/"/>
+                                <button type="submit" class="btn btn-lg btn-block btn-outline-primary">Add Card</button>
+                            </form>
                         </div>
                     </div>
                 </div>
