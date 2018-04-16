@@ -1,7 +1,7 @@
 ## You are looking for a complete project this one is not for you. I just started it a few days ago. And it will take some time to have a very solid project.
 
 ### Circle CI Build [![CircleCI](https://circleci.com/gh/gbvbahia01/Ecommerce/tree/master.svg?style=svg)](https://circleci.com/gh/gbvbahia01/Ecommerce/tree/master)
-
+### Coveralls [![Coverage Status](https://coveralls.io/repos/github/gbvbahia01/Ecommerce/badge.svg)](https://coveralls.io/github/gbvbahia01/Ecommerce)
 ### Environment Variables
 
 Name | Description
@@ -16,7 +16,7 @@ At server.xml file
 ```xml
   <GlobalNamingResources>
    ...
-   
+
     <Resource name="jdbc/postgres_ecommerce"
            auth="Container"
            type="javax.sql.DataSource"
@@ -33,7 +33,7 @@ At server.xml file
            maxTotal="20"
            maxIdle="10"
            maxWaitMillis="-1"/>
-           
+
    ...
   </GlobalNamingResources>
 ```
@@ -68,15 +68,14 @@ After setup those information execute this command at the same directory that is
  ```
  mvn liquibase:update -Pdatabase,liquibase-all
  ```
- 
+
  #### Clean a database **`(Attention: those commands will erase all data and a rollback is NOT possible)`**
  If you need to clean a database and run liquibase from scratch use those sql commands:
- 
+
   ```sql
  truncate table databasechangelog;
  truncate table databasechangeloglock;
  drop schema  orders cascade;
  drop schema customers cascade;
  drop schema products cascade;
-  ``` 
-  
+  ```
