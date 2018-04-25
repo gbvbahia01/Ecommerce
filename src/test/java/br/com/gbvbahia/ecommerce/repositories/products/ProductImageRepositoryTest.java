@@ -16,7 +16,7 @@ import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
-public class ProductImageRepositoryTestIT {
+public class ProductImageRepositoryTest {
 
     @Autowired
     private ProductImageRepository productImageRepository;
