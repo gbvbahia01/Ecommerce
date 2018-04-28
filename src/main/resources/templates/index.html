@@ -6,27 +6,19 @@
     <head th:replace="fragments/head :: header">
     </head>
     <body>
+        <!-- Loading-->
         <section class="loading-overlay">
-            <div class="Loading-Page">
+            <div>
                 <h1 class="loader">Loading...</h1>
             </div>
         </section>
-        <div class="alert alert-primary" role="alert">
-            <h1 id="hello"></h1>
-        </div>
-        <script type="application/javascript">
-            window.onload = function () {
-            if (window.jQuery) {
-            // jQuery is loaded
-            $("#hello").html("Hello Ecommerce jQuery is working!!!");
-            } else {
-            // jQuery is not loaded
-            document.getElementById("hello").innerHTML = "Hello Ecommerce jQuery Doesn't Work";
-            }
-            }
-        </script>
 
-        <div class="container">
+        <!-- Top Menu -->
+        <nav th:replace="fragments/menu :: top"></nav>
+
+        <!-- Container -->
+        <div class="container-fluid">
+
             <div class="jumbotron" th:if="${not #lists.isEmpty(items)}">
                 <div class="row">
                     <div class="card mb-4 box-shadow" th:each="itemScreen : ${items}">
@@ -51,10 +43,10 @@
                     </div>
                 </div>
             </div>
+
         </div>
 
-        <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
-        <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
-        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+        <!-- Script -->
+        <block th:replace="fragments/script :: load"></block>
     </body>
 </html>
