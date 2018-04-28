@@ -70,6 +70,20 @@ Colors {
 	# Navbar
 ================================*/
 .navbar {
-    border-bottom: #E86031 3px solid;
-    opacity: 0.8;
+    border-bottom: #e86031 3px solid;
+    opacity: 0.90;
+}
+
+@media (max-width: 1200px) {
+    body {
+        z-index: 2;
+    }
+    .navbar {
+        position: fixed;
+        right: 0;
+        left: 0;
+        border-radius: 0;
+        top: 0;
+        z-index: 1;
+    }
 }

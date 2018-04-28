@@ -2,19 +2,26 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
       lang="en">
-    <nav th:fragment="top" class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+    <nav th:fragment="top" class="navbar navbar-expand-sm bg-dark navbar-dark">
         <div class="container">
-            <a href="index.html" class="navbar-brand">LoopLAB</a>
+
+            <img th:src="@{/img/logo/logo_w_96.png}"
+                 th:alt="#{application.name}"
+                 th:title="#{application.name}"
+                 class="img-fluid rounded-circle"
+                 width="64" height="64">
+
             <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
             </button>
+
             <div class="collapse navbar-collapse" id="navbarCollapse">
-                <ul class="navbar-nav ml-auto">
+                <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
                         <a href="#home" class="nav-link">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#explore-head-section" class="nav-link">Explore</a>
+                        <a href="#explore-head-section" class="nav-link" th:text="#{menu.category}">Category</a>
                     </li>
                     <li class="nav-item">
                         <a href="#create-head-section" class="nav-link">Create</a>
@@ -23,7 +30,13 @@
                         <a href="#share-head-section" class="nav-link">Share</a>
                     </li>
                 </ul>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a href="#share-head-section" class="nav-link">About</a>
+                    </li>
+                </ul>
             </div>
         </div>
     </nav>
+
 </html>
