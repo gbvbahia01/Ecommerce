@@ -6,7 +6,7 @@
 
 Name | Description
 ------------ | -------------
-**img_ecommerce_folder** | A path folder where all ecommerce images will be kept. When developing copy default images example at src/main/resources/static/img in this folder.
+**img_ecommerce_folder** | A path folder where all ecommerce images will be kept. When developing copy default images example at src/main/resources/static/img/tomcat-folder in this folder.
 
 
 
