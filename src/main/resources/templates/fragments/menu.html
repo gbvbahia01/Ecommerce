@@ -2,7 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
       lang="en">
-    <nav th:fragment="top" class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <!-- navbar-expand{-sm|-md|-lg|-xl} -->
+    <nav th:fragment="top (cats)" class="navbar navbar-expand-sm bg-dark navbar-dark">
         <div class="container">
 
             <img th:src="@{/img/logo/logo_w_96.png}"
@@ -16,26 +17,29 @@
             </button>
 
             <div class="collapse navbar-collapse" id="navbarCollapse">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a href="#home" class="nav-link">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#explore-head-section" class="nav-link" th:text="#{menu.category}">Category</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#create-head-section" class="nav-link">Create</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#share-head-section" class="nav-link">Share</a>
-                    </li>
-                </ul>
                 <ul class="navbar-nav ml-auto">
+                    <tr th:each="cat : ${cats}">
+                        <li class="nav-item mr-3">
+                            <a href="#explore-head-section" class="nav-link" text="${cat.name}">Category</a>
+                        </li>
+                    </tr>
                     <li class="nav-item">
-                        <a href="#share-head-section" class="nav-link">About</a>
+                        <form class="form-inline my-2 my-lg-0">
+                            <div class="input-group input-group-sm mb-3">
+                                <input class="form-control form-control-sm" type="search" aria-describedby="inputGroup-sizing-sm">
+                                <div class="input-group-prepend">
+                                    <a class="btn btn-sm btn-outline-light" href="#">
+                                        <i class="fas fa-search fa-sm"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </form>
+
                     </li>
                 </ul>
+
             </div>
+
         </div>
     </nav>
 

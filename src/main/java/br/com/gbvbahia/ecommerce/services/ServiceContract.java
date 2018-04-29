@@ -13,9 +13,9 @@ import java.util.Optional;
  */
 public interface ServiceContract<T, ID> {
     /**
-     * Define quickly access to repository findBydId to all services.
+     * Define quickly access to repository findById to all services.
      * @param id
      * @return A optional with a result of search.
      */
-    public Optional<T> findBydId(ID id);
+    Optional<T> findById(ID id);
 }

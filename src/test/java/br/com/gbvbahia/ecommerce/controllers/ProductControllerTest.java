@@ -68,7 +68,7 @@ public class ProductControllerTest {
                                                                             .toString());
         
         Optional<ProductImage> optProdImg = Optional.of(prodImg);
-        Mockito.when(productImageService.findBydId(1L)).thenReturn(optProdImg);
+        Mockito.when(productImageService.findById(1L)).thenReturn(optProdImg);
         Mockito.when(imageIoHandlerComponent.getFileFromProducFile(prodImg, KeyPicture.SIZE_420_535.name())).thenReturn(stateFile.getFile());
         
         StringBuilder url = new StringBuilder("/product/").append(prodImg.getId())

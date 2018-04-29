@@ -46,7 +46,7 @@ public abstract class ServiceCommon<T, ID, R extends CrudRepository<T, ID>> impl
     //===================
     // Repository Methods
     //===================
-    public Optional<T> findBydId(ID id) {
+    public Optional<T> findById(ID id) {
         return getRepository().findById(id);
     }
 }

@@ -14,28 +14,34 @@
         </section>
 
         <!-- Top Menu -->
-        <nav th:replace="fragments/menu :: top"></nav>
+        <header>
+
+            <nav th:replace="fragments/menu :: top (${categories})"></nav>
+
+        </header>
+
+
 
         <!-- Container -->
         <div class="container-fluid">
 
-            <div class="jumbotron" th:if="${not #lists.isEmpty(items)}">
+            <div class="jumbotron" th:if="${not #lists.isEmpty(prodsImg)}">
                 <div class="row">
-                    <div class="card mb-4 box-shadow" th:each="itemScreen : ${items}">
+                    <div class="card mb-4 box-shadow" th:each="prodImg : ${prodsImg}">
                         <div class="card-header">
-                            <h4 class="my-0 font-weight-normal" th:text="${itemScreen.name}"> </h4>
+                            <h4 class="my-0 font-weight-normal" th:text="${prodImg.name}"> </h4>
                             <img src="../../static/img/def_420_535.png"
                                  width="420" height="535" class="img-fluid"
-                                 th:src="@{'/product/' + ${itemScreen.id} + '/productimg/' + ${itemScreen.keyPicture}}"
-                                 th:width="${itemScreen.imgWidth}" th:height="${itemScreen.imgHeight}" />
+                                 th:src="@{'/product/' + ${prodImg.id} + '/productimg/' + ${prodImg.keyPicture}}"
+                                 th:width="${prodImg.imgWidth}" th:height="${prodImg.imgHeight}" />
                         </div>
                         <div class="card-body">
-                            <h1 class="card-title pricing-card-title" th:text="${itemScreen.price}"> </h1>
+                            <h1 class="card-title pricing-card-title" th:text="${prodImg.price}"> </h1>
                             <ul class="list-unstyled mt-3 mb-4">
-                                <li th:text="${itemScreen.description}"> </li>
+                                <li th:text="${prodImg.description}"> </li>
                             </ul>
                             <form th:action="@{/shopcar/prodImg}" method="post" >
-                                <input type="hidden" name="prodImgId" th:value="${itemScreen.id}"/>
+                                <input type="hidden" name="prodImgId" th:value="${prodImg.id}"/>
                                 <input type="hidden" name="redirect" value="/"/>
                                 <button type="submit" class="btn btn-lg btn-block btn-outline-primary">Add Card</button>
                             </form>

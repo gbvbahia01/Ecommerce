@@ -47,7 +47,7 @@ public class Category implements Model<Long>, Comparable<Category> {
     @Column(name = "order_show", nullable = false)
     @Min(1)
     @NotNull
-    private Integer order = 1;
+    private Integer priority = 1;
 
     @OneToMany(mappedBy = "category", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<SubCategory> subCategorys;
@@ -87,12 +87,12 @@ public class Category implements Model<Long>, Comparable<Category> {
         this.subCategorys = subCategorys;
     }
 
-    public Integer getOrder() {
-        return order;
+    public Integer getPriority() {
+        return priority;
     }
 
-    public void setOrder(Integer order) {
-        this.order = order;
+    public void setPriority(Integer priority) {
+        this.priority = priority;
     }
 
     @Override
@@ -122,7 +122,7 @@ public class Category implements Model<Long>, Comparable<Category> {
 
     @Override
     public String toString() {
-        return "Category{" + "id=" + id + ", name=" + name + ", description=" + description + ", orders=" + order + '}';
+        return "Category{" + "id=" + id + ", name=" + name + ", description=" + description + ", orders=" + priority + '}';
     }
 
     @Override

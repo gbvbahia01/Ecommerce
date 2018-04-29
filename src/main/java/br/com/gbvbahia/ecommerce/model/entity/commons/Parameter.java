@@ -19,9 +19,7 @@ import java.util.Objects;
  */
 @Entity
 @Table(name = "parameter", schema = "commons")
-public class Parameters implements Model<String> {
-
-    public static final String AMOUNT_STOCK_CATEGORY = "AMOUNT_STOCK_CATEGORY";
+public class Parameter implements Model<String> {
 
     @Id
     @Size(max = 30, min = 1)
@@ -41,7 +39,7 @@ public class Parameters implements Model<String> {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Parameters that = (Parameters) o;
+        Parameter that = (Parameter) o;
         return Objects.equals(key, that.key);
     }
 
@@ -52,7 +50,7 @@ public class Parameters implements Model<String> {
 
     @Override
     public String toString() {
-        return "Parameters{" +
+        return "Parameter{" +
                 "key='" + key + '\'' +
                 ", value='" + value + '\'' +
                 '}';

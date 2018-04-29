@@ -20,7 +20,13 @@
     
     <named-query name="Category.listOrderBy">
         <query><![CDATA[
-            Select distinct c From Category c Order By c.order, c.name
+            Select distinct c
+            From Category c, SubCategory s, Product p, ProductStock ps
+            Where c.id = s.category.id
+            And s.id = p.subCategory.id
+            And p.id = ps.product.id
+            And ps.stockSmount >= :amountStock
+            Order By c.priority, c.name
             ]]>
         </query>
     </named-query>
@@ -28,8 +34,7 @@
     <named-query name="ProductImage.withCampaign">
         <query><![CDATA[
                 Select distinct pi1
-                From ProductImage pi1,
-                CampaignProduct cp1
+                From ProductImage pi1, CampaignProduct cp1
                 Where pi1.product.id = cp1.product.id
                 And cp1.campaign.active = :actCam
                 And cp1.active = :actCamProd

@@ -12,7 +12,7 @@ public class ItemScreenFactoryTest {
     public void testBuildItemFull() {
         ProductImage productImage = TestFactory.makeProductImage(1);
 
-        ItemScreen<Long> itemScreen = ItemFactory.buildItem(productImage);
+        ItemScreen itemScreen = ItemFactory.buildItem(productImage);
 
         Assert.assertEquals(productImage.getId(), itemScreen.getId());
         Assert.assertEquals(productImage.getClass(), itemScreen.getClazz());
@@ -29,7 +29,7 @@ public class ItemScreenFactoryTest {
 
         productImage.setNamePicture(null);
 
-        ItemScreen<Long> itemScreen = ItemFactory.buildItem(productImage);
+        ItemScreen itemScreen = ItemFactory.buildItem(productImage);
 
         Assert.assertEquals(productImage.getId(), itemScreen.getId());
         Assert.assertEquals(productImage.getClass(), itemScreen.getClazz());
