@@ -63,6 +63,11 @@
         </dependency>
         <dependency>
             <groupId>org.webjars</groupId>
+            <artifactId>font-awesome</artifactId>
+            <version>5.0.10</version>
+        </dependency>
+        <dependency>
+            <groupId>org.webjars</groupId>
             <artifactId>webjars-locator</artifactId>
             <version>0.30</version>
         </dependency>
@@ -106,7 +111,7 @@
               <artifactId>coveralls-maven-plugin</artifactId>
               <version>4.3.0</version>
               <configuration>
-                  <repoToken>******</repoToken>
+                  <repoToken>xxx</repoToken>
               </configuration>
             </plugin>
             <plugin>
@@ -135,8 +140,8 @@
             <properties>
                 <liquibase.url>jdbc:postgresql://xxx.xxx.xxx.xxx:5432/database</liquibase.url>
                 <liquibase.driver>org.postgresql.Driver</liquibase.driver>
-                <liquibase.username>******</liquibase.username>
-                <liquibase.password>******</liquibase.password>
+                <liquibase.username>xxxxxx</liquibase.username>
+                <liquibase.password>xxxxxx</liquibase.password>
                 <liquibase.schema>public</liquibase.schema>
                 <liquibase.logging>warning</liquibase.logging>
             </properties>
