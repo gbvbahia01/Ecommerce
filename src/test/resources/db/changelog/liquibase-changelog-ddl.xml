@@ -7,5 +7,6 @@
     <include file="v1/01-products-DDL.xml" relativeToChangelogFile="true"/>
     <include file="v1/03-customers-DDL.xml" relativeToChangelogFile="true"/>
     <include file="v1/05-orders-DDL.xml" relativeToChangelogFile="true"/>
+    <include file="v1/07-commons-DDL.xml" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>

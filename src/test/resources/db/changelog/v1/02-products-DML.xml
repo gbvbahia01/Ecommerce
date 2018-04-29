@@ -761,4 +761,42 @@
         </insert>
     </changeSet>
 
+    <changeSet id="product_stock-v1-dml" author="gbvbahia">
+        <insert tableName="product_stock" schemaName="products">
+            <column name="id" valueSequenceNext="products.seq_product_stock" />
+            <column name="amount" valueNumeric="10" />
+            <column name="product_id" valueComputed="(SELECT id FROM products.product WHERE name = 'iPhone 6S 16GB Cinza')" />
+        </insert>
+        <insert tableName="product_stock" schemaName="products">
+            <column name="id" valueSequenceNext="products.seq_product_stock" />
+            <column name="amount" valueNumeric="10" />
+            <column name="product_id" valueComputed="(SELECT id FROM products.product WHERE name = 'Moto G4 Preto')" />
+        </insert>
+        <insert tableName="product_stock" schemaName="products">
+            <column name="id" valueSequenceNext="products.seq_product_stock" />
+            <column name="amount" valueNumeric="10" />
+            <column name="product_id" valueComputed="(SELECT id FROM products.product WHERE name = 'Galaxy J7 Duos Dourado')" />
+        </insert>
+        <insert tableName="product_stock" schemaName="products">
+            <column name="id" valueSequenceNext="products.seq_product_stock" />
+            <column name="amount" valueNumeric="10" />
+            <column name="product_id" valueComputed="(SELECT id FROM products.product WHERE name = 'Smart TV LED 32 Samsung')" />
+        </insert>
+        <insert tableName="product_stock" schemaName="products">
+            <column name="id" valueSequenceNext="products.seq_product_stock" />
+            <column name="amount" valueNumeric="10" />
+            <column name="product_id" valueComputed="(SELECT id FROM products.product WHERE name = 'Escova Mágica Alisadora')" />
+        </insert>
+        <insert tableName="product_stock" schemaName="products">
+            <column name="id" valueSequenceNext="products.seq_product_stock" />
+            <column name="amount" valueNumeric="10" />
+            <column name="product_id" valueComputed="(SELECT id FROM products.product WHERE name = 'Depilador Elétrico Philips')" />
+        </insert>
+        <insert tableName="product_stock" schemaName="products">
+            <column name="id" valueSequenceNext="products.seq_product_stock" />
+            <column name="amount" valueNumeric="10" />
+            <column name="product_id" valueComputed="(SELECT id FROM products.product WHERE name = 'Relógio Iridium Rosa')" />
+        </insert>
+    </changeSet>
+
 </databaseChangeLog>

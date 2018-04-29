@@ -13,4 +13,6 @@
     <include file="v1/05-orders-DDL.xml" relativeToChangelogFile="true"/>
     <!--include file="v1/06-orders-DML.xml" relativeToChangelogFile="true"/-->
 
+    <include file="v1/07-commons-DDL.xml" relativeToChangelogFile="true"/>
+    <include file="v1/07-commons-DML.xml" relativeToChangelogFile="true"/>
 </databaseChangeLog>

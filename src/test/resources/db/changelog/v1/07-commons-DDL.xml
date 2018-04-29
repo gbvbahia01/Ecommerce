@@ -1,0 +1,40 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="commons-v1-ddl" author="gbvbahia">
+
+        <sql>
+            CREATE SCHEMA IF NOT EXISTS commons;
+        </sql>
+
+        <createTable tableName="parameter" schemaName="commons">
+            <column name="key" type="varchar(30)" />
+            <column name="value" type="varchar(30)" />
+            <column name="description" type="varchar(250)" />
+        </createTable>
+
+        <addNotNullConstraint columnName="key"
+                              columnDataType="varchar(30)"
+                              tableName="parameter"
+                              schemaName="commons"/>
+
+        <addPrimaryKey columnNames="key"
+                       constraintName="pk_parameter"
+                       tableName="parameter"
+                       schemaName="commons" />
+
+        <addNotNullConstraint columnName="value"
+                              columnDataType="varchar(30)"
+                              tableName="parameter"
+                              schemaName="commons"/>
+
+        <addNotNullConstraint columnName="description"
+                              columnDataType="varchar(250)"
+                              tableName="parameter"
+                              schemaName="commons"/>
+    </changeSet>
+
+</databaseChangeLog>
