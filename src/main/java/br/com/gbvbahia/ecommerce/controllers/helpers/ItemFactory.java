@@ -57,7 +57,7 @@ public final class ItemFactory {
 
     public static List<ItemScreen> buildItemsFromCategory(Collection<Category> categories) {
         List<ItemScreen> items = new ArrayList<>();
-        categories.parallelStream().forEach(cat -> items.add(buildItem(cat)));
+        categories.stream().forEach(cat -> items.add(buildItem(cat)));
         return items;
     }
 

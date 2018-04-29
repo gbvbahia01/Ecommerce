@@ -20,7 +20,7 @@
                 <ul class="navbar-nav ml-auto">
                     <tr th:each="cat : ${cats}">
                         <li class="nav-item mr-3">
-                            <a href="#explore-head-section" class="nav-link" text="${cat.name}">Category</a>
+                            <a href="#explore-head-section" class="nav-link" th:text="${cat.name}">Category</a>
                         </li>
                     </tr>
                     <li class="nav-item">
