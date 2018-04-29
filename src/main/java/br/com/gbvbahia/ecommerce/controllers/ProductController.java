@@ -53,7 +53,7 @@ public class ProductController extends ControllerCommon {
 
         logger.debug("Img for prodImg:{} for key:{} requested.", prodImgId, keyPicture);
 
-        Optional<ProductImage> prodImgOpt = productImageService.findBydId(Long.valueOf(prodImgId));
+        Optional<ProductImage> prodImgOpt = productImageService.findById(Long.valueOf(prodImgId));
         
         File imgDisk = imageIoHandlerComponent.getFileFromProducFile(prodImgOpt.get(), keyPicture);
         

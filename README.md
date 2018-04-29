@@ -78,4 +78,5 @@ After setup those information execute this command at the same directory that is
  drop schema  orders cascade;
  drop schema customers cascade;
  drop schema products cascade;
+ drop schema commons cascade;
   ```

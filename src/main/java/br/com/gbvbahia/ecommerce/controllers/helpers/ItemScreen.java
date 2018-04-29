@@ -2,6 +2,8 @@ package br.com.gbvbahia.ecommerce.controllers.helpers;
 
 import br.com.gbvbahia.ecommerce.model.enums.KeyPicture;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -11,9 +13,9 @@ import java.util.Objects;
  * @version 1.0
  * @since 15/04/18
  */
-public class ItemScreen<ID extends Serializable> implements Serializable {
+public class ItemScreen implements Serializable {
 
-    private ID id;
+    private Serializable id;
     private String imgName;
     private String imgWidth;
     private String imgHeight;
@@ -22,7 +24,7 @@ public class ItemScreen<ID extends Serializable> implements Serializable {
     private String description;
     private final Class clazz;
     private float price;
-
+    private List<ItemScreen> subItems;
 
     public ItemScreen(Class clazz, KeyPicture keyPicture) {
         this.clazz = clazz;
@@ -37,7 +39,7 @@ public class ItemScreen<ID extends Serializable> implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        ItemScreen<?> itemScreen = (ItemScreen<?>) o;
+        ItemScreen itemScreen = (ItemScreen) o;
         return Objects.equals(getId(), itemScreen.getId());
     }
 
@@ -50,11 +52,11 @@ public class ItemScreen<ID extends Serializable> implements Serializable {
     // Getters and Setters
     //=====================
 
-    public ID getId() {
+    public Serializable getId() {
         return id;
     }
 
-    public void setId(ID id) {
+    public void setId(Serializable id) {
         this.id = id;
     }
 
@@ -105,5 +107,15 @@ public class ItemScreen<ID extends Serializable> implements Serializable {
     public String getKeyPicture() {
         return keyPicture;
     }
-    
+
+    public List<ItemScreen> getSubItems() {
+        if (subItems == null) {
+            subItems = new ArrayList<>();
+        }
+        return subItems;
+    }
+
+    public void setSubItems(List<ItemScreen> subItems) {
+        this.subItems = subItems;
+    }
 }

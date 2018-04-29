@@ -1,8 +1,12 @@
 package br.com.gbvbahia.ecommerce.controllers.helpers;
 
+import br.com.gbvbahia.ecommerce.model.entity.orders.Item;
+import br.com.gbvbahia.ecommerce.model.entity.products.Category;
 import br.com.gbvbahia.ecommerce.model.entity.products.ProductImage;
+import br.com.gbvbahia.ecommerce.model.entity.products.SubCategory;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -19,7 +23,7 @@ public final class ItemFactory {
 
     public static ItemScreen buildItem(ProductImage productImage) {
 
-        ItemScreen<Long> itemScreen = new ItemScreen(productImage.getClass(), productImage.getKeyPicture());
+        ItemScreen itemScreen = new ItemScreen(productImage.getClass(), productImage.getKeyPicture());
 
         itemScreen.setId(productImage.getId());
 
@@ -34,11 +38,40 @@ public final class ItemFactory {
         return itemScreen;
     }
 
-    public static List<ItemScreen> buildItems(List<ProductImage> productImageList) {
-        List<ItemScreen> arrayList = new ArrayList<>(productImageList.size());
+    public static ItemScreen buildItem(Category category) {
+        ItemScreen itemScreen = new ItemScreen(category.getClass(), null);
+        itemScreen.setDescription(category.getDescription());
+        itemScreen.setId(category.getId());
+        itemScreen.setName(category.getName());
+        itemScreen.setSubItems(buildItemsFromSubCategory(category.getSubCategorys()));
+        return itemScreen;
+    }
 
-        productImageList.parallelStream().forEach( pi -> arrayList.add(buildItem(pi)));
+    public static ItemScreen buildItem(SubCategory subCategory) {
+        ItemScreen itemScreen = new ItemScreen(subCategory.getClass(), null);
+        itemScreen.setName(subCategory.getName());
+        itemScreen.setId(subCategory.getId());
+        itemScreen.setDescription(subCategory.getDescription());
+        return itemScreen;
+    }
 
-        return arrayList;
+    public static List<ItemScreen> buildItemsFromCategory(Collection<Category> categories) {
+        List<ItemScreen> items = new ArrayList<>();
+        categories.parallelStream().forEach(cat -> items.add(buildItem(cat)));
+        return items;
+    }
+
+    public static List<ItemScreen> buildItemsFromSubCategory(Collection<SubCategory> subCategories) {
+        List<ItemScreen> items = new ArrayList<>();
+        subCategories.parallelStream().forEach(sub -> items.add(buildItem(sub)));
+        return items;
+    }
+
+    public static List<ItemScreen> buildItemsFromProductImage(Collection<ProductImage> productImageList) {
+        List<ItemScreen> items = new ArrayList<>(productImageList.size());
+
+        productImageList.parallelStream().forEach( pi -> items.add(buildItem(pi)));
+
+        return items;
     }
 }
