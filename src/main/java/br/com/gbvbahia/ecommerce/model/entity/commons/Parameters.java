@@ -1,4 +1,4 @@
-package br.com.gbvbahia.ecommerce.model.entity.common;
+package br.com.gbvbahia.ecommerce.model.entity.commons;
 
 import br.com.gbvbahia.ecommerce.model.cotract.Model;
 
