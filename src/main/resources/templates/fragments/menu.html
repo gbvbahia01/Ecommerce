@@ -2,45 +2,64 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
       lang="en">
-    <!-- navbar-expand{-sm|-md|-lg|-xl} -->
-    <nav th:fragment="top (cats)" class="navbar navbar-expand-sm bg-dark navbar-dark">
-        <div class="container">
+<!-- {-sm|-md|-lg|-xl} -->
 
-            <img th:src="@{/img/logo/logo_w_96.png}"
-                 th:alt="#{application.name}"
-                 th:title="#{application.name}"
-                 class="img-fluid rounded-circle"
-                 width="64" height="64">
-
-            <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-                <ul class="navbar-nav ml-auto">
-                    <tr th:each="cat : ${cats}">
-                        <li class="nav-item mr-3">
-                            <a href="#explore-head-section" class="nav-link" th:text="${cat.name}">Category</a>
-                        </li>
-                    </tr>
-                    <li class="nav-item">
-                        <form class="form-inline my-2 my-lg-0">
-                            <div class="input-group input-group-sm mb-3">
-                                <input class="form-control form-control-sm" type="search" aria-describedby="inputGroup-sizing-sm">
-                                <div class="input-group-prepend">
-                                    <a class="btn btn-sm btn-outline-light" href="#">
-                                        <i class="fas fa-search fa-sm"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </form>
-
-                    </li>
-                </ul>
-
-            </div>
-
+<div th:fragment="logo-search" class="container" >
+    <div class="row align-items-center ">
+        <div class="col-3">
+            <img th:src="@{/img/logo/logo_w_96.png}" th:alt="#{application.name}" th:title="#{application.name}"
+                 class="img-fluid rounded-circle navbar-brand" width="96" height="96"/>
         </div>
-    </nav>
+
+        <div class="col-5 d-none d-lg-block">
+            <div class="container" >
+                <div class="row align-items-center ">
+                    <div class="col-6">
+                    <!-- Email -->
+                        <i class="fas fa-envelope fa-sm fa-inverse"><a class="mailto ml-1" href="mailto:contact@domain.com">contact@domain.com</a></i>
+                    </div>
+                    <div class="col-6">
+                    <!-- Phone -->
+                        <i class="fab fa-whatsapp fa-sm fa-inverse" aria-hidden="true"><spam class="phoneto ml-1">+1 (342)-(323)-4923</spam></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-9 col-lg-4">
+            <form class="form-inline my-2 my-lg-0 float-right">
+                <div class="input-group input-group-sm mb-3">
+                    <input class="form-control" type="search"
+                           aria-describedby="inputGroup-sizing-sm">
+                    <div class="input-group-prepend">
+                        <a class="btn btn-outline-light" href="#">
+                            <i class="fas fa-search fa-sm"></i>
+                        </a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<ui th:fragment="top (cats)" class="nav nav-fill">
+    <th:block th:each="cat, catStat : ${cats}">
+        <th:block th:if="${#lists.isEmpty(cat.subItems)}">
+            <a class="nav-item nav-link" href="#" th:text="${cat.name}">Category</a>
+        </th:block>
+
+        <th:block th:if="${not #lists.isEmpty(cat.subItems)}">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                   aria-haspopup="true" aria-expanded="false" th:text="${cat.name}">Category</a>
+                <div class="dropdown-menu">
+                    <th:block th:each="sub : ${cat.subItems}" th:if="${sub.name}">
+                        <a class="dropdown-item" href="#" th:text="${sub.name}">Sub-Category</a>
+                    </th:block>
+                </div>
+        </th:block>
+    </th:block>
+</ui>
 
 </html>

@@ -11,7 +11,6 @@ Colors {
     gray: #DDDDDD;
 }
  */
-
 /*================================
 	# Loading Screen
 ================================*/
@@ -67,23 +66,39 @@ Colors {
 }
 
 /*================================
-	# Navbar
+	# Body
 ================================*/
-.navbar {
-    border-bottom: #e86031 3px solid;
-    opacity: 0.90;
+body {
+    z-index: 2;
 }
 
-@media (max-width: 1200px) {
-    body {
-        z-index: 2;
-    }
-    .navbar {
-        position: fixed;
-        right: 0;
-        left: 0;
-        border-radius: 0;
-        top: 0;
-        z-index: 1;
-    }
+/*================================
+	# Header
+================================*/
+
+header {
+    /*opacity: 0.90;*/
+    border-bottom: #e86031 3px solid;
+    /*z-index: 1;*/
+}
+
+/*================================
+	# Header Nav
+================================*/
+.nav-link {
+    color: #E86031;
+}
+.nav-link:hover {
+    color: #BE0A26;
+}
+
+.mailto {
+    color: #DDDDDD;
+}
+.mailto:hover {
+    color: #DDDDDD;
+}
+
+.phoneto {
+    color: #DDDDDD;
 }
