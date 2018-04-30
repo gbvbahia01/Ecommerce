@@ -7,6 +7,8 @@ import br.com.gbvbahia.ecommerce.services.commons.ParameterService;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 /**
  * Project: Ecommerce
  *
@@ -26,5 +28,20 @@ public class ParameterServiceImpl extends ServiceCommon<Parameter, String, JpaRe
     @Override
     protected JpaRepository<Parameter, String> getRepository() {
         return this.parameterRepository;
+    }
+
+    @Override
+    public String getValueByKey(String key) {
+        Optional<Parameter> optional = parameterRepository.findById(key);
+        return optional.isPresent() ? optional.get().getValue() : null;
+    }
+
+    @Override
+    public Number getValueByKeyAsNumber(String key) {
+        String value = getValueByKey(key);
+        if (value == null) {
+            return null;
+        }
+        return new Double(value);
     }
 }

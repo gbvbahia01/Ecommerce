@@ -35,6 +35,16 @@ public class Parameter implements Model<String> {
     @Column(name = "description", length = 250)
     private String description;
 
+    public Parameter() {
+        super();
+    }
+
+    public Parameter(@Size(max = 30, min = 1) @NotNull String key,
+                     @Size(max = 30, min = 1) @NotNull String value) {
+        this.key = key;
+        this.value = value;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

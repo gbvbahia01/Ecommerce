@@ -12,4 +12,12 @@
         </insert>
     </changeSet>
 
+    <changeSet id="commons-v1-dml-parameter-cat-menu" author="gbvbahia">
+        <insert tableName="parameter" schemaName="commons">
+            <column name="key" value="AMOUNT_CATEGORY_MENU" />
+            <column name="value" value="6"/>
+            <column name="description" value="Amount categories at menu" />
+        </insert>
+    </changeSet>
+
 </databaseChangeLog>
