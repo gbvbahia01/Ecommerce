@@ -7,6 +7,7 @@ package br.com.gbvbahia.ecommerce.controllers;
 
 import br.com.gbvbahia.ecommerce.component.ImageIoHandlerComponent;
 import br.com.gbvbahia.ecommerce.model.entity.products.ProductImage;
+import br.com.gbvbahia.ecommerce.services.commons.ParameterService;
 import br.com.gbvbahia.ecommerce.services.products.ProductImageService;
 import br.com.gbvbahia.ecommerce.services.products.ProductService;
 
@@ -37,10 +38,12 @@ public class ProductController extends ControllerCommon {
     private final ProductService productService;
     private final ProductImageService productImageService;
 
-    public ProductController(ImageIoHandlerComponent imageIoHandlerComponent,
+    public ProductController(ParameterService parameterService,
+                             ImageIoHandlerComponent imageIoHandlerComponent,
                              ProductService productService,
                              ProductImageService productImageService) {
 
+        super(parameterService);
         this.imageIoHandlerComponent = imageIoHandlerComponent;
         this.productService = productService;
         this.productImageService = productImageService;

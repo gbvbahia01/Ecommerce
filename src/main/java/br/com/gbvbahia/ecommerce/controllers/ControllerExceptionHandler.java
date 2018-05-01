@@ -1,5 +1,6 @@
 package br.com.gbvbahia.ecommerce.controllers;
 
+import br.com.gbvbahia.ecommerce.services.commons.ParameterService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -15,6 +16,10 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @ControllerAdvice
 public class ControllerExceptionHandler extends ControllerCommon {
+
+    public ControllerExceptionHandler(ParameterService parameterService) {
+        super(parameterService);
+    }
 
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler(Exception.class)

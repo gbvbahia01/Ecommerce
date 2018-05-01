@@ -21,9 +21,11 @@ public class ItemScreen implements Serializable {
     private String imgHeight;
     private String keyPicture;
     private String name;
+    private String value;
     private String description;
     private final Class clazz;
     private float price;
+    private boolean rendered = true;
     private List<ItemScreen> subItems;
 
     public ItemScreen(Class clazz, KeyPicture keyPicture) {
@@ -117,5 +119,21 @@ public class ItemScreen implements Serializable {
 
     public void setSubItems(List<ItemScreen> subItems) {
         this.subItems = subItems;
+    }
+
+    public boolean isRendered() {
+        return rendered;
+    }
+
+    public void setRendered(boolean rendered) {
+        this.rendered = rendered;
+    }
+
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
     }
 }

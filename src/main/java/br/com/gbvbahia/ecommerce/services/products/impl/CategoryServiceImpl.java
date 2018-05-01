@@ -6,6 +6,8 @@ import br.com.gbvbahia.ecommerce.repositories.products.CategoryRepository;
 import br.com.gbvbahia.ecommerce.services.ServiceCommon;
 import br.com.gbvbahia.ecommerce.services.commons.ParameterService;
 import br.com.gbvbahia.ecommerce.services.products.CategoryService;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
@@ -37,8 +39,21 @@ public class CategoryServiceImpl extends ServiceCommon<Category, Long, JpaReposi
 
     @Override
     public List<Category> listCategoriesForMenu() {
-        Optional<Parameter> amount = parameterService.findById(ParameterService.AMOUNT_STOCK_CATEGORY);
-        return categoryRepository.listAllForMenu(Integer.valueOf(amount.get().getValue().trim()));
+
+        //Amount products in stock
+        Parameter amountParameter = parameterService.findById(ParameterService.AMOUNT_STOCK_CATEGORY).get();
+        Integer amount = Integer.valueOf(amountParameter.getValue());
+        final String limited;
+        if (amountParameter.isActivated()) {
+            limited = "limited";
+        } else {
+            limited = "unlimited";
+        }
+        //Limit of categories to show in menu
+        Parameter menuMaxParameter = parameterService.findById(ParameterService.AMOUNT_CATEGORY_MENU).get();
+        Pageable limitMenu = PageRequest.of(0, Integer.valueOf(menuMaxParameter.getValue()));
+
+        return categoryRepository.listAllForMenu(amount, limited, limitMenu);
     }
 
 }

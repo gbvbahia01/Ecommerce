@@ -8,6 +8,7 @@ package br.com.gbvbahia.ecommerce.controllers;
 import br.com.gbvbahia.ecommerce.component.ImageIoHandlerComponent;
 import br.com.gbvbahia.ecommerce.model.entity.products.ProductImage;
 import br.com.gbvbahia.ecommerce.model.enums.KeyPicture;
+import br.com.gbvbahia.ecommerce.services.commons.ParameterService;
 import br.com.gbvbahia.ecommerce.services.products.ProductImageService;
 import br.com.gbvbahia.ecommerce.services.products.ProductService;
 import java.io.File;
@@ -39,16 +40,22 @@ public class ProductControllerTest {
     private ProductImageService productImageService;
     @Mock
     private ImageIoHandlerComponent imageIoHandlerComponent;
-    
+    @Mock
+    private ParameterService parameterService;
+
     private ProductController controller;
     private MockMvc mockMvc;
     
     @Before
     public void setUp() {
         MockitoAnnotations.initMocks(this);
-        controller = new ProductController(imageIoHandlerComponent, productService, productImageService);
+        controller = new ProductController(parameterService,
+                                           imageIoHandlerComponent,
+                                           productService,
+                                           productImageService);
+
         mockMvc = MockMvcBuilders.standaloneSetup(controller)
-                .setControllerAdvice(new ControllerExceptionHandler())
+                .setControllerAdvice(new ControllerExceptionHandler(parameterService))
                 .build();
     }
 

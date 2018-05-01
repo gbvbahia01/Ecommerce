@@ -3,6 +3,7 @@ package br.com.gbvbahia.ecommerce.controllers;
 import br.com.gbvbahia.ecommerce.TestFactory;
 import br.com.gbvbahia.ecommerce.controllers.helpers.ItemScreen;
 import br.com.gbvbahia.ecommerce.model.enums.KeyPicture;
+import br.com.gbvbahia.ecommerce.services.commons.ParameterService;
 import br.com.gbvbahia.ecommerce.services.products.CategoryService;
 import br.com.gbvbahia.ecommerce.services.products.ProductImageService;
 import org.junit.Assert;
@@ -37,12 +38,17 @@ public class IndexControllerTest {
     @Mock
     private CategoryService categoryService;
 
+    @Mock
+    private ParameterService parameterService;
+
     private IndexController controller;
 
     @Before
     public void setUp() {
         MockitoAnnotations.initMocks(this);
-        controller = new IndexController(productImageService, categoryService);
+        controller = new IndexController(parameterService,
+                                         productImageService,
+                                         categoryService);
     }
 
     @Test

@@ -25,7 +25,7 @@
             Where c.id = s.category.id
             And s.id = p.subCategory.id
             And p.id = ps.product.id
-            And ps.stockSmount >= :amountStock
+            And ('unlimited' = :unlimited OR ps.stockSmount >= :amountStock)
             Order By c.priority, c.name
             ]]>
         </query>

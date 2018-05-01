@@ -51,6 +51,14 @@ public class Parameter implements Model<String> {
         this.value = value;
     }
 
+    public Parameter(@Size(max = 30, min = 1) @NotNull String key,
+                     @Size(max = 500, min = 1) @NotNull String value,
+                     boolean activated) {
+        this.key = key;
+        this.value = value;
+        this.activated = activated;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

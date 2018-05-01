@@ -7,6 +7,8 @@ import br.com.gbvbahia.ecommerce.services.commons.ParameterService;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -43,5 +45,10 @@ public class ParameterServiceImpl extends ServiceCommon<Parameter, String, JpaRe
             return null;
         }
         return new Double(value);
+    }
+
+    @Override
+    public List<Parameter> listByRange(String... keys) {
+        return parameterRepository.findAllById(Arrays.asList(keys));
     }
 }

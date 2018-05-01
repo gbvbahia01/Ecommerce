@@ -1,5 +1,6 @@
 package br.com.gbvbahia.ecommerce.controllers.helpers;
 
+import br.com.gbvbahia.ecommerce.model.entity.commons.Parameter;
 import br.com.gbvbahia.ecommerce.model.entity.orders.Item;
 import br.com.gbvbahia.ecommerce.model.entity.products.Category;
 import br.com.gbvbahia.ecommerce.model.entity.products.ProductImage;
@@ -55,6 +56,15 @@ public final class ItemFactory {
         return itemScreen;
     }
 
+    public static ItemScreen buildItem(Parameter parameter) {
+        ItemScreen item = new ItemScreen(parameter.getClass(), null);
+        item.setDescription(parameter.getDescription());
+        item.setName(parameter.getKey());
+        item.setValue(parameter.getValue());
+        item.setRendered(parameter.isActivated());
+        return item;
+    }
+
     public static List<ItemScreen> buildItemsFromCategory(Collection<Category> categories) {
         List<ItemScreen> items = new ArrayList<>();
         categories.stream().forEach(cat -> items.add(buildItem(cat)));
@@ -72,6 +82,12 @@ public final class ItemFactory {
 
         productImageList.parallelStream().forEach( pi -> items.add(buildItem(pi)));
 
+        return items;
+    }
+
+    public static List<ItemScreen> buildItemsFromParameters(Collection<Parameter> parameters) {
+        List<ItemScreen> items = new ArrayList<>(parameters.size());
+        parameters.parallelStream().forEach(p -> items.add(buildItem(p)));
         return items;
     }
 }

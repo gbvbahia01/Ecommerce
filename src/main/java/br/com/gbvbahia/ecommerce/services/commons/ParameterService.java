@@ -3,6 +3,8 @@ package br.com.gbvbahia.ecommerce.services.commons;
 import br.com.gbvbahia.ecommerce.model.entity.commons.Parameter;
 import br.com.gbvbahia.ecommerce.services.ServiceContract;
 
+import java.util.List;
+
 /**
  * Project: Ecommerce
  *
@@ -18,7 +20,10 @@ public interface ParameterService extends ServiceContract<Parameter, String> {
     String WHATS_CONTACT = "CONTACT_WHATS";
     String FACEBOOK_CONTACT = "CONTACT_FACEBOOK";
 
+    String[] CONTACT_PARAMETERS = {EMAIL_CONTACT, WHATS_CONTACT, FACEBOOK_CONTACT};
+
     String getValueByKey(String key);
     Number getValueByKeyAsNumber(String key);
+    List<Parameter> listByRange(String... keys);
 
 }

@@ -1,6 +1,7 @@
 package br.com.gbvbahia.ecommerce.controllers;
 
 import br.com.gbvbahia.ecommerce.component.CookieHandlerComponent;
+import br.com.gbvbahia.ecommerce.services.commons.ParameterService;
 import br.com.gbvbahia.ecommerce.services.orders.ShopcarService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,9 +23,11 @@ public class ShopcarController  extends ControllerCommon {
     private final ShopcarService shopcarService;
     private CookieHandlerComponent cookieHandlerComponent;
 
-    public ShopcarController(ShopcarService shopcarService,
+    public ShopcarController(ParameterService parameterService,
+                             ShopcarService shopcarService,
                              CookieHandlerComponent cookieHandlerComponent) {
 
+        super(parameterService);
         this.shopcarService = shopcarService;
         this.cookieHandlerComponent = cookieHandlerComponent;
     }
