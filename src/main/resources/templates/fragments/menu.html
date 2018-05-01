@@ -4,36 +4,40 @@
       lang="en">
 <!-- {-sm|-md|-lg|-xl} -->
 
+<div th:fragment="social-car" class="container" >
+    <div class="row justify-content-start">
+        <div class="col-2 d-none d-lg-block">
+            <i class="fas fa-envelope fa-sm fa-inverse"><a class="mailto ml-1 font-weight-bold" href="mailto:contact@domain.com">contact@domain.com</a></i>
+
+        </div>
+        <div class="col-9 col-lg-7">
+            <i class="fab fa-whatsapp fa-sm fa-inverse ml-3" aria-hidden="true"><strong class="phoneto ml-1 font-weight-bold">+1 (342)-(323)-4923</strong></i>
+            <a href="#" class="facebook ml-3"><i class="fab fa-facebook fa-sm fa-inverse"></i></a>
+        </div>
+
+        <div class="col-3">
+            <i class="float-right">
+                <a href="#"><i class="fas fa-shopping-cart fa-sm fa-inverse"></i></a><span class="badge badge-pill badge-light">30</span>
+            </i>
+        </div>
+    </div>
+</div>
+
 <div th:fragment="logo-search" class="container" >
     <div class="row align-items-center ">
         <div class="col-3">
             <img th:src="@{/img/logo/logo_w_96.png}" th:alt="#{application.name}" th:title="#{application.name}"
-                 class="img-fluid rounded-circle navbar-brand" width="96" height="96"/>
+                 class="img-fluid rounded-circle navbar-brand m-0" width="96" height="96"/>
         </div>
 
-        <div class="col-5 d-none d-lg-block">
-            <div class="container" >
-                <div class="row align-items-center ">
-                    <div class="col-6">
-                    <!-- Email -->
-                        <i class="fas fa-envelope fa-sm fa-inverse"><a class="mailto ml-1" href="mailto:contact@domain.com">contact@domain.com</a></i>
-                    </div>
-                    <div class="col-6">
-                    <!-- Phone -->
-                        <i class="fab fa-whatsapp fa-sm fa-inverse" aria-hidden="true"><spam class="phoneto ml-1">+1 (342)-(323)-4923</spam></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-9 col-lg-4">
-            <form class="form-inline my-2 my-lg-0 float-right">
-                <div class="input-group input-group-sm mb-3">
+        <div class="col-9">
+            <form class="form-inline my-lg-0 float-right">
+                <div class="input-group input-group">
                     <input class="form-control" type="search"
                            aria-describedby="inputGroup-sizing-sm">
                     <div class="input-group-prepend">
-                        <a class="btn btn-outline-light" href="#">
-                            <i class="fas fa-search fa-sm"></i>
+                        <a class="btn btn-outline-dark" href="#">
+                            <i class="fas fa-search fa"></i>
                         </a>
                     </div>
                 </div>
@@ -43,7 +47,7 @@
 </div>
 
 
-<ui th:fragment="top (cats)" class="nav nav-fill">
+<ui th:fragment="menu (cats)" class="nav">
     <th:block th:each="cat, catStat : ${cats}">
         <th:block th:if="${#lists.isEmpty(cat.subItems)}">
             <a class="nav-item nav-link" href="#" th:text="${cat.name}">Category</a>
@@ -53,7 +57,7 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
                    aria-haspopup="true" aria-expanded="false" th:text="${cat.name}">Category</a>
-                <div class="dropdown-menu">
+                <div class="dropdown-menu border-bottom border-light">
                     <th:block th:each="sub : ${cat.subItems}" th:if="${sub.name}">
                         <a class="dropdown-item" href="#" th:text="${sub.name}">Sub-Category</a>
                     </th:block>

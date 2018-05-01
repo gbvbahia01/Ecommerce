@@ -13,12 +13,20 @@
 </section>
 
 <!-- Top Menu -->
-<header class="bg-dark">
+<header>
 
-    <div class="container" th:replace="fragments/menu :: logo-search"></div>
+    <section class="bg-dark" id="menu-top">
+        <div class="container" th:replace="fragments/menu :: social-car"></div>
+    </section>
 
-    <ui th:replace="fragments/menu :: top (${categories})"></ui>
-
+    <section class="bg-light" id="menu-mid">
+        <div class="container" th:replace="fragments/menu :: logo-search"></div>
+    </section>
+    <section class="bg-dark" id="menu-bot">
+        <div class="container">
+            <ui th:replace="fragments/menu :: menu (${categories})"></ui>
+        </div>
+    </section>
 </header>
 
 
