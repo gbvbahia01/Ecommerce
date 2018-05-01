@@ -27,13 +27,19 @@ public class Parameter implements Model<String> {
     @Column(name = "key")
     private String key;
 
-    @Size(max = 30, min = 1)
+    @Size(max = 500, min = 1)
     @NotNull
-    @Column(name = "value", length = 30, nullable = false)
+    @Column(name = "value", length = 500, nullable = false)
     private String value;
 
     @Column(name = "description", length = 250)
     private String description;
+
+    /**
+     * Some configuration can be disabled, NOT all.
+     */
+    @Column(name = "active", nullable = false)
+    private boolean activated = false;
 
     public Parameter() {
         super();
@@ -93,5 +99,13 @@ public class Parameter implements Model<String> {
     @Override
     public String getId() {
         return getKey();
+    }
+
+    public boolean isActivated() {
+        return activated;
+    }
+
+    public void setActivated(boolean activated) {
+        this.activated = activated;
     }
 }

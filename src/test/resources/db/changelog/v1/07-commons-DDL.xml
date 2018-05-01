@@ -37,4 +37,21 @@
                               schemaName="commons"/>
     </changeSet>
 
+    <changeSet id="commons-v1-ddl-may-01-2018-0702" author="gbvbahia">
+
+        <modifyDataType columnName="value"
+                        newDataType="varchar(500)"
+                        tableName="parameter"
+                        schemaName="commons"/>
+
+        <addColumn tableName="parameter" schemaName="commons">
+            <column name="active" type="boolean" defaultValue="false" />
+        </addColumn>
+
+        <addNotNullConstraint columnName="active"
+                              columnDataType="boolean"
+                              tableName="parameter"
+                              schemaName="commons"/>
+    </changeSet>
+
 </databaseChangeLog>

@@ -20,4 +20,33 @@
         </insert>
     </changeSet>
 
+    <changeSet id="commons-v1-dml-menu-control" author="gbvbahia">
+        <insert tableName="parameter" schemaName="commons">
+            <column name="key" value="CONTACT_EMAIL" />
+            <column name="value" value="administration@ecommerce.com"/>
+            <column name="description" value="The email that will be shown at top menu. Active attribute is checked here." />
+            <column name="active" value="true" />
+        </insert>
+        <insert tableName="parameter" schemaName="commons">
+            <column name="key" value="CONTACT_WHATS" />
+            <column name="value" value="+55-99-55555-1977"/>
+            <column name="description" value="The Whatsapp that will be shown at top menu. Active attribute is checked here." />
+            <column name="active" value="true" />
+        </insert>
+        <insert tableName="parameter" schemaName="commons">
+            <column name="key" value="CONTACT_FACEBOOK" />
+            <column name="value" value="https://www.facebook.com/john.mary.99C9B9A9"/>
+            <column name="description" value="The Facebook page that will be shown at top menu. Active attribute is checked here." />
+            <column name="active" value="true" />
+        </insert>
+        <update tableName="parameter" schemaName="commons">
+            <column name="value" value="12" />
+            <column name="description" value="Amount categories at menu. Active attribute is NOT checked here." />
+            <where>key = 'AMOUNT_CATEGORY_MENU'</where>
+        </update>
+        <update tableName="parameter" schemaName="commons">
+            <column name="description" value="Min products to have category. Active attribute is checked here." />
+            <where>key = 'AMOUNT_STOCK_CATEGORY'</where>
+        </update>
+    </changeSet>
 </databaseChangeLog>
