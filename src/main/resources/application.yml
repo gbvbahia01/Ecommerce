@@ -20,3 +20,8 @@ logging:
   level:
     org.springframework: warn
     br.com.gbvbahia.ecommerce: DEBUG
+
+server:
+  error:
+    whitelabel:
+      enabled: false

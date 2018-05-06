@@ -6,23 +6,23 @@
 
 <div th:fragment="social-car" class="container" >
     <div class="row justify-content-start">
-        <div class="col-3 d-none d-lg-block" th:if="${CONTACT_EMAIL.rendered and contacts > 1}">
+        <div class="col-3 d-none d-lg-block" th:if="${CONTACT_EMAIL != null and CONTACT_EMAIL.rendered and contacts > 1}">
             <i class="fas fa-envelope fa-sm fa-inverse"><a class="mailto ml-1 font-weight-bold"
                                                            th:href="'mailto:' + ${CONTACT_EMAIL.value}"
                                                            th:text="${CONTACT_EMAIL.value}">contact@domain.com</a></i>
         </div>
-        <div class="col-9" th:if="${CONTACT_EMAIL.rendered and contacts == 1}">
+        <div class="col-9" th:if="${CONTACT_EMAIL != null and CONTACT_EMAIL.rendered and contacts == 1}">
             <i class="fas fa-envelope fa-sm fa-inverse"><a class="mailto ml-1 font-weight-bold"
                                                            th:href="'mailto:' + ${CONTACT_EMAIL.value}"
                                                            th:text="${CONTACT_EMAIL.value}">contact@domain.com</a></i>
         </div>
 
-        <div class="col-9 col-lg-6" th:unless="${CONTACT_EMAIL.rendered and contacts == 1}">
-            <i class="fab fa-whatsapp fa-sm fa-inverse ml-3" aria-hidden="true" th:if="${CONTACT_WHATS.rendered}">
+        <div class="col-9 col-lg-6" th:unless="${CONTACT_EMAIL != null and CONTACT_EMAIL.rendered and contacts == 1}">
+            <i class="fab fa-whatsapp fa-sm fa-inverse ml-3" aria-hidden="true" th:if="${CONTACT_WHATS != null and CONTACT_WHATS.rendered}">
                 <strong class="phoneto ml-1 font-weight-bold" th:text="${CONTACT_WHATS.value}">+1 (342)-(323)-4923</strong></i>
 
             <a th:href="${CONTACT_FACEBOOK.value}" target="_blank" class="facebook ml-3"
-               th:if="${CONTACT_FACEBOOK.rendered}"><i class="fab fa-facebook fa-sm fa-inverse"></i></a>
+               th:if="${CONTACT_FACEBOOK != null and CONTACT_FACEBOOK.rendered}"><i class="fab fa-facebook fa-sm fa-inverse"></i></a>
         </div>
 
         <div class="col-3">

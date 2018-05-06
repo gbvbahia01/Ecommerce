@@ -2,27 +2,61 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
       lang="en">
+    <!-- {-sm|-md|-lg|-xl} -->
     <div class="row" th:fragment="grid (products)">
-        <div class="card mb-4 box-shadow" th:each="prodImg : ${products}">
-            <div class="card-header">
-                <h4 class="my-0 font-weight-normal" th:text="${prodImg.name}"></h4>
-                <img src="../../static/img/def_420_535.png"
-                     width="420" height="535" class="img-fluid"
-                     th:src="@{'/product/' + ${prodImg.id} + '/productimg/' + ${prodImg.keyPicture}}"
-                     th:width="${prodImg.imgWidth}" th:height="${prodImg.imgHeight}"/>
+        <th:block th:each="prod : ${products}">
+            <div class="col-md-3 col-sm-6">
+                <div class="shopping-item">
+                    <!-- Image -->
+                    <a href="#">
+                        <img src="../../static/img/def_420_535.png"
+                             width="420" height="535" class="img-fluid"
+                             th:src="@{'/product/' + ${prod.id} + '/productimg/' + ${prod.keyPicture}}"
+                             th:width="${prod.imgWidth}" th:height="${prod.imgHeight}"/>
+                        <!-- Shopping item name / Heading -->
+                        <h4>
+                            <a href="#" th:text="${prod.name}">Product name</a>
+                            <span class="color float-right" th:text="${prod.price}">$49</span>
+                        </h4>
+                        <div class="clearfix"></div>
+                        <!-- Buy now button -->
+                        <div class="visible-xs">
+                            <a class="btn btn-color btn-sm" href="#" th:text="#{buy.now}">Buy Now</a>
+                        </div>
+                        <!-- Shopping item hover block & link -->
+                        <div class="item-hover bg-color hidden-xs">
+                            <a href="#" th:text="#{add.to.card}">Add<i class="fas fa-shopping-cart"></i></a>
+                        </div>
+                        <span class="hot-tag bg-danger">NEW</span>
+                </div>
             </div>
-            <div class="card-body">
-                <h1 class="card-title pricing-card-title" th:text="${prodImg.price}"></h1>
-                <ul class="list-unstyled mt-3 mb-4">
-                    <li th:text="${prodImg.description}"></li>
-                </ul>
-                <form th:action="@{/shopcar/prodImg}" method="post">
-                    <input type="hidden" name="prodImgId" th:value="${prodImg.id}"/>
-                    <input type="hidden" name="redirect" value="/"/>
-                    <button type="submit" class="btn btn-lg btn-block btn-outline-primary">Add Card
-                    </button>
-                </form>
+        </th:block>
+    </div>
+
+    <div class="row" th:fragment="old (products)">
+        <div class="col-md-3 col-sm-6">
+            <div class="card mb-4 box-shadow" th:each="prodImg : ${products}">
+                <div class="card-header">
+                    <h4 class="my-0 font-weight-normal" th:text="${prodImg.name}"></h4>
+                    <img src="../../static/img/def_420_535.png"
+                         width="420" height="535" class="img-fluid"
+                         th:src="@{'/product/' + ${prodImg.id} + '/productimg/' + ${prodImg.keyPicture}}"
+                         th:width="${prodImg.imgWidth}" th:height="${prodImg.imgHeight}"/>
+                </div>
+                <div class="card-body">
+                    <h1 class="card-title pricing-card-title" th:text="${prodImg.price}"></h1>
+                    <ul class="list-unstyled mt-3 mb-4">
+                        <li th:text="${prodImg.description}"></li>
+                    </ul>
+                    <form th:action="@{/shopcar/prodImg}" method="post">
+                        <input type="hidden" name="prodImgId" th:value="${prodImg.id}"/>
+                        <input type="hidden" name="redirect" value="/"/>
+                        <button type="submit" class="btn btn-lg btn-block btn-outline-primary">Add Card
+                        </button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
+
 </html>

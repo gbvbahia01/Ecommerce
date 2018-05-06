@@ -55,7 +55,7 @@ public class ProductControllerTest {
                                            productImageService);
 
         mockMvc = MockMvcBuilders.standaloneSetup(controller)
-                .setControllerAdvice(new ControllerExceptionHandler(parameterService))
+                .setControllerAdvice(new AppExceptionHandler(parameterService))
                 .build();
     }
 

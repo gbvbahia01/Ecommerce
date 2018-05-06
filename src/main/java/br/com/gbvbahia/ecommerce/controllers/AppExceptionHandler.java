@@ -15,9 +15,9 @@ import org.springframework.web.servlet.ModelAndView;
  * @since 15/04/18
  */
 @ControllerAdvice
-public class ControllerExceptionHandler extends ControllerCommon {
+public class AppExceptionHandler extends ControllerCommon {
 
-    public ControllerExceptionHandler(ParameterService parameterService) {
+    public AppExceptionHandler(ParameterService parameterService) {
         super(parameterService);
     }
 
