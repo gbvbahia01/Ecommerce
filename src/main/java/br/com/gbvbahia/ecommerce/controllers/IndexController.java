@@ -57,7 +57,7 @@ public class IndexController extends  ControllerCommon {
         };
 
         model.addAttribute("hello","Hello Ecommerce");
-        model.addAttribute("prodsImg",itemsProductImage);
+        model.addAttribute("promotionItems",itemsProductImage);
         model.addAttribute("categories", itemsCategory);
         model.addAttribute("contacts", contacts);
 

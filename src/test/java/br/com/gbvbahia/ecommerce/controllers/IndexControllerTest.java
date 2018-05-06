@@ -66,7 +66,7 @@ public class IndexControllerTest {
                 .andExpect(model().attributeExists("categories"))
                 .andExpect(model().attributeExists("contacts"))
                 .andExpect(model().attribute("contacts", 0))
-                .andExpect(model().attributeExists("prodsImg"));
+                .andExpect(model().attributeExists("promotionItems"));
     }
 
     @Test
@@ -85,7 +85,7 @@ public class IndexControllerTest {
                 .andExpect(model().attributeExists("categories"))
                 .andExpect(model().attributeExists("contacts"))
                 .andExpect(model().attribute("contacts", 0))
-                .andExpect(model().attributeExists("prodsImg"));
+                .andExpect(model().attributeExists("promotionItems"));
     }
 
     @Test
@@ -109,7 +109,7 @@ public class IndexControllerTest {
 
         controller.getIndexPage(model);
 
-        Mockito.verify(model, Mockito.times(1)).addAttribute(Mockito.eq("prodsImg"),
+        Mockito.verify(model, Mockito.times(1)).addAttribute(Mockito.eq("promotionItems"),
                                                                                      argCaptorForProdImd.capture());
 
         Mockito.verify(model, Mockito.times(1)).addAttribute(Mockito.eq("categories"),
