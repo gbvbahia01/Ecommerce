@@ -18,7 +18,6 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.ui.Model;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
@@ -54,8 +53,9 @@ public class IndexControllerTest {
     @Test
     public void testGetIndexPageSlash() throws Exception {
 
-        Mockito.when(productImageService.listActivesByKeyPicture(KeyPicture.SIZE_420_535)).thenReturn(new ArrayList<>());
-        Mockito.when(categoryService.listCategoriesForMenu()).thenReturn(new ArrayList<>());
+        Mockito.when(productImageService.listActivesByKeyPicture(KeyPicture.SIZE_420_535)).thenReturn(Collections.emptyList());
+        Mockito.when(categoryService.listCategoriesForMenu()).thenReturn(Collections.emptyList());
+        Mockito.when(parameterService.listByRange(ParameterService.CONTACT_PARAMETERS)).thenReturn(Collections.emptyList());
 
         MockMvc mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
 
@@ -64,22 +64,27 @@ public class IndexControllerTest {
                 .andExpect(view().name("index"))
                 .andExpect(model().attributeExists("hello"))
                 .andExpect(model().attributeExists("categories"))
+                .andExpect(model().attributeExists("contacts"))
+                .andExpect(model().attribute("contacts", 0))
                 .andExpect(model().attributeExists("prodsImg"));
     }
 
     @Test
-    public void testGetIndexPageSlashEcommerce() throws Exception {
+    public void testGetIndexPage() throws Exception {
 
-        Mockito.when(productImageService.listActivesByKeyPicture(KeyPicture.SIZE_420_535)).thenReturn(new ArrayList<>());
-        Mockito.when(categoryService.listCategoriesForMenu()).thenReturn(new ArrayList<>());
+        Mockito.when(productImageService.listActivesByKeyPicture(KeyPicture.SIZE_420_535)).thenReturn(Collections.emptyList());
+        Mockito.when(categoryService.listCategoriesForMenu()).thenReturn(Collections.emptyList());
+        Mockito.when(parameterService.listByRange(ParameterService.CONTACT_PARAMETERS)).thenReturn(Collections.emptyList());
 
         MockMvc mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
 
-        mockMvc.perform(get("/"))
+        mockMvc.perform(get(""))
                 .andExpect(status().isOk())
                 .andExpect(view().name("index"))
                 .andExpect(model().attributeExists("hello"))
                 .andExpect(model().attributeExists("categories"))
+                .andExpect(model().attributeExists("contacts"))
+                .andExpect(model().attribute("contacts", 0))
                 .andExpect(model().attributeExists("prodsImg"));
     }
 
@@ -92,8 +97,15 @@ public class IndexControllerTest {
         Mockito.when(categoryService.listCategoriesForMenu())
                 .thenReturn(Collections.singletonList(TestFactory.makeCategory(2)));
 
+        Mockito.when(parameterService.listByRange(ParameterService.CONTACT_PARAMETERS))
+                .thenReturn(TestFactory.makeContactParameters());
+
         ArgumentCaptor<List<ItemScreen>> argCaptorForProdImd = ArgumentCaptor.forClass(List.class);
         ArgumentCaptor<List<ItemScreen>> argCaptorCategory = ArgumentCaptor.forClass(List.class);
+        ArgumentCaptor<ItemScreen> argCaptorParamEmails = ArgumentCaptor.forClass(ItemScreen.class);
+        ArgumentCaptor<ItemScreen> argCaptorParamWhats = ArgumentCaptor.forClass(ItemScreen.class);
+        ArgumentCaptor<ItemScreen> argCaptorParamFace = ArgumentCaptor.forClass(ItemScreen.class);
+        ArgumentCaptor<Integer> argCaptorParamContacts = ArgumentCaptor.forClass(Integer.class);
 
         controller.getIndexPage(model);
 
@@ -103,7 +115,23 @@ public class IndexControllerTest {
         Mockito.verify(model, Mockito.times(1)).addAttribute(Mockito.eq("categories"),
                 argCaptorCategory.capture());
 
+        Mockito.verify(model, Mockito.times(1)).addAttribute(Mockito.eq("CONTACT_EMAIL"),
+                                                             argCaptorParamEmails.capture());
+
+        Mockito.verify(model, Mockito.times(1)).addAttribute(Mockito.eq("CONTACT_WHATS"),
+                                                             argCaptorParamWhats.capture());
+
+        Mockito.verify(model, Mockito.times(1)).addAttribute(Mockito.eq("CONTACT_FACEBOOK"),
+                                                             argCaptorParamFace.capture());
+
+        Mockito.verify(model, Mockito.times(1)).addAttribute(Mockito.eq("contacts"),
+                                                             argCaptorParamContacts.capture());
+
         Assert.assertEquals(1, argCaptorForProdImd.getValue().size());
         Assert.assertEquals(2L, argCaptorCategory.getValue().get(0).getId());
+        Assert.assertEquals(TestFactory.EMAIL_TEST_VALUE, argCaptorParamEmails.getValue().getValue());
+        Assert.assertEquals(TestFactory.WHATS_TEST_VALUE, argCaptorParamWhats.getValue().getValue());
+        Assert.assertEquals(TestFactory.FACEB_TEST_VALUE, argCaptorParamFace.getValue().getValue());
+        Assert.assertEquals(3, argCaptorParamContacts.getValue().intValue());
     }
 }

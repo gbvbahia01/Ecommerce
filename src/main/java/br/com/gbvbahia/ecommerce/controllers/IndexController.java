@@ -48,7 +48,7 @@ public class IndexController extends  ControllerCommon {
         List<ItemScreen> itemsCategory = ItemFactory.buildItemsFromCategory(categoryList);
         List<ItemScreen> itemsContact = ItemFactory.buildItemsFromParameters(contactParameters);
 
-        int contacts = 0;
+        Integer contacts = 0;
         for (ItemScreen itemParameter : itemsContact) {
             model.addAttribute(itemParameter.getName(), itemParameter);
             if (itemParameter.isRendered()) {
