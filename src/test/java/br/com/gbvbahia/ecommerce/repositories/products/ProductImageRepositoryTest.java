@@ -12,8 +12,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
 
-import static org.junit.Assert.*;
-
 @RunWith(SpringRunner.class)
 @DataJpaTest
 public class ProductImageRepositoryTest {
@@ -27,24 +25,26 @@ public class ProductImageRepositoryTest {
 
     @Test
     public void listByPromotionTagCampaingProductTrue() {
-        int amountTrueExpected = 12;
+        int amountTrueExpected = 5;
 
         List<ProductImage> result = productImageRepository.listByPromotionTag(true,
                                                                               true,
-                                                                               KeyPicture.SIZE_420_535);
+                                                                              KeyPicture.SIZE_420_535,
+                                                                              1);
         Assert.assertTrue("ProductImage actives expected problem",
                           result.size() == amountTrueExpected);
     }
 
     @Test
     public void listByPromotionTagCampaingProductFalse() {
-        int amountTrueExpected = 3;
+        int amountTrueExpected = 2;
 
         List<ProductImage> result = productImageRepository.listByPromotionTag(true,
-                false,
-                KeyPicture.SIZE_420_535);
+                                                                              false,
+                                                                              KeyPicture.SIZE_420_535,
+                                                                              1);
         Assert.assertTrue("ProductImage actives expected problem",
-                result.size() == amountTrueExpected);
+                          result.size() == amountTrueExpected);
     }
 
     @Test
@@ -52,9 +52,22 @@ public class ProductImageRepositoryTest {
         int amountTrueExpected = 0;
 
         List<ProductImage> result = productImageRepository.listByPromotionTag(false,
-                true,
-                KeyPicture.SIZE_420_535);
+                                                                              true,
+                                                                              KeyPicture.SIZE_420_535,
+                                                                              1);
         Assert.assertTrue("ProductImage actives expected problem",
-                result.size() == amountTrueExpected);
+                          result.size() == amountTrueExpected);
+    }
+
+    @Test
+    public void listByPromotionTagNoStock() {
+        int amountTrueExpected = 0;
+
+        List<ProductImage> result = productImageRepository.listByPromotionTag(true,
+                                                                              true,
+                                                                              KeyPicture.SIZE_420_535,
+                                                                              100);
+        Assert.assertTrue("ProductImage actives expected problem",
+                          result.size() == amountTrueExpected);
     }
 }

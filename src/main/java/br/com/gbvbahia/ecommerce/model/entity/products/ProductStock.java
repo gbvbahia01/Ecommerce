@@ -36,7 +36,7 @@ public class ProductStock implements Model<Long> {
     @NotNull
     @Min(0)
     @Column(name = "amount", nullable = false)
-    private Integer stockSmount;
+    private Integer stockAmount;
 
     @NotNull
     @OneToOne
@@ -114,12 +114,12 @@ public class ProductStock implements Model<Long> {
         this.id = id;
     }
 
-    public Integer getStockSmount() {
-        return stockSmount;
+    public Integer getStockAmount() {
+        return stockAmount;
     }
 
-    public void setStockSmount(Integer stockSmount) {
-        this.stockSmount = stockSmount;
+    public void setStockAmount(Integer stockAmount) {
+        this.stockAmount = stockAmount;
     }
 
     public Product getProduct() {

@@ -3,6 +3,7 @@ package br.com.gbvbahia.ecommerce.services.orders.impl;
 import br.com.gbvbahia.ecommerce.model.entity.customers.Customer;
 import br.com.gbvbahia.ecommerce.model.entity.orders.Shopcar;
 import br.com.gbvbahia.ecommerce.repositories.orders.ShopcarRepository;
+import br.com.gbvbahia.ecommerce.services.commons.ParameterService;
 import br.com.gbvbahia.ecommerce.services.orders.ShopcarService;
 import org.junit.Assert;
 import org.junit.Before;
@@ -27,11 +28,14 @@ public class ShopcarServiceImplTest {
     @Mock
     private ShopcarRepository shopcarRepository;
 
+    @Mock
+    private ParameterService parameterService;
 
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
-        shopcarService = new ShopcarServiceImpl(shopcarRepository);
+        shopcarService = new ShopcarServiceImpl(parameterService,
+                                                shopcarRepository);
     }
 
     @Test

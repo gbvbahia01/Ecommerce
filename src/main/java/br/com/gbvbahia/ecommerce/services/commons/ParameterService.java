@@ -16,6 +16,7 @@ public interface ParameterService extends ServiceContract<Parameter, String> {
 
     String AMOUNT_STOCK_CATEGORY = "AMOUNT_STOCK_CATEGORY";
     String AMOUNT_CATEGORY_MENU = "AMOUNT_CATEGORY_MENU";
+    String AMOUNT_PROMOTION_PRODUCT = "AMOUNT_PROMOTION_PRODUCT";
     String EMAIL_CONTACT =  "CONTACT_EMAIL";
     String WHATS_CONTACT = "CONTACT_WHATS";
     String FACEBOOK_CONTACT = "CONTACT_FACEBOOK";

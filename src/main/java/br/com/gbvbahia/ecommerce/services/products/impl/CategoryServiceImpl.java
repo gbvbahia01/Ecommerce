@@ -24,11 +24,12 @@ import java.util.Optional;
 @Service
 public class CategoryServiceImpl extends ServiceCommon<Category, Long, JpaRepository<Category, Long>> implements CategoryService {
 
-    private final ParameterService parameterService;
     private final CategoryRepository categoryRepository;
 
-    public CategoryServiceImpl(ParameterService parameterService, CategoryRepository categoryRepository) {
-        this.parameterService = parameterService;
+    public CategoryServiceImpl(ParameterService parameterService,
+                               CategoryRepository categoryRepository) {
+
+        super(parameterService);
         this.categoryRepository = categoryRepository;
     }
 
@@ -41,7 +42,7 @@ public class CategoryServiceImpl extends ServiceCommon<Category, Long, JpaReposi
     public List<Category> listCategoriesForMenu() {
 
         //Amount products in stock
-        Parameter amountParameter = parameterService.findById(ParameterService.AMOUNT_STOCK_CATEGORY).get();
+        Parameter amountParameter = getParameterService().findById(ParameterService.AMOUNT_STOCK_CATEGORY).get();
         Integer amount = Integer.valueOf(amountParameter.getValue());
         final String limited;
         if (amountParameter.isActivated()) {
@@ -50,7 +51,7 @@ public class CategoryServiceImpl extends ServiceCommon<Category, Long, JpaReposi
             limited = "unlimited";
         }
         //Limit of categories to show in menu
-        Parameter menuMaxParameter = parameterService.findById(ParameterService.AMOUNT_CATEGORY_MENU).get();
+        Parameter menuMaxParameter = getParameterService().findById(ParameterService.AMOUNT_CATEGORY_MENU).get();
         Pageable limitMenu = PageRequest.of(0, Integer.valueOf(menuMaxParameter.getValue()));
 
         return categoryRepository.listAllForMenu(amount, limited, limitMenu);

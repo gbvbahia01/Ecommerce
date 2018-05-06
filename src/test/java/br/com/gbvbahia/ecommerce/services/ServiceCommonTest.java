@@ -1,19 +1,24 @@
 package br.com.gbvbahia.ecommerce.services;
 
 import br.com.gbvbahia.ecommerce.services.ServiceCommon;
+import br.com.gbvbahia.ecommerce.services.commons.ParameterService;
 import org.apache.commons.lang3.NotImplementedException;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mock;
 import org.springframework.data.repository.CrudRepository;
 
 public class ServiceCommonTest {
 
     private ServiceCommon serviceCommon;
 
+    @Mock
+    private ParameterService parameterService;
+
     @Before
     public void setUp() {
-        serviceCommon = new ServiceCommon() {
+        serviceCommon = new ServiceCommon(parameterService) {
             @Override
             protected CrudRepository getRepository() {
                 throw new NotImplementedException("Unit test environment");

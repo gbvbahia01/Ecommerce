@@ -24,6 +24,8 @@ public class ParameterServiceImpl extends ServiceCommon<Parameter, String, JpaRe
     private final ParameterRepository parameterRepository;
 
     public ParameterServiceImpl(ParameterRepository parameterRepository) {
+
+        super(null);
         this.parameterRepository = parameterRepository;
     }
 

@@ -49,4 +49,13 @@
             <where>key = 'AMOUNT_STOCK_CATEGORY'</where>
         </update>
     </changeSet>
+
+    <changeSet id="commons-v1-dml-promotion-20180506-0831" author="gbvbahia">
+        <insert tableName="parameter" schemaName="commons">
+            <column name="key" value="AMOUNT_PROMOTION_PRODUCT" />
+            <column name="value" value="2"/>
+            <column name="description" value="Minimal in stock to show a product in promotion section. Active attribute is NOT checked here." />
+            <column name="active" value="true" />
+        </insert>
+    </changeSet>
 </databaseChangeLog>

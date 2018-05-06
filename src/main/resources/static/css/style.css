@@ -94,7 +94,7 @@ body {
 header {
     /*opacity: 0.90;*/
     border-bottom: #e86031 3px solid;
-    /*z-index: 1;*/
+    z-index: 1;
 }
 
 /*================================
@@ -108,9 +108,7 @@ header {
 #menu-bot {
     padding: 6px 0px;
 }
-.nav-menu {
- margin-left: 20px;
-}
+
 .nav-link {
     color: #DDDDDD;
     font-weight: 400;
@@ -136,4 +134,25 @@ header {
 .phoneto {
     color: #DDDDDD;
     font-size: 0.85rem;
+}
+
+/*================================
+	# Section
+================================*/
+.section-title  {
+    margin: 10px 0px 15px 0px;
+}
+
+.section-title h3{
+    font-size: 18px;
+    line-height: 36px;
+    font-weight: 600;
+    padding: 0px 10px 6px 0px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.section-title h3 span {
+    padding-bottom: 11px;
+    border-bottom: 3px solid;
 }

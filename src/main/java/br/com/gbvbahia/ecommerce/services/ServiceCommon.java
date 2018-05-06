@@ -1,5 +1,6 @@
 package br.com.gbvbahia.ecommerce.services;
 
+import br.com.gbvbahia.ecommerce.services.commons.ParameterService;
 import br.com.gbvbahia.ecommerce.util.StringHelper;
 import java.util.Optional;
 import org.slf4j.Logger;
@@ -7,6 +8,15 @@ import org.slf4j.LoggerFactory;
 import org.springframework.data.repository.CrudRepository;
 
 public abstract class ServiceCommon<T, ID, R extends CrudRepository<T, ID>> implements ServiceContract<T, ID> {
+
+    private final ParameterService parameterService;
+
+    //============
+    // Constructor
+    //============
+    public ServiceCommon(ParameterService parameterService) {
+        this.parameterService = parameterService;
+    }
 
     //=========
     // Contract
@@ -42,7 +52,11 @@ public abstract class ServiceCommon<T, ID, R extends CrudRepository<T, ID>> impl
         }
         return builder;
     }
-    
+
+    protected ParameterService getParameterService() {
+        return  this.parameterService;
+    }
+
     //===================
     // Repository Methods
     //===================

@@ -25,7 +25,7 @@
             Where c.id = s.category.id
             And s.id = p.subCategory.id
             And p.id = ps.product.id
-            And ('unlimited' = :unlimited OR ps.stockSmount >= :amountStock)
+            And ('unlimited' = :unlimited OR ps.stockAmount >= :amountStock)
             Order By c.priority, c.name
             ]]>
         </query>
@@ -34,11 +34,13 @@
     <named-query name="ProductImage.withCampaign">
         <query><![CDATA[
                 Select distinct pi1
-                From ProductImage pi1, CampaignProduct cp1
+                From ProductImage pi1, CampaignProduct cp1, ProductStock ps1
                 Where pi1.product.id = cp1.product.id
+                And ps1.product.id = pi1.product.id
                 And cp1.campaign.active = :actCam
                 And cp1.active = :actCamProd
                 And pi1.keyPicture = :keyPicture
+                And ps1.stockAmount >= :amount
                 Order by pi1.id desc
             ]]>
         </query>
@@ -101,7 +103,7 @@
             From ProductStock p1
             Join p1.specification sp
             Where p1.product.id = :productId
-            and p1.stockSmount >= :minStockSmount
+            and p1.stockAmount >= :minAtockSmount
             Order by p1.id DESC
             ]]>
         </query>

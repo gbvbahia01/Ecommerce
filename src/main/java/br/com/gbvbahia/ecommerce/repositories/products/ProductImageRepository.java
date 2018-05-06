@@ -28,6 +28,7 @@ public interface ProductImageRepository extends JpaRepository<ProductImage, Long
     @Query(name = "ProductImage.withCampaign")
     public List<ProductImage> listByPromotionTag(@Param("actCam") boolean actCam,
                                                   @Param("actCamProd") boolean actCamProd,
-                                                  @Param("keyPicture") KeyPicture key);
+                                                  @Param("keyPicture") KeyPicture key,
+                                                 @Param("amount") Integer amount);
 
 }

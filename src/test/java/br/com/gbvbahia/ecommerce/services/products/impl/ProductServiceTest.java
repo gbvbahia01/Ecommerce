@@ -1,6 +1,7 @@
 package br.com.gbvbahia.ecommerce.services.products.impl;
 
 import br.com.gbvbahia.ecommerce.repositories.products.ProductRepository;
+import br.com.gbvbahia.ecommerce.services.commons.ParameterService;
 import br.com.gbvbahia.ecommerce.services.products.ProductService;
 import org.junit.Assert;
 import org.junit.Before;
@@ -16,12 +17,15 @@ public class ProductServiceTest {
 
     @Mock
     private ProductRepository productRepository;
+
+    @Mock
+    private ParameterService parameterService;
     
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
 
-        productService = new ProductServiceImpl(productRepository);
+        productService = new ProductServiceImpl(parameterService, productRepository);
     }
 
     @Test

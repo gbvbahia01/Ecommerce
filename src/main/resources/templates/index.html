@@ -24,7 +24,7 @@
     </section>
     <section class="bg-dark" id="menu-bot">
         <div class="container">
-            <ui th:replace="fragments/menu :: menu (${categories})"></ui>
+            <ui th:replace="fragments/menu :: menu"></ui>
         </div>
     </section>
 </header>
@@ -33,31 +33,65 @@
 <!-- Container -->
 <div class="container-fluid">
 
-    <div class="jumbotron" th:if="${not #lists.isEmpty(prodsImg)}">
-        <div class="row">
-            <div class="card mb-4 box-shadow" th:each="prodImg : ${prodsImg}">
-                <div class="card-header">
-                    <h4 class="my-0 font-weight-normal" th:text="${prodImg.name}"></h4>
-                    <img src="../../static/img/def_420_535.png"
-                         width="420" height="535" class="img-fluid"
-                         th:src="@{'/product/' + ${prodImg.id} + '/productimg/' + ${prodImg.keyPicture}}"
-                         th:width="${prodImg.imgWidth}" th:height="${prodImg.imgHeight}"/>
-                </div>
-                <div class="card-body">
-                    <h1 class="card-title pricing-card-title" th:text="${prodImg.price}"></h1>
-                    <ul class="list-unstyled mt-3 mb-4">
-                        <li th:text="${prodImg.description}"></li>
-                    </ul>
-                    <form th:action="@{/shopcar/prodImg}" method="post">
-                        <input type="hidden" name="prodImgId" th:value="${prodImg.id}"/>
-                        <input type="hidden" name="redirect" value="/"/>
-                        <button type="submit" class="btn btn-lg btn-block btn-outline-primary">Add Card</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
+    <div class="row">
 
+        <div class="col-lg-2 d-none d-lg-block">
+            <th:block th:each="cat, catStat : ${categories}">
+                <th:block th:if="${#lists.isEmpty(cat.subItems)}">
+                    <a class="nav-item nav-link" href="#" th:text="${cat.name}">Category</a>
+                </th:block>
+
+                <th:block th:if="${not #lists.isEmpty(cat.subItems)}">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                           aria-haspopup="true" aria-expanded="false" th:text="${cat.name}">Category</a>
+                        <div class="dropdown-menu border-bottom border-light">
+                            <th:block th:each="sub : ${cat.subItems}" th:if="${sub.name}">
+                                <a class="dropdown-item" href="#" th:text="${sub.name}">Sub-Category</a>
+                            </th:block>
+                        </div>
+                </th:block>
+            </th:block>
+        </div>
+
+        <div class="col-lg-10 bg-light">
+
+            <section id="#pomotions" class="my-3">
+
+                <div class="section-title">
+                    <h3><span th:text="#{section.promotion}">Promotions</span></h3>
+                </div>
+
+                <div class="jumbotron" th:if="${not #lists.isEmpty(prodsImg)}">
+                    <div class="row">
+                        <div class="card mb-4 box-shadow" th:each="prodImg : ${prodsImg}">
+                            <div class="card-header">
+                                <h4 class="my-0 font-weight-normal" th:text="${prodImg.name}"></h4>
+                                <img src="../../static/img/def_420_535.png"
+                                     width="420" height="535" class="img-fluid"
+                                     th:src="@{'/product/' + ${prodImg.id} + '/productimg/' + ${prodImg.keyPicture}}"
+                                     th:width="${prodImg.imgWidth}" th:height="${prodImg.imgHeight}"/>
+                            </div>
+                            <div class="card-body">
+                                <h1 class="card-title pricing-card-title" th:text="${prodImg.price}"></h1>
+                                <ul class="list-unstyled mt-3 mb-4">
+                                    <li th:text="${prodImg.description}"></li>
+                                </ul>
+                                <form th:action="@{/shopcar/prodImg}" method="post">
+                                    <input type="hidden" name="prodImgId" th:value="${prodImg.id}"/>
+                                    <input type="hidden" name="redirect" value="/"/>
+                                    <button type="submit" class="btn btn-lg btn-block btn-outline-primary">Add Card
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+    </div>
 </div>
 
 <!-- Script -->

@@ -2,6 +2,7 @@ package br.com.gbvbahia.ecommerce.services.products.impl;
 
 import br.com.gbvbahia.ecommerce.model.entity.products.Product;
 import br.com.gbvbahia.ecommerce.repositories.products.ProductRepository;
+import br.com.gbvbahia.ecommerce.services.commons.ParameterService;
 import br.com.gbvbahia.ecommerce.services.products.ProductService;
 import br.com.gbvbahia.ecommerce.services.ServiceCommon;
 import org.springframework.stereotype.Service;
@@ -15,8 +16,10 @@ public class ProductServiceImpl extends ServiceCommon<Product, Long, JpaReposito
 
     private final ProductRepository productRepository;
 
-    public ProductServiceImpl(ProductRepository productRepository) {
+    public ProductServiceImpl(ParameterService parameterService,
+                              ProductRepository productRepository) {
 
+        super(parameterService);
         this.productRepository = productRepository;
     }
 
