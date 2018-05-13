@@ -22,6 +22,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
+        <dozer.version>5.5.1</dozer.version>
     </properties>
 
     <dependencies>
@@ -47,13 +48,13 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -75,6 +76,15 @@
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
             <version>2.6</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>net.sf.dozer</groupId>
+            <artifactId>dozer</artifactId>
+            <version>${dozer.version}</version>
         </dependency>
 
         <dependency>
@@ -111,7 +121,7 @@
               <artifactId>coveralls-maven-plugin</artifactId>
               <version>4.3.0</version>
               <configuration>
-                  <repoToken>xxx</repoToken>
+                  <repoToken>IZqXgWaPR1UuJKr9MlJk9HM6ZLENyvDDH</repoToken>
               </configuration>
             </plugin>
             <plugin>
@@ -140,8 +150,8 @@
             <properties>
                 <liquibase.url>jdbc:postgresql://xxx.xxx.xxx.xxx:5432/database</liquibase.url>
                 <liquibase.driver>org.postgresql.Driver</liquibase.driver>
-                <liquibase.username>xxxxxx</liquibase.username>
-                <liquibase.password>xxxxxx</liquibase.password>
+                <liquibase.username>user</liquibase.username>
+                <liquibase.password>******</liquibase.password>
                 <liquibase.schema>public</liquibase.schema>
                 <liquibase.logging>warning</liquibase.logging>
             </properties>
