@@ -1,7 +1,6 @@
 package br.com.gbvbahia.ecommerce.controllers.helpers;
 
 import br.com.gbvbahia.ecommerce.model.entity.commons.Parameter;
-import br.com.gbvbahia.ecommerce.model.entity.orders.Item;
 import br.com.gbvbahia.ecommerce.model.entity.products.Category;
 import br.com.gbvbahia.ecommerce.model.entity.products.ProductImage;
 import br.com.gbvbahia.ecommerce.model.entity.products.SubCategory;
