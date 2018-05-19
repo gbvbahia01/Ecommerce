@@ -1,6 +1,6 @@
 package br.com.gbvbahia.ecommerce.services.products;
 
-import br.com.gbvbahia.ecommerce.model.entity.products.Category;
+import br.com.gbvbahia.ecommerce.services.helpers.products.CategoryDTO;
 import br.com.gbvbahia.ecommerce.services.ServiceContract;
 
 import java.util.List;
@@ -12,7 +12,7 @@ import java.util.List;
  * @version 1.0
  * @since 29/04/18
  */
-public interface CategoryService extends ServiceContract<Category, Long> {
+public interface CategoryService extends ServiceContract<CategoryDTO, Long> {
 
-    List<Category> listCategoriesForMenu();
+    List<CategoryDTO> listCategoriesForMenu();
 }

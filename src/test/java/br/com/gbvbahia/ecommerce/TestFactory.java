@@ -1,12 +1,14 @@
 package br.com.gbvbahia.ecommerce;
 
-import br.com.gbvbahia.ecommerce.model.entity.commons.Parameter;
+import br.com.gbvbahia.ecommerce.services.helpers.commons.ParameterDTO;
 import br.com.gbvbahia.ecommerce.model.entity.products.Category;
 import br.com.gbvbahia.ecommerce.model.entity.products.Product;
 import br.com.gbvbahia.ecommerce.model.entity.products.ProductImage;
 import br.com.gbvbahia.ecommerce.model.entity.products.SubCategory;
 import br.com.gbvbahia.ecommerce.model.enums.Generous;
 import br.com.gbvbahia.ecommerce.model.enums.KeyPicture;
+import org.dozer.DozerBeanMapper;
+import org.dozer.Mapper;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -14,6 +16,8 @@ import java.util.List;
 
 public class TestFactory {
 
+
+    private static Mapper dozerMapper;
 
     public static ProductImage makeProductImage(int var) {
         ProductImage productImage = new ProductImage();
@@ -55,11 +59,20 @@ public class TestFactory {
     public static final String WHATS_TEST_VALUE = "+1 55555 5555";
     public static final String FACEB_TEST_VALUE = "facebook.com/user/123456";
 
-    public static List<Parameter> makeContactParameters() {
-        List<Parameter> contacts = new ArrayList<>();
-        contacts.add(new Parameter("CONTACT_EMAIL", EMAIL_TEST_VALUE, true));
-        contacts.add(new Parameter("CONTACT_WHATS", WHATS_TEST_VALUE, true));
-        contacts.add(new Parameter("CONTACT_FACEBOOK", FACEB_TEST_VALUE, true));
+    public static List<ParameterDTO> makeContactParameters() {
+        List<ParameterDTO> contacts = new ArrayList<>();
+        contacts.add(new ParameterDTO("CONTACT_EMAIL", EMAIL_TEST_VALUE, true));
+        contacts.add(new ParameterDTO("CONTACT_WHATS", WHATS_TEST_VALUE, true));
+        contacts.add(new ParameterDTO("CONTACT_FACEBOOK", FACEB_TEST_VALUE, true));
         return contacts;
+    }
+
+    public static Mapper getDozerForUnitTest() {
+        if (dozerMapper == null) {
+            List myMappingFiles = new ArrayList();
+            myMappingFiles.add("dozer/dozerBeanMapping.xml");
+            dozerMapper = new DozerBeanMapper();
+        }
+        return dozerMapper;
     }
 }

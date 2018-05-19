@@ -6,6 +6,7 @@
 package br.com.gbvbahia.ecommerce.controllers;
 
 import br.com.gbvbahia.ecommerce.component.ImageIoHandlerComponent;
+import br.com.gbvbahia.ecommerce.services.helpers.products.ProductImageDTO;
 import br.com.gbvbahia.ecommerce.model.entity.products.ProductImage;
 import br.com.gbvbahia.ecommerce.services.commons.ParameterService;
 import br.com.gbvbahia.ecommerce.services.products.ProductImageService;
@@ -56,9 +57,9 @@ public class ProductController extends ControllerCommon {
 
         logger.debug("Img for prodImg:{} for key:{} requested.", prodImgId, keyPicture);
 
-        Optional<ProductImage> prodImgOpt = productImageService.findById(Long.valueOf(prodImgId));
+        ProductImageDTO prodImgDto = productImageService.findById(Long.valueOf(prodImgId));
         
-        File imgDisk = imageIoHandlerComponent.getFileFromProducFile(prodImgOpt.get(), keyPicture);
+        File imgDisk = imageIoHandlerComponent.getFileFromProducFile(prodImgDto, keyPicture);
         
         byte[] byteArray = FileUtils.readFileToByteArray(imgDisk);
 

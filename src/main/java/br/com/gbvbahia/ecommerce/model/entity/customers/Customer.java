@@ -143,7 +143,7 @@ public class Customer implements Model<Long> {
 
     @Override
     public String toString() {
-        return "Customer{" + "id=" + id + ", name=" + name + ", surname=" + surname + ", contact=" + contact + ", password=" + password + ", cpf=" + cpf + ", addresses=" + addresses + '}';
+        return "CustomerDTO{" + "id=" + id + ", name=" + name + ", surname=" + surname + ", contact=" + contact + ", password=" + password + ", cpf=" + cpf + ", addresses=" + addresses + '}';
     }
 
 }

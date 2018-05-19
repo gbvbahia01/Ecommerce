@@ -5,14 +5,15 @@
  */
 package br.com.gbvbahia.ecommerce.component;
 
-import br.com.gbvbahia.ecommerce.model.entity.products.ProductImage;
+import br.com.gbvbahia.ecommerce.services.helpers.products.ProductImageDTO;
 import br.com.gbvbahia.ecommerce.model.enums.KeyPicture;
 import br.com.gbvbahia.ecommerce.util.EnvironmentVariables;
-import java.io.File;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
+
+import java.io.File;
 
 /**
  * Project: Ecommerce
@@ -32,7 +33,7 @@ public class ImageIoHandlerComponent {
         this.environment = environment;
     }
 
-    public File getFileFromProducFile(ProductImage productImage, String keyPicture) {
+    public File getFileFromProducFile(ProductImageDTO productImage, String keyPicture) {
 
         final String imgFolder = environment.getRequiredProperty(EnvironmentVariables.IMAGE_PATH_VARIABLE);
         try {

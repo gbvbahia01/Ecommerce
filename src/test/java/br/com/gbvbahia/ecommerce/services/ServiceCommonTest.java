@@ -1,13 +1,13 @@
 package br.com.gbvbahia.ecommerce.services;
 
-import br.com.gbvbahia.ecommerce.services.ServiceCommon;
 import br.com.gbvbahia.ecommerce.services.commons.ParameterService;
 import org.apache.commons.lang3.NotImplementedException;
+import org.dozer.DozerBeanMapper;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 public class ServiceCommonTest {
 
@@ -15,12 +15,14 @@ public class ServiceCommonTest {
 
     @Mock
     private ParameterService parameterService;
+    @Mock
+    private DozerBeanMapper dozer;
 
     @Before
     public void setUp() {
-        serviceCommon = new ServiceCommon(parameterService) {
+        serviceCommon = new ServiceCommon(parameterService, dozer, Object.class) {
             @Override
-            protected CrudRepository getRepository() {
+            protected JpaRepository getRepository() {
                 throw new NotImplementedException("Unit test environment");
             }
         };

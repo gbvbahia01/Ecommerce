@@ -162,7 +162,7 @@ public class Campaign implements Model<Long> {
 
     @Override
     public String toString() {
-        return "Campaign{" + "id=" + id + ", discount=" + discount + ", dateStart=" + dateStart + ", dateEnd=" + dateEnd + ", name=" + name + ", description=" + description + ", active=" + active + '}';
+        return "CampaignDTO{" + "id=" + id + ", discount=" + discount + ", dateStart=" + dateStart + ", dateEnd=" + dateEnd + ", name=" + name + ", description=" + description + ", active=" + active + '}';
     }
 
 

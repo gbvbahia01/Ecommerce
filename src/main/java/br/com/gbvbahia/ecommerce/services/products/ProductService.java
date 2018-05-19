@@ -1,5 +1,6 @@
 package br.com.gbvbahia.ecommerce.services.products;
 
+import br.com.gbvbahia.ecommerce.services.helpers.products.ProductDTO;
 import br.com.gbvbahia.ecommerce.model.entity.products.Product;
 import br.com.gbvbahia.ecommerce.services.ServiceContract;
 
@@ -12,7 +13,7 @@ import java.util.List;
  * @version 1.0
  * @since 15/04/18
  */
-public interface ProductService extends ServiceContract<Product, Long> {
+public interface ProductService extends ServiceContract<ProductDTO, Long> {
 
     /**
      *
@@ -20,5 +21,5 @@ public interface ProductService extends ServiceContract<Product, Long> {
      * @param search a string that will be used to search at both attributes.
      * @return A list with products. Empty if not found.
      */
-    List<Product> search(String search);
+    List<ProductDTO> search(String search);
 }

@@ -5,7 +5,9 @@
  */
 package br.com.gbvbahia.ecommerce.controllers;
 
+import br.com.gbvbahia.ecommerce.TestFactory;
 import br.com.gbvbahia.ecommerce.component.ImageIoHandlerComponent;
+import br.com.gbvbahia.ecommerce.services.helpers.products.ProductImageDTO;
 import br.com.gbvbahia.ecommerce.model.entity.products.ProductImage;
 import br.com.gbvbahia.ecommerce.model.enums.KeyPicture;
 import br.com.gbvbahia.ecommerce.services.commons.ParameterService;
@@ -14,6 +16,8 @@ import br.com.gbvbahia.ecommerce.services.products.ProductService;
 import java.io.File;
 import java.util.Optional;
 import org.apache.commons.io.FileUtils;
+import org.dozer.DozerBeanMapperSingletonWrapper;
+import org.dozer.Mapper;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -45,10 +49,14 @@ public class ProductControllerTest {
 
     private ProductController controller;
     private MockMvc mockMvc;
-    
+    private Mapper mapper;
+
     @Before
     public void setUp() {
         MockitoAnnotations.initMocks(this);
+
+        mapper = TestFactory.getDozerForUnitTest();
+
         controller = new ProductController(parameterService,
                                            imageIoHandlerComponent,
                                            productService,
@@ -69,14 +77,17 @@ public class ProductControllerTest {
         prodImg.setId(1L);
         prodImg.setNamePicture("def_420_535.png");
         prodImg.setKeyPicture(KeyPicture.SIZE_420_535);
-        
+
+        ProductImageDTO piDto = mapper.map(prodImg, ProductImageDTO.class);
+
         Resource stateFile = new ClassPathResource(new StringBuilder("imgs").append(File.separator)
                                                                             .append(KeyPicture.SIZE_420_535.getDefaultImg())
                                                                             .toString());
         
-        Optional<ProductImage> optProdImg = Optional.of(prodImg);
-        Mockito.when(productImageService.findById(1L)).thenReturn(optProdImg);
-        Mockito.when(imageIoHandlerComponent.getFileFromProducFile(prodImg, KeyPicture.SIZE_420_535.name())).thenReturn(stateFile.getFile());
+        Mockito.when(productImageService.findById(1L)).thenReturn(piDto);
+        Mockito.when(imageIoHandlerComponent.getFileFromProducFile(piDto,
+                                                                   KeyPicture.SIZE_420_535.name()))
+                    .thenReturn(stateFile.getFile());
         
         StringBuilder url = new StringBuilder("/product/").append(prodImg.getId())
                                                           .append("/productimg/")

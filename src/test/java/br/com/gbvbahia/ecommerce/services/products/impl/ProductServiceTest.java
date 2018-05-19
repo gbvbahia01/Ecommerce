@@ -3,6 +3,9 @@ package br.com.gbvbahia.ecommerce.services.products.impl;
 import br.com.gbvbahia.ecommerce.repositories.products.ProductRepository;
 import br.com.gbvbahia.ecommerce.services.commons.ParameterService;
 import br.com.gbvbahia.ecommerce.services.products.ProductService;
+import org.dozer.DozerBeanMapper;
+import org.dozer.DozerBeanMapperSingletonWrapper;
+import org.dozer.Mapper;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -20,12 +23,19 @@ public class ProductServiceTest {
 
     @Mock
     private ParameterService parameterService;
-    
+
+    @Mock
+    private DozerBeanMapper dozer;
+
+    private Mapper mapper;
+
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
 
-        productService = new ProductServiceImpl(parameterService, productRepository);
+        productService = new ProductServiceImpl(parameterService, dozer, productRepository);
+
+        mapper = DozerBeanMapperSingletonWrapper.getInstance();
     }
 
     @Test

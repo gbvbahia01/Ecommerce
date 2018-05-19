@@ -1,7 +1,8 @@
 package br.com.gbvbahia.ecommerce.controllers;
 
-import br.com.gbvbahia.ecommerce.controllers.helpers.ItemScreen;
-import br.com.gbvbahia.ecommerce.controllers.helpers.ItemFactory;
+import br.com.gbvbahia.ecommerce.services.helpers.commons.ParameterDTO;
+import br.com.gbvbahia.ecommerce.services.helpers.products.CategoryDTO;
+import br.com.gbvbahia.ecommerce.services.helpers.products.ProductImageDTO;
 import br.com.gbvbahia.ecommerce.model.entity.commons.Parameter;
 import br.com.gbvbahia.ecommerce.model.entity.products.Category;
 import br.com.gbvbahia.ecommerce.model.entity.products.ProductImage;
@@ -40,25 +41,22 @@ public class IndexController extends  ControllerCommon {
     public String getIndexPage(final Model model) {
         logger.debug("Getting Index page");
 
-        List<ProductImage> productImageList = productImageService.listActivesByKeyPicture(KeyPicture.SIZE_420_535);
-        List<Category> categoryList = categoryService.listCategoriesForMenu();
-        List<Parameter> contactParameters = parameterService.listByRange(ParameterService.CONTACT_PARAMETERS);
+        List<ProductImageDTO> productImageList = productImageService.listActivesByKeyPicture(KeyPicture.SIZE_420_535);
+        List<CategoryDTO> categoryList = categoryService.listCategoriesForMenu();
+        List<ParameterDTO> contactParameters = parameterService.listByRange(ParameterService.CONTACT_PARAMETERS);
 
-        List<ItemScreen> itemsProductImage = ItemFactory.buildItemsFromProductImage(productImageList);
-        List<ItemScreen> itemsCategory = ItemFactory.buildItemsFromCategory(categoryList);
-        List<ItemScreen> itemsContact = ItemFactory.buildItemsFromParameters(contactParameters);
 
         Integer contacts = 0;
-        for (ItemScreen itemParameter : itemsContact) {
-            model.addAttribute(itemParameter.getName(), itemParameter);
-            if (itemParameter.isRendered()) {
+        for (ParameterDTO parameterDTO : contactParameters) {
+            if (parameterDTO.isActivated()) {
+                model.addAttribute(parameterDTO.getKey(), parameterDTO);
                 contacts++;
             }
-        };
+        }
 
         model.addAttribute("hello","Hello Ecommerce");
-        model.addAttribute("promotionItems",itemsProductImage);
-        model.addAttribute("categories", itemsCategory);
+        model.addAttribute("promotionItems", productImageList);
+        model.addAttribute("categories", categoryList);
         model.addAttribute("contacts", contacts);
 
         return "index";

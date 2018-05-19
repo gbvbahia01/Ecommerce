@@ -11,12 +11,12 @@
                     <a href="#">
                         <img src="../../static/img/def_420_535.png"
                              width="420" height="535" class="img-fluid"
-                             th:src="@{'/product/' + ${prod.id} + '/productimg/' + ${prod.keyPicture}}"
-                             th:width="${prod.imgWidth}" th:height="${prod.imgHeight}"/>
+                             th:src="@{'/product/' + ${prod.id} + '/productimg/' + ${prod.namePicture}}"
+                             th:width="${prod.keyPicture.width}" th:height="${prod.keyPicture.height}"/>
                         <!-- Shopping item name / Heading -->
                         <h4>
-                            <a href="#" th:text="${prod.name}">Product name</a>
-                            <span class="color float-right" th:text="${prod.price}">$49</span>
+                            <a href="#" th:text="${prod.product.name}">Product name</a>
+                            <span class="color float-right" th:text="${prod.product.campaignPrice}">$49</span>
                         </h4>
                         <div class="clearfix"></div>
                         <!-- Buy now button -->

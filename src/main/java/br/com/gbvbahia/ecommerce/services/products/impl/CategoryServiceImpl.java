@@ -1,11 +1,14 @@
 package br.com.gbvbahia.ecommerce.services.products.impl;
 
+import br.com.gbvbahia.ecommerce.services.helpers.commons.ParameterDTO;
+import br.com.gbvbahia.ecommerce.services.helpers.products.CategoryDTO;
 import br.com.gbvbahia.ecommerce.model.entity.commons.Parameter;
 import br.com.gbvbahia.ecommerce.model.entity.products.Category;
 import br.com.gbvbahia.ecommerce.repositories.products.CategoryRepository;
 import br.com.gbvbahia.ecommerce.services.ServiceCommon;
 import br.com.gbvbahia.ecommerce.services.commons.ParameterService;
 import br.com.gbvbahia.ecommerce.services.products.CategoryService;
+import org.dozer.DozerBeanMapper;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -22,14 +25,15 @@ import java.util.Optional;
  * @since 29/04/18
  */
 @Service
-public class CategoryServiceImpl extends ServiceCommon<Category, Long, JpaRepository<Category, Long>> implements CategoryService {
+public class CategoryServiceImpl extends ServiceCommon<CategoryDTO, Category, Long, JpaRepository<Category, Long>> implements CategoryService {
 
     private final CategoryRepository categoryRepository;
 
-    public CategoryServiceImpl(ParameterService parameterService,
+    public CategoryServiceImpl(DozerBeanMapper dozer,
+                               ParameterService parameterService,
                                CategoryRepository categoryRepository) {
 
-        super(parameterService);
+        super(parameterService, dozer, CategoryDTO.class);
         this.categoryRepository = categoryRepository;
     }
 
@@ -39,10 +43,10 @@ public class CategoryServiceImpl extends ServiceCommon<Category, Long, JpaReposi
     }
 
     @Override
-    public List<Category> listCategoriesForMenu() {
+    public List<CategoryDTO> listCategoriesForMenu() {
 
         //Amount products in stock
-        Parameter amountParameter = getParameterService().findById(ParameterService.AMOUNT_STOCK_CATEGORY).get();
+        ParameterDTO amountParameter = getParameterService().findById(ParameterService.AMOUNT_STOCK_CATEGORY);
         Integer amount = Integer.valueOf(amountParameter.getValue());
         final String limited;
         if (amountParameter.isActivated()) {
@@ -50,11 +54,14 @@ public class CategoryServiceImpl extends ServiceCommon<Category, Long, JpaReposi
         } else {
             limited = "unlimited";
         }
+
         //Limit of categories to show in menu
-        Parameter menuMaxParameter = getParameterService().findById(ParameterService.AMOUNT_CATEGORY_MENU).get();
+        ParameterDTO menuMaxParameter = getParameterService().findById(ParameterService.AMOUNT_CATEGORY_MENU);
         Pageable limitMenu = PageRequest.of(0, Integer.valueOf(menuMaxParameter.getValue()));
 
-        return categoryRepository.listAllForMenu(amount, limited, limitMenu);
+        List<Category> categories = categoryRepository.listAllForMenu(amount, limited, limitMenu);
+
+        return convert(categories);
     }
 
 }

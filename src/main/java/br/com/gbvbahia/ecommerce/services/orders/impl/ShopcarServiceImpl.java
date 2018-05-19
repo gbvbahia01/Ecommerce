@@ -1,5 +1,6 @@
 package br.com.gbvbahia.ecommerce.services.orders.impl;
 
+import br.com.gbvbahia.ecommerce.services.helpers.orders.ShopcarDTO;
 import br.com.gbvbahia.ecommerce.model.entity.customers.Customer;
 import br.com.gbvbahia.ecommerce.model.entity.orders.Shopcar;
 import br.com.gbvbahia.ecommerce.repositories.orders.ShopcarRepository;
@@ -7,8 +8,10 @@ import br.com.gbvbahia.ecommerce.services.ServiceCommon;
 import br.com.gbvbahia.ecommerce.services.commons.ParameterService;
 import br.com.gbvbahia.ecommerce.services.orders.ShopcarService;
 import org.apache.commons.lang3.StringUtils;
+import org.dozer.DozerBeanMapper;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Project: Ecommerce
@@ -18,14 +21,15 @@ import org.springframework.stereotype.Service;
  * @since 15/04/18
  */
 @Service
-public class ShopcarServiceImpl extends ServiceCommon<Shopcar, Long, JpaRepository<Shopcar, Long>> implements ShopcarService {
+public class ShopcarServiceImpl extends ServiceCommon<ShopcarDTO, Shopcar, Long, JpaRepository<Shopcar, Long>> implements ShopcarService {
 
     private final ShopcarRepository shopcarRepository;
 
     public ShopcarServiceImpl(ParameterService parameterService,
+                              DozerBeanMapper dozer,
                               ShopcarRepository shopcarRepository) {
 
-        super(parameterService);
+        super(parameterService, dozer, ShopcarDTO.class);
         this.shopcarRepository = shopcarRepository;
     }
 
@@ -35,18 +39,20 @@ public class ShopcarServiceImpl extends ServiceCommon<Shopcar, Long, JpaReposito
     }
 
     @Override
-    public Shopcar findBySerial(String serial) {
+    @Transactional(readOnly = true)
+    public ShopcarDTO findBySerial(String serial) {
         if (StringUtils.isBlank(serial)) {
             return null;
         }
-        return shopcarRepository.findBySerialUniqueId(serial);
+        return convert(shopcarRepository.findBySerialUniqueId(serial));
     }
 
     @Override
-    public Shopcar findByCustomer(Customer customer) {
+    @Transactional(readOnly = true)
+    public ShopcarDTO findByCustomer(Customer customer) {
         if (customer == null) {
             return null;
         }
-        return shopcarRepository.findByCustomer(customer);
+        return convert(shopcarRepository.findByCustomer(customer));
     }
 }

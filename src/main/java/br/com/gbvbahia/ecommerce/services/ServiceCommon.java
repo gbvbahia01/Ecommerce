@@ -2,20 +2,34 @@ package br.com.gbvbahia.ecommerce.services;
 
 import br.com.gbvbahia.ecommerce.services.commons.ParameterService;
 import br.com.gbvbahia.ecommerce.util.StringHelper;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
+
+import org.dozer.DozerBeanMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.transaction.annotation.Transactional;
 
-public abstract class ServiceCommon<T, ID, R extends CrudRepository<T, ID>> implements ServiceContract<T, ID> {
+public abstract class ServiceCommon<DTO, ENT, ID, R extends JpaRepository<ENT, ID>> implements ServiceContract<DTO, ID> {
 
     private final ParameterService parameterService;
+    private final DozerBeanMapper dozer;
+    private final Class<DTO> clazz;
 
     //============
     // Constructor
     //============
-    public ServiceCommon(ParameterService parameterService) {
+    public ServiceCommon(ParameterService parameterService,
+                         DozerBeanMapper dozer,
+                         Class<DTO> clazz) {
+
         this.parameterService = parameterService;
+        this.dozer = dozer;
+        this.clazz = clazz;
     }
 
     //=========
@@ -53,14 +67,36 @@ public abstract class ServiceCommon<T, ID, R extends CrudRepository<T, ID>> impl
         return builder;
     }
 
+    protected List<DTO> convert(List<ENT> entities) {
+        List<DTO> dtosList = new ArrayList<>(entities.size());
+        entities.parallelStream().forEach(e -> dtosList.add(convert(e)));
+        return Collections.unmodifiableList(dtosList);
+    }
+
+    protected DTO convert(ENT entity) {
+        if (entity == null) {
+            return null;
+        }
+        return getDozer().map(entity, clazz);
+    }
+
     protected ParameterService getParameterService() {
         return  this.parameterService;
+    }
+
+    protected DozerBeanMapper getDozer() {
+        return this.dozer;
     }
 
     //===================
     // Repository Methods
     //===================
-    public Optional<T> findById(ID id) {
-        return getRepository().findById(id);
+    @Transactional(readOnly = true)
+    public DTO findById(ID id) {
+        Optional<ENT> opt = getRepository().findById(id);
+        if (!opt.isPresent()) {
+            return null;
+        }
+        return dozer.map(opt.get(), clazz);
     }
 }

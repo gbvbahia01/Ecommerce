@@ -11,11 +11,11 @@ import java.util.Optional;
  *
  * @author Guilherme
  */
-public interface ServiceContract<T, ID> {
+public interface ServiceContract<DTO, ID> {
     /**
      * Define quickly access to repository findById to all services.
      * @param id
      * @return A optional with a result of search.
      */
-    Optional<T> findById(ID id);
+    DTO findById(ID id);
 }

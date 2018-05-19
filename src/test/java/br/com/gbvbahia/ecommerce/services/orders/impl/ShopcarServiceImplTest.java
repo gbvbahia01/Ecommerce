@@ -1,10 +1,15 @@
 package br.com.gbvbahia.ecommerce.services.orders.impl;
 
+import br.com.gbvbahia.ecommerce.TestFactory;
+import br.com.gbvbahia.ecommerce.services.helpers.orders.ShopcarDTO;
 import br.com.gbvbahia.ecommerce.model.entity.customers.Customer;
 import br.com.gbvbahia.ecommerce.model.entity.orders.Shopcar;
 import br.com.gbvbahia.ecommerce.repositories.orders.ShopcarRepository;
 import br.com.gbvbahia.ecommerce.services.commons.ParameterService;
 import br.com.gbvbahia.ecommerce.services.orders.ShopcarService;
+import org.dozer.DozerBeanMapper;
+import org.dozer.DozerBeanMapperSingletonWrapper;
+import org.dozer.Mapper;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -31,16 +36,24 @@ public class ShopcarServiceImplTest {
     @Mock
     private ParameterService parameterService;
 
+    @Mock
+    private DozerBeanMapper dozer;
+
+    private Mapper mapper;
+
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
         shopcarService = new ShopcarServiceImpl(parameterService,
+                                                dozer,
                                                 shopcarRepository);
+
+        mapper = TestFactory.getDozerForUnitTest();
     }
 
     @Test
     public void testFindBySerial_Null() {
-        Shopcar shopcar = shopcarService.findBySerial(null);
+        ShopcarDTO shopcar = shopcarService.findBySerial(null);
         Assert.assertNull(shopcar);
     }
 
@@ -52,16 +65,17 @@ public class ShopcarServiceImplTest {
         shopcarExpected.setId(100L);
 
         Mockito.when(shopcarRepository.findBySerialUniqueId(serialArg)).thenReturn(shopcarExpected);
+        Mockito.when(dozer.map(shopcarExpected, ShopcarDTO.class)).thenReturn(mapper.map(shopcarExpected, ShopcarDTO.class));
 
-        Shopcar shopcar = shopcarService.findBySerial(serialArg);
+        ShopcarDTO shopcar = shopcarService.findBySerial(serialArg);
         Assert.assertNotNull(shopcar);
-        Assert.assertEquals(shopcarExpected, shopcar);
+        Assert.assertEquals(shopcarExpected.getId(), shopcar.getId());
     }
 
     @Test
     public void testTindByCustomer_Null() {
         Customer customer = null;
-        Shopcar shopcar = shopcarService.findByCustomer(customer);
+        ShopcarDTO shopcar = shopcarService.findByCustomer(customer);
         Assert.assertNull(shopcar);
     }
 
@@ -74,9 +88,10 @@ public class ShopcarServiceImplTest {
         shopcarExpected.setId(100L);
 
         Mockito.when(shopcarRepository.findByCustomer(customer)).thenReturn(shopcarExpected);
+        Mockito.when(dozer.map(shopcarExpected, ShopcarDTO.class)).thenReturn(mapper.map(shopcarExpected, ShopcarDTO.class));
 
-        Shopcar shopcar = shopcarService.findByCustomer(customer);
+        ShopcarDTO shopcar = shopcarService.findByCustomer(customer);
         Assert.assertNotNull(shopcar);
-        Assert.assertEquals(shopcarExpected, shopcar);
+        Assert.assertEquals(shopcarExpected.getId(), shopcar.getId());
     }
 }

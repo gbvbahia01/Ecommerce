@@ -5,10 +5,15 @@
  */
 package br.com.gbvbahia.ecommerce.component;
 
+import br.com.gbvbahia.ecommerce.TestFactory;
+import br.com.gbvbahia.ecommerce.services.helpers.products.ProductImageDTO;
 import br.com.gbvbahia.ecommerce.model.entity.products.ProductImage;
 import br.com.gbvbahia.ecommerce.model.enums.KeyPicture;
 import br.com.gbvbahia.ecommerce.util.EnvironmentVariables;
 import java.io.File;
+
+import org.dozer.DozerBeanMapperSingletonWrapper;
+import org.dozer.Mapper;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -29,11 +34,13 @@ public class ImageIoHandlerComponentTest {
     private Environment environment;
 
     private ImageIoHandlerComponent imageIoHandlerComponent;
+    private Mapper mapper;
 
     @Before
     public void setUp() {
         MockitoAnnotations.initMocks(this);
         imageIoHandlerComponent = new ImageIoHandlerComponent(environment);
+        mapper = TestFactory.getDozerForUnitTest();
     }
 
     /**
@@ -98,13 +105,13 @@ public class ImageIoHandlerComponentTest {
         prodImg.setId(1L);
         prodImg.setNamePicture("__50_50._");
         prodImg.setKeyPicture(KeyPicture.SIZE_420_535);
-        
-       
+
+        ProductImageDTO piDto = mapper.map(prodImg, ProductImageDTO.class);
         
         String path = expectedFile.getFile().getPath().replace(KeyPicture.SIZE_420_535.getDefaultImg(), "");
         Mockito.when(environment.getRequiredProperty(EnvironmentVariables.IMAGE_PATH_VARIABLE)).thenReturn(path);
 
-        File file = imageIoHandlerComponent.getFileFromProducFile(prodImg, KeyPicture.SIZE_420_535.name());
+        File file = imageIoHandlerComponent.getFileFromProducFile(piDto, KeyPicture.SIZE_420_535.name());
 
         
         assertEquals(expectedFile.getFile(), file);
@@ -123,7 +130,9 @@ public class ImageIoHandlerComponentTest {
         prodImg.setId(1L);
         prodImg.setNamePicture("def_50_50.jpg");
         prodImg.setKeyPicture(KeyPicture.SIZE_420_535);
-        
+
+        ProductImageDTO piDto = mapper.map(prodImg, ProductImageDTO.class);
+
         Resource stateFile = new ClassPathResource(new StringBuilder("imgs").append(File.separator)
                                                                             .append(KeyPicture.SIZE_420_535.getDefaultImg())
                                                                             .toString());
@@ -131,7 +140,7 @@ public class ImageIoHandlerComponentTest {
         String path = stateFile.getFile().getPath().replace(KeyPicture.SIZE_420_535.getDefaultImg(), "");
         Mockito.when(environment.getRequiredProperty(EnvironmentVariables.IMAGE_PATH_VARIABLE)).thenReturn(path);
 
-        File file = imageIoHandlerComponent.getFileFromProducFile(prodImg, KeyPicture.SIZE_420_535.name());
+        File file = imageIoHandlerComponent.getFileFromProducFile(piDto, KeyPicture.SIZE_420_535.name());
 
         
         assertEquals(expectedFile.getFile(), file);
