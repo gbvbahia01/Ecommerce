@@ -21,9 +21,10 @@
     <named-query name="Category.listOrderBy">
         <query><![CDATA[
             Select distinct c
-            From Category c, SubCategory s, Product p, ProductStock ps
+            From Category c, SubCategory s, Product p, ProductStock ps, ProductSubCategory psub
             Where c.id = s.category.id
-            And s.id = p.subCategory.id
+            And s.id = psub.subCategory.id
+            And psub.product.id = p.id
             And p.id = ps.product.id
             And ('unlimited' = :unlimited OR ps.stockAmount >= :amountStock)
             Order By c.priority, c.name
@@ -72,7 +73,8 @@
     <named-query name="Product.listByIdSubCategory">
         <query><![CDATA[
             Select distinct p1 From Product p1
-            Where p1.subCategory.id = :id
+            Join p1.subCategories sub1
+            Where sub1.subCategory.id = :id
             Order by p1.id DESC
             ]]>
         </query>
@@ -81,7 +83,8 @@
     <named-query name="Product.listByIdCategory">
         <query><![CDATA[
             Select distinct p1 From Product p1
-            Where p1.subCategory.category.id = :id
+            Join p1.subCategories sub1
+            Where sub1.subCategory.category.id = :id
             Order by p1.id DESC
             ]]>
         </query>

@@ -73,10 +73,8 @@ public class Product implements Model<Long> {
     @NotNull
     private Float price;
 
-    @ManyToOne
-    @JoinColumn(name = "sub_category_id", referencedColumnName = "id", nullable = false)
-    @NotNull
-    private SubCategory subCategory;
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+    private Set<ProductSubCategory> subCategories;
 
     /**
      * Discounts
@@ -175,6 +173,7 @@ public class Product implements Model<Long> {
         this.descriptionClean = StringHelper.cleanToSearchAppend(description, "|");
          this.nameClean = StringHelper.cleanToSearchAppend(name, "|");
     }
+
     //============================
     //Getters and Setters
     //============================
@@ -228,14 +227,6 @@ public class Product implements Model<Long> {
         this.price = price;
     }
 
-    public SubCategory getSubCategory() {
-        return subCategory;
-    }
-
-    public void setSubCategory(SubCategory subCategory) {
-        this.subCategory = subCategory;
-    }
-
     public Set<CampaignProduct> getCampaigns() {
         if (campaigns == null) {
             campaigns = new HashSet<>();
@@ -275,5 +266,16 @@ public class Product implements Model<Long> {
 
     public void setProductStock(Set<ProductStock> productStock) {
         this.productStock = productStock;
+    }
+
+    public Set<ProductSubCategory> getSubCategories() {
+        if (subCategories == null) {
+            subCategories = new HashSet<>();
+        }
+        return subCategories;
+    }
+
+    public void setSubCategories(Set<ProductSubCategory> subCategories) {
+        this.subCategories = subCategories;
     }
 }

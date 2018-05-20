@@ -32,7 +32,6 @@ public class ProductDTO implements Serializable {
     private Float price;
     private float campaignPrice;
     private float discount;
-    private SubCategoryDTO subCategory;
     private Set<CampaignProductDTO> campaigns;
     private Set<ProductImageDTO> productImages;
 
@@ -84,10 +83,6 @@ public class ProductDTO implements Serializable {
 
     public Float getPrice() {
         return price;
-    }
-
-    public SubCategoryDTO getSubCategory() {
-        return subCategory;
     }
 
     public Set<CampaignProductDTO> getCampaigns() {
@@ -169,10 +164,6 @@ public class ProductDTO implements Serializable {
 
     public void setPrice(Float price) {
         this.price = price;
-    }
-
-    public void setSubCategory(SubCategoryDTO subCategory) {
-        this.subCategory = subCategory;
     }
 
     public void setCampaigns(Set<CampaignProductDTO> campaigns) {

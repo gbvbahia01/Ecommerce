@@ -272,7 +272,6 @@
             <column name="name" value="iPhone 6S 16GB Cinza" />
             <column name="name_clean" value="iphone 6s 16gb cinza" />
             <column name="price" valueNumeric="2500.0"/>
-            <column name="sub_category_id" valueComputed="(SELECT id FROM products.sub_category WHERE name = 'SmartPhone')" />
         </insert>
 
         <insert tableName="product" schemaName="products">
@@ -287,7 +286,6 @@
             <column name="name" value="iPhone 6S 32GB Dourado" />
             <column name="name_clean" value="iphone 6s 32gb dourado" />
             <column name="price" valueNumeric="2800.0"/>
-            <column name="sub_category_id" valueComputed="(SELECT id FROM products.sub_category WHERE name = 'SmartPhone')" />
         </insert>
 
         <insert tableName="product" schemaName="products">
@@ -302,7 +300,6 @@
             <column name="name" value="iPhone 6S 32GB Ouro Rosa" />
             <column name="name_clean" value="iphone 6s 32gb ouro rosa" />
             <column name="price" valueNumeric="2800.0"/>
-            <column name="sub_category_id" valueComputed="(SELECT id FROM products.sub_category WHERE name = 'SmartPhone')" />
         </insert>
 
         <insert tableName="product" schemaName="products">
@@ -317,7 +314,6 @@
             <column name="name" value="iPhone 7 128GB Preto" />
             <column name="name_clean" value="iphone 7 128gb preto" />
             <column name="price" valueNumeric="3800.0"/>
-            <column name="sub_category_id" valueComputed="(SELECT id FROM products.sub_category WHERE name = 'SmartPhone')" />
         </insert>
 
         <insert tableName="product" schemaName="products">
@@ -332,7 +328,6 @@
             <column name="name" value="Galaxy J7 Duos Dourado" />
             <column name="name_clean" value="galaxy j7 dourado duos" />
             <column name="price" valueNumeric="1000.0"/>
-            <column name="sub_category_id" valueComputed="(SELECT id FROM products.sub_category WHERE name = 'SmartPhone')" />
         </insert>
 
         <insert tableName="product" schemaName="products">
@@ -347,7 +342,6 @@
             <column name="name" value="Galaxy J7 Prime Dourado" />
             <column name="name_clean" value="dourado galaxy j7 prime" />
             <column name="price" valueNumeric="1200.0"/>
-            <column name="sub_category_id" valueComputed="(SELECT id FROM products.sub_category WHERE name = 'SmartPhone')" />
         </insert>
 
         <insert tableName="product" schemaName="products">
@@ -362,7 +356,6 @@
             <column name="name" value="Galaxy J1 Dourado" />
             <column name="name_clean" value="galaxy j1 dourado" />
             <column name="price" valueNumeric="1600.0"/>
-            <column name="sub_category_id" valueComputed="(SELECT id FROM products.sub_category WHERE name = 'SmartPhone')" />
         </insert>
 
         <insert tableName="product" schemaName="products">
@@ -377,7 +370,6 @@
             <column name="name" value="Moto G4 Preto" />
             <column name="name_clean" value="moto g4 preto" />
             <column name="price" valueNumeric="1300.0"/>
-            <column name="sub_category_id" valueComputed="(SELECT id FROM products.sub_category WHERE name = 'SmartPhone')" />
         </insert>
 
         <insert tableName="product" schemaName="products">
@@ -392,7 +384,6 @@
             <column name="name" value="Smart TV LED 32 Samsung" />
             <column name="name_clean" value="smart tv led 32' samsung" />
             <column name="price" valueNumeric="2100.0"/>
-            <column name="sub_category_id" valueComputed="(SELECT id FROM products.sub_category WHERE name = 'TVs')" />
         </insert>
 
         <insert tableName="product" schemaName="products">
@@ -407,7 +398,6 @@
             <column name="name" value="Smart TV LED 40 Samsung" />
             <column name="name_clean" value="smart tv led 40 samsung" />
             <column name="price" valueNumeric="3100.0"/>
-            <column name="sub_category_id" valueComputed="(SELECT id FROM products.sub_category WHERE name = 'TVs')" />
         </insert>
 
         <insert tableName="product" schemaName="products">
@@ -422,7 +412,6 @@
             <column name="name" value="Smart TV LED Curva 49 Samsung" />
             <column name="name_clean" value="smart tv led curva 49 samsung" />
             <column name="price" valueNumeric="3800.0"/>
-            <column name="sub_category_id" valueComputed="(SELECT id FROM products.sub_category WHERE name = 'TVs')" />
         </insert>
 
         <insert tableName="product" schemaName="products">
@@ -437,7 +426,6 @@
             <column name="name" value="Smart TV LED 43 LG" />
             <column name="name_clean" value="smart tv led 43 lg" />
             <column name="price" valueNumeric="3250.0"/>
-            <column name="sub_category_id" valueComputed="(SELECT id FROM products.sub_category WHERE name = 'TVs')" />
         </insert>
 
         <insert tableName="product" schemaName="products">
@@ -452,7 +440,6 @@
             <column name="name" value="Smart TV LED 55 LG" />
             <column name="name_clean" value="smart tv led 55 lg" />
             <column name="price" valueNumeric="4200.0"/>
-            <column name="sub_category_id" valueComputed="(SELECT id FROM products.sub_category WHERE name = 'TVs')" />
         </insert>
 
         <insert tableName="product" schemaName="products">
@@ -467,7 +454,6 @@
             <column name="name" value="Relógio Masculino Technos" />
             <column name="name_clean" value="relogio masculino technos" />
             <column name="price" valueNumeric="132.0"/>
-            <column name="sub_category_id" valueComputed="(SELECT id FROM products.sub_category WHERE name = 'Relógios Masculinos')" />
         </insert>
 
         <insert tableName="product" schemaName="products">
@@ -482,7 +468,6 @@
             <column name="name" value="Relógio Feminino Lince" />
             <column name="name_clean" value="relogio feminino lince" />
             <column name="price" valueNumeric="120.0"/>
-            <column name="sub_category_id" valueComputed="(SELECT id FROM products.sub_category WHERE name = 'Relógios Femininos')" />
         </insert>
 
         <insert tableName="product" schemaName="products">
@@ -497,7 +482,6 @@
             <column name="name" value="Relógio Performance Technos" />
             <column name="name_clean" value="relogio performance technos" />
             <column name="price" valueNumeric="118.0"/>
-            <column name="sub_category_id" valueComputed="(SELECT id FROM products.sub_category WHERE name = 'Relógios Masculinos')" />
         </insert>
 
         <insert tableName="product" schemaName="products">
@@ -512,7 +496,6 @@
             <column name="name" value="Relógio Iridium Rosa" />
             <column name="name_clean" value="relogio iridium rosa" />
             <column name="price" valueNumeric="112.0"/>
-            <column name="sub_category_id" valueComputed="(SELECT id FROM products.sub_category WHERE name = 'Relógios Femininos')" />
         </insert>
 
         <insert tableName="product" schemaName="products">
@@ -527,7 +510,6 @@
             <column name="name" value="Depilador Philips Lumea" />
             <column name="name_clean" value="depilador philips lumea" />
             <column name="price" valueNumeric="89.0"/>
-            <column name="sub_category_id" valueComputed="(SELECT id FROM products.sub_category WHERE name = 'Eletro Cabelo')" />
         </insert>
 
         <insert tableName="product" schemaName="products">
@@ -542,7 +524,6 @@
             <column name="name" value="Depilador Elétrico Philips" />
             <column name="name_clean" value="depilador eletrico philips" />
             <column name="price" valueNumeric="89.0"/>
-            <column name="sub_category_id" valueComputed="(SELECT id FROM products.sub_category WHERE name = 'Eletro Cabelo')" />
         </insert>
 
         <insert tableName="product" schemaName="products">
@@ -557,10 +538,110 @@
             <column name="name" value="Escova Mágica Alisadora" />
             <column name="name_clean" value="escova magica alisadora" />
             <column name="price" valueNumeric="49.0"/>
-            <column name="sub_category_id" valueComputed="(SELECT id FROM products.sub_category WHERE name = 'Eletro Cabelo')" />
         </insert>
     </changeSet>
 
+    <changeSet id="product_sub-category-v1-dml" author="gbvbahia">
+        <insert tableName="product_sub_category" schemaName="products">
+            <column name="sub_category_id" valueComputed="(SELECT id FROM products.sub_category WHERE name = 'SmartPhone')" />
+            <column name="product_id" valueComputed="(SELECT id FROM products.product WHERE name = 'iPhone 6S 16GB Cinza')" />
+        </insert>
+
+        <insert tableName="product_sub_category" schemaName="products">
+            <column name="sub_category_id" valueComputed="(SELECT id FROM products.sub_category WHERE name = 'SmartPhone')" />
+            <column name="product_id" valueComputed="(SELECT id FROM products.product WHERE name = 'iPhone 6S 32GB Dourado')" />
+        </insert>
+
+        <insert tableName="product_sub_category" schemaName="products">
+            <column name="sub_category_id" valueComputed="(SELECT id FROM products.sub_category WHERE name = 'SmartPhone')" />
+            <column name="product_id" valueComputed="(SELECT id FROM products.product WHERE name = 'iPhone 6S 32GB Ouro Rosa')" />
+        </insert>
+
+        <insert tableName="product_sub_category" schemaName="products">
+            <column name="sub_category_id" valueComputed="(SELECT id FROM products.sub_category WHERE name = 'SmartPhone')" />
+            <column name="product_id" valueComputed="(SELECT id FROM products.product WHERE name = 'iPhone 7 128GB Preto')" />
+        </insert>
+
+        <insert tableName="product_sub_category" schemaName="products">
+            <column name="sub_category_id" valueComputed="(SELECT id FROM products.sub_category WHERE name = 'SmartPhone')" />
+            <column name="product_id" valueComputed="(SELECT id FROM products.product WHERE name = 'Galaxy J7 Duos Dourado')" />
+        </insert>
+
+        <insert tableName="product_sub_category" schemaName="products">
+            <column name="sub_category_id" valueComputed="(SELECT id FROM products.sub_category WHERE name = 'SmartPhone')" />
+            <column name="product_id" valueComputed="(SELECT id FROM products.product WHERE name = 'Galaxy J7 Prime Dourado')" />
+        </insert>
+
+        <insert tableName="product_sub_category" schemaName="products">
+            <column name="sub_category_id" valueComputed="(SELECT id FROM products.sub_category WHERE name = 'SmartPhone')" />
+            <column name="product_id" valueComputed="(SELECT id FROM products.product WHERE name = 'Galaxy J1 Dourado')" />
+        </insert>
+
+        <insert tableName="product_sub_category" schemaName="products">
+            <column name="sub_category_id" valueComputed="(SELECT id FROM products.sub_category WHERE name = 'SmartPhone')" />
+            <column name="product_id" valueComputed="(SELECT id FROM products.product WHERE name = 'Moto G4 Preto')" />
+        </insert>
+
+        <insert tableName="product_sub_category" schemaName="products">
+            <column name="sub_category_id" valueComputed="(SELECT id FROM products.sub_category WHERE name = 'TVs')" />
+            <column name="product_id" valueComputed="(SELECT id FROM products.product WHERE name = 'Smart TV LED 32 Samsung')" />
+        </insert>
+
+        <insert tableName="product_sub_category" schemaName="products">
+            <column name="sub_category_id" valueComputed="(SELECT id FROM products.sub_category WHERE name = 'TVs')" />
+            <column name="product_id" valueComputed="(SELECT id FROM products.product WHERE name = 'Smart TV LED 40 Samsung')" />
+        </insert>
+
+        <insert tableName="product_sub_category" schemaName="products">
+            <column name="sub_category_id" valueComputed="(SELECT id FROM products.sub_category WHERE name = 'TVs')" />
+            <column name="product_id" valueComputed="(SELECT id FROM products.product WHERE name = 'Smart TV LED Curva 49 Samsung')" />
+        </insert>
+
+        <insert tableName="product_sub_category" schemaName="products">
+            <column name="sub_category_id" valueComputed="(SELECT id FROM products.sub_category WHERE name = 'TVs')" />
+            <column name="product_id" valueComputed="(SELECT id FROM products.product WHERE name = 'Smart TV LED 43 LG')" />
+        </insert>
+
+        <insert tableName="product_sub_category" schemaName="products">
+            <column name="sub_category_id" valueComputed="(SELECT id FROM products.sub_category WHERE name = 'TVs')" />
+            <column name="product_id" valueComputed="(SELECT id FROM products.product WHERE name = 'Smart TV LED 55 LG')" />
+        </insert>
+
+        <insert tableName="product_sub_category" schemaName="products">
+            <column name="sub_category_id" valueComputed="(SELECT id FROM products.sub_category WHERE name = 'Relógios Masculinos')" />
+            <column name="product_id" valueComputed="(SELECT id FROM products.product WHERE name = 'Relógio Masculino Technos')" />
+        </insert>
+
+        <insert tableName="product_sub_category" schemaName="products">
+            <column name="sub_category_id" valueComputed="(SELECT id FROM products.sub_category WHERE name = 'Relógios Masculinos')" />
+            <column name="product_id" valueComputed="(SELECT id FROM products.product WHERE name = 'Relógio Performance Technos')" />
+        </insert>
+
+        <insert tableName="product_sub_category" schemaName="products">
+            <column name="sub_category_id" valueComputed="(SELECT id FROM products.sub_category WHERE name = 'Relógios Femininos')" />
+            <column name="product_id" valueComputed="(SELECT id FROM products.product WHERE name = 'Relógio Feminino Lince')" />
+        </insert>
+
+        <insert tableName="product_sub_category" schemaName="products">
+            <column name="sub_category_id" valueComputed="(SELECT id FROM products.sub_category WHERE name = 'Relógios Femininos')" />
+            <column name="product_id" valueComputed="(SELECT id FROM products.product WHERE name = 'Relógio Iridium Rosa')" />
+        </insert>
+
+        <insert tableName="product_sub_category" schemaName="products">
+            <column name="sub_category_id" valueComputed="(SELECT id FROM products.sub_category WHERE name = 'Eletro Cabelo')" />
+            <column name="product_id" valueComputed="(SELECT id FROM products.product WHERE name = 'Depilador Philips Lumea')" />
+        </insert>
+
+        <insert tableName="product_sub_category" schemaName="products">
+            <column name="sub_category_id" valueComputed="(SELECT id FROM products.sub_category WHERE name = 'Eletro Cabelo')" />
+            <column name="product_id" valueComputed="(SELECT id FROM products.product WHERE name = 'Depilador Elétrico Philips')" />
+        </insert>
+
+        <insert tableName="product_sub_category" schemaName="products">
+            <column name="sub_category_id" valueComputed="(SELECT id FROM products.sub_category WHERE name = 'Eletro Cabelo')" />
+            <column name="product_id" valueComputed="(SELECT id FROM products.product WHERE name = 'Escova Mágica Alisadora')" />
+        </insert>
+    </changeSet>
 
     <changeSet id="product_image-v1-dml" author="gbvbahia">
         <insert tableName="product_image" schemaName="products">

@@ -168,7 +168,6 @@
                 <column name="description" type="varchar(250)" />
                 <column name="description_clean" type="varchar(252)" remarks="Description without accents or uppercase characters"/>
                 <column name="price" type="real" />
-                <column name="sub_category_id" type="bigint" />
                 <!-- Measures -->
                 <column name="height" type="real" />
                 <column name="width" type="real" />
@@ -185,16 +184,6 @@
                            constraintName="pk_product"
                            tableName="product"
                            schemaName="products" />
-
-            <addForeignKeyConstraint baseColumnNames="sub_category_id"
-                                     baseTableName="product"
-                                     baseTableSchemaName="products"
-                                     constraintName="fk_product_sub_category"
-                                     onDelete="NO ACTION"
-                                     onUpdate="NO ACTION"
-                                     referencedColumnNames="id"
-                                     referencedTableName="sub_category"
-                                     referencedTableSchemaName="products"/>
 
             <addNotNullConstraint columnName="branch"
                                   columnDataType="varchar(25)"
@@ -226,11 +215,46 @@
                                   tableName="product"
                                   schemaName="products" />
 
+
+            <createTable tableName="product_sub_category" schemaName="products">
+                <column name="sub_category_id" type="bigint" />
+                <column name="product_id" type="bigint" />
+            </createTable>
+
             <addNotNullConstraint columnName="sub_category_id"
                                   columnDataType="bigint"
-                                  tableName="product"
+                                  tableName="product_sub_category"
                                   schemaName="products" />
 
+            <addNotNullConstraint columnName="product_id"
+                                  columnDataType="bigint"
+                                  tableName="product_sub_category"
+                                  schemaName="products" />
+
+            <addPrimaryKey columnNames="sub_category_id, product_id"
+                           constraintName="pk_sub_category_product"
+                           tableName="product_sub_category"
+                           schemaName="products" />
+
+            <addForeignKeyConstraint baseColumnNames="sub_category_id"
+                                     baseTableName="product_sub_category"
+                                     baseTableSchemaName="products"
+                                     constraintName="fk_sub_cat_pro"
+                                     onDelete="NO ACTION"
+                                     onUpdate="NO ACTION"
+                                     referencedColumnNames="id"
+                                     referencedTableName="sub_category"
+                                     referencedTableSchemaName="products"/>
+
+            <addForeignKeyConstraint baseColumnNames="product_id"
+                                     baseTableName="product_sub_category"
+                                     baseTableSchemaName="products"
+                                     constraintName="fk_pro_sub_cat"
+                                     onDelete="NO ACTION"
+                                     onUpdate="NO ACTION"
+                                     referencedColumnNames="id"
+                                     referencedTableName="product"
+                                     referencedTableSchemaName="products"/>
 
             <createTable tableName="campaign_product" schemaName="products">
                 <column name="campaign_id" type="bigint" />
