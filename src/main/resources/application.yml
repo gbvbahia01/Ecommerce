@@ -18,8 +18,9 @@ spring:
 
 logging:
   level:
-    org.springframework: warn
+    org.springframework: WARN
     br.com.gbvbahia.ecommerce: DEBUG
+    org.dozer: INFO
 
 server:
   error:

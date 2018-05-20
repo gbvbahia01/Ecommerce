@@ -77,6 +77,7 @@ public abstract class ServiceCommon<DTO, ENT, ID, R extends JpaRepository<ENT, I
         if (entity == null) {
             return null;
         }
+        logger.debug("DOZER: Converting {} to {}", entity.toString(), clazz.getSimpleName());
         return getDozer().map(entity, clazz);
     }
 
