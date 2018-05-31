@@ -117,12 +117,12 @@
     <build>
         <plugins>
             <plugin> <!-- mvn cobertura:cobertura coveralls:report -->
-              <groupId>org.eluder.coveralls</groupId>
-              <artifactId>coveralls-maven-plugin</artifactId>
-              <version>4.3.0</version>
-              <configuration>
-                  <repoToken>IZqXgWaPR1UuJKr9MlJk9HM6ZLENyvDDH</repoToken>
-              </configuration>
+                <groupId>org.eluder.coveralls</groupId>
+                <artifactId>coveralls-maven-plugin</artifactId>
+                <version>4.3.0</version>
+                <configuration>
+                    <repoToken>kWaLlbkhEOUqyyflWxStzQOI6osQ8b0Qw</repoToken>
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.jacoco</groupId>
@@ -148,10 +148,10 @@
         <profile>
             <id>database</id>
             <properties>
-                <liquibase.url>jdbc:postgresql://xxx.xxx.xxx.xxx:5432/database</liquibase.url>
+                <liquibase.url>jdbc:postgresql://192.168.25.131:5432/ecommerce</liquibase.url>
                 <liquibase.driver>org.postgresql.Driver</liquibase.driver>
-                <liquibase.username>user</liquibase.username>
-                <liquibase.password>******</liquibase.password>
+                <liquibase.username>pi</liquibase.username>
+                <liquibase.password>bvb123</liquibase.password>
                 <liquibase.schema>public</liquibase.schema>
                 <liquibase.logging>warning</liquibase.logging>
             </properties>

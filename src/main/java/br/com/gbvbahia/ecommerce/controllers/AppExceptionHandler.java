@@ -25,8 +25,8 @@ public class AppExceptionHandler extends ControllerCommon {
     @ExceptionHandler(Exception.class)
     public ModelAndView handleInternalServerError(Exception exception){
 
-        logger.error("Exception");
         logger.error(exception.getMessage());
+        logger.error("Exception:", exception);
 
         ModelAndView modelAndView = new ModelAndView();
 

@@ -50,7 +50,7 @@ public class Category implements Model<Long>, Comparable<Category> {
     private Integer priority = 1;
 
     @OneToMany(mappedBy = "category", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private Set<SubCategory> subCategorys;
+    private Set<SubCategory> subCategories;
 
     public Long getId() {
         return id;
@@ -76,15 +76,15 @@ public class Category implements Model<Long>, Comparable<Category> {
         this.description = description;
     }
 
-    public Set<SubCategory> getSubCategorys() {
-        if (subCategorys == null) {
-            subCategorys = new HashSet<>();
+    public Set<SubCategory> getSubCategories() {
+        if (subCategories == null) {
+            subCategories = new HashSet<>();
         }
-        return subCategorys;
+        return subCategories;
     }
 
-    public void setSubCategorys(Set<SubCategory> subCategorys) {
-        this.subCategorys = subCategorys;
+    public void setSubCategories(Set<SubCategory> subCategorys) {
+        this.subCategories = subCategorys;
     }
 
     public Integer getPriority() {

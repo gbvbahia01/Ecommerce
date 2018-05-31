@@ -12,6 +12,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -23,6 +25,7 @@ import java.util.List;
  * @since 29/04/18
  */
 @Service
+@Transactional(propagation = Propagation.REQUIRED)
 public class CategoryServiceImpl extends ServiceCommon<CategoryDTO, Category, Long, JpaRepository<Category, Long>> implements CategoryService {
 
     private final CategoryRepository categoryRepository;

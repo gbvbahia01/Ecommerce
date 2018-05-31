@@ -1,3 +1,22 @@
+/*
+Colors {
+    blue:               #64C6F2,
+    black:              #231E20,
+    black:              #1A171B,
+    beige:              #D7C797,
+    dark beige:         #845422,
+    dark orange:        #E86031,
+    dark red:           #BE0A26,
+    ace:                #FFFFFF,
+    gray:               #DDDDDD,
+    brown_light:        #C2986B,
+    dark_yellow:        #FDC700,
+    red_reg:            #E5352D,
+    orange_dark_lighr:  #EC7A4C,
+    yellow_reg:         #F1EA7D
+
+}
+ */
 /* Hot tags */
 .promotion .hot-tag{
 	top: 5px;
@@ -62,4 +81,8 @@
 .promotion .shopping-item a.btn {
 	margin-top: 10px;
 	margin-bottom: 10px;
+}
+
+.bg-add-blue {
+	background-color: #64C6F2;
 }

@@ -21,9 +21,9 @@
     <named-query name="Category.listOrderBy">
         <query><![CDATA[
             Select distinct c
-            From Category c, SubCategory s, Product p, ProductStock ps, ProductSubCategory psub
-            Where c.id = s.category.id
-            And s.id = psub.subCategory.id
+            From Category c, Product p, ProductStock ps, ProductSubCategory psub
+            Join fetch c.subCategories s
+            Where s.id = psub.subCategory.id
             And psub.product.id = p.id
             And p.id = ps.product.id
             And ('unlimited' = :unlimited OR ps.stockAmount >= :amountStock)
@@ -42,7 +42,7 @@
                 And cp1.active = :actCamProd
                 And pi1.keyPicture = :keyPicture
                 And ps1.stockAmount >= :amount
-                Order by pi1.id desc
+                Order by pi1.product.id desc
             ]]>
         </query>
     </named-query>

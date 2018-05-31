@@ -22,7 +22,7 @@ public class CategoryDTO implements Serializable, Comparable<CategoryDTO> {
     private String name;
     private String description;
     private Integer priority = 1;
-    private Set<SubCategoryDTO> subCategorys;
+    private Set<SubCategoryDTO> subCategories;
 
     public Long getId() {
         return id;
@@ -48,15 +48,15 @@ public class CategoryDTO implements Serializable, Comparable<CategoryDTO> {
         this.description = description;
     }
 
-    public Set<SubCategoryDTO> getSubCategorys() {
-        if (subCategorys == null) {
-            subCategorys = new HashSet<>();
+    public Set<SubCategoryDTO> getSubCategories() {
+        if (subCategories == null) {
+            subCategories = new HashSet<>();
         }
-        return subCategorys;
+        return subCategories;
     }
 
-    public void setSubCategorys(Set<SubCategoryDTO> subCategorys) {
-        this.subCategorys = subCategorys;
+    public void setSubCategories(Set<SubCategoryDTO> subCategories) {
+        this.subCategories = subCategories;
     }
 
     public Integer getPriority() {

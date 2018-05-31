@@ -43,7 +43,7 @@ public class TestFactory {
         category.setPriority(var);
         SubCategory sub = makeSubCategory(var);
         sub.setCategory(category);
-        category.setSubCategorys(Collections.singleton(sub));
+        category.setSubCategories(Collections.singleton(sub));
         return category;
     }
 

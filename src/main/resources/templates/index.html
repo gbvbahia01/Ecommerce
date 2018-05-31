@@ -37,16 +37,16 @@
 
         <div class="col-lg-2 d-none d-lg-block">
             <th:block th:each="cat, catStat : ${categories}">
-                <th:block th:if="${cat != null and #lists.isEmpty(cat.subCategorys)}">
+                <th:block th:if="${cat != null and #lists.isEmpty(cat.subCategories)}">
                     <a class="nav-item nav-link" href="#" th:text="${cat.name}">Category</a>
                 </th:block>
 
-                <th:block th:if="${cat != null and not #lists.isEmpty(cat.subCategorys)}">
+                <th:block th:if="${cat != null and not #lists.isEmpty(cat.subCategories)}">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
                            aria-haspopup="true" aria-expanded="false" th:text="${cat.name}">Category</a>
                         <div class="dropdown-menu border-bottom border-light">
-                            <th:block th:each="sub : ${cat.subCategorys}" th:if="${sub != null}">
+                            <th:block th:each="sub : ${cat.subCategories}" th:if="${sub != null}">
                                 <a class="dropdown-item" href="#" th:text="${sub.name}">Sub-Category</a>
                             </th:block>
                         </div>
