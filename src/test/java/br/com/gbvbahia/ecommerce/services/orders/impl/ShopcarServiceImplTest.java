@@ -1,14 +1,13 @@
 package br.com.gbvbahia.ecommerce.services.orders.impl;
 
 import br.com.gbvbahia.ecommerce.TestFactory;
-import br.com.gbvbahia.ecommerce.services.helpers.orders.ShopcarDTO;
+import br.com.gbvbahia.ecommerce.services.dto.orders.ShopcarDTO;
 import br.com.gbvbahia.ecommerce.model.entity.customers.Customer;
 import br.com.gbvbahia.ecommerce.model.entity.orders.Shopcar;
 import br.com.gbvbahia.ecommerce.repositories.orders.ShopcarRepository;
 import br.com.gbvbahia.ecommerce.services.commons.ParameterService;
 import br.com.gbvbahia.ecommerce.services.orders.ShopcarService;
 import org.dozer.DozerBeanMapper;
-import org.dozer.DozerBeanMapperSingletonWrapper;
 import org.dozer.Mapper;
 import org.junit.Assert;
 import org.junit.Before;
@@ -16,8 +15,6 @@ import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
-
-import static org.junit.Assert.*;
 
 /**
  * Project: Ecommerce

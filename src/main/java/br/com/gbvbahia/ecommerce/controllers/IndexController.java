@@ -1,11 +1,8 @@
 package br.com.gbvbahia.ecommerce.controllers;
 
-import br.com.gbvbahia.ecommerce.services.helpers.commons.ParameterDTO;
-import br.com.gbvbahia.ecommerce.services.helpers.products.CategoryDTO;
-import br.com.gbvbahia.ecommerce.services.helpers.products.ProductImageDTO;
-import br.com.gbvbahia.ecommerce.model.entity.commons.Parameter;
-import br.com.gbvbahia.ecommerce.model.entity.products.Category;
-import br.com.gbvbahia.ecommerce.model.entity.products.ProductImage;
+import br.com.gbvbahia.ecommerce.services.dto.commons.ParameterDTO;
+import br.com.gbvbahia.ecommerce.services.dto.products.CategoryDTO;
+import br.com.gbvbahia.ecommerce.services.dto.products.ProductImageDTO;
 import br.com.gbvbahia.ecommerce.model.enums.KeyPicture;
 import br.com.gbvbahia.ecommerce.services.commons.ParameterService;
 import br.com.gbvbahia.ecommerce.services.products.CategoryService;
@@ -54,7 +51,6 @@ public class IndexController extends  ControllerCommon {
             }
         }
 
-        model.addAttribute("hello","Hello Ecommerce");
         model.addAttribute("promotionItems", productImageList);
         model.addAttribute("categories", categoryList);
         model.addAttribute("contacts", contacts);

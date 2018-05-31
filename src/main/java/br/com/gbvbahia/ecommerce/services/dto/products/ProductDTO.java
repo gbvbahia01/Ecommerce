@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.gbvbahia.ecommerce.services.helpers.products;
+package br.com.gbvbahia.ecommerce.services.dto.products;
 
-import br.com.gbvbahia.ecommerce.services.helpers.embedded.MeasuresDTO;
+import br.com.gbvbahia.ecommerce.services.dto.embedded.MeasuresDTO;
 
 import java.io.Serializable;
 import java.util.HashSet;
@@ -32,17 +32,7 @@ public class ProductDTO implements Serializable {
     private Float price;
     private float campaignPrice;
     private float discount;
-    private Set<CampaignProductDTO> campaigns;
     private Set<ProductImageDTO> productImages;
-
-    public CampaignDTO getActiveCampaign() {
-        for (CampaignProductDTO cp : getCampaigns()) {
-            if (cp.isActive()) {
-                return cp.getCampaign();
-            }
-        }
-        return null;
-    }
 
     public ProductImageDTO searchImgBykeyPicture(String keyPicture) {
         try {
@@ -83,13 +73,6 @@ public class ProductDTO implements Serializable {
 
     public Float getPrice() {
         return price;
-    }
-
-    public Set<CampaignProductDTO> getCampaigns() {
-        if (campaigns == null) {
-            campaigns = new HashSet<>();
-        }
-        return campaigns;
     }
 
     public Set<ProductImageDTO> getProductImages() {
@@ -164,10 +147,6 @@ public class ProductDTO implements Serializable {
 
     public void setPrice(Float price) {
         this.price = price;
-    }
-
-    public void setCampaigns(Set<CampaignProductDTO> campaigns) {
-        this.campaigns = campaigns;
     }
 
     public void setProductImages(Set<ProductImageDTO> productImages) {

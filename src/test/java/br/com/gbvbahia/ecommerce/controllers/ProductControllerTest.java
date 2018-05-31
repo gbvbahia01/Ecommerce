@@ -7,16 +7,15 @@ package br.com.gbvbahia.ecommerce.controllers;
 
 import br.com.gbvbahia.ecommerce.TestFactory;
 import br.com.gbvbahia.ecommerce.component.ImageIoHandlerComponent;
-import br.com.gbvbahia.ecommerce.services.helpers.products.ProductImageDTO;
+import br.com.gbvbahia.ecommerce.services.dto.products.ProductImageDTO;
 import br.com.gbvbahia.ecommerce.model.entity.products.ProductImage;
 import br.com.gbvbahia.ecommerce.model.enums.KeyPicture;
 import br.com.gbvbahia.ecommerce.services.commons.ParameterService;
 import br.com.gbvbahia.ecommerce.services.products.ProductImageService;
 import br.com.gbvbahia.ecommerce.services.products.ProductService;
 import java.io.File;
-import java.util.Optional;
+
 import org.apache.commons.io.FileUtils;
-import org.dozer.DozerBeanMapperSingletonWrapper;
 import org.dozer.Mapper;
 import org.junit.Before;
 import org.junit.Test;

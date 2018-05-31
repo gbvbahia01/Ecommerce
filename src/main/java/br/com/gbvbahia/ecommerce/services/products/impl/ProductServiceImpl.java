@@ -1,6 +1,6 @@
 package br.com.gbvbahia.ecommerce.services.products.impl;
 
-import br.com.gbvbahia.ecommerce.services.helpers.products.ProductDTO;
+import br.com.gbvbahia.ecommerce.services.dto.products.ProductDTO;
 import br.com.gbvbahia.ecommerce.model.entity.products.Product;
 import br.com.gbvbahia.ecommerce.repositories.products.ProductRepository;
 import br.com.gbvbahia.ecommerce.services.commons.ParameterService;

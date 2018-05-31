@@ -1,7 +1,6 @@
 package br.com.gbvbahia.ecommerce.services.products.impl;
 
-import br.com.gbvbahia.ecommerce.services.helpers.commons.ParameterDTO;
-import br.com.gbvbahia.ecommerce.model.entity.commons.Parameter;
+import br.com.gbvbahia.ecommerce.services.dto.commons.ParameterDTO;
 import br.com.gbvbahia.ecommerce.repositories.products.CategoryRepository;
 import br.com.gbvbahia.ecommerce.services.commons.ParameterService;
 import br.com.gbvbahia.ecommerce.services.products.CategoryService;
@@ -16,8 +15,6 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.springframework.data.domain.Pageable;
-
-import java.util.Optional;
 
 /**
  * Project: Ecommerce

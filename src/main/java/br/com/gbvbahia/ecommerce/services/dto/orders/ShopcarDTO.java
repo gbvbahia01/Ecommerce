@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.gbvbahia.ecommerce.services.helpers.orders;
+package br.com.gbvbahia.ecommerce.services.dto.orders;
 
-import br.com.gbvbahia.ecommerce.services.helpers.customers.CustomerDTO;
-import br.com.gbvbahia.ecommerce.services.helpers.products.ProductStockDTO;
+import br.com.gbvbahia.ecommerce.services.dto.customers.CustomerDTO;
+import br.com.gbvbahia.ecommerce.services.dto.products.ProductStockDTO;
 
 import java.io.Serializable;
 import java.util.Objects;

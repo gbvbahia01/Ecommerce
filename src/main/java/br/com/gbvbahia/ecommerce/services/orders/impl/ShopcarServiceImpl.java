@@ -1,6 +1,6 @@
 package br.com.gbvbahia.ecommerce.services.orders.impl;
 
-import br.com.gbvbahia.ecommerce.services.helpers.orders.ShopcarDTO;
+import br.com.gbvbahia.ecommerce.services.dto.orders.ShopcarDTO;
 import br.com.gbvbahia.ecommerce.model.entity.customers.Customer;
 import br.com.gbvbahia.ecommerce.model.entity.orders.Shopcar;
 import br.com.gbvbahia.ecommerce.repositories.orders.ShopcarRepository;

@@ -1,6 +1,6 @@
 package br.com.gbvbahia.ecommerce.services.products;
 
-import br.com.gbvbahia.ecommerce.services.helpers.products.CategoryDTO;
+import br.com.gbvbahia.ecommerce.services.dto.products.CategoryDTO;
 import br.com.gbvbahia.ecommerce.services.ServiceContract;
 
 import java.util.List;

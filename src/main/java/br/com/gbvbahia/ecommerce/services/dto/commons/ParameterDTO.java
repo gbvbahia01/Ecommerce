@@ -1,4 +1,4 @@
-package br.com.gbvbahia.ecommerce.services.helpers.commons;
+package br.com.gbvbahia.ecommerce.services.dto.commons;
 
 import java.io.Serializable;
 

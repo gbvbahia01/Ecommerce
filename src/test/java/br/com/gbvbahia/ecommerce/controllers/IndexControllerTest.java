@@ -1,14 +1,13 @@
 package br.com.gbvbahia.ecommerce.controllers;
 
 import br.com.gbvbahia.ecommerce.TestFactory;
-import br.com.gbvbahia.ecommerce.services.helpers.commons.ParameterDTO;
-import br.com.gbvbahia.ecommerce.services.helpers.products.CategoryDTO;
-import br.com.gbvbahia.ecommerce.services.helpers.products.ProductImageDTO;
+import br.com.gbvbahia.ecommerce.services.dto.commons.ParameterDTO;
+import br.com.gbvbahia.ecommerce.services.dto.products.CategoryDTO;
+import br.com.gbvbahia.ecommerce.services.dto.products.ProductImageDTO;
 import br.com.gbvbahia.ecommerce.model.enums.KeyPicture;
 import br.com.gbvbahia.ecommerce.services.commons.ParameterService;
 import br.com.gbvbahia.ecommerce.services.products.CategoryService;
 import br.com.gbvbahia.ecommerce.services.products.ProductImageService;
-import org.dozer.DozerBeanMapperSingletonWrapper;
 import org.dozer.Mapper;
 import org.junit.Assert;
 import org.junit.Before;
@@ -68,7 +67,6 @@ public class IndexControllerTest {
         mockMvc.perform(get("/"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("index"))
-                .andExpect(model().attributeExists("hello"))
                 .andExpect(model().attributeExists("categories"))
                 .andExpect(model().attributeExists("contacts"))
                 .andExpect(model().attribute("contacts", 0))
@@ -87,7 +85,6 @@ public class IndexControllerTest {
         mockMvc.perform(get(""))
                 .andExpect(status().isOk())
                 .andExpect(view().name("index"))
-                .andExpect(model().attributeExists("hello"))
                 .andExpect(model().attributeExists("categories"))
                 .andExpect(model().attributeExists("contacts"))
                 .andExpect(model().attribute("contacts", 0))

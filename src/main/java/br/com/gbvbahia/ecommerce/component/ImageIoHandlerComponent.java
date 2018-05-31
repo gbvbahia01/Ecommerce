@@ -5,7 +5,7 @@
  */
 package br.com.gbvbahia.ecommerce.component;
 
-import br.com.gbvbahia.ecommerce.services.helpers.products.ProductImageDTO;
+import br.com.gbvbahia.ecommerce.services.dto.products.ProductImageDTO;
 import br.com.gbvbahia.ecommerce.model.enums.KeyPicture;
 import br.com.gbvbahia.ecommerce.util.EnvironmentVariables;
 import org.slf4j.Logger;

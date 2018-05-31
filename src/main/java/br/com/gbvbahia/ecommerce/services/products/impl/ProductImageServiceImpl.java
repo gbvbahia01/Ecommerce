@@ -1,6 +1,6 @@
 package br.com.gbvbahia.ecommerce.services.products.impl;
 
-import br.com.gbvbahia.ecommerce.services.helpers.products.ProductImageDTO;
+import br.com.gbvbahia.ecommerce.services.dto.products.ProductImageDTO;
 import br.com.gbvbahia.ecommerce.model.entity.products.ProductImage;
 import br.com.gbvbahia.ecommerce.model.enums.KeyPicture;
 import br.com.gbvbahia.ecommerce.repositories.products.ProductImageRepository;

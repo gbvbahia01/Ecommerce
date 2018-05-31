@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.gbvbahia.ecommerce.services.helpers.orders;
+package br.com.gbvbahia.ecommerce.services.dto.orders;
 
-import br.com.gbvbahia.ecommerce.services.helpers.customers.CustomerDTO;
+import br.com.gbvbahia.ecommerce.services.dto.customers.CustomerDTO;
 import br.com.gbvbahia.ecommerce.model.enums.OrderStatus;
 
 import java.io.Serializable;

@@ -1,9 +1,8 @@
-package br.com.gbvbahia.ecommerce.services.helpers;
+package br.com.gbvbahia.ecommerce.services.dto;
 
 import br.com.gbvbahia.ecommerce.TestFactory;
-import br.com.gbvbahia.ecommerce.services.helpers.products.ProductImageDTO;
+import br.com.gbvbahia.ecommerce.services.dto.products.ProductImageDTO;
 import br.com.gbvbahia.ecommerce.model.entity.products.ProductImage;
-import org.dozer.DozerBeanMapperSingletonWrapper;
 import org.dozer.Mapper;
 import org.junit.Assert;
 import org.junit.Before;

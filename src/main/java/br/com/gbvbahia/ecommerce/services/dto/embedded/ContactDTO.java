@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.gbvbahia.ecommerce.services.helpers.embedded;
+package br.com.gbvbahia.ecommerce.services.dto.embedded;
 
 import java.io.Serializable;
 

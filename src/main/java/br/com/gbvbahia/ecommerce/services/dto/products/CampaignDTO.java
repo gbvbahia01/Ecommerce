@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.gbvbahia.ecommerce.services.helpers.products;
+package br.com.gbvbahia.ecommerce.services.dto.products;
 
 import java.io.Serializable;
 import java.util.Calendar;
@@ -26,7 +26,6 @@ public class CampaignDTO implements Serializable {
     private String name;
     private String description;
     private boolean active = false;
-    private Set<CampaignProductDTO> products;
 
     public Long getId() {
         return id;
@@ -84,16 +83,6 @@ public class CampaignDTO implements Serializable {
         this.active = active;
     }
 
-    public Set<CampaignProductDTO> getProducts() {
-        if (products == null) {
-            products = new HashSet<>();
-        }
-        return products;
-    }
-
-    public void setProducts(Set<CampaignProductDTO> products) {
-        this.products = products;
-    }
 
     @Override
     public String toString() {

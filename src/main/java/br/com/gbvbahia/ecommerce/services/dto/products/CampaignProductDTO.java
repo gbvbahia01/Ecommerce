@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.gbvbahia.ecommerce.services.helpers.products;
+package br.com.gbvbahia.ecommerce.services.dto.products;
 
-import br.com.gbvbahia.ecommerce.services.helpers.embedded.CampaignProductPKDTO;
+import br.com.gbvbahia.ecommerce.services.dto.embedded.CampaignProductPKDTO;
 
 import java.io.Serializable;
 

@@ -1,8 +1,7 @@
 package br.com.gbvbahia.ecommerce.services.products.impl;
 
-import br.com.gbvbahia.ecommerce.services.helpers.commons.ParameterDTO;
-import br.com.gbvbahia.ecommerce.services.helpers.products.CategoryDTO;
-import br.com.gbvbahia.ecommerce.model.entity.commons.Parameter;
+import br.com.gbvbahia.ecommerce.services.dto.commons.ParameterDTO;
+import br.com.gbvbahia.ecommerce.services.dto.products.CategoryDTO;
 import br.com.gbvbahia.ecommerce.model.entity.products.Category;
 import br.com.gbvbahia.ecommerce.repositories.products.CategoryRepository;
 import br.com.gbvbahia.ecommerce.services.ServiceCommon;
@@ -15,7 +14,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 /**
  * Project: Ecommerce

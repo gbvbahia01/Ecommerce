@@ -6,8 +6,7 @@
 package br.com.gbvbahia.ecommerce.controllers;
 
 import br.com.gbvbahia.ecommerce.component.ImageIoHandlerComponent;
-import br.com.gbvbahia.ecommerce.services.helpers.products.ProductImageDTO;
-import br.com.gbvbahia.ecommerce.model.entity.products.ProductImage;
+import br.com.gbvbahia.ecommerce.services.dto.products.ProductImageDTO;
 import br.com.gbvbahia.ecommerce.services.commons.ParameterService;
 import br.com.gbvbahia.ecommerce.services.products.ProductImageService;
 import br.com.gbvbahia.ecommerce.services.products.ProductService;
@@ -16,7 +15,6 @@ import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Optional;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.compress.utils.IOUtils;
 import org.apache.commons.io.FileUtils;

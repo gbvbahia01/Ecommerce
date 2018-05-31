@@ -1,6 +1,6 @@
 package br.com.gbvbahia.ecommerce.services.commons;
 
-import br.com.gbvbahia.ecommerce.services.helpers.commons.ParameterDTO;
+import br.com.gbvbahia.ecommerce.services.dto.commons.ParameterDTO;
 import br.com.gbvbahia.ecommerce.services.ServiceContract;
 
 import java.util.List;
