@@ -1,12 +1,9 @@
 package br.com.gbvbahia.ecommerce.services.products.impl;
 
-import br.com.gbvbahia.ecommerce.services.dto.commons.ParameterDTO;
 import br.com.gbvbahia.ecommerce.repositories.products.CategoryRepository;
 import br.com.gbvbahia.ecommerce.services.commons.ParameterService;
+import br.com.gbvbahia.ecommerce.services.dto.commons.ParameterDTO;
 import br.com.gbvbahia.ecommerce.services.products.CategoryService;
-import org.dozer.DozerBeanMapper;
-import org.dozer.DozerBeanMapperSingletonWrapper;
-import org.dozer.Mapper;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -29,20 +26,16 @@ public class CategoryServiceImplTest {
     private CategoryRepository categoryRepository;
     @Mock
     private ParameterService parameterService;
-    @Mock
-    private DozerBeanMapper dozer;
 
     private CategoryService categoryService;
-    private Mapper mapper;
+
 
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
 
-        mapper = DozerBeanMapperSingletonWrapper.getInstance();
 
-        categoryService = new CategoryServiceImpl(dozer,
-                                                  parameterService,
+        categoryService = new CategoryServiceImpl(parameterService,
                                                   categoryRepository);
     }
 
@@ -86,8 +79,8 @@ public class CategoryServiceImplTest {
                                                         "0",
                                                         false);
         ParameterDTO menuMaxParameter = new ParameterDTO(ParameterService.AMOUNT_CATEGORY_MENU,
-                                                                         "12",
-                                                                         true);
+                                                         "12",
+                                                         true);
 
         ArgumentCaptor<Integer> arg1Captor = ArgumentCaptor.forClass(Integer.class);
         ArgumentCaptor<String> arg2Captor = ArgumentCaptor.forClass(String.class);

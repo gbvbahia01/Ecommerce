@@ -72,6 +72,7 @@ public class TestFactory {
             List myMappingFiles = new ArrayList();
             myMappingFiles.add("dozer/dozerBeanMapping.xml");
             dozerMapper = new DozerBeanMapper();
+            ((DozerBeanMapper) dozerMapper).setMappingFiles(myMappingFiles);
         }
         return dozerMapper;
     }

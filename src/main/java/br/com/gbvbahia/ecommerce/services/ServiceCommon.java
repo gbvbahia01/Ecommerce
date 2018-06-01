@@ -1,34 +1,41 @@
 package br.com.gbvbahia.ecommerce.services;
 
+import br.com.gbvbahia.ecommerce.mappers.DozerMapperBuilderImpl;
+import br.com.gbvbahia.ecommerce.mappers.MapperBuilder;
 import br.com.gbvbahia.ecommerce.services.commons.ParameterService;
 import br.com.gbvbahia.ecommerce.util.StringHelper;
+import org.dozer.Mapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
-import org.dozer.DozerBeanMapper;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.transaction.annotation.Transactional;
-
+/**
+ * Project: ecommerce
+ *
+ * @author Guilherme Bahia
+ * @version 1.0
+ * @since 31/05/18
+ */
 public abstract class ServiceCommon<DTO, ENT, ID, R extends JpaRepository<ENT, ID>> implements ServiceContract<DTO, ID> {
 
     private final ParameterService parameterService;
-    private final DozerBeanMapper dozer;
+    private final Mapper mapper;
     private final Class<DTO> clazz;
 
     //============
     // Constructor
     //============
     public ServiceCommon(ParameterService parameterService,
-                         DozerBeanMapper dozer,
                          Class<DTO> clazz) {
 
         this.parameterService = parameterService;
-        this.dozer = dozer;
+        this.mapper = DozerMapperBuilderImpl.getInstance().getMapper();
         this.clazz = clazz;
     }
 
@@ -36,18 +43,19 @@ public abstract class ServiceCommon<DTO, ENT, ID, R extends JpaRepository<ENT, I
     // Contract
     //=========
     protected abstract R getRepository();
-    
+
     //========
     // Helpers
     //========
     protected Logger logger = LoggerFactory.getLogger(getClass());
-    
+
     protected enum Like {
         INIT, END, BETWEEN;
     }
-     
+
     /**
      * Put % at init and at the end of String.
+     *
      * @param parameter to put between %%.
      * @return %parameter%.
      */
@@ -78,15 +86,15 @@ public abstract class ServiceCommon<DTO, ENT, ID, R extends JpaRepository<ENT, I
             return null;
         }
         logger.debug("DOZER: Converting {} to {}", entity.toString(), clazz.getSimpleName());
-        return getDozer().map(entity, clazz);
+        return getMapper().map(entity, clazz);
     }
 
     protected ParameterService getParameterService() {
-        return  this.parameterService;
+        return this.parameterService;
     }
 
-    protected DozerBeanMapper getDozer() {
-        return this.dozer;
+    protected Mapper getMapper() {
+        return this.mapper;
     }
 
     //===================
@@ -98,6 +106,6 @@ public abstract class ServiceCommon<DTO, ENT, ID, R extends JpaRepository<ENT, I
         if (!opt.isPresent()) {
             return null;
         }
-        return dozer.map(opt.get(), clazz);
+        return mapper.map(opt.get(), clazz);
     }
 }

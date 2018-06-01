@@ -1,13 +1,12 @@
 package br.com.gbvbahia.ecommerce.services.products.impl;
 
-import br.com.gbvbahia.ecommerce.services.dto.commons.ParameterDTO;
-import br.com.gbvbahia.ecommerce.services.dto.products.CategoryDTO;
 import br.com.gbvbahia.ecommerce.model.entity.products.Category;
 import br.com.gbvbahia.ecommerce.repositories.products.CategoryRepository;
 import br.com.gbvbahia.ecommerce.services.ServiceCommon;
 import br.com.gbvbahia.ecommerce.services.commons.ParameterService;
+import br.com.gbvbahia.ecommerce.services.dto.commons.ParameterDTO;
+import br.com.gbvbahia.ecommerce.services.dto.products.CategoryDTO;
 import br.com.gbvbahia.ecommerce.services.products.CategoryService;
-import org.dozer.DozerBeanMapper;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -30,11 +29,10 @@ public class CategoryServiceImpl extends ServiceCommon<CategoryDTO, Category, Lo
 
     private final CategoryRepository categoryRepository;
 
-    public CategoryServiceImpl(DozerBeanMapper dozer,
-                               ParameterService parameterService,
+    public CategoryServiceImpl(ParameterService parameterService,
                                CategoryRepository categoryRepository) {
 
-        super(parameterService, dozer, CategoryDTO.class);
+        super(parameterService, CategoryDTO.class);
         this.categoryRepository = categoryRepository;
     }
 
