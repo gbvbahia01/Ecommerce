@@ -7,19 +7,18 @@ package br.com.gbvbahia.ecommerce.controllers;
 
 import br.com.gbvbahia.ecommerce.TestFactory;
 import br.com.gbvbahia.ecommerce.component.ImageIoHandlerComponent;
-import br.com.gbvbahia.ecommerce.services.dto.products.ProductImageDTO;
+import br.com.gbvbahia.ecommerce.controllers.errors.AppExceptionHandler;
+import br.com.gbvbahia.ecommerce.controllers.products.ProductController;
 import br.com.gbvbahia.ecommerce.model.entity.products.ProductImage;
 import br.com.gbvbahia.ecommerce.model.enums.KeyPicture;
 import br.com.gbvbahia.ecommerce.services.commons.ParameterService;
+import br.com.gbvbahia.ecommerce.services.dto.products.ProductImageDTO;
 import br.com.gbvbahia.ecommerce.services.products.ProductImageService;
 import br.com.gbvbahia.ecommerce.services.products.ProductService;
-import java.io.File;
-
 import org.apache.commons.io.FileUtils;
 import org.dozer.Mapper;
 import org.junit.Before;
 import org.junit.Test;
-import static org.junit.Assert.*;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
@@ -30,6 +29,10 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+
+import java.io.File;
+
+import static org.junit.Assert.assertEquals;
 
 /**
  *

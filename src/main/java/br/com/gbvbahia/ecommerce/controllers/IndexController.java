@@ -55,6 +55,6 @@ public class IndexController extends  ControllerCommon {
         model.addAttribute("categories", categoryList);
         model.addAttribute("contacts", contacts);
 
-        return "index";
+        return Pages.INDEX.pageName;
     }
 }

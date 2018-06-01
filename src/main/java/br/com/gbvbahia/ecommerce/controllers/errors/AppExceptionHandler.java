@@ -1,5 +1,7 @@
-package br.com.gbvbahia.ecommerce.controllers;
+package br.com.gbvbahia.ecommerce.controllers.errors;
 
+import br.com.gbvbahia.ecommerce.controllers.ControllerCommon;
+import br.com.gbvbahia.ecommerce.exceptions.NotFoundException;
 import br.com.gbvbahia.ecommerce.services.commons.ParameterService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -22,15 +24,15 @@ public class AppExceptionHandler extends ControllerCommon {
     }
 
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    @ExceptionHandler(Exception.class)
-    public ModelAndView handleInternalServerError(Exception exception){
+    @ExceptionHandler(NotFoundException.class)
+    public ModelAndView handleInternalServerError(Exception exception) {
 
         logger.error(exception.getMessage());
         logger.error("Exception:", exception);
 
         ModelAndView modelAndView = new ModelAndView();
 
-        modelAndView.setViewName("INTERNAL_SERVER_ERROR".toLowerCase());
+        modelAndView.setViewName(Pages.INTERNAL_ERROR_500.pageName);
         modelAndView.addObject("exception", exception);
 
         return modelAndView;

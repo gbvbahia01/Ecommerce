@@ -1,9 +1,8 @@
-package br.com.gbvbahia.ecommerce.controllers;
+package br.com.gbvbahia.ecommerce.controllers.errors;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import br.com.gbvbahia.ecommerce.controllers.ControllerCommon;
+import br.com.gbvbahia.ecommerce.services.commons.ParameterService;
 import org.springframework.boot.web.servlet.error.ErrorController;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -19,10 +18,11 @@ import javax.servlet.http.HttpServletRequest;
  * @since 06/05/18
  */
 @Controller
-public class AppErrorController implements ErrorController {
+public class AppErrorController extends ControllerCommon implements ErrorController {
 
-    protected Logger logger = LoggerFactory.getLogger(getClass());
-
+    public AppErrorController(ParameterService parameterService) {
+        super(parameterService);
+    }
 
     @RequestMapping("/error")
     public ModelAndView handleError(HttpServletRequest request, Exception exception) {
@@ -40,7 +40,7 @@ public class AppErrorController implements ErrorController {
             }
             case 404: { //"Http Error Code: 404. Resource not found"
                 logger.warn("Handling: HttpStatus.NOT_FOUND");
-                modelAndView.setViewName("404_NOT_FOUND".toLowerCase());
+                modelAndView.setViewName(Pages.NOT_FOUND_404.pageName);
                 modelAndView.addObject("exception", exception);
                 return modelAndView;
             }
@@ -49,7 +49,7 @@ public class AppErrorController implements ErrorController {
             default: { // Http Error Code: 500. Internal Server Error
                 logger.warn("Handling: {}", status);
                 logger.error("Handling: HttpStatus.INTERNAL_SERVER_ERROR", exception);
-                modelAndView.setViewName("INTERNAL_SERVER_ERROR".toLowerCase());
+                modelAndView.setViewName(Pages.INTERNAL_ERROR_500.pageName);
                 modelAndView.addObject("exception", exception);
                 return modelAndView;
             }
