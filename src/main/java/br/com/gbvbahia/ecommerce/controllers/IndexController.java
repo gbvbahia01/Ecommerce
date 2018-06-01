@@ -34,7 +34,7 @@ public class IndexController extends  ControllerCommon {
         this.categoryService = categoryService;
     }
 
-    @GetMapping({"", "/"})
+    @GetMapping({"", "/", "/ecommerce"})
     public String getIndexPage(final Model model) {
         logger.debug("Getting Index page");
 

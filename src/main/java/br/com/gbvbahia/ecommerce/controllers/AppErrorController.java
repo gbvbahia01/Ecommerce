@@ -23,35 +23,39 @@ public class AppErrorController implements ErrorController {
 
     protected Logger logger = LoggerFactory.getLogger(getClass());
 
+
     @RequestMapping("/error")
     public ModelAndView handleError(HttpServletRequest request, Exception exception) {
 
-        Object status = request.getAttribute(RequestDispatcher.ERROR_STATUS_CODE);
+        Integer status = (Integer) request.getAttribute(RequestDispatcher.ERROR_STATUS_CODE);
         ModelAndView modelAndView = new ModelAndView();
 
-        if (exception != null) {
-            logger.error("Handling:", exception);
-            modelAndView.setViewName("INTERNAL_SERVER_ERROR".toLowerCase());
-            modelAndView.addObject("exception", exception);
-            return modelAndView;
-        }
 
-        if (status != null) {
-            Integer statusCode = Integer.valueOf(status.toString());
-
-            if(statusCode == HttpStatus.NOT_FOUND.value()) {
-                //modelAndView.setViewName("error-404");
+        switch (status) {
+            case 400: { //"Http Error Code: 400. Bad Request"
+                break;
+            }
+            case 401: { //"Http Error Code: 401. Unauthorized"
+                break;
+            }
+            case 404: { //"Http Error Code: 404. Resource not found"
                 logger.warn("Handling: HttpStatus.NOT_FOUND");
-                modelAndView.setViewName("error");
+                modelAndView.setViewName("404_NOT_FOUND".toLowerCase());
+                modelAndView.addObject("exception", exception);
+                return modelAndView;
             }
-            else if(statusCode == HttpStatus.INTERNAL_SERVER_ERROR.value()) {
-                //modelAndView.setViewName("error-500");
-                logger.warn("Handling: HttpStatus.INTERNAL_SERVER_ERROR");
-                modelAndView.setViewName("error");
+
+            case 500:
+            default: { // Http Error Code: 500. Internal Server Error
+                logger.warn("Handling: {}", status);
+                logger.error("Handling: HttpStatus.INTERNAL_SERVER_ERROR", exception);
+                modelAndView.setViewName("INTERNAL_SERVER_ERROR".toLowerCase());
+                modelAndView.addObject("exception", exception);
+                return modelAndView;
             }
         }
 
-        logger.warn("Handling: {}", status);
+
         return modelAndView;
     }
 
@@ -59,4 +63,5 @@ public class AppErrorController implements ErrorController {
     public String getErrorPath() {
         return "/error";
     }
+
 }
