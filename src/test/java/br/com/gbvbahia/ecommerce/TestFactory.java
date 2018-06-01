@@ -1,5 +1,6 @@
 package br.com.gbvbahia.ecommerce;
 
+import br.com.gbvbahia.ecommerce.mappers.DozerMapperBuilderImpl;
 import br.com.gbvbahia.ecommerce.services.dto.commons.ParameterDTO;
 import br.com.gbvbahia.ecommerce.model.entity.products.Category;
 import br.com.gbvbahia.ecommerce.model.entity.products.Product;
@@ -68,12 +69,6 @@ public class TestFactory {
     }
 
     public static Mapper getDozerForUnitTest() {
-        if (dozerMapper == null) {
-            List myMappingFiles = new ArrayList();
-            myMappingFiles.add("dozer/dozerBeanMapping.xml");
-            dozerMapper = new DozerBeanMapper();
-            ((DozerBeanMapper) dozerMapper).setMappingFiles(myMappingFiles);
-        }
-        return dozerMapper;
+        return DozerMapperBuilderImpl.getInstance().getMapper();
     }
 }
