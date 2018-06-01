@@ -1,6 +1,7 @@
 package br.com.gbvbahia.ecommerce.mappers;
 
 import org.dozer.DozerBeanMapper;
+import org.dozer.DozerBeanMapperSingletonWrapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -34,11 +35,7 @@ public class DozerMapperBuilderImpl implements MapperBuilder {
 
     private DozerMapperBuilderImpl init() {
         logger.info("Creating dozer mapping file.");
-        List<String> mappingFiles = Arrays.asList(
-                "dozer/dozerBeanMapping.xml"
-        );
-        dozerBean = new DozerBeanMapper();
-        dozerBean.setMappingFiles(mappingFiles);
+        dozerBean = (DozerBeanMapper) DozerBeanMapperSingletonWrapper.getInstance();
         logger.info("Dozer mapping file created.");
         return this;
     }
