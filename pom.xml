@@ -147,10 +147,10 @@
         <profile>
             <id>database</id>
             <properties>
-                <liquibase.url>jdbc:postgresql://192.168.25.131:5432/ecommerce</liquibase.url>
+                <liquibase.url>jdbc:postgresql://xxx.xxx.xxx.xxx:5432/ecommerce</liquibase.url>
                 <liquibase.driver>org.postgresql.Driver</liquibase.driver>
-                <liquibase.username>pi</liquibase.username>
-                <liquibase.password>bvb123</liquibase.password>
+                <liquibase.username>xxxxxx</liquibase.username>
+                <liquibase.password>xxxxxx</liquibase.password>
                 <liquibase.schema>public</liquibase.schema>
                 <liquibase.logging>warning</liquibase.logging>
             </properties>
