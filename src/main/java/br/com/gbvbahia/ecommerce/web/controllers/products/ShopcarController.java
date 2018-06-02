@@ -1,7 +1,7 @@
-package br.com.gbvbahia.ecommerce.controllers.products;
+package br.com.gbvbahia.ecommerce.web.controllers.products;
 
 import br.com.gbvbahia.ecommerce.component.CookieHandlerComponent;
-import br.com.gbvbahia.ecommerce.controllers.ControllerCommon;
+import br.com.gbvbahia.ecommerce.web.controllers.ControllerCommon;
 import br.com.gbvbahia.ecommerce.services.commons.ParameterService;
 import br.com.gbvbahia.ecommerce.services.orders.ShopcarService;
 import org.springframework.stereotype.Controller;

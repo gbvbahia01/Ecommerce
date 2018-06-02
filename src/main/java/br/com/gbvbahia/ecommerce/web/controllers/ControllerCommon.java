@@ -1,4 +1,4 @@
-package br.com.gbvbahia.ecommerce.controllers;
+package br.com.gbvbahia.ecommerce.web.controllers;
 
 import br.com.gbvbahia.ecommerce.services.commons.ParameterService;
 import org.slf4j.Logger;

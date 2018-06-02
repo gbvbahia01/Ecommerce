@@ -1,6 +1,6 @@
-package br.com.gbvbahia.ecommerce.controllers.errors;
+package br.com.gbvbahia.ecommerce.web.errors;
 
-import br.com.gbvbahia.ecommerce.controllers.ControllerCommon;
+import br.com.gbvbahia.ecommerce.web.controllers.ControllerCommon;
 import br.com.gbvbahia.ecommerce.exceptions.NotFoundException;
 import br.com.gbvbahia.ecommerce.services.commons.ParameterService;
 import org.springframework.http.HttpStatus;

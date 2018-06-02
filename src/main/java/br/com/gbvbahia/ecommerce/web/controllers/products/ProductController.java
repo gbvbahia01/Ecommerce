@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.gbvbahia.ecommerce.controllers.products;
+package br.com.gbvbahia.ecommerce.web.controllers.products;
 
 import br.com.gbvbahia.ecommerce.component.ImageIoHandlerComponent;
-import br.com.gbvbahia.ecommerce.controllers.ControllerCommon;
+import br.com.gbvbahia.ecommerce.web.controllers.ControllerCommon;
 import br.com.gbvbahia.ecommerce.services.commons.ParameterService;
 import br.com.gbvbahia.ecommerce.services.dto.products.ProductImageDTO;
 import br.com.gbvbahia.ecommerce.services.products.ProductImageService;

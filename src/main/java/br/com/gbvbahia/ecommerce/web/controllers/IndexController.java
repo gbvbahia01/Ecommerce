@@ -1,4 +1,4 @@
-package br.com.gbvbahia.ecommerce.controllers;
+package br.com.gbvbahia.ecommerce.web.controllers;
 
 import br.com.gbvbahia.ecommerce.services.dto.commons.ParameterDTO;
 import br.com.gbvbahia.ecommerce.services.dto.products.CategoryDTO;

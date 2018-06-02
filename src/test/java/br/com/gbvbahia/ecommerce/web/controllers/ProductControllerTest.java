@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.gbvbahia.ecommerce.controllers;
+package br.com.gbvbahia.ecommerce.web.controllers;
 
 import br.com.gbvbahia.ecommerce.TestFactory;
 import br.com.gbvbahia.ecommerce.component.ImageIoHandlerComponent;
-import br.com.gbvbahia.ecommerce.controllers.errors.AppExceptionHandler;
-import br.com.gbvbahia.ecommerce.controllers.products.ProductController;
+import br.com.gbvbahia.ecommerce.web.errors.AppExceptionHandler;
+import br.com.gbvbahia.ecommerce.web.controllers.products.ProductController;
 import br.com.gbvbahia.ecommerce.model.entity.products.ProductImage;
 import br.com.gbvbahia.ecommerce.model.enums.KeyPicture;
 import br.com.gbvbahia.ecommerce.services.commons.ParameterService;
