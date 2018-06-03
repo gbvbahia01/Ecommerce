@@ -37,7 +37,7 @@ public class ProductImageRepositoryTest {
 
     @Test
     public void listByPromotionTagCampaingProductFalse() {
-        int amountTrueExpected = 2;
+        int amountTrueExpected = 3;
 
         List<ProductImage> result = productImageRepository.listByPromotionTag(true,
                                                                               false,

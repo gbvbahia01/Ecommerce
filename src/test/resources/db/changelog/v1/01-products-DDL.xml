@@ -424,6 +424,11 @@
                                      referencedTableName="product"
                                      referencedTableSchemaName="products"/>
 
+            <addUniqueConstraint tableName="product_stock"
+                                 columnNames="product_id"
+                                 constraintName="product_stock_product_uk"
+                                 schemaName="products" />
+
             <addNotNullConstraint columnName="amount"
                                   columnDataType="integer"
                                   tableName="product_stock"
@@ -437,8 +442,8 @@
 
             <createTable tableName="stock_specification" schemaName="products">
                 <column name="product_stock_id" type="bigint" />
-                <column name="specification" type="varchar(150)" />
-                <column name="value" type="varchar(150)" />
+                <column name="specification" type="varchar(500)" />
+                <column name="value" type="text" />
             </createTable>
 
             <addNotNullConstraint columnName="product_stock_id"

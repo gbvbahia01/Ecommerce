@@ -5,7 +5,7 @@
  */
 package br.com.gbvbahia.ecommerce.web.controllers.products;
 
-import br.com.gbvbahia.ecommerce.component.ImageIoHandlerComponent;
+import br.com.gbvbahia.ecommerce.web.component.ImageIoHandlerComponent;
 import br.com.gbvbahia.ecommerce.web.controllers.ControllerCommon;
 import br.com.gbvbahia.ecommerce.services.commons.ParameterService;
 import br.com.gbvbahia.ecommerce.services.dto.products.ProductImageDTO;

@@ -28,7 +28,7 @@ public class ProductDTO implements Serializable {
     private String description;
     private String descriptionClean;
     private MeasuresDTO measures;
-    private Set<ProductStockDTO> productStock;
+    private ProductStockDTO productStock;
     private Float price;
     private float campaignPrice;
     private float discount;
@@ -90,10 +90,7 @@ public class ProductDTO implements Serializable {
         return descriptionClean;
     }
 
-    public Set<ProductStockDTO> getProductStock() {
-        if (productStock == null) {
-            productStock = new HashSet<>();
-        }
+    public ProductStockDTO getProductStock() {
         return productStock;
     }
 
@@ -141,7 +138,7 @@ public class ProductDTO implements Serializable {
         this.measures = measures;
     }
 
-    public void setProductStock(Set<ProductStockDTO> productStock) {
+    public void setProductStock(ProductStockDTO productStock) {
         this.productStock = productStock;
     }
 

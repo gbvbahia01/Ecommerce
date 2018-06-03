@@ -1,4 +1,4 @@
-package br.com.gbvbahia.ecommerce.component;
+package br.com.gbvbahia.ecommerce.web.component;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 public class CookieHandlerComponent {
 
     protected Logger logger = LoggerFactory.getLogger(getClass());
-
+    public static final int MAX_COOKIES_DAYS = (int) (24.8D * 24L * 60L * 60L);
     /**
      * @param key the key used to identify the cookie in the client.
      * @param value the value stored in the client.
@@ -52,17 +52,15 @@ public class CookieHandlerComponent {
     }
 
     public Cookie getCookie(HttpServletRequest request, String name) {
-        Cookie cookie = null;
         Cookie[] userCookies = request.getCookies();
         if (userCookies != null && userCookies.length > 0) {
             for (int i = 0; i < userCookies.length; i++) {
                 if (userCookies[i].getName().equals(name)) {
-                    cookie = userCookies[i];
-                    return cookie;
+                    return userCookies[i];
                 }
             }
         }
-        return cookie;
+        return null;
     }
 
     /**
@@ -74,9 +72,9 @@ public class CookieHandlerComponent {
      */
     public int getCookieSeconds(int days) {
         Long total = days * 24L * 60L * 60L;
-        if (total > Integer.MAX_VALUE) {
-            logger.warn("The amount: " + days + " in days are more than Integer.MAX_VALUE in seconds");
-            return Integer.MAX_VALUE;
+        if (total > MAX_COOKIES_DAYS) {
+            logger.warn("The amount: {} * 24L * 60L * 60L are more than {}.", days, MAX_COOKIES_DAYS);
+            return MAX_COOKIES_DAYS;
         } else {
             return total.intValue();
         }

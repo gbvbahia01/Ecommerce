@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.Map;
 
 /**
@@ -24,8 +25,10 @@ public class ShopCartRestController extends RestControllerCommon {
 
     @PostMapping(value = "/cart/items")
     public String addToCart(@RequestBody Map args,
-                            HttpServletRequest request) {
+                            HttpServletRequest request,
+                            HttpServletResponse response) {
         logger.info("Object receveid at /cart/items {}", args);
+
         return ResultResponse.SUCCESS_JSON.result;
     }
 

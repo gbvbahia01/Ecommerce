@@ -1,6 +1,7 @@
 package br.com.gbvbahia.ecommerce.web.restcontrollers;
 
 import br.com.gbvbahia.ecommerce.services.commons.ParameterService;
+import br.com.gbvbahia.ecommerce.web.component.CookieHandlerComponent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -13,8 +14,11 @@ import org.slf4j.LoggerFactory;
  */
 public abstract class RestControllerCommon {
 
-    protected Logger logger = LoggerFactory.getLogger(getClass());
+    protected final Logger logger = LoggerFactory.getLogger(getClass());
+
     protected final ParameterService parameterService;
+
+    protected final CookieHandlerComponent cookieHandler = new CookieHandlerComponent();
 
     protected enum ResultResponse {
         SUCCESS_JSON("{\"msg\":\"success\"}"),

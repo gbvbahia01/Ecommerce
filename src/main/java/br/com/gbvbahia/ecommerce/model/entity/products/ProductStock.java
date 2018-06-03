@@ -5,16 +5,15 @@
  */
 package br.com.gbvbahia.ecommerce.model.entity.products;
 
-import java.util.Map;
-import java.util.Objects;
-import java.util.TreeMap;
+import br.com.gbvbahia.ecommerce.model.cotract.Model;
+import br.com.gbvbahia.ecommerce.model.enums.Specifications;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
-
-import br.com.gbvbahia.ecommerce.model.cotract.Model;
-import br.com.gbvbahia.ecommerce.model.enums.Specifications;
+import java.util.Map;
+import java.util.Objects;
+import java.util.TreeMap;
 
 /**
  * Project: Ecommerce
@@ -44,8 +43,8 @@ public class ProductStock implements Model<Long> {
     private Product product;
 
     @ElementCollection(fetch = FetchType.EAGER)
-    @MapKeyColumn(name = "specification", length = 150)
-    @Column(name = "value", length = 150)
+    @MapKeyColumn(name = "specification", length = 500)
+    @Column(name = "value")
     @CollectionTable(schema = "products",
             name = "stock_specification",
             joinColumns = @JoinColumn(name = "product_stock_id"))

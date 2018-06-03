@@ -5,19 +5,18 @@
  */
 package br.com.gbvbahia.ecommerce.model.entity.products;
 
-import java.util.HashSet;
-import java.util.NoSuchElementException;
-import java.util.Objects;
-import java.util.Set;
+import br.com.gbvbahia.ecommerce.model.cotract.Model;
+import br.com.gbvbahia.ecommerce.model.embeddable.Measures;
+import br.com.gbvbahia.ecommerce.util.StringHelper;
 
 import javax.persistence.*;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-
-import br.com.gbvbahia.ecommerce.model.cotract.Model;
-import br.com.gbvbahia.ecommerce.model.embeddable.Measures;
-import br.com.gbvbahia.ecommerce.util.StringHelper;
+import java.util.HashSet;
+import java.util.NoSuchElementException;
+import java.util.Objects;
+import java.util.Set;
 
 /**
  * Project: Ecommerce
@@ -65,8 +64,8 @@ public class Product implements Model<Long> {
     @Embedded
     private Measures measures;
     
-    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private Set<ProductStock> productStock;
+    @OneToOne(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private ProductStock productStock;
 
     @DecimalMin(value = "0.0")
     @Column(name = "price", precision = 2, scale = 10, nullable = false)
@@ -257,14 +256,11 @@ public class Product implements Model<Long> {
         return descriptionClean;
     }
 
-    public Set<ProductStock> getProductStock() {
-        if (productStock == null) {
-            productStock = new HashSet<>();
-        }
+    public ProductStock getProductStock() {
         return productStock;
     }
 
-    public void setProductStock(Set<ProductStock> productStock) {
+    public void setProductStock(ProductStock productStock) {
         this.productStock = productStock;
     }
 

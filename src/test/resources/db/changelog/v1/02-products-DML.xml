@@ -865,6 +865,11 @@
         </insert>
         <insert tableName="product_stock" schemaName="products">
             <column name="id" valueSequenceNext="products.seq_product_stock" />
+            <column name="amount" valueNumeric="5" />
+            <column name="product_id" valueComputed="(SELECT id FROM products.product WHERE name = 'Smart TV LED 40 Samsung')" />
+        </insert>
+        <insert tableName="product_stock" schemaName="products">
+            <column name="id" valueSequenceNext="products.seq_product_stock" />
             <column name="amount" valueNumeric="10" />
             <column name="product_id" valueComputed="(SELECT id FROM products.product WHERE name = 'Escova Mágica Alisadora')" />
         </insert>
@@ -878,6 +883,209 @@
             <column name="amount" valueNumeric="10" />
             <column name="product_id" valueComputed="(SELECT id FROM products.product WHERE name = 'Relógio Iridium Rosa')" />
         </insert>
+    </changeSet>
+
+    <changeSet id="stock_specification-v1-dml" author="gbvbahia">
+       <insert tableName="stock_specification" schemaName="products">
+            <column name="product_stock_id" valueComputed="(select id from products.product_stock where product_id = (SELECT id FROM products.product WHERE name = 'iPhone 6S 16GB Cinza'))" />
+            <column name="specification" value="Cor"/>
+            <column name="value" value="Cinza"/>
+        </insert>
+
+        <insert tableName="stock_specification" schemaName="products">
+            <column name="product_stock_id" valueComputed="(select id from products.product_stock where product_id = (SELECT id FROM products.product WHERE name = 'iPhone 6S 16GB Cinza'))" />
+            <column name="specification" value="Capacidade de Armazenamento"/>
+            <column name="value" value="16GB"/>
+        </insert>
+
+        <insert tableName="stock_specification" schemaName="products">
+            <column name="product_stock_id" valueComputed="(select id from products.product_stock where product_id = (SELECT id FROM products.product WHERE name = 'iPhone 6S 16GB Cinza'))" />
+            <column name="specification" value="Modelo"/>
+            <column name="value" value="iPhone 6S"/>
+        </insert>
+
+        <insert tableName="stock_specification" schemaName="products">
+            <column name="product_stock_id" valueComputed="(select id from products.product_stock where product_id = (SELECT id FROM products.product WHERE name = 'iPhone 6S 16GB Cinza'))" />
+            <column name="specification" value="Dimensões (total)"/>
+            <column name="value" value="5,99 polegadas (L) x 3,1 polegadas (W) x 0,3 polegadas de espessura"/>
+        </insert>
+
+        <insert tableName="stock_specification" schemaName="products">
+            <column name="product_stock_id" valueComputed="(select id from products.product_stock where product_id = (SELECT id FROM products.product WHERE name = 'iPhone 6S 16GB Cinza'))" />
+            <column name="specification" value="Peso:"/>
+            <column name="value" value="70g"/>
+        </insert>
+
+        <insert tableName="stock_specification" schemaName="products">
+            <column name="product_stock_id" valueComputed="(select id from products.product_stock where product_id = (SELECT id FROM products.product WHERE name = 'iPhone 6S 16GB Cinza'))" />
+            <column name="specification" value="Recursos da Câmera"/>
+            <column name="value" value="Foco Automático, Georreferenciação, Tecnologia de Detecção de Rosto, modo panorama"/>
+        </insert>
+
+        <insert tableName="stock_specification" schemaName="products">
+            <column name="product_stock_id" valueComputed="(select id from products.product_stock where product_id = (SELECT id FROM products.product WHERE name = 'iPhone 6S 16GB Cinza'))" />
+            <column name="specification" value="Conteúdo da embalagem"/>
+            <column name="value" value="iPhone com iOS 11&lt;/br&gt;EarPods com conector de fones de ouvido de 3,5 mm&lt;/br&gt;Cabo de Lightning para USB&lt;/br&gt;Carregador USB&lt;/br&gt;Documentação"/>
+        </insert>
+
+        <insert tableName="stock_specification" schemaName="products">
+            <column name="product_stock_id" valueComputed="(select id from products.product_stock where product_id = (SELECT id FROM products.product WHERE name = 'Moto G4 Preto'))" />
+            <column name="specification" value="Cor"/>
+            <column name="value" value="Preto"/>
+        </insert>
+
+        <insert tableName="stock_specification" schemaName="products">
+            <column name="product_stock_id" valueComputed="(select id from products.product_stock where product_id = (SELECT id FROM products.product WHERE name = 'Moto G4 Preto'))" />
+            <column name="specification" value="Capacidade de Armazenamento"/>
+            <column name="value" value="16GB"/>
+        </insert>
+
+        <insert tableName="stock_specification" schemaName="products">
+            <column name="product_stock_id" valueComputed="(select id from products.product_stock where product_id = (SELECT id FROM products.product WHERE name = 'Moto G4 Preto'))" />
+            <column name="specification" value="Modelo"/>
+            <column name="value" value="Moto G4"/>
+        </insert>
+
+        <insert tableName="stock_specification" schemaName="products">
+            <column name="product_stock_id" valueComputed="(select id from products.product_stock where product_id = (SELECT id FROM products.product WHERE name = 'Moto G4 Preto'))" />
+            <column name="specification" value="Dimensões (total)"/>
+            <column name="value" value="5,99 polegadas (L) x 3,1 polegadas (W) x 0,3 polegadas de espessura"/>
+        </insert>
+
+        <insert tableName="stock_specification" schemaName="products">
+            <column name="product_stock_id" valueComputed="(select id from products.product_stock where product_id = (SELECT id FROM products.product WHERE name = 'Moto G4 Preto'))" />
+            <column name="specification" value="Peso:"/>
+            <column name="value" value="70g"/>
+        </insert>
+
+        <insert tableName="stock_specification" schemaName="products">
+            <column name="product_stock_id" valueComputed="(select id from products.product_stock where product_id = (SELECT id FROM products.product WHERE name = 'Moto G4 Preto'))" />
+            <column name="specification" value="Recursos da Câmera"/>
+            <column name="value" value="Foco Automático, Georreferenciação, Tecnologia de Detecção de Rosto, modo panorama"/>
+        </insert>
+
+        <insert tableName="stock_specification" schemaName="products">
+            <column name="product_stock_id" valueComputed="(select id from products.product_stock where product_id = (SELECT id FROM products.product WHERE name = 'Moto G4 Preto'))" />
+            <column name="specification" value="Conteúdo da embalagem"/>
+            <column name="value" value="Moto G4 com Android 5&lt;/br&gt;Fones de ouvido de 3,5 mm&lt;/br&gt;Cabo USB&lt;/br&gt;Carregador USB&lt;/br&gt;Documentação"/>
+        </insert>
+
+        <insert tableName="stock_specification" schemaName="products">
+            <column name="product_stock_id" valueComputed="(select id from products.product_stock where product_id = (SELECT id FROM products.product WHERE name = 'Galaxy J7 Duos Dourado'))" />
+            <column name="specification" value="Cor"/>
+            <column name="value" value="Dourado"/>
+        </insert>
+
+        <insert tableName="stock_specification" schemaName="products">
+            <column name="product_stock_id" valueComputed="(select id from products.product_stock where product_id = (SELECT id FROM products.product WHERE name = 'Galaxy J7 Duos Dourado'))" />
+            <column name="specification" value="Capacidade de Armazenamento"/>
+            <column name="value" value="16GB"/>
+        </insert>
+
+        <insert tableName="stock_specification" schemaName="products">
+            <column name="product_stock_id" valueComputed="(select id from products.product_stock where product_id = (SELECT id FROM products.product WHERE name = 'Galaxy J7 Duos Dourado'))" />
+            <column name="specification" value="Modelo"/>
+            <column name="value" value="Galaxy J7"/>
+        </insert>
+
+        <insert tableName="stock_specification" schemaName="products">
+            <column name="product_stock_id" valueComputed="(select id from products.product_stock where product_id = (SELECT id FROM products.product WHERE name = 'Galaxy J7 Duos Dourado'))" />
+            <column name="specification" value="Dimensões (total)"/>
+            <column name="value" value="5,99 polegadas (L) x 3,1 polegadas (W) x 0,3 polegadas de espessura"/>
+        </insert>
+
+        <insert tableName="stock_specification" schemaName="products">
+            <column name="product_stock_id" valueComputed="(select id from products.product_stock where product_id = (SELECT id FROM products.product WHERE name = 'Galaxy J7 Duos Dourado'))" />
+            <column name="specification" value="Peso:"/>
+            <column name="value" value="70g"/>
+        </insert>
+
+        <insert tableName="stock_specification" schemaName="products">
+            <column name="product_stock_id" valueComputed="(select id from products.product_stock where product_id = (SELECT id FROM products.product WHERE name = 'Galaxy J7 Duos Dourado'))" />
+            <column name="specification" value="Recursos da Câmera"/>
+            <column name="value" value="Foco Automático, Georreferenciação, Tecnologia de Detecção de Rosto, modo panorama"/>
+        </insert>
+
+        <insert tableName="stock_specification" schemaName="products">
+            <column name="product_stock_id" valueComputed="(select id from products.product_stock where product_id = (SELECT id FROM products.product WHERE name = 'Galaxy J7 Duos Dourado'))" />
+            <column name="specification" value="Conteúdo da embalagem"/>
+            <column name="value" value="Galaxy J7 com Android 6&lt;/br&gt;Fones de ouvido de 3,5 mm&lt;/br&gt;Cabo de Lightning para USB&lt;/br&gt;Carregador USB&lt;/br&gt;Documentação"/>
+        </insert>
+
+        <insert tableName="stock_specification" schemaName="products">
+            <column name="product_stock_id" valueComputed="(select id from products.product_stock where product_id = (SELECT id FROM products.product WHERE name = 'Smart TV LED 32 Samsung'))" />
+            <column name="specification" value="Controle remoto"/>
+            <column name="value" value="Sim"/>
+        </insert>
+        <insert tableName="stock_specification" schemaName="products">
+            <column name="product_stock_id" valueComputed="(select id from products.product_stock where product_id = (SELECT id FROM products.product WHERE name = 'Smart TV LED 32 Samsung'))" />
+            <column name="specification" value="Conversor para TV digital integrado"/>
+            <column name="value" value="Sim"/>
+        </insert>
+        <insert tableName="stock_specification" schemaName="products">
+            <column name="product_stock_id" valueComputed="(select id from products.product_stock where product_id = (SELECT id FROM products.product WHERE name = 'Smart TV LED 32 Samsung'))" />
+            <column name="specification" value="Wi-Fi integrado"/>
+            <column name="value" value="Sim"/>
+        </insert>
+        <insert tableName="stock_specification" schemaName="products">
+            <column name="product_stock_id" valueComputed="(select id from products.product_stock where product_id = (SELECT id FROM products.product WHERE name = 'Smart TV LED 32 Samsung'))" />
+            <column name="specification" value="Conexões"/>
+            <column name="value" value="2 HDMI&lt;/br&gt;1 USB&lt;/br&gt;1 Entrada componente (Y/Pb/Pr)&lt;/br&gt;1 Entrada vídeo composto (AV - 1 Uso comum para component Y)&lt;/br&gt;1 Rede Ethernet (LAN)&lt;/br&gt;1 Saída de áudio óptico&lt;/br&gt;2 Entradas de RF (RF/Cabo) "/>
+        </insert>
+
+        <insert tableName="stock_specification" schemaName="products">
+            <column name="product_stock_id" valueComputed="(select id from products.product_stock where product_id = (SELECT id FROM products.product WHERE name = 'Smart TV LED 40 Samsung'))" />
+            <column name="specification" value="Controle remoto"/>
+            <column name="value" value="Sim"/>
+        </insert>
+        <insert tableName="stock_specification" schemaName="products">
+            <column name="product_stock_id" valueComputed="(select id from products.product_stock where product_id = (SELECT id FROM products.product WHERE name = 'Smart TV LED 40 Samsung'))" />
+            <column name="specification" value="Conversor para TV digital integrado"/>
+            <column name="value" value="Sim"/>
+        </insert>
+        <insert tableName="stock_specification" schemaName="products">
+            <column name="product_stock_id" valueComputed="(select id from products.product_stock where product_id = (SELECT id FROM products.product WHERE name = 'Smart TV LED 40 Samsung'))" />
+            <column name="specification" value="Wi-Fi integrado"/>
+            <column name="value" value="Sim"/>
+        </insert>
+        <insert tableName="stock_specification" schemaName="products">
+            <column name="product_stock_id" valueComputed="(select id from products.product_stock where product_id = (SELECT id FROM products.product WHERE name = 'Smart TV LED 40 Samsung'))" />
+            <column name="specification" value="Conexões"/>
+            <column name="value" value="2 HDMI&lt;/br&gt;1 USB&lt;/br&gt;1 Entrada componente (Y/Pb/Pr)&lt;/br&gt;1 Entrada vídeo composto (AV - 1 Uso comum para component Y)&lt;/br&gt;1 Rede Ethernet (LAN)&lt;/br&gt;1 Saída de áudio óptico&lt;/br&gt;2 Entradas de RF (RF/Cabo) "/>
+        </insert>
+        <insert tableName="stock_specification" schemaName="products">
+            <column name="product_stock_id" valueComputed="(select id from products.product_stock where product_id = (SELECT id FROM products.product WHERE name = 'Escova Mágica Alisadora'))" />
+            <column name="specification" value="Voltagem"/>
+            <column name="value" value="110V"/>
+        </insert>
+        <insert tableName="stock_specification" schemaName="products">
+            <column name="product_stock_id" valueComputed="(select id from products.product_stock where product_id = (SELECT id FROM products.product WHERE name = 'Escova Mágica Alisadora'))" />
+            <column name="specification" value="Cor"/>
+            <column name="value" value="Azul"/>
+        </insert>
+
+        <insert tableName="stock_specification" schemaName="products">
+            <column name="product_stock_id" valueComputed="(select id from products.product_stock where product_id = (SELECT id FROM products.product WHERE name = 'Depilador Elétrico Philips'))" />
+            <column name="specification" value="Voltagem"/>
+            <column name="value" value="110V"/>
+        </insert>
+        <insert tableName="stock_specification" schemaName="products">
+            <column name="product_stock_id" valueComputed="(select id from products.product_stock where product_id = (SELECT id FROM products.product WHERE name = 'Depilador Elétrico Philips'))" />
+            <column name="specification" value="Cor"/>
+            <column name="value" value="Vermelho"/>
+        </insert>
+
+        <insert tableName="stock_specification" schemaName="products">
+            <column name="product_stock_id" valueComputed="(select id from products.product_stock where product_id = (SELECT id FROM products.product WHERE name = 'Relógio Iridium Rosa'))" />
+            <column name="specification" value="Voltagem"/>
+            <column name="value" value="110V"/>
+        </insert>
+        <insert tableName="stock_specification" schemaName="products">
+            <column name="product_stock_id" valueComputed="(select id from products.product_stock where product_id = (SELECT id FROM products.product WHERE name = 'Relógio Iridium Rosa'))" />
+            <column name="specification" value="Cor"/>
+            <column name="value" value="Rosa"/>
+        </insert>
+
     </changeSet>
 
 </databaseChangeLog>

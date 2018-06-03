@@ -26,7 +26,7 @@
                         <!-- Shopping item hover block & link -->
                         <div class="item-hover bg-add-blue">
                             <a href="#" data-quantity="1"
-                               th:onclick="'javascript:addItemToCart(\'' + ${prod.product.id} + '\');'">
+                               th:onclick="'javascript:addItemToCart(\'' + ${prod.product.productStock.id} + '\');'">
                                 <span th:text="#{add.to.card}">Add</span>
                                 <i style="margin-left: 25%" class="fas fa-shopping-cart fa-lg fa-inverse"></i>
                             </a>

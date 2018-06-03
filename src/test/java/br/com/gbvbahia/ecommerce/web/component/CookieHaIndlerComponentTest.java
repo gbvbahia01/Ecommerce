@@ -1,4 +1,4 @@
-package br.com.gbvbahia.ecommerce.component;
+package br.com.gbvbahia.ecommerce.web.component;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -47,7 +47,7 @@ public class CookieHaIndlerComponentTest {
     @Test
     public void testGetCookieSecondsMaxInteger() {
         int argMaxDaysArgument = Integer.MAX_VALUE / 24 / 60 / 60 + 10;
-        int expectedMaxDaysSeconds = Integer.MAX_VALUE;
+        int expectedMaxDaysSeconds = CookieHandlerComponent.MAX_COOKIES_DAYS;
 
         assertEquals(expectedMaxDaysSeconds, cookieHaIndlerComponent.getCookieSeconds(argMaxDaysArgument));
     }
