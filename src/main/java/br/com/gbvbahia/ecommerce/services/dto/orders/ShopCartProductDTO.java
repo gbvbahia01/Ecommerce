@@ -16,25 +16,25 @@ import java.io.Serializable;
  * @version 1.0
  * @since 15/04/18
  */
-public class ShopcarProductDTO implements Serializable, Comparable<ShopcarProductDTO> {
+public class ShopCartProductDTO implements Serializable, Comparable<ShopCartProductDTO> {
 
     private Long id;
     private ProductStockDTO productStock;
-    private ShopcarDTO shopcar;
+    private ShopCartDTO shopCart;
     private Integer amountProducts = 1;
 
-    public ShopcarProductDTO() {
+    public ShopCartProductDTO() {
         super();
     }
 
-    public ShopcarProductDTO(ProductStockDTO product, ShopcarDTO shopcar) {
+    public ShopCartProductDTO(ProductStockDTO product, ShopCartDTO shopCart) {
         this.productStock = product;
-        this.shopcar = shopcar;
+        this.shopCart = shopCart;
     }
 
-    public ShopcarProductDTO(ProductStockDTO product, ShopcarDTO shopcar, Integer amount) {
+    public ShopCartProductDTO(ProductStockDTO product, ShopCartDTO shopCart, Integer amount) {
         this.productStock = product;
-        this.shopcar = shopcar;
+        this.shopCart = shopCart;
         this.amountProducts = amount;
     }
 
@@ -50,7 +50,7 @@ public class ShopcarProductDTO implements Serializable, Comparable<ShopcarProduc
     }
 
     public String toString() {
-        return "ShopcarProducts{" + "ProductStock=" + productStock + ", shopcar=" + shopcar + ", amountProducts=" + amountProducts + '}';
+        return "ShopcarProducts{" + "ProductStock=" + productStock + ", shopCart=" + shopCart + ", amountProducts=" + amountProducts + '}';
     }
 
     //============================
@@ -72,12 +72,12 @@ public class ShopcarProductDTO implements Serializable, Comparable<ShopcarProduc
         this.productStock = product;
     }
 
-    public ShopcarDTO getShopcar() {
-        return shopcar;
+    public ShopCartDTO getShopCart() {
+        return shopCart;
     }
 
-    public void setShopcar(ShopcarDTO shopcar) {
-        this.shopcar = shopcar;
+    public void setShopCart(ShopCartDTO shopCart) {
+        this.shopCart = shopCart;
     }
 
     public Integer getAmountProducts() {
@@ -89,7 +89,7 @@ public class ShopcarProductDTO implements Serializable, Comparable<ShopcarProduc
     }
 
     @Override
-    public int compareTo(ShopcarProductDTO o) {
+    public int compareTo(ShopCartProductDTO o) {
         if (o == null) {
             return 1;
         }

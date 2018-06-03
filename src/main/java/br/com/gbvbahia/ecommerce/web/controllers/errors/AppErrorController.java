@@ -1,4 +1,4 @@
-package br.com.gbvbahia.ecommerce.web.errors;
+package br.com.gbvbahia.ecommerce.web.controllers.errors;
 
 import br.com.gbvbahia.ecommerce.web.controllers.ControllerCommon;
 import br.com.gbvbahia.ecommerce.services.commons.ParameterService;

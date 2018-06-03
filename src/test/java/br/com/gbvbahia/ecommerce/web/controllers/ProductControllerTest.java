@@ -7,7 +7,7 @@ package br.com.gbvbahia.ecommerce.web.controllers;
 
 import br.com.gbvbahia.ecommerce.TestFactory;
 import br.com.gbvbahia.ecommerce.component.ImageIoHandlerComponent;
-import br.com.gbvbahia.ecommerce.web.errors.AppExceptionHandler;
+import br.com.gbvbahia.ecommerce.web.controllers.errors.AppExceptionHandler;
 import br.com.gbvbahia.ecommerce.web.controllers.products.ProductController;
 import br.com.gbvbahia.ecommerce.model.entity.products.ProductImage;
 import br.com.gbvbahia.ecommerce.model.enums.KeyPicture;

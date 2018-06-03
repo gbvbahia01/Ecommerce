@@ -5,17 +5,16 @@
  */
 package br.com.gbvbahia.ecommerce.model.entity.orders;
 
-import java.util.Objects;
-import java.util.Set;
-import java.util.TreeSet;
+import br.com.gbvbahia.ecommerce.model.cotract.Model;
+import br.com.gbvbahia.ecommerce.model.entity.customers.Customer;
+import br.com.gbvbahia.ecommerce.model.entity.products.ProductStock;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-
-import br.com.gbvbahia.ecommerce.model.cotract.Model;
-import br.com.gbvbahia.ecommerce.model.entity.customers.Customer;
-import br.com.gbvbahia.ecommerce.model.entity.products.ProductStock;
+import java.util.Objects;
+import java.util.Set;
+import java.util.TreeSet;
 
 /**
  * Project: Ecommerce
@@ -25,12 +24,12 @@ import br.com.gbvbahia.ecommerce.model.entity.products.ProductStock;
  * @since 15/04/18
  */
 @Entity
-@Table(name = "shopcar", schema = "orders")
-public class Shopcar implements Model<Long> {
+@Table(name = "shopcart", schema = "orders")
+public class ShopCart implements Model<Long> {
 
 	@Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_shopcar")
-    @SequenceGenerator(sequenceName = "seq_shopcar", name = "seq_shopcar")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_shopcart")
+    @SequenceGenerator(sequenceName = "seq_shopcart", name = "seq_shopcart")
     @Column(name = "id")
     private Long id;
 
@@ -46,60 +45,60 @@ public class Shopcar implements Model<Long> {
     @Column(name = "serial_uk", nullable = false, unique = true, length = 256)
     private String serialUniqueId;
 
-    @OneToMany(mappedBy = "shopcar", fetch = FetchType.EAGER, cascade = CascadeType.ALL,
-            targetEntity = ShopcarProduct.class)
-    private Set<ShopcarProduct> shopcarProducts;
+    @OneToMany(mappedBy = "shopCart", fetch = FetchType.EAGER, cascade = CascadeType.ALL,
+            targetEntity = ShopCartProduct.class)
+    private Set<ShopCartProduct> shopCartProducts;
 
-    public Shopcar() {
+    public ShopCart() {
     }
 
-    public Shopcar(Customer customer, String serialUniqueId, Set<ShopcarProduct> shopcarProducts) {
+    public ShopCart(Customer customer, String serialUniqueId, Set<ShopCartProduct> shopCartProducts) {
         this.customer = customer;
         this.serialUniqueId = serialUniqueId;
-        this.shopcarProducts = shopcarProducts;
+        this.shopCartProducts = shopCartProducts;
     }
 
-    public Shopcar(String serialUniqueId, Set<ShopcarProduct> shopcarProducts) {
+    public ShopCart(String serialUniqueId, Set<ShopCartProduct> shopCartProducts) {
         this.serialUniqueId = serialUniqueId;
-        this.shopcarProducts = shopcarProducts;
+        this.shopCartProducts = shopCartProducts;
     }
 
-    public Shopcar(Customer customer, Set<ShopcarProduct> shopcarProducts) {
+    public ShopCart(Customer customer, Set<ShopCartProduct> shopCartProducts) {
         this.customer = customer;
-        this.shopcarProducts = shopcarProducts;
+        this.shopCartProducts = shopCartProducts;
     }
 
-    public Shopcar(String serialUniqueId, ProductStock... products) {
+    public ShopCart(String serialUniqueId, ProductStock... products) {
         this.serialUniqueId = serialUniqueId;
         addProducts(products);
     }
 
-    public Shopcar(Customer customer, ProductStock... products) {
+    public ShopCart(Customer customer, ProductStock... products) {
         this.customer = customer;
         addProducts(products);
     }
 
     public void addProducts(ProductStock... products) {
         for (ProductStock product : products) {
-            ShopcarProduct sp = new ShopcarProduct(product, this);
-            if (!getShopcarProductses().contains(sp)) {
-                getShopcarProductses().add(new ShopcarProduct(product, this));
+            ShopCartProduct sp = new ShopCartProduct(product, this);
+            if (!getShopCartProducts().contains(sp)) {
+                getShopCartProducts().add(new ShopCartProduct(product, this));
             } else {
-                getShopcarProductses().stream().filter(sp2 -> sp2.equals(sp)).findFirst().get().addAmount();
+                getShopCartProducts().stream().filter(sp2 -> sp2.equals(sp)).findFirst().get().addAmount();
             }
         }
     }
     
     public boolean removeShopcarProduct(Long idShopcarProduct) {
-        ShopcarProduct toRemove = null;
-        for (ShopcarProduct sp : getShopcarProductses()) {
+        ShopCartProduct toRemove = null;
+        for (ShopCartProduct sp : getShopCartProducts()) {
             if (sp.getId().equals(idShopcarProduct)) {
                 toRemove = sp;
                 break;
             }
         }
         if (toRemove != null) {
-            return getShopcarProductses().remove(toRemove);
+            return getShopCartProducts().remove(toRemove);
         }
         return false;
     }
@@ -122,7 +121,7 @@ public class Shopcar implements Model<Long> {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Shopcar other = (Shopcar) obj;
+        final ShopCart other = (ShopCart) obj;
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }
@@ -156,19 +155,19 @@ public class Shopcar implements Model<Long> {
         this.serialUniqueId = serialUniqueId;
     }
 
-    public Set<ShopcarProduct> getShopcarProductses() {
-        if (shopcarProducts == null) {
-            shopcarProducts = new TreeSet<>();
+    public Set<ShopCartProduct> getShopCartProducts() {
+        if (shopCartProducts == null) {
+            shopCartProducts = new TreeSet<>();
         }
-        return shopcarProducts;
+        return shopCartProducts;
     }
 
-    public void setShopcarProductses(Set<ShopcarProduct> shopcarProductses) {
-        this.shopcarProducts = shopcarProductses;
+    public void setShopCartProducts(Set<ShopCartProduct> shopCartProducts) {
+        this.shopCartProducts = shopCartProducts;
     }
 
     public boolean contains(ProductStock pStock) {
-        for (ShopcarProduct ps : getShopcarProductses()) {
+        for (ShopCartProduct ps : getShopCartProducts()) {
             if (Objects.equals(pStock, ps.getProductStock())) {
                 return true;
             }

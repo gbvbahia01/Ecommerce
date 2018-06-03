@@ -122,12 +122,12 @@
                               schemaName="orders" />
 
 
-        <createSequence sequenceName="seq_shopcar"
+        <createSequence sequenceName="seq_shopcart"
                         schemaName="orders"
                         incrementBy="1"
                         startValue="1"/>
 
-        <createTable tableName="shopcar" schemaName="orders">
+        <createTable tableName="shopcart" schemaName="orders">
             <column name="id" type="bigint"/>
             <column name="customer_id" type="bigint"/>
             <column name="serial_uk" type="varchar(256)"/>
@@ -135,18 +135,18 @@
 
         <addNotNullConstraint columnName="id"
                               columnDataType="bigint"
-                              tableName="shopcar"
+                              tableName="shopcart"
                               schemaName="orders"/>
 
         <addPrimaryKey columnNames="id"
-                       constraintName="pk_shopcar"
-                       tableName="shopcar"
+                       constraintName="pk_shopcart"
+                       tableName="shopcart"
                        schemaName="orders" />
 
         <addForeignKeyConstraint baseColumnNames="customer_id"
-                                 baseTableName="shopcar"
+                                 baseTableName="shopcart"
                                  baseTableSchemaName="orders"
-                                 constraintName="fk_shopcar_customer"
+                                 constraintName="fk_shopcart_customer"
                                  onDelete="CASCADE"
                                  onUpdate="CASCADE"
                                  referencedColumnNames="id"
@@ -154,13 +154,13 @@
                                  referencedTableSchemaName="customers"/>
 
         <addUniqueConstraint columnNames="serial_uk"
-                             constraintName="unq_shopcar_serial_uk"
-                             tableName="shopcar"
+                             constraintName="unq_shopcart_serial_uk"
+                             tableName="shopcart"
                              schemaName="orders" />
 
         <addNotNullConstraint columnName="serial_uk"
                               columnDataType="varchar(256)"
-                              tableName="shopcar"
+                              tableName="shopcart"
                               schemaName="orders" />
 
 
@@ -169,25 +169,25 @@
                         incrementBy="1"
                         startValue="1"/>
 
-        <createTable tableName="shopcar_product_stock" schemaName="orders">
+        <createTable tableName="shopcart_product_stock" schemaName="orders">
             <column name="id" type="bigint"/>
             <column name="product_stock_id" type="bigint"/>
-            <column name="shopcar_id" type="bigint"/>
+            <column name="shopcart_id" type="bigint"/>
             <column name="amount" type="integer"/>
         </createTable>
 
         <addNotNullConstraint columnName="id"
                               columnDataType="bigint"
-                              tableName="shopcar_product_stock"
+                              tableName="shopcart_product_stock"
                               schemaName="orders"/>
 
         <addPrimaryKey columnNames="id"
                        constraintName="pk_shc_prod_stk"
-                       tableName="shopcar_product_stock"
+                       tableName="shopcart_product_stock"
                        schemaName="orders" />
 
         <addForeignKeyConstraint baseColumnNames="product_stock_id"
-                                 baseTableName="shopcar_product_stock"
+                                 baseTableName="shopcart_product_stock"
                                  baseTableSchemaName="orders"
                                  constraintName="fk_shc_prod_stk_pro_stk"
                                  onDelete="CASCADE"
@@ -196,29 +196,29 @@
                                  referencedTableName="product_stock"
                                  referencedTableSchemaName="products"/>
 
-        <addForeignKeyConstraint baseColumnNames="shopcar_id"
-                                 baseTableName="shopcar_product_stock"
+        <addForeignKeyConstraint baseColumnNames="shopcart_id"
+                                 baseTableName="shopcart_product_stock"
                                  baseTableSchemaName="orders"
-                                 constraintName="fk_shc_prod_stk_shopcar"
+                                 constraintName="fk_shc_prod_stk_shopcart"
                                  onDelete="CASCADE"
                                  onUpdate="CASCADE"
                                  referencedColumnNames="id"
-                                 referencedTableName="shopcar"
+                                 referencedTableName="shopcart"
                                  referencedTableSchemaName="orders"/>
 
         <addNotNullConstraint columnName="product_stock_id"
                               columnDataType="bigint"
-                              tableName="shopcar_product_stock"
+                              tableName="shopcart_product_stock"
                               schemaName="orders" />
 
-        <addNotNullConstraint columnName="shopcar_id"
+        <addNotNullConstraint columnName="shopcart_id"
                               columnDataType="bigint"
-                              tableName="shopcar_product_stock"
+                              tableName="shopcart_product_stock"
                               schemaName="orders" />
 
         <addNotNullConstraint columnName="amount"
                               columnDataType="integer"
-                              tableName="shopcar_product_stock"
+                              tableName="shopcart_product_stock"
                               schemaName="orders" />
 
 

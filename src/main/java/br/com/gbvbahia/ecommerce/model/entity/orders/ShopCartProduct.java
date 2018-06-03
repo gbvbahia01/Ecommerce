@@ -5,13 +5,12 @@
  */
 package br.com.gbvbahia.ecommerce.model.entity.orders;
 
-import java.util.Objects;
+import br.com.gbvbahia.ecommerce.model.cotract.Model;
+import br.com.gbvbahia.ecommerce.model.entity.products.ProductStock;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-
-import br.com.gbvbahia.ecommerce.model.cotract.Model;
-import br.com.gbvbahia.ecommerce.model.entity.products.ProductStock;
+import java.util.Objects;
 
 /**
  * Project: Ecommerce
@@ -21,8 +20,8 @@ import br.com.gbvbahia.ecommerce.model.entity.products.ProductStock;
  * @since 15/04/18
  */
 @Entity
-@Table(name = "shopcar_product_stock", schema = "orders")
-public class ShopcarProduct implements Model<Long>, Comparable<ShopcarProduct> {
+@Table(name = "shopcart_product_stock", schema = "orders")
+public class ShopCartProduct implements Model<Long>, Comparable<ShopCartProduct> {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_shc_prod_stk")
@@ -37,24 +36,24 @@ public class ShopcarProduct implements Model<Long>, Comparable<ShopcarProduct> {
 
     @NotNull
     @ManyToOne
-    @JoinColumn(name = "shopcar_id", nullable = false, unique = false)
-    private Shopcar shopcar;
+    @JoinColumn(name = "shopcart_id", nullable = false, unique = false)
+    private ShopCart shopCart;
 
     @NotNull
     @Column(name = "amount", nullable = false, unique = false)
     private Integer amountProducts = 1;
 
-    public ShopcarProduct() {
+    public ShopCartProduct() {
     }
 
-    public ShopcarProduct(ProductStock product, Shopcar shopcar) {
+    public ShopCartProduct(ProductStock product, ShopCart shopCart) {
         this.productStock = product;
-        this.shopcar = shopcar;
+        this.shopCart = shopCart;
     }
 
-    public ShopcarProduct(ProductStock product, Shopcar shopcar, Integer amount) {
+    public ShopCartProduct(ProductStock product, ShopCart shopCart, Integer amount) {
         this.productStock = product;
-        this.shopcar = shopcar;
+        this.shopCart = shopCart;
         this.amountProducts = amount;
     }
 
@@ -72,7 +71,7 @@ public class ShopcarProduct implements Model<Long>, Comparable<ShopcarProduct> {
     @Override
     public int hashCode() {
         int hash = 3;
-        hash = 59 * hash + Objects.hashCode(this.shopcar);
+        hash = 59 * hash + Objects.hashCode(this.shopCart);
         return hash;
     }
 
@@ -87,11 +86,11 @@ public class ShopcarProduct implements Model<Long>, Comparable<ShopcarProduct> {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final ShopcarProduct other = (ShopcarProduct) obj;
+        final ShopCartProduct other = (ShopCartProduct) obj;
         if (!Objects.equals(this.productStock, other.productStock)) {
             return false;
         }
-        if (!Objects.equals(this.shopcar, other.shopcar)) {
+        if (!Objects.equals(this.shopCart, other.shopCart)) {
             return false;
         }
         return true;
@@ -99,7 +98,7 @@ public class ShopcarProduct implements Model<Long>, Comparable<ShopcarProduct> {
 
     @Override
     public String toString() {
-        return "ShopcarProducts{" + "ProductStock=" + productStock + ", shopcar=" + shopcar + ", amountProducts=" + amountProducts + '}';
+        return "ShopcarProducts{" + "ProductStock=" + productStock + ", shopCart=" + shopCart + ", amountProducts=" + amountProducts + '}';
     }
 
     //============================
@@ -121,12 +120,12 @@ public class ShopcarProduct implements Model<Long>, Comparable<ShopcarProduct> {
         this.productStock = product;
     }
 
-    public Shopcar getShopcar() {
-        return shopcar;
+    public ShopCart getShopCart() {
+        return shopCart;
     }
 
-    public void setShopcar(Shopcar shopcar) {
-        this.shopcar = shopcar;
+    public void setShopCart(ShopCart shopCart) {
+        this.shopCart = shopCart;
     }
 
     public Integer getAmountProducts() {
@@ -138,7 +137,7 @@ public class ShopcarProduct implements Model<Long>, Comparable<ShopcarProduct> {
     }
 
     @Override
-    public int compareTo(ShopcarProduct o) {
+    public int compareTo(ShopCartProduct o) {
         if (o == null) {
             return 1;
         }

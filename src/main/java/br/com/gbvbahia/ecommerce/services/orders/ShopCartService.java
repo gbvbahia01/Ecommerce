@@ -1,6 +1,6 @@
 package br.com.gbvbahia.ecommerce.services.orders;
 
-import br.com.gbvbahia.ecommerce.services.dto.orders.ShopcarDTO;
+import br.com.gbvbahia.ecommerce.services.dto.orders.ShopCartDTO;
 import br.com.gbvbahia.ecommerce.model.entity.customers.Customer;
 import br.com.gbvbahia.ecommerce.services.ServiceContract;
 
@@ -11,10 +11,10 @@ import br.com.gbvbahia.ecommerce.services.ServiceContract;
  * @version 1.0
  * @since 15/04/18
  */
-public interface ShopcarService extends ServiceContract<ShopcarDTO, Long> {
+public interface ShopCartService extends ServiceContract<ShopCartDTO, Long> {
 
-    ShopcarDTO findBySerial(String serial);
+    ShopCartDTO findBySerial(String serial);
 
-    ShopcarDTO findByCustomer(Customer customer);
+    ShopCartDTO findByCustomer(Customer customer);
 
 }

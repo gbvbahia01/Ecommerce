@@ -16,9 +16,9 @@ import java.util.Map;
  * @since 02/06/18
  */
 @RestController
-public class CartRestController extends RestControllerCommon {
+public class ShopCartRestController extends RestControllerCommon {
 
-    public CartRestController(ParameterService parameterService) {
+    public ShopCartRestController(ParameterService parameterService) {
         super(parameterService);
     }
 

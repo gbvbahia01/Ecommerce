@@ -20,63 +20,63 @@ import java.util.TreeSet;
  * @version 1.0
  * @since 15/04/18
  */
-public class ShopcarDTO implements Serializable {
+public class ShopCartDTO implements Serializable {
 
     private Long id;
     private CustomerDTO customer;
     private String serialUniqueId;
-    private Set<ShopcarProductDTO> shopcarProducts;
+    private Set<ShopCartProductDTO> shopCartProducts;
 
-    public ShopcarDTO() {
+    public ShopCartDTO() {
     }
 
-    public ShopcarDTO(CustomerDTO customer, String serialUniqueId, Set<ShopcarProductDTO> shopcarProducts) {
+    public ShopCartDTO(CustomerDTO customer, String serialUniqueId, Set<ShopCartProductDTO> shopCartProducts) {
         this.customer = customer;
         this.serialUniqueId = serialUniqueId;
-        this.shopcarProducts = shopcarProducts;
+        this.shopCartProducts = shopCartProducts;
     }
 
-    public ShopcarDTO(String serialUniqueId, Set<ShopcarProductDTO> shopcarProducts) {
+    public ShopCartDTO(String serialUniqueId, Set<ShopCartProductDTO> shopCartProducts) {
         this.serialUniqueId = serialUniqueId;
-        this.shopcarProducts = shopcarProducts;
+        this.shopCartProducts = shopCartProducts;
     }
 
-    public ShopcarDTO(CustomerDTO customer, Set<ShopcarProductDTO> shopcarProducts) {
+    public ShopCartDTO(CustomerDTO customer, Set<ShopCartProductDTO> shopCartProducts) {
         this.customer = customer;
-        this.shopcarProducts = shopcarProducts;
+        this.shopCartProducts = shopCartProducts;
     }
 
-    public ShopcarDTO(String serialUniqueId, ProductStockDTO... products) {
+    public ShopCartDTO(String serialUniqueId, ProductStockDTO... products) {
         this.serialUniqueId = serialUniqueId;
         addProducts(products);
     }
 
-    public ShopcarDTO(CustomerDTO customer, ProductStockDTO... products) {
+    public ShopCartDTO(CustomerDTO customer, ProductStockDTO... products) {
         this.customer = customer;
         addProducts(products);
     }
 
     public void addProducts(ProductStockDTO... products) {
         for (ProductStockDTO product : products) {
-            ShopcarProductDTO sp = new ShopcarProductDTO(product, this);
-            if (!getShopcarProductses().contains(sp)) {
-                getShopcarProductses().add(new ShopcarProductDTO(product, this));
+            ShopCartProductDTO sp = new ShopCartProductDTO(product, this);
+            if (!getShopCartProducts().contains(sp)) {
+                getShopCartProducts().add(new ShopCartProductDTO(product, this));
             } else {
-                getShopcarProductses().stream().filter(sp2 -> sp2.equals(sp)).findFirst().get().addAmount();
+                getShopCartProducts().stream().filter(sp2 -> sp2.equals(sp)).findFirst().get().addAmount();
             }
         }
     }
     
     public boolean removeShopcarProduct(Long idShopcarProduct) {
-        ShopcarProductDTO toRemove = null;
-        for (ShopcarProductDTO sp : getShopcarProductses()) {
+        ShopCartProductDTO toRemove = null;
+        for (ShopCartProductDTO sp : getShopCartProducts()) {
             if (sp.getId().equals(idShopcarProduct)) {
                 toRemove = sp;
                 break;
             }
         }
         if (toRemove != null) {
-            return getShopcarProductses().remove(toRemove);
+            return getShopCartProducts().remove(toRemove);
         }
         return false;
     }
@@ -108,19 +108,19 @@ public class ShopcarDTO implements Serializable {
         this.serialUniqueId = serialUniqueId;
     }
 
-    public Set<ShopcarProductDTO> getShopcarProductses() {
-        if (shopcarProducts == null) {
-            shopcarProducts = new TreeSet<>();
+    public Set<ShopCartProductDTO> getShopCartProducts() {
+        if (shopCartProducts == null) {
+            shopCartProducts = new TreeSet<>();
         }
-        return shopcarProducts;
+        return shopCartProducts;
     }
 
-    public void setShopcarProductses(Set<ShopcarProductDTO> shopcarProductses) {
-        this.shopcarProducts = shopcarProductses;
+    public void setShopCartProducts(Set<ShopCartProductDTO> shopCartProductses) {
+        this.shopCartProducts = shopCartProductses;
     }
 
     public boolean contains(ProductStockDTO pStock) {
-        for (ShopcarProductDTO ps : getShopcarProductses()) {
+        for (ShopCartProductDTO ps : getShopCartProducts()) {
             if (Objects.equals(pStock, ps.getProductStock())) {
                 return true;
             }

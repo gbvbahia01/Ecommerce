@@ -37,30 +37,4 @@
         </th:block>
     </div>
 
-    <div class="row" th:fragment="old (products)">
-        <div class="col-md-3 col-sm-6">
-            <div class="card mb-4 box-shadow" th:each="prodImg : ${products}">
-                <div class="card-header">
-                    <h4 class="my-0 font-weight-normal" th:text="${prodImg.name}"></h4>
-                    <img src="../../static/img/def_420_535.png"
-                         width="420" height="535" class="img-fluid"
-                         th:src="@{'/product/' + ${prodImg.id} + '/productimg/' + ${prodImg.keyPicture}}"
-                         th:width="${prodImg.imgWidth}" th:height="${prodImg.imgHeight}"/>
-                </div>
-                <div class="card-body">
-                    <h1 class="card-title pricing-card-title" th:text="${prodImg.price}"></h1>
-                    <ul class="list-unstyled mt-3 mb-4">
-                        <li th:text="${prodImg.description}"></li>
-                    </ul>
-                    <form th:action="@{/shopcar/prodImg}" method="post">
-                        <input type="hidden" name="prodImgId" th:value="${prodImg.id}"/>
-                        <input type="hidden" name="redirect" value="/"/>
-                        <button type="submit" class="btn btn-lg btn-block btn-outline-primary">Add Card
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
 </html>
