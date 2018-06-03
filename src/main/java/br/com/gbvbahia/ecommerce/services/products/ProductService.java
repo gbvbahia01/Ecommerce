@@ -2,6 +2,7 @@ package br.com.gbvbahia.ecommerce.services.products;
 
 import br.com.gbvbahia.ecommerce.services.dto.products.ProductDTO;
 import br.com.gbvbahia.ecommerce.services.ServiceContract;
+import br.com.gbvbahia.ecommerce.services.dto.products.ProductStockDTO;
 
 import java.util.List;
 
@@ -21,4 +22,6 @@ public interface ProductService extends ServiceContract<ProductDTO, Long> {
      * @return A list with products. Empty if not found.
      */
     List<ProductDTO> search(String search);
+
+    ProductStockDTO findByProductStockId(Long id);
 }

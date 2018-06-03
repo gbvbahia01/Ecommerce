@@ -1,19 +1,13 @@
 package br.com.gbvbahia.ecommerce;
 
 import br.com.gbvbahia.ecommerce.mappers.DozerMapperBuilderImpl;
-import br.com.gbvbahia.ecommerce.services.dto.commons.ParameterDTO;
-import br.com.gbvbahia.ecommerce.model.entity.products.Category;
-import br.com.gbvbahia.ecommerce.model.entity.products.Product;
-import br.com.gbvbahia.ecommerce.model.entity.products.ProductImage;
-import br.com.gbvbahia.ecommerce.model.entity.products.SubCategory;
+import br.com.gbvbahia.ecommerce.model.entity.products.*;
 import br.com.gbvbahia.ecommerce.model.enums.Generous;
 import br.com.gbvbahia.ecommerce.model.enums.KeyPicture;
-import org.dozer.DozerBeanMapper;
+import br.com.gbvbahia.ecommerce.services.dto.commons.ParameterDTO;
 import org.dozer.Mapper;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class TestFactory {
 
@@ -26,14 +20,33 @@ public class TestFactory {
         productImage.setKeyPicture(KeyPicture.SIZE_420_535);
         productImage.setNamePicture("img" + var + ".png");
 
-        Product product = new Product();
-        product.setPrice(1.0F + var);
-        product.setDescription("Description " + var);
-        product.setName("Name " + var);
+        Product product = makeProduct(var);
 
         productImage.setProduct(product);
 
         return productImage;
+    }
+
+    public static ProductStock makeProductStock(int var) {
+        ProductStock ps = new ProductStock();
+        ps.setId(1L + var);
+        ps.setStockAmount(10 + var);
+        ps.setProduct(makeProduct(var));
+        ps.getProduct().setProductStock(ps);
+        Map<String, String> map = new HashMap<>();
+        map.put("Key1","val1");
+        map.put("Key3","val3");
+        map.put("Key3","val3");
+        ps.setSpecification(map);
+        return ps;
+    }
+
+    public static Product makeProduct(int var) {
+        Product product = new Product();
+        product.setPrice(1.0F + var);
+        product.setDescription("Description " + var);
+        product.setName("Name " + var);
+        return product;
     }
 
     public static Category makeCategory(int var) {
