@@ -1,6 +1,5 @@
 package br.com.gbvbahia.ecommerce.services.products.impl;
 
-import br.com.gbvbahia.ecommerce.mappers.MapperBuilder;
 import br.com.gbvbahia.ecommerce.model.entity.products.ProductImage;
 import br.com.gbvbahia.ecommerce.model.enums.KeyPicture;
 import br.com.gbvbahia.ecommerce.repositories.products.ProductImageRepository;
@@ -8,6 +7,7 @@ import br.com.gbvbahia.ecommerce.services.ServiceCommon;
 import br.com.gbvbahia.ecommerce.services.commons.ParameterService;
 import br.com.gbvbahia.ecommerce.services.dto.products.ProductImageDTO;
 import br.com.gbvbahia.ecommerce.services.products.ProductImageService;
+import org.dozer.Mapper;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,9 +20,10 @@ public class ProductImageServiceImpl extends ServiceCommon<ProductImageDTO, Prod
     private final ProductImageRepository productImageRepository;
 
     public ProductImageServiceImpl(ParameterService parameterService,
-                                   ProductImageRepository productImageRepository) {
+                                   ProductImageRepository productImageRepository,
+                                   Mapper mapper) {
 
-        super(parameterService, ProductImageDTO.class);
+        super(parameterService, mapper, ProductImageDTO.class);
         this.productImageRepository = productImageRepository;
     }
 

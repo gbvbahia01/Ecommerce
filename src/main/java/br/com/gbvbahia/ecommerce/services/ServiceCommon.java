@@ -1,7 +1,5 @@
 package br.com.gbvbahia.ecommerce.services;
 
-import br.com.gbvbahia.ecommerce.mappers.DozerMapperBuilderImpl;
-import br.com.gbvbahia.ecommerce.mappers.MapperBuilder;
 import br.com.gbvbahia.ecommerce.services.commons.ParameterService;
 import br.com.gbvbahia.ecommerce.util.StringHelper;
 import org.dozer.Mapper;
@@ -32,10 +30,11 @@ public abstract class ServiceCommon<DTO, ENT, ID, R extends JpaRepository<ENT, I
     // Constructor
     //============
     public ServiceCommon(ParameterService parameterService,
+                         Mapper mapper,
                          Class<DTO> clazz) {
 
         this.parameterService = parameterService;
-        this.mapper = DozerMapperBuilderImpl.getInstance().getMapper();
+        this.mapper = mapper;
         this.clazz = clazz;
     }
 
@@ -81,12 +80,19 @@ public abstract class ServiceCommon<DTO, ENT, ID, R extends JpaRepository<ENT, I
         return Collections.unmodifiableList(dtosList);
     }
 
+
     protected DTO convert(ENT entity) {
         if (entity == null) {
             return null;
         }
         logger.debug("DOZER: Converting {} to {}", entity.toString(), clazz.getSimpleName());
-        return getMapper().map(entity, clazz);
+        try {
+            return getMapper().map(entity, clazz);
+        } catch (NullPointerException e) {
+            //TODO This need a fix as soon as possible. Dozer has a intermittent null pointer exception.
+            logger.error("DOZER Error: Converting {} to {}", entity.toString(), clazz.getSimpleName(), e);
+            return convert(entity);
+        }
     }
 
     protected ParameterService getParameterService() {

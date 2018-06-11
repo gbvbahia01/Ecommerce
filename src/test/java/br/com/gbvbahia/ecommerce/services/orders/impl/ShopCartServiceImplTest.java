@@ -1,5 +1,6 @@
 package br.com.gbvbahia.ecommerce.services.orders.impl;
 
+import br.com.gbvbahia.ecommerce.TestFactory;
 import br.com.gbvbahia.ecommerce.model.entity.customers.Customer;
 import br.com.gbvbahia.ecommerce.model.entity.orders.ShopCart;
 import br.com.gbvbahia.ecommerce.repositories.orders.ShopCartRepository;
@@ -34,7 +35,8 @@ public class ShopCartServiceImplTest {
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
         shopCartService = new ShopCartServiceImpl(parameterService,
-                                                  shopCartRepository);
+                                                  shopCartRepository,
+                                                  TestFactory.getDozerForUnitTest());
 
     }
 

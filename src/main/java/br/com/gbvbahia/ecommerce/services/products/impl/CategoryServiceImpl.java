@@ -7,6 +7,7 @@ import br.com.gbvbahia.ecommerce.services.commons.ParameterService;
 import br.com.gbvbahia.ecommerce.services.dto.commons.ParameterDTO;
 import br.com.gbvbahia.ecommerce.services.dto.products.CategoryDTO;
 import br.com.gbvbahia.ecommerce.services.products.CategoryService;
+import org.dozer.Mapper;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -30,9 +31,10 @@ public class CategoryServiceImpl extends ServiceCommon<CategoryDTO, Category, Lo
     private final CategoryRepository categoryRepository;
 
     public CategoryServiceImpl(ParameterService parameterService,
-                               CategoryRepository categoryRepository) {
+                               CategoryRepository categoryRepository,
+                               Mapper mapper) {
 
-        super(parameterService, CategoryDTO.class);
+        super(parameterService, mapper, CategoryDTO.class);
         this.categoryRepository = categoryRepository;
     }
 

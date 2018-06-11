@@ -1,5 +1,6 @@
 package br.com.gbvbahia.ecommerce.services.commons.impl;
 
+import br.com.gbvbahia.ecommerce.TestFactory;
 import br.com.gbvbahia.ecommerce.model.entity.commons.Parameter;
 import br.com.gbvbahia.ecommerce.repositories.commons.ParameterRepository;
 import br.com.gbvbahia.ecommerce.services.commons.ParameterService;
@@ -29,7 +30,7 @@ public class ParameterServiceImplTest {
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
-        parameterService = new ParameterServiceImpl(parameterRepository);
+        parameterService = new ParameterServiceImpl(parameterRepository, TestFactory.getDozerForUnitTest());
     }
 
     @Test

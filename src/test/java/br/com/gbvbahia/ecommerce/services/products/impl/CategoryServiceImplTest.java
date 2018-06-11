@@ -1,5 +1,6 @@
 package br.com.gbvbahia.ecommerce.services.products.impl;
 
+import br.com.gbvbahia.ecommerce.TestFactory;
 import br.com.gbvbahia.ecommerce.repositories.products.CategoryRepository;
 import br.com.gbvbahia.ecommerce.services.commons.ParameterService;
 import br.com.gbvbahia.ecommerce.services.dto.commons.ParameterDTO;
@@ -36,7 +37,8 @@ public class CategoryServiceImplTest {
 
 
         categoryService = new CategoryServiceImpl(parameterService,
-                                                  categoryRepository);
+                                                  categoryRepository,
+                                                  TestFactory.getDozerForUnitTest());
     }
 
     @Test

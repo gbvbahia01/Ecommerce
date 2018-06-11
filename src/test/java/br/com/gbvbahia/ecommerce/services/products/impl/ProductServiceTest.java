@@ -37,7 +37,8 @@ public class ProductServiceTest {
 
         productService = new ProductServiceImpl(parameterService,
                                                 productRepository,
-                                                productStockRepository);
+                                                productStockRepository,
+                                                TestFactory.getDozerForUnitTest());
     }
 
     @Test

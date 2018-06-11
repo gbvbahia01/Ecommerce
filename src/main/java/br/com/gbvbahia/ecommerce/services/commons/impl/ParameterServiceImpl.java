@@ -5,6 +5,7 @@ import br.com.gbvbahia.ecommerce.repositories.commons.ParameterRepository;
 import br.com.gbvbahia.ecommerce.services.ServiceCommon;
 import br.com.gbvbahia.ecommerce.services.commons.ParameterService;
 import br.com.gbvbahia.ecommerce.services.dto.commons.ParameterDTO;
+import org.dozer.Mapper;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,9 +26,10 @@ public class ParameterServiceImpl extends ServiceCommon<ParameterDTO, Parameter,
 
     private final ParameterRepository parameterRepository;
 
-    public ParameterServiceImpl(ParameterRepository parameterRepository) {
+    public ParameterServiceImpl(ParameterRepository parameterRepository,
+                                Mapper mapper) {
 
-        super(null, ParameterDTO.class);
+        super(null, mapper, ParameterDTO.class);
         this.parameterRepository = parameterRepository;
     }
 

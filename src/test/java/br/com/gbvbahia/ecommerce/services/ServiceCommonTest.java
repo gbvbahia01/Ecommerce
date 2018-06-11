@@ -1,5 +1,6 @@
 package br.com.gbvbahia.ecommerce.services;
 
+import br.com.gbvbahia.ecommerce.TestFactory;
 import br.com.gbvbahia.ecommerce.services.commons.ParameterService;
 import org.apache.commons.lang3.NotImplementedException;
 import org.junit.Assert;
@@ -20,7 +21,7 @@ public class ServiceCommonTest {
     @Before
     public void setUp() {
         MockitoAnnotations.initMocks(this);
-        serviceCommon = new ServiceCommon(parameterService, Object.class) {
+        serviceCommon = new ServiceCommon(parameterService, TestFactory.getDozerForUnitTest(), Object.class) {
             @Override
             protected JpaRepository getRepository() {
                 throw new NotImplementedException("Unit test environment");

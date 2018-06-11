@@ -10,6 +10,7 @@ import br.com.gbvbahia.ecommerce.services.commons.ParameterService;
 import br.com.gbvbahia.ecommerce.services.dto.products.ProductDTO;
 import br.com.gbvbahia.ecommerce.services.dto.products.ProductStockDTO;
 import br.com.gbvbahia.ecommerce.services.products.ProductService;
+import org.dozer.Mapper;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,9 +26,10 @@ public class ProductServiceImpl extends ServiceCommon<ProductDTO, Product, Long,
 
     public ProductServiceImpl(ParameterService parameterService,
                               ProductRepository productRepository,
-                              ProductStockRepository productStockRepository) {
+                              ProductStockRepository productStockRepository,
+                              Mapper mapper) {
 
-        super(parameterService, ProductDTO.class);
+        super(parameterService, mapper, ProductDTO.class);
         this.productRepository = productRepository;
         this.productStockRepository = productStockRepository;
     }

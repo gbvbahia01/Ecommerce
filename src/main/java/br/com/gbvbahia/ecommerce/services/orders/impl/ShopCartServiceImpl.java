@@ -8,6 +8,7 @@ import br.com.gbvbahia.ecommerce.services.commons.ParameterService;
 import br.com.gbvbahia.ecommerce.services.dto.orders.ShopCartDTO;
 import br.com.gbvbahia.ecommerce.services.orders.ShopCartService;
 import org.apache.commons.lang3.StringUtils;
+import org.dozer.Mapper;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,9 +26,10 @@ public class ShopCartServiceImpl extends ServiceCommon<ShopCartDTO, ShopCart, Lo
     private final ShopCartRepository shopCartRepository;
 
     public ShopCartServiceImpl(ParameterService parameterService,
-                               ShopCartRepository shopCartRepository) {
+                               ShopCartRepository shopCartRepository,
+                               Mapper mapper) {
 
-        super(parameterService, ShopCartDTO.class);
+        super(parameterService, mapper, ShopCartDTO.class);
         this.shopCartRepository = shopCartRepository;
     }
 
