@@ -4,6 +4,7 @@ import br.com.gbvbahia.ecommerce.services.dto.products.ProductDTO;
 import br.com.gbvbahia.ecommerce.services.ServiceContract;
 import br.com.gbvbahia.ecommerce.services.dto.products.ProductStockDTO;
 
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -24,4 +25,5 @@ public interface ProductService extends ServiceContract<ProductDTO, Long> {
     List<ProductDTO> search(String search);
 
     ProductStockDTO findByProductStockId(Long id);
+    List<ProductStockDTO> listProductStockId(Collection<Long> ids);
 }

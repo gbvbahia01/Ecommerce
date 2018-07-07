@@ -15,6 +15,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -51,6 +52,7 @@ public class ProductServiceImpl extends ServiceCommon<ProductDTO, Product, Long,
     }
 
     @Override
+    @Transactional(readOnly = true)
     public ProductStockDTO findByProductStockId(Long id) {
         if (id == null) {
             throw new NotFoundException("ProductStock id CANNOT be null.");
@@ -61,8 +63,12 @@ public class ProductServiceImpl extends ServiceCommon<ProductDTO, Product, Long,
             throw new NotFoundException("No ProductStock found for id:["+ id + "]");
         }
 
-        return getMapper().map(optional.get(), ProductStockDTO.class);
+        return convert(optional.get(), new ProductStockDTO());
     }
 
-
+    @Override
+    public List<ProductStockDTO> listProductStockId(Collection<Long> ids) {
+        List<ProductStock> productStocks = productStockRepository.findAllById(ids);
+        return convert(productStocks, ProductStockDTO.class);
+    }
 }

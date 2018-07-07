@@ -86,6 +86,11 @@
             <artifactId>dozer</artifactId>
             <version>${dozer.version}</version>
         </dependency>
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+        </dependency>
+
          <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -120,7 +125,7 @@
                 <artifactId>coveralls-maven-plugin</artifactId>
                 <version>4.3.0</version>
                 <configuration>
-                    <repoToken>kWaLlbkhEOUqyyflWxStzQOI6osQ8b0Qw</repoToken>
+                    <repoToken>XXX</repoToken>
                 </configuration>
             </plugin>
             <plugin>
@@ -147,10 +152,10 @@
         <profile>
             <id>database</id>
             <properties>
-                <liquibase.url>jdbc:postgresql://xxx.xxx.xxx.xxx:5432/ecommerce</liquibase.url>
+                <liquibase.url>jdbc:postgresql://XXX.XXX.XXX.XXX:5432/database</liquibase.url>
                 <liquibase.driver>org.postgresql.Driver</liquibase.driver>
-                <liquibase.username>xxxxxx</liquibase.username>
-                <liquibase.password>xxxxxx</liquibase.password>
+                <liquibase.username>XXXXXX</liquibase.username>
+                <liquibase.password>XXXXXX</liquibase.password>
                 <liquibase.schema>public</liquibase.schema>
                 <liquibase.logging>warning</liquibase.logging>
             </properties>

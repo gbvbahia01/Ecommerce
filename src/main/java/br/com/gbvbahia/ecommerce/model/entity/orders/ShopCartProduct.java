@@ -25,7 +25,7 @@ public class ShopCartProduct implements Model<Long>, Comparable<ShopCartProduct>
 
 	@Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_shc_prod_stk")
-    @SequenceGenerator(sequenceName = "seq_shc_prod_stk", name = "seq_shc_prod_stk")
+    @SequenceGenerator(sequenceName = "seq_shc_prod_stk", name = "seq_shc_prod_stk", schema = "orders")
     @Column(name = "id")
     private Long id;
 

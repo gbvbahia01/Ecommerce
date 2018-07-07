@@ -58,4 +58,14 @@
             <column name="active" value="true" />
         </insert>
     </changeSet>
+
+    <changeSet id="commons-v1-dml-promotion-20180611-1959" author="gbvbahia">
+        <insert tableName="parameter" schemaName="commons">
+            <column name="key" value="APP_COOKIE_SHOPCAR_KEY" />
+            <column name="value" value="ECOMMERCE_SHOPCART_COOKIE_KEY"/>
+            <column name="description" value="Value to save a shopcart id as cookie at users. Active attribute is NOT checked here." />
+            <column name="active" value="true" />
+        </insert>
+    </changeSet>
+
 </databaseChangeLog>

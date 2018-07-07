@@ -29,7 +29,7 @@ public class ShopCart implements Model<Long> {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_shopcart")
-    @SequenceGenerator(sequenceName = "seq_shopcart", name = "seq_shopcart")
+    @SequenceGenerator(sequenceName = "seq_shopcart", name = "seq_shopcart", schema = "orders" )
     @Column(name = "id")
     private Long id;
 

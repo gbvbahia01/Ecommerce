@@ -16,6 +16,9 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
 public class ProductServiceTest {
@@ -75,7 +78,7 @@ public class ProductServiceTest {
     }
 
     @Test
-    public void findByProductStockId() {
+    public void testFindByProductStockId() {
         ProductStock ps = TestFactory.makeProductStock(5);
         Assert.assertNotNull(ps);
         Optional<ProductStock> optional = Optional.of(ps);
@@ -84,6 +87,10 @@ public class ProductServiceTest {
         ProductStockDTO dto = productService.findByProductStockId(ps.getId());
         Assert.assertNotNull(dto);
 
+        compareProductStock(ps, dto);
+    }
+
+    private void compareProductStock(ProductStock ps, ProductStockDTO dto) {
         Assert.assertEquals(ps.getId(), dto.getId());
         Assert.assertEquals(ps.getProduct().getId(), dto.getProduct().getId());
         Assert.assertEquals(ps.getProduct().getDescription(), dto.getProduct().getDescription());
@@ -91,6 +98,34 @@ public class ProductServiceTest {
         Assert.assertEquals(ps.getProduct().getBranch(), dto.getProduct().getBranch());
         Assert.assertEquals(ps.getProduct().getPrice(), dto.getProduct().getPrice());
         Assert.assertEquals(ps.getSpecificationsString(), dto.getSpecificationsString());
+    }
+
+    @Test
+    public void testListProductStockId() throws Exception {
+        List<Long> ids = Arrays.asList(new Long[]{1L, 2L, 3L});
+        List<ProductStock> productStocks = new ArrayList<>();
+        productStocks.add(TestFactory.makeProductStock(1));
+        productStocks.add(TestFactory.makeProductStock(2));
+        productStocks.add(TestFactory.makeProductStock(3));
+
+        Mockito.when(productStockRepository.findAllById(ids)).thenReturn(productStocks);
+
+        List<ProductStockDTO> dtos = productService.listProductStockId(ids);
+
+        Assert.assertFalse(dtos.isEmpty());
+
+        productStocks.forEach(ps -> {
+            boolean found = false;
+            for (ProductStockDTO dto : dtos) {
+                if (ps.getId().equals(dto.getId())) {
+                    found = true;
+                    compareProductStock(ps, dto);
+                }
+            }
+            if (!found) {
+                Assert.fail("Not found ProductStock id:" + ps.getId());
+            }
+        });
     }
 
 }

@@ -20,6 +20,7 @@ public interface ParameterService extends ServiceContract<ParameterDTO, String> 
     String EMAIL_CONTACT = "CONTACT_EMAIL";
     String WHATS_CONTACT = "CONTACT_WHATS";
     String FACEBOOK_CONTACT = "CONTACT_FACEBOOK";
+    String APP_COOKIE_SHOPCAR_KEY = "APP_COOKIE_SHOPCAR_KEY";
 
     String[] CONTACT_PARAMETERS = {EMAIL_CONTACT, WHATS_CONTACT, FACEBOOK_CONTACT};
 

@@ -5,14 +5,13 @@
  */
 package br.com.gbvbahia.ecommerce.model.entity.products;
 
-import java.util.Objects;
+import br.com.gbvbahia.ecommerce.model.cotract.Model;
+import br.com.gbvbahia.ecommerce.model.enums.Generous;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-
-import br.com.gbvbahia.ecommerce.model.cotract.Model;
-import br.com.gbvbahia.ecommerce.model.enums.Generous;
+import java.util.Objects;
 
 /**
  * Project: Ecommerce
@@ -28,7 +27,7 @@ public class SubCategory implements Model<Long>, Comparable<SubCategory> {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_sub_category")
-    @SequenceGenerator(sequenceName = "seq_sub_category", name = "seq_sub_category")
+    @SequenceGenerator(sequenceName = "seq_sub_category", name = "seq_sub_category", schema = "products")
     @Column(name = "id")
     private Long id;
 

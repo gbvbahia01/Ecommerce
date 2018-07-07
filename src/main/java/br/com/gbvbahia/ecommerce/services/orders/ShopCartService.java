@@ -17,4 +17,6 @@ public interface ShopCartService extends ServiceContract<ShopCartDTO, Long> {
 
     ShopCartDTO findByCustomer(Customer customer);
 
+    ShopCartDTO saveShopcar(ShopCartDTO shopCartDTO);
+
 }

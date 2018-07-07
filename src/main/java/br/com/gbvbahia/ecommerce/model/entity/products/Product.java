@@ -31,7 +31,7 @@ public class Product implements Model<Long> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_product")
-    @SequenceGenerator(sequenceName = "seq_product", name = "seq_product")
+    @SequenceGenerator(sequenceName = "seq_product", name = "seq_product", schema = "products")
     @Column(name = "id")
     private Long id;
 

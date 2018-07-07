@@ -55,4 +55,11 @@ public class ShopCartServiceImpl extends ServiceCommon<ShopCartDTO, ShopCart, Lo
         }
         return convert(shopCartRepository.findByCustomer(customer));
     }
+
+    @Override
+    public ShopCartDTO saveShopcar(ShopCartDTO shopCartDTO) {
+        ShopCart shopCart = convert(shopCartDTO, new ShopCart());
+        shopCartRepository.save(shopCart);
+        return convert(shopCart);
+    }
 }

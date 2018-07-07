@@ -14,7 +14,7 @@ function addItemToCart(id) {
         type: "POST",
         dataType: "json",
         contentType: "application/json",
-        data: '{"id":"' + id + '"}"',
+        data: '{"id_' + id + '":"' + id + '"}"',
         success: function (data) {
             console.log("SUCCESS: ", data);
             alert("Success");

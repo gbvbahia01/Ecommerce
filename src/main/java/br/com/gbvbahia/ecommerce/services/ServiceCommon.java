@@ -76,12 +76,18 @@ public abstract class ServiceCommon<DTO, ENT, ID, R extends JpaRepository<ENT, I
 
     protected List<DTO> convert(List<ENT> entities) {
         List<DTO> dtosList = new ArrayList<>(entities.size());
-        entities.parallelStream().forEach(e -> dtosList.add(convert(e)));
+        entities.parallelStream().forEach(e -> dtosList.add(convert(e, 0)));
         return Collections.unmodifiableList(dtosList);
     }
 
 
-    protected DTO convert(ENT entity) {
+    /**
+     *
+     * @param entity
+     * @param counter will be removed.
+     * @return
+     */
+    private DTO convert(ENT entity, int counter) {
         if (entity == null) {
             return null;
         }
@@ -90,8 +96,46 @@ public abstract class ServiceCommon<DTO, ENT, ID, R extends JpaRepository<ENT, I
             return getMapper().map(entity, clazz);
         } catch (NullPointerException e) {
             //TODO This need a fix as soon as possible. Dozer has a intermittent null pointer exception.
-            logger.error("DOZER Error: Converting {} to {}", entity.toString(), clazz.getSimpleName(), e);
-            return convert(entity);
+            logger.error("DOZER Error-{}: Converting {} to {}", counter, entity.toString(), clazz.getSimpleName(), e);
+            return convert(entity, counter + 1);
+        }
+    }
+
+    protected DTO convert(ENT entity) {
+        return convert(entity, 0);
+    }
+
+    protected <TO, FOR> List<FOR> convert(List<TO> entitiesTo, Class<FOR> entitiesFor) {
+
+            List<FOR> dtosList = new ArrayList<>(entitiesTo.size());
+            entitiesTo.parallelStream().forEach(entity -> {
+                try {
+                dtosList.add(convert(entity, entitiesFor.newInstance()));
+                } catch (InstantiationException | IllegalAccessException ex) {
+                    logger.error("Error creating new instance", ex);
+                }
+            });
+            return Collections.unmodifiableList(dtosList);
+    }
+
+
+    protected <TO, FOR> FOR convert(TO entityTo, FOR entityFor) {
+        if (entityTo == null) {
+            return null;
+        }
+        logger.debug("DOZER: Converting {} to {}",
+                     entityTo.toString(),
+                     entityFor.getClass().getSimpleName());
+        try {
+            getMapper().map(entityTo, entityFor);
+            return entityFor;
+        } catch (NullPointerException ex) {
+            //TODO This need a fix as soon as possible. Dozer has a intermittent null pointer exception.
+            logger.error("DOZER Error: Converting {} to {}",
+                         entityTo.toString(),
+                         entityFor.getClass().getSimpleName(),
+                         ex);
+            return convert(entityTo, entityFor);
         }
     }
 

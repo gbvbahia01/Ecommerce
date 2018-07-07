@@ -5,16 +5,15 @@
  */
 package br.com.gbvbahia.ecommerce.model.entity.products;
 
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import br.com.gbvbahia.ecommerce.model.cotract.Model;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-
-import br.com.gbvbahia.ecommerce.model.cotract.Model;
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
 
 /**
  * Project: Ecommerce
@@ -30,7 +29,7 @@ public class Category implements Model<Long>, Comparable<Category> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_category")
-    @SequenceGenerator(sequenceName = "seq_category", name = "seq_category")
+    @SequenceGenerator(sequenceName = "seq_category", name = "seq_category", schema = "products")
     @Column(name = "id")
     private Long id;
 
@@ -81,6 +80,10 @@ public class Category implements Model<Long>, Comparable<Category> {
             subCategories = new HashSet<>();
         }
         return subCategories;
+    }
+
+    public void addSubCategory(SubCategory sub) {
+        getSubCategories().add(sub);
     }
 
     public void setSubCategories(Set<SubCategory> subCategorys) {
