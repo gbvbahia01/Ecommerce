@@ -8,14 +8,13 @@ import br.com.gbvbahia.ecommerce.services.products.ProductService;
 import br.com.gbvbahia.ecommerce.util.UniqueId;
 import br.com.gbvbahia.ecommerce.web.component.CookieHandlerComponent;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -39,6 +38,36 @@ public class ShopCartRestController extends RestControllerCommon {
         super(parameterService);
         this.productService = productService;
         this.shopCartService = shopCartService;
+    }
+
+    @GetMapping(value = "/cart/items/count")
+    @ResponseBody
+    public Map<String, Object> getCartItemCount(HttpServletRequest request, HttpServletResponse response)  {
+        String shopcarCookieKey = parameterService.getValueByKey(ParameterService.APP_COOKIE_SHOPCAR_KEY);
+        Map<String, Object> map = new HashMap<>();
+        map.put("count", 0);
+
+        if (StringUtils.isBlank(shopcarCookieKey)){
+            logger.error("Paremeter {} not found. Coockies cannot be handled.", ParameterService.APP_COOKIE_SHOPCAR_KEY);
+            return map;
+        }
+
+        Cookie shopCookie = cookieHandler.getCookie(request, shopcarCookieKey);
+
+        if (shopCookie == null || StringUtils.isBlank(shopCookie.getValue())) {
+            logger.debug("No items found in shopcart");
+            return map;
+        }
+
+        ShopCartDTO shopCart = shopCartService.findBySerial(shopCookie.getValue());
+
+        if (shopCart == null) {
+            return map;
+        } else {
+            map.put("count", shopCart.getShopCartProducts().size());
+        }
+
+        return map;
     }
 
     @PostMapping(value = "/cart/items")

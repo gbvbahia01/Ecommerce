@@ -8,6 +8,7 @@ package br.com.gbvbahia.ecommerce.services.dto.orders;
 import br.com.gbvbahia.ecommerce.services.dto.products.ProductStockDTO;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * Project: Ecommerce
@@ -114,4 +115,18 @@ public class ShopCartProductDTO implements Serializable, Comparable<ShopCartProd
         return i;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ShopCartProductDTO that = (ShopCartProductDTO) o;
+        return Objects.equals(getProductStock(), that.getProductStock()) &&
+                Objects.equals(getShopCart(), that.getShopCart());
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(getProductStock(), getShopCart());
+    }
 }

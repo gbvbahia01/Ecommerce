@@ -17,7 +17,7 @@ function addItemToCart(id) {
         data: '{"id_' + id + '":"' + id + '"}"',
         success: function (data) {
             console.log("SUCCESS: ", data);
-            alert("Success");
+           updateCartItemCount();
         },
         error: function (e) {
             console.log("ERROR: ", e);
@@ -31,5 +31,13 @@ function addItemToCart(id) {
 //==================================
 
 function updateCartItemCount() {
-    alert(status);
+    $.ajax ({
+        url: '/cart/items/count',
+        type: "GET",
+        dataType: "json",
+        contentType: "application/json",
+        complete: function(responseData, status, xhttp){
+            $('#cart-item-count').text('(' + responseData.responseJSON.count + ')');
+        }
+    });
 }

@@ -62,7 +62,11 @@ public class ShopCartDTO implements Serializable {
             if (!getShopCartProducts().contains(sp)) {
                 getShopCartProducts().add(new ShopCartProductDTO(product, this));
             } else {
-                getShopCartProducts().stream().filter(sp2 -> sp2.equals(sp)).findFirst().get().addAmount();
+                getShopCartProducts().forEach(sp2 -> {
+                    if (sp2.equals(sp)){
+
+                    }
+                });
             }
         }
     }
@@ -126,5 +130,19 @@ public class ShopCartDTO implements Serializable {
             }
         }
         return false;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ShopCartDTO that = (ShopCartDTO) o;
+        return Objects.equals(getId(), that.getId());
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(getId());
     }
 }
