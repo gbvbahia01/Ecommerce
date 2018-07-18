@@ -5,19 +5,14 @@
  */
 package br.com.gbvbahia.ecommerce.model.entity.orders;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
+import br.com.gbvbahia.ecommerce.model.cotract.Model;
+import br.com.gbvbahia.ecommerce.model.entity.customers.Customer;
+import br.com.gbvbahia.ecommerce.model.enums.OrderStatus;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-
-import br.com.gbvbahia.ecommerce.model.cotract.Model;
-import br.com.gbvbahia.ecommerce.model.entity.customers.Customer;
-import br.com.gbvbahia.ecommerce.model.enums.OrderStatus;
+import java.util.*;
 
 /**
  * Project: Ecommerce
@@ -32,7 +27,7 @@ public class Order implements Model<Long> {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_order_status")
-    @SequenceGenerator(sequenceName = "seq_order_status", name = "seq_order_status")
+    @SequenceGenerator(name = "seq_order_status", sequenceName = "orders.seq_order_status", allocationSize = 1)
     @Column(name = "id")
     private Long id;
 

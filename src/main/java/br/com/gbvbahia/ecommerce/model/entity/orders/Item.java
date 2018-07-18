@@ -5,16 +5,15 @@
  */
 package br.com.gbvbahia.ecommerce.model.entity.orders;
 
-import java.util.Calendar;
-import java.util.Objects;
+import br.com.gbvbahia.ecommerce.model.cotract.Model;
+import br.com.gbvbahia.ecommerce.model.entity.products.Product;
 
 import javax.persistence.*;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
-
-import br.com.gbvbahia.ecommerce.model.cotract.Model;
-import br.com.gbvbahia.ecommerce.model.entity.products.Product;
+import java.util.Calendar;
+import java.util.Objects;
 
 /**
  * Project: Ecommerce
@@ -29,7 +28,7 @@ public class Item implements Model<Long> {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_item")
-    @SequenceGenerator(sequenceName = "seq_item", name = "seq_item")
+    @SequenceGenerator(name = "seq_item", sequenceName = "orders.seq_item", allocationSize = 1)
     @Column(name = "id")
     private Long id;
 

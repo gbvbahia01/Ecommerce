@@ -8,6 +8,7 @@ package br.com.gbvbahia.ecommerce.model.entity.orders;
 import br.com.gbvbahia.ecommerce.model.cotract.Model;
 import br.com.gbvbahia.ecommerce.model.entity.customers.Customer;
 import br.com.gbvbahia.ecommerce.model.entity.products.ProductStock;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -29,7 +30,7 @@ public class ShopCart implements Model<Long> {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_shopcart")
-    @SequenceGenerator(sequenceName = "seq_shopcart", name = "seq_shopcart", schema = "orders" )
+    @SequenceGenerator(name = "seq_shopcart", sequenceName = "orders.seq_shopcart", allocationSize = 1)
     @Column(name = "id")
     private Long id;
 
@@ -126,6 +127,14 @@ public class ShopCart implements Model<Long> {
             return false;
         }
         return true;
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .append("id", id)
+                .append("serialUniqueId", serialUniqueId)
+                .toString();
     }
 
     //============================

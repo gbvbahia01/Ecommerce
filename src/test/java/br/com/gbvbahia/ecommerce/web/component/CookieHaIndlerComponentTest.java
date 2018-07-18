@@ -1,5 +1,6 @@
 package br.com.gbvbahia.ecommerce.web.component;
 
+import br.com.gbvbahia.ecommerce.services.commons.ParameterService;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;
@@ -28,12 +29,16 @@ public class CookieHaIndlerComponentTest {
     @Mock
     private HttpServletResponse response;
 
+    @Mock
+    private ParameterService parameterService;
+
     private CookieHandlerComponent cookieHaIndlerComponent;
 
     @Before
     public void setUp() {
         MockitoAnnotations.initMocks(this);
-        cookieHaIndlerComponent = new CookieHandlerComponent();
+        cookieHaIndlerComponent = new CookieHandlerComponent(parameterService);
+        Mockito.when(parameterService.getValueByKey(ParameterService.APP_COOKIE_SHOPCAR_KEY)).thenReturn("ECOMMERCE_SHOPCART_COOKIE_KEY");
     }
 
     @Test

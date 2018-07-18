@@ -1,16 +1,19 @@
 package br.com.gbvbahia.ecommerce.web.controllers;
 
+import br.com.gbvbahia.ecommerce.model.enums.KeyPicture;
+import br.com.gbvbahia.ecommerce.services.commons.ParameterService;
 import br.com.gbvbahia.ecommerce.services.dto.commons.ParameterDTO;
 import br.com.gbvbahia.ecommerce.services.dto.products.CategoryDTO;
 import br.com.gbvbahia.ecommerce.services.dto.products.ProductImageDTO;
-import br.com.gbvbahia.ecommerce.model.enums.KeyPicture;
-import br.com.gbvbahia.ecommerce.services.commons.ParameterService;
+import br.com.gbvbahia.ecommerce.services.orders.ShopCartService;
 import br.com.gbvbahia.ecommerce.services.products.CategoryService;
 import br.com.gbvbahia.ecommerce.services.products.ProductImageService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 /**
@@ -25,17 +28,21 @@ public class IndexController extends  ControllerCommon {
 
     private final ProductImageService productImageService;
     private final CategoryService categoryService;
+    private final ShopCartService shopCartService;
 
     public IndexController(ParameterService parameterService,
                            ProductImageService productImageService,
-                           CategoryService categoryService) {
+                           CategoryService categoryService,
+                           ShopCartService shopCartService) {
+
         super(parameterService);
         this.productImageService = productImageService;
         this.categoryService = categoryService;
+        this.shopCartService = shopCartService;
     }
 
     @GetMapping({"", "/", "/ecommerce"})
-    public String getIndexPage(final Model model) {
+    public String getIndexPage(final Model model, HttpServletRequest request, HttpServletResponse response) {
         logger.debug("Getting Index page");
 
         List<ProductImageDTO> productImageList = productImageService.listActivesByKeyPicture(KeyPicture.SIZE_420_535);
@@ -57,4 +64,5 @@ public class IndexController extends  ControllerCommon {
 
         return Pages.INDEX.pageName;
     }
+
 }

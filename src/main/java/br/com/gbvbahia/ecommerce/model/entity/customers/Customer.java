@@ -5,16 +5,15 @@
  */
 package br.com.gbvbahia.ecommerce.model.entity.customers;
 
-import java.util.Objects;
-import java.util.Set;
+import br.com.gbvbahia.ecommerce.model.annotation.validator.CPF;
+import br.com.gbvbahia.ecommerce.model.cotract.Model;
+import br.com.gbvbahia.ecommerce.model.embeddable.Contact;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-
-import br.com.gbvbahia.ecommerce.model.annotation.validator.CPF;
-import br.com.gbvbahia.ecommerce.model.cotract.Model;
-import br.com.gbvbahia.ecommerce.model.embeddable.Contact;
+import java.util.Objects;
+import java.util.Set;
 
 /**
  * Project: Ecommerce
@@ -29,7 +28,7 @@ public class Customer implements Model<Long> {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_customer")
-    @SequenceGenerator(sequenceName = "seq_customer", name = "seq_customer")
+    @SequenceGenerator(name = "seq_customer", sequenceName = "customers.seq_customer", allocationSize = 1)
     @Column(name = "id")
     private Long id;
 

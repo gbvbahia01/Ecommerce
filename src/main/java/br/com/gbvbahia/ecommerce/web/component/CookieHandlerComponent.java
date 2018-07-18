@@ -1,5 +1,7 @@
 package br.com.gbvbahia.ecommerce.web.component;
 
+import br.com.gbvbahia.ecommerce.services.commons.ParameterService;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -20,6 +22,13 @@ public class CookieHandlerComponent {
 
     protected Logger logger = LoggerFactory.getLogger(getClass());
     public static final int MAX_COOKIES_DAYS = (int) (24.8D * 24L * 60L * 60L);
+
+    private final ParameterService parameterService;
+
+    public CookieHandlerComponent(ParameterService parameterService) {
+        this.parameterService = parameterService;
+    }
+
     /**
      * @param key the key used to identify the cookie in the client.
      * @param value the value stored in the client.
@@ -51,6 +60,15 @@ public class CookieHandlerComponent {
         logger.debug("Cookie set[ key:{} value:{} was set for {} seconds]", key, value, expirySeconds);
     }
 
+    public Cookie getCookieShopCart(HttpServletRequest request) {
+        String shopcarCookieKey = parameterService.getValueByKey(ParameterService.APP_COOKIE_SHOPCAR_KEY);
+        if (StringUtils.isBlank(shopcarCookieKey)){
+            return null;
+        }
+
+        return getCookie(request, shopcarCookieKey);
+    }
+
     public Cookie getCookie(HttpServletRequest request, String name) {
         Cookie[] userCookies = request.getCookies();
         if (userCookies != null && userCookies.length > 0) {
@@ -79,4 +97,5 @@ public class CookieHandlerComponent {
             return total.intValue();
         }
     }
+
 }

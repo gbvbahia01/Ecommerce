@@ -5,16 +5,15 @@
  */
 package br.com.gbvbahia.ecommerce.model.entity.products;
 
-import java.util.Calendar;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import br.com.gbvbahia.ecommerce.model.cotract.Model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-
-import br.com.gbvbahia.ecommerce.model.cotract.Model;
+import java.util.Calendar;
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
 
 /**
  * Project: Ecommerce
@@ -29,7 +28,7 @@ public class ScheduleStock implements Model<Long> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_schedule_stock")
-    @SequenceGenerator(sequenceName = "seq_schedule_stock", name = "seq_schedule_stock")
+    @SequenceGenerator(name = "seq_schedule_stock", sequenceName = "products.seq_schedule_stock", allocationSize = 1)
     @Column(name = "id")
     private Long id;
 

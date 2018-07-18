@@ -5,16 +5,15 @@
  */
 package br.com.gbvbahia.ecommerce.model.entity.products;
 
-import java.util.LinkedHashSet;
-import java.util.Objects;
-import java.util.Set;
+import br.com.gbvbahia.ecommerce.model.cotract.Model;
+import br.com.gbvbahia.ecommerce.model.enums.KeyPicture;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-
-import br.com.gbvbahia.ecommerce.model.cotract.Model;
-import br.com.gbvbahia.ecommerce.model.enums.KeyPicture;
+import java.util.LinkedHashSet;
+import java.util.Objects;
+import java.util.Set;
 
 /**
  * Project: Ecommerce
@@ -29,7 +28,7 @@ public class ProductImage implements Model<Long> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_product_image")
-    @SequenceGenerator(sequenceName = "seq_product_image", name = "seq_product_image")
+    @SequenceGenerator(name = "seq_product_image", sequenceName = "products.seq_product_image", allocationSize = 1)
     @Column(name = "id")
     private Long id;
 

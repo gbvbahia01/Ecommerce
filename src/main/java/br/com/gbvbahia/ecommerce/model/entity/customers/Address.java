@@ -5,14 +5,13 @@
  */
 package br.com.gbvbahia.ecommerce.model.entity.customers;
 
-import java.util.Objects;
+import br.com.gbvbahia.ecommerce.model.cotract.Model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
-
-import br.com.gbvbahia.ecommerce.model.cotract.Model;
+import java.util.Objects;
 
 /**
  * Project: Ecommerce
@@ -27,7 +26,7 @@ public class Address implements Model<Long> {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_address")
-    @SequenceGenerator(sequenceName = "seq_address", name = "seq_address")
+    @SequenceGenerator(name = "seq_address", sequenceName = "customers.seq_address", allocationSize = 1)
     @Column(name = "id")
     private Long id;
 

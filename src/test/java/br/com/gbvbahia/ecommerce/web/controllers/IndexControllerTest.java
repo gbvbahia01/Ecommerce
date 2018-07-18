@@ -1,11 +1,12 @@
 package br.com.gbvbahia.ecommerce.web.controllers;
 
 import br.com.gbvbahia.ecommerce.TestFactory;
+import br.com.gbvbahia.ecommerce.model.enums.KeyPicture;
+import br.com.gbvbahia.ecommerce.services.commons.ParameterService;
 import br.com.gbvbahia.ecommerce.services.dto.commons.ParameterDTO;
 import br.com.gbvbahia.ecommerce.services.dto.products.CategoryDTO;
 import br.com.gbvbahia.ecommerce.services.dto.products.ProductImageDTO;
-import br.com.gbvbahia.ecommerce.model.enums.KeyPicture;
-import br.com.gbvbahia.ecommerce.services.commons.ParameterService;
+import br.com.gbvbahia.ecommerce.services.orders.ShopCartService;
 import br.com.gbvbahia.ecommerce.services.products.CategoryService;
 import br.com.gbvbahia.ecommerce.services.products.ProductImageService;
 import org.dozer.Mapper;
@@ -20,6 +21,8 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.ui.Model;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.Collections;
 import java.util.List;
 
@@ -29,6 +32,12 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class IndexControllerTest {
 
     @Mock
+    private HttpServletRequest request;
+
+    @Mock
+    private HttpServletResponse response;
+
+    @Mock
     private Model model;
 
     @Mock
@@ -36,6 +45,9 @@ public class IndexControllerTest {
 
     @Mock
     private CategoryService categoryService;
+
+    @Mock
+    private ShopCartService shopCartService;
 
     @Mock
     private ParameterService parameterService;
@@ -52,7 +64,8 @@ public class IndexControllerTest {
 
         controller = new IndexController(parameterService,
                                          productImageService,
-                                         categoryService);
+                                         categoryService,
+                                         shopCartService);
     }
 
     @Test
@@ -112,7 +125,7 @@ public class IndexControllerTest {
         ArgumentCaptor<ParameterDTO> argCaptorParamFace = ArgumentCaptor.forClass(ParameterDTO.class);
         ArgumentCaptor<Integer> argCaptorParamContacts = ArgumentCaptor.forClass(Integer.class);
 
-        controller.getIndexPage(model);
+        controller.getIndexPage(model, request, response);
 
         Mockito.verify(model, Mockito.times(1)).addAttribute(Mockito.eq("promotionItems"),
                                                              argCaptorForProdImd.capture());

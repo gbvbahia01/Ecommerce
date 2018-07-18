@@ -5,18 +5,17 @@
  */
 package br.com.gbvbahia.ecommerce.model.entity.products;
 
-import java.util.Calendar;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import br.com.gbvbahia.ecommerce.model.cotract.Model;
 
 import javax.persistence.*;
 import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-
-import br.com.gbvbahia.ecommerce.model.cotract.Model;
+import java.util.Calendar;
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
 
 /**
  * Project: Ecommerce
@@ -31,7 +30,7 @@ public class Campaign implements Model<Long> {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_campaign")
-    @SequenceGenerator(sequenceName = "seq_campaign", name = "seq_campaign")
+    @SequenceGenerator(name = "seq_campaign", sequenceName = "products.seq_campaign", allocationSize = 1)
     @Column(name = "id")
     private Long id;
 

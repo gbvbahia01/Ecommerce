@@ -1,4 +1,4 @@
-package br.com.gbvbahia.ecommerce.web.restcontrollers;
+package br.com.gbvbahia.ecommerce.web.controllers.orders;
 
 import br.com.gbvbahia.ecommerce.services.commons.ParameterService;
 import br.com.gbvbahia.ecommerce.services.dto.orders.ShopCartDTO;
@@ -7,6 +7,8 @@ import br.com.gbvbahia.ecommerce.services.orders.ShopCartService;
 import br.com.gbvbahia.ecommerce.services.products.ProductService;
 import br.com.gbvbahia.ecommerce.util.UniqueId;
 import br.com.gbvbahia.ecommerce.web.component.CookieHandlerComponent;
+import br.com.gbvbahia.ecommerce.web.component.ResultResponse;
+import br.com.gbvbahia.ecommerce.web.controllers.ControllerCommon;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,49 +28,20 @@ import java.util.Map;
  * @since 02/06/18
  */
 @RestController
-public class ShopCartRestController extends RestControllerCommon {
+public class ShopCartController extends ControllerCommon {
 
 
     private final ProductService productService;
     private final ShopCartService shopCartService;
 
-    public ShopCartRestController(ParameterService parameterService,
-                                  ProductService productService,
-                                  ShopCartService shopCartService) {
+    public ShopCartController(ParameterService parameterService,
+                              ProductService productService,
+                              ShopCartService shopCartService) {
         super(parameterService);
         this.productService = productService;
         this.shopCartService = shopCartService;
     }
 
-    @GetMapping(value = "/cart/items/count")
-    @ResponseBody
-    public Map<String, Object> getCartItemCount(HttpServletRequest request, HttpServletResponse response)  {
-        String shopcarCookieKey = parameterService.getValueByKey(ParameterService.APP_COOKIE_SHOPCAR_KEY);
-        Map<String, Object> map = new HashMap<>();
-        map.put("count", 0);
-
-        if (StringUtils.isBlank(shopcarCookieKey)){
-            logger.error("Paremeter {} not found. Coockies cannot be handled.", ParameterService.APP_COOKIE_SHOPCAR_KEY);
-            return map;
-        }
-
-        Cookie shopCookie = cookieHandler.getCookie(request, shopcarCookieKey);
-
-        if (shopCookie == null || StringUtils.isBlank(shopCookie.getValue())) {
-            logger.debug("No items found in shopcart");
-            return map;
-        }
-
-        ShopCartDTO shopCart = shopCartService.findBySerial(shopCookie.getValue());
-
-        if (shopCart == null) {
-            return map;
-        } else {
-            map.put("count", shopCart.getShopCartProducts().size());
-        }
-
-        return map;
-    }
 
     @PostMapping(value = "/cart/items")
     public String addToCart(@RequestBody final Map<String, String> args,
@@ -132,5 +105,28 @@ public class ShopCartRestController extends RestControllerCommon {
                                     shopcarCookieKey, shopcarCookieValue,
                                     cookieHandler.getCookieSeconds(CookieHandlerComponent.MAX_COOKIES_DAYS));
         return shopcartDto;
+    }
+
+
+    @GetMapping(value = "/cart/items/count")
+    @ResponseBody
+    public Map<String, Object> getCartItemCount(HttpServletRequest request, HttpServletResponse response)  {
+        Cookie shopCookie = cookieHandler.getCookieShopCart(request);
+        Map<String, Object> map = new HashMap<>();
+
+        if (shopCookie == null || StringUtils.isBlank(shopCookie.getValue())) {
+            logger.debug("No items found in shopcart");
+            return map;
+        }
+
+        ShopCartDTO shopCart = shopCartService.findBySerial(shopCookie.getValue());
+
+        if (shopCart == null) {
+            return map;
+        } else {
+            map.put("count", shopCart.getShopCartProducts().size());
+        }
+
+        return map;
     }
 }

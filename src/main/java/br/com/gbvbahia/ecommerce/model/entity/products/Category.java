@@ -29,7 +29,7 @@ public class Category implements Model<Long>, Comparable<Category> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_category")
-    @SequenceGenerator(sequenceName = "seq_category", name = "seq_category", schema = "products")
+    @SequenceGenerator(name = "seq_category", sequenceName = "products.seq_category", allocationSize = 1)
     @Column(name = "id")
     private Long id;
 

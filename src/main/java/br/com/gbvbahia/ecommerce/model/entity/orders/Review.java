@@ -5,18 +5,17 @@
  */
 package br.com.gbvbahia.ecommerce.model.entity.orders;
 
-import java.util.Calendar;
-import java.util.Objects;
+import br.com.gbvbahia.ecommerce.model.cotract.Model;
+import br.com.gbvbahia.ecommerce.model.entity.customers.Customer;
+import br.com.gbvbahia.ecommerce.model.entity.products.Product;
 
 import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-
-import br.com.gbvbahia.ecommerce.model.cotract.Model;
-import br.com.gbvbahia.ecommerce.model.entity.customers.Customer;
-import br.com.gbvbahia.ecommerce.model.entity.products.Product;
+import java.util.Calendar;
+import java.util.Objects;
 
 /**
  * Project: Ecommerce
@@ -31,7 +30,7 @@ public class Review implements Model<Long> {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_review")
-    @SequenceGenerator(sequenceName = "seq_review", name = "seq_review")
+    @SequenceGenerator(name = "seq_review", sequenceName = "orders.seq_review", allocationSize = 1)
     @Column(name = "id")
     private Long id;
 

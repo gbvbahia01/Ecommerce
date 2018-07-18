@@ -27,7 +27,7 @@ public class SubCategory implements Model<Long>, Comparable<SubCategory> {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_sub_category")
-    @SequenceGenerator(sequenceName = "seq_sub_category", name = "seq_sub_category", schema = "products")
+    @SequenceGenerator(name = "seq_sub_category", sequenceName = "products.seq_sub_category", allocationSize = 1)
     @Column(name = "id")
     private Long id;
 

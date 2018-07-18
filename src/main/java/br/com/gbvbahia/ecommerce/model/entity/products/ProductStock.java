@@ -28,7 +28,7 @@ public class ProductStock implements Model<Long> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_product_stock")
-    @SequenceGenerator(sequenceName = "seq_product_stock", name = "seq_product_stock")
+    @SequenceGenerator(name = "seq_product_stock", sequenceName = "products.seq_product_stock", allocationSize = 1)
     @Column(name = "id")
     private Long id;
 
