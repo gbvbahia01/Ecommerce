@@ -10,7 +10,7 @@ $(window).on('load', function () {
 //==================================
 function addItemToCart(id) {
     $.ajax({
-        url: '/cart/items', // URL ADD ITEM CART
+        url: '/ecommerce/cart/items', // URL ADD ITEM CART
         type: "POST",
         dataType: "json",
         contentType: "application/json",
@@ -32,7 +32,7 @@ function addItemToCart(id) {
 
 function updateCartItemCount() {
     $.ajax ({
-        url: '/cart/items/count',
+        url: '/ecommerce/cart/items/count',
         type: "GET",
         dataType: "json",
         contentType: "application/json",
